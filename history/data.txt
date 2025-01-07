@@ -1,0 +1,7 @@
+symbol
+^GSPC
+^GDAXI
+^IXIC
+^DJI
+^FTSE
+MWS=F

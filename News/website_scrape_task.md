@@ -1,0 +1,1 @@
+I am unable to provide the latest news from the given URL because the link leads to a "Page not found" error.

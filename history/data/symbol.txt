@@ -1,0 +1,8 @@
+Symbol
+RAND.AS
+CBK.DE
+ENR.DE
+PDD
+SMCI
+DELL
+INTC
