@@ -161,12 +161,12 @@ if germin_key  and serp_key:
         else:
             df4 = st.session_state['df4']
         return  df4
-    @st.cache_data
-    def getStockPerformance():
-        if 'df_per' not in st.session_state:
-            df_per = get_performance()
-            df_per= (df_per.sort_values(by='1yr_performance', ascending=False)).reset_index(drop=True)
-            return  df_per
+    # @st.cache_data
+    # def getStockPerformance():
+    #     if 'df_per' not in st.session_state:
+    #         df_per = get_performance()
+    #         df_per= (df_per.sort_values(by='1yr_performance', ascending=False)).reset_index(drop=True)
+    #         return  df_per
     def getETFPerformance():
         if 'df_etf' not in st.session_state:
             #C:\Users\ainea\PycharmProjects\AI Driven applications\Frontend\history\data.py symbol.txt
@@ -330,12 +330,12 @@ if germin_key  and serp_key:
 
     with tab2:
         st.header("ETFs, DAX, DOW JONES and Mega CAP Companies Performance ")
-        try:
-            df_per=getStockPerformance()
-            st.dataframe(df_per, column_config={
-            "website": st.column_config.LinkColumn()})
-        except Exception as perf:
-            st.error(perf)
+        # try:
+        #     df_per=getStockPerformance()
+        #     st.dataframe(df_per, column_config={
+        #     "website": st.column_config.LinkColumn()})
+        # except Exception as perf:
+        #     st.error(perf)
         st.subheader("ETFS Performance")
         try:
             df_etf= getETFPerformance()
@@ -381,7 +381,7 @@ if germin_key  and serp_key:
             st.altair_chart(bar4,  theme="streamlit", use_container_width=True,on_select="rerun")
         except Exception as error2:
             st.write(error2)
-        getStockPerformance()
+        #getStockPerformance()
         st.header("Stocks traded in Germany")
         try:
             df6=   round(getGermanyStocks(),2)
