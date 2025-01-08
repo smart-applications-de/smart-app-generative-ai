@@ -3,7 +3,8 @@
 import streamlit as st
 
 import streamlit as st
-
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 pages = {
     "Gemini AI": [
         st.Page("./main.py", title="Gemini  Chatbot"),
