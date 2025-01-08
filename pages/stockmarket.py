@@ -10,15 +10,9 @@ from StockmarketAnalysis.crew import  StockMarketCrew
 from News.news_and_marketing import CrewStocknews
 
 import streamlit as st
-from dotenv import  load_dotenv
-load_dotenv()
+
 import os
-os.environ["OPENAI_API_KEY"] = os.environ.get('GOOGLE_API_KEY')
-from dotenv import  load_dotenv
-load_dotenv()
-os.environ["OPENAI_API_KEY"] = os.environ.get('GOOGLE_API_KEY')
-os.environ["LINKEDIN_COOKIE"]=os.environ.get('LI_AT')
-os.environ["SERPER_API_KEY"]=os.environ.get('SERPER_API_KEY')
+
 def germinApiKey():
     st.warning('Please enter your Google Germin API Key')
     openai_api_key = st.text_input(
