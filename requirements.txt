@@ -2,6 +2,7 @@ google-cloud-storage
 langchain~=0.3.9
 langchain-community~=0.3.9
 unstructured
+pysqlite3-binary
 langchain-google-genai~=2.0.6
 crewai~=0.85.0
 crewai-tools
