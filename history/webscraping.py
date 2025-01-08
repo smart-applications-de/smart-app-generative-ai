@@ -211,8 +211,10 @@ def SummaryLoad():
         try:
             df2 = DAXCompanies()
             print(df2.head(3))
+            dax=True
         except:
-            pass
+            dax=False
+            df2 = None
         try:
             df3 = Top500Companies()
             print(df3.head(3))
@@ -221,8 +223,26 @@ def SummaryLoad():
         try:
             df4 = MegaCapCompanies()
             print(df4.head(5))
-            Nasdaq_100()
-            DowJones()
+            df_daq=Nasdaq_100()
+            df_jone=DowJones()
+            df_symbol_q= df_daq[['Symbol']]
+
+            df_symbol =pd.concat([df_symbol_q, df4[['Symbol']] ],ignore_index=True )
+            df_symbol = pd.concat([df_symbol, df_jone[['Symbol']] ],ignore_index=True )
+            symbol = pd.read_csv("symbol.txt")
+            df_symbol = pd.concat([df_symbol, symbol[['Symbol']]], ignore_index=True)
+
+            if dax :
+                sy =df2[['Ticker-en']]
+                df_symbol = pd.concat([df_symbol, sy], ignore_index=True)
+            df_symbol =df_symbol.drop_duplicates(ignore_index=True)
+
+            df_symbol.to_csv(f'.\history\data\Tickers.csv', index=False)
+
+
+
+
+
         except:
             pass
         try:
