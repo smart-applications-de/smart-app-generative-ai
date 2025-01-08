@@ -1,66 +1,60 @@
 import streamlit as st
-from instructor.cli.usage import api_key
-from joblib.externals.loky.backend.resource_tracker import VERBOSE
-from menu import menu_with_redirect
-import time
-from crewai import Agent, LLM
-from langchain_openai import ChatOpenAI
+
 from langchain.agents import AgentType, Tool, initialize_agent
 from langchain_community.utilities import GoogleSerperAPIWrapper
-from mpmath.calculus.extrapolation import limit
-from openai import OpenAI
-from langchain_core.messages import HumanMessage
-from langchain.prompts import PromptTemplate
-from app import germinApiKey, SerpApiKey
-germin_key =  germinApiKey()
-SERPAPI_API_KEY =SerpApiKey()
+
+from main import germinApiKey, SerpApiKey
+
 from langchain_google_genai import ChatGoogleGenerativeAI
-#
-from langchain_core.prompts import ChatPromptTemplate
-#from langchain.callbacks import StreamlitCallbackHandler
-# Verify the user's role
+
 import os
 import pandas as pd
 
 date = pd.to_datetime('today').date()
 yr = pd.to_datetime('today').year
-tab1, tab2,tab3 = st.tabs(["Google Search","News Article", "Google Image Search"])
-if not germin_key and not SERPAPI_API_KEY:
-    st.info("Please add your Gemin  API key to continue.")
-    st.stop()
-llm= ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key,temperature=0,
-                            max_tokens=None,
-                            timeout=None,
-                            max_retries=2,
-                            )
-#                            streaming=True
-   #                         )
 
+tab1, tab2,tab3 = st.tabs(["Google Search","News Article", "Google Places"])
+st.warning('Please enter your Google Germin API Key')
+def germinApiKey():
+    st.warning('Please enter your Google Germin API Key')
+    openai_api_key = st.text_input(
+        "GOOGLE API KEY", key="germin_api_key", type="password")
+    if  "germin_api_key" not in st.session_state:
+        "[Get GOOGLE API KEY](https://ai.google.dev/)"
+        st.session_state['germin_api_key'] = openai_api_key
+        st.info("Please add your OpenAI API key to continue.")
+        st.stop()
+    return  st.session_state['germin_api_key']
+def SerpApiKey():
+    st.warning('Please enter your Serper API Key')
+    serper_api_key = st.text_input(
+        "SERPER API KEY", key="serp_api_key", type="password")
+    if  "serp_api_key" not in st.session_state:
+        "[Get SERPER API KEY](https://serper.dev/)"
+        st.session_state['serp_api_key'] = serper_api_key
+    return  st.session_state['serp_api_key']
+@st.cache_resource
+def SearchAgent(germin_key,SERPAPI_API_KEY,query):
+    try:
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0,
+                                     max_tokens=None,
+                                     timeout=None,
+                                     max_retries=2,
+                                     )
+        search = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
+                                        num=4,
+                                     #   gl="de"
+                                        )
+        tools = [
+            Tool(
+                name="Search",
+                func=search.run,
+                description="useful for when you need to ask with search. ",
+            )
+        ]
 
-
-
-
-if "searches" not in st.session_state:
-    st.session_state["searches"] = [
-        {"role": "assistant", "content": "Hi, I'm a chatbot who can search the web. How can I help you?"}
-    ]
-with tab1:
-    search = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                    num=4,
-                                 #   gl="de"
-                                    )
-    tools = [
-        Tool(
-            name="Search",
-            func=search.run,
-            description="useful for when you need to ask with search. ",
-        )
-    ]
-
-    #langauge= st.radio(label="select output language",options=['German', 'English', 'French','Spanish', 'Italian'])
-    search_agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True, verbose=True)
-    if query :=st.text_input(key='query',placeholder="Who won World cup in 2022 ?",label="Ask Anything"):
-
+        search_agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+                                        handle_parsing_errors=True, verbose=True)
         messages = [
             (
                 "system",
@@ -71,60 +65,130 @@ with tab1:
             ),
             ("human", query),
         ]
-        response = search_agent.run(messages )
+        response = search_agent.run(messages)
 
         st.session_state.searches.append({"role": "user", "content": query})
-        st.markdown(response)
-with tab2:
-    news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                    num=4,
-                                    gl="de",
-                                  type="news"
-                                    )
-    tools_news = [
-        Tool(
-            name="news",
-            func=news.run,
-            description="useful for when you need to  search for latest news. ",
-        )
-    ]
+        return  response
+    except Exception as error:
+        st.error(error)
+#search = GoogleSerperAPIWrapper(type="places")
+#results = search.results("Italian restaurants in Upper East Side")
 
-    #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
-    news_agent = initialize_agent(tools_news, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True,
-                                    verbose=True)
-    if news_topic := st.text_input(key='news_topic', placeholder="Randstad Deutschland?", label="Give a Topic"):
+@st.cache_resource
+def SearchNews(germin_key, SERPAPI_API_KEY,topic):
+    try:
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0,
+                                     max_tokens=None,
+                                     timeout=None,
+                                     max_retries=2,
+                                     )
+        news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
+                                        num=4,
+                                        gl="de",
+                                      type="news"
+                                        )
+        tools_news = [
+            Tool(
+                name="news",
+                func=news.run,
+                description="useful for when you need to  search for latest news. ",
+            )
+        ]
+
+        #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
+        news_agent = initialize_agent(tools_news, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True,
+                                        verbose=True)
+
         messages_news = [
             (
                 "system",
                 f"""You are a news Report Expert and you have decades of experience. 
-                 You takes the user input on a given topic and search on internet for the latest news. 
-                 You MUST write an article with the most important  and latest news.  The current date is:{date} and current year:{yr} .You MUST  Also Include  source urls for further reading.
-                 Formatted in markdown without ```""",
+                            You takes the user input on a given topic and search on internet for the latest news. 
+                            You MUST write an article with the most important  and latest news.  The current date is:{date} and current year:{yr} .You MUST  Also Include  source urls for further reading.
+                            Formatted in markdown without ```""",
             ),
-            ("human", news_topic),
+            ("human", topic),
         ]
-        response =news_agent.run(messages_news)
-        st.markdown(response)
+        response = news_agent.run(messages_news)
+        return response
+    except Exception as error:
+        st.error(error)
+@st.cache_resource
+def SearchPlaces(germin_key, SERPAPI_API_KEY,topic):
+    try:
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0,
+                                     max_tokens=None,
+                                     timeout=None,
+                                     max_retries=2,
+                                     )
+        news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
+                                        num=4,
+                                      type="places"
+                                        )
+        tools_news = [
+            Tool(
+                name="Google Places",
+                func=news.run,
+                description="useful for when you need to  search for  Google Places. ",
+            )
+        ]
+
+        #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
+        news_agent = initialize_agent(tools_news, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True,
+                                        verbose=True)
+
+        messages_news = [
+            (
+                "system",
+                f"""You are  Expert on searching for Google places and locations. 
+                            You takes the user input on a given topic and search for places related to the given topic. 
+                            You MUST Extract the exact places including the adresses.  The current date is:{date} and current year:{yr}.
+                            The Output must be Formatted in markdown without ```""",
+            ),
+            ("human", topic),
+        ]
+        response = news_agent.run(messages_news)
+        return response
+    except Exception as error:
+        st.error(error)
+germin_key =  germinApiKey()
+SERPAPI_API_KEY = SerpApiKey()
+if germin_key:
+    llm= ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key,temperature=0,
+                            max_tokens=None,
+                            timeout=None,
+                            max_retries=2,
+                            )
+#                            streaming=True
+   #                         )
+    if "searches" not in st.session_state:
+        st.session_state["searches"] = [
+            {"role": "assistant", "content": "Hi, I'm a chatbot who can search the web. How can I help you?"}
+        ]
+    with tab1:
+
+        #langauge= st.radio(label="select output language",options=['German', 'English', 'French','Spanish', 'Italian'])
+       # search_agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True, verbose=True)
+        if query :=st.text_input(key='query',placeholder="Who won World cup in 2022 ?",label="Ask Anything"):
+            response=SearchAgent(germin_key,SERPAPI_API_KEY,query)
+            st.markdown(response)
+    with tab2:
+
+        #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
+        if news_topic := st.text_input(key='news_topic', placeholder="Randstad Deutschland?", label="Give a Topic"):
+            response = SearchNews(germin_key,SERPAPI_API_KEY,news_topic)
+            st.markdown(response)
+    with tab3:
+
+        #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
+        if place := st.text_input(key='place', placeholder="Italian Restaurant in Darmstadt", label="Give a Place"):
+            response = SearchPlaces(germin_key,SERPAPI_API_KEY,place)
+            st.markdown(response)
 
 # for msg in st.session_state.searches:
 #     st.chat_message(msg["role"]).write(msg["content"])
 
 
-
-from langchain_core.messages import HumanMessage
-from langchain_google_genai import ChatGoogleGenerativeAI
-
-
-
-message = HumanMessage(
-    content=[
-        {
-            "type": "text",
-            "text": "What's in this image?",
-        },  # You can optionally provide text parts
-        {"type": "image_url", "image_url": "https://picsum.photos/seed/picsum/200/300"},
-    ]
-)
 
 
 
