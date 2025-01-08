@@ -1,51 +1,51 @@
 Date,Close,1_day_performance,week_performance,month_performance,3month_performance,6month_performance,1yr_performance,Ticker,quoteType,longName,sector,industry,website
-2025-01-08 00:00:00-05:00,241.99,-0.09,-3.37,-0.43,7.35,11.89,31.05,AAPL,EQUITY,Apple Inc.,Technology,Consumer Electronics,https://www.apple.com
-2025-01-08 00:00:00-05:00,140.11,-0.02,4.33,-3.41,14.06,12.74,168.2,NVDA,EQUITY,NVIDIA Corporation,Technology,Semiconductors,https://www.nvidia.com
-2025-01-08 00:00:00-05:00,423.77,0.33,0.54,-4.26,1.94,-6.86,13.94,MSFT,EQUITY,Microsoft Corporation,Technology,Software - Infrastructure,https://www.microsoft.com
-2025-01-08 00:00:00-05:00,194.49,-0.51,2.74,12.78,17.39,6.54,40.59,GOOGL,EQUITY,Alphabet Inc.,Communication Services,Internet Content & Information,https://abc.xyz
-2025-01-08 00:00:00-05:00,222.07,-0.02,1.22,0.69,22.04,12.61,48.94,AMZN,EQUITY,"Amazon.com, Inc.",Consumer Cyclical,Internet Retail,https://www.aboutamazon.com
-2025-01-08 00:00:00-05:00,610.88,-1.13,4.33,0.4,4.91,21.26,70.97,META,EQUITY,"Meta Platforms, Inc.",Communication Services,Internet Content & Information,https://investor.fb.com
-2025-01-08 00:00:00-05:00,396.29,0.49,-1.87,7.25,64.67,88.84,64.81,TSLA,EQUITY,"Tesla, Inc.",Consumer Cyclical,Auto Manufacturers,https://www.tesla.com
-2025-01-08 00:00:00-05:00,228.85,0.09,-1.29,34.6,33.49,40.31,115.77,AVGO,EQUITY,Broadcom Inc.,Technology,Semiconductors,https://www.broadcom.com
-2025-01-08 00:00:00-05:00,207.38,-1.91,5.01,1.83,15.91,21.17,105.71,TSM,EQUITY,Taiwan Semiconductor Manufacturing Company Limited,Technology,Semiconductors,https://www.tsmc.com
-2025-01-08 00:00:00-05:00,91.43,0.69,1.2,-3.84,13.93,36.19,75.39,WMT,EQUITY,Walmart Inc.,Consumer Defensive,Discount Stores,https://corporate.walmart.com
-2025-01-08 00:00:00-05:00,786.89,1.76,1.93,-4.69,-10.99,-13.68,26.52,LLY,EQUITY,Eli Lilly and Company,Healthcare,Drug Manufacturers - General,https://www.lilly.com
-2025-01-08 00:00:00-05:00,242.26,-0.37,1.59,-0.8,19.38,19.91,44.05,JPM,EQUITY,JPMorgan Chase & Co.,Financial Services,Banks - Diversified,https://www.jpmorganchase.com
-2025-01-08 00:00:00-05:00,312.58,0.29,-1.09,1.13,13.12,19.21,19.97,V,EQUITY,Visa Inc.,Financial Services,Credit Services,https://www.visa.com
-2025-01-08 00:00:00-05:00,522.94,1.69,3.38,-9.33,-11.44,6.5,-1.01,UNH,EQUITY,UnitedHealth Group Incorporated,Healthcare,Healthcare Plans,https://www.unitedhealthgroup.com
-2025-01-08 00:00:00-05:00,515.0,0.7,-2.2,-1.86,4.19,18.02,22.56,MA,EQUITY,Mastercard Incorporated,Financial Services,Credit Services,https://www.mastercard.com
-2025-01-08 00:00:00-05:00,106.43,-2.13,-1.06,-7.27,-12.46,-5.91,9.06,XOM,EQUITY,Exxon Mobil Corporation,Energy,Oil & Gas Integrated,https://corporate.exxonmobil.com
-2025-01-08 00:00:00-05:00,162.56,0.33,-2.45,-12.71,-2.36,14.18,57.21,ORCL,EQUITY,Oracle Corporation,Technology,Software - Infrastructure,https://www.oracle.com
-2025-01-08 00:00:00-05:00,925.29,0.43,0.98,-5.8,5.81,9.72,40.65,COST,EQUITY,Costco Wholesale Corporation,Consumer Defensive,Discount Stores,https://www.costco.com
-2025-01-08 00:00:00-05:00,384.8,0.15,-1.08,-9.79,-6.02,15.76,13.31,HD,EQUITY,"The Home Depot, Inc.",Consumer Cyclical,Home Improvement Retail,https://www.homedepot.com
-2025-01-08 00:00:00-05:00,161.85,0.34,-3.46,-8.05,-4.3,0.65,11.56,PG,EQUITY,The Procter & Gamble Company,Consumer Defensive,Household & Personal Products,https://www.pginvestor.com
-2025-01-08 00:00:00-05:00,85.4,2.47,-0.72,-21.52,-25.79,-41.05,-18.85,NVO,EQUITY,Novo Nordisk A/S,Healthcare,Drug Manufacturers - General,https://www.novonordisk.com
-2025-01-08 00:00:00-05:00,876.83,-0.27,-1.63,-4.47,24.06,30.17,80.78,NFLX,EQUITY,"Netflix, Inc.",Communication Services,Entertainment,https://www.netflix.com
-2025-01-08 00:00:00-05:00,46.04,-0.09,4.76,-1.5,17.95,16.47,38.22,BAC,EQUITY,Bank of America Corporation,Financial Services,Banks - Diversified,https://www.bankofamerica.com
-2025-01-08 00:00:00-05:00,142.19,-2.76,-1.68,-4.9,-10.7,-1.38,-9.18,JNJ,EQUITY,Johnson & Johnson,Healthcare,Drug Manufacturers - General,https://www.jnj.com
-2025-01-08 00:00:00-05:00,178.18,-0.75,0.27,1.14,-8.11,6.38,14.41,ABBV,EQUITY,AbbVie Inc.,Healthcare,Drug Manufacturers - General,https://www.abbvie.com
-2025-01-08 00:00:00-05:00,326.27,0.41,-2.41,-9.61,16.28,27.89,25.77,CRM,EQUITY,"Salesforce, Inc.",Technology,Software - Application,https://www.salesforce.com
-2025-01-08 00:00:00-05:00,741.42,-2.13,6.97,4.21,-10.72,-27.96,3.68,ASML,EQUITY,ASML Holding N.V.,Technology,Semiconductor Equipment & Materials,https://www.asml.com
-2025-01-08 00:00:00-05:00,252.76,1.3,2.66,-1.09,14.65,26.75,67.76,SAP,EQUITY,SAP SE,Technology,Software - Application,https://www.sap.com
-2025-01-08 00:00:00-05:00,149.82,0.16,3.44,-5.97,0.07,-2.22,4.53,CVX,EQUITY,Chevron Corporation,Energy,Oil & Gas Integrated,https://www.chevron.com
-2025-01-08 00:00:00-05:00,61.44,0.99,-1.32,-2.35,-12.21,-1.5,5.33,KO,EQUITY,The Coca-Cola Company,Consumer Defensive,Beverages - Non-Alcoholic,https://www.coca-colacompany.com
-2025-01-08 00:00:00-05:00,191.99,-0.58,-1.34,10.09,8.98,-5.75,2.18,TM,EQUITY,Toyota Motor Corporation,Consumer Cyclical,Auto Manufacturers,https://global.toyota/en
-2025-01-08 00:00:00-05:00,99.84,-1.17,0.36,-2.81,-8.66,-20.79,-12.62,MRK,EQUITY,"Merck & Co., Inc.",Healthcare,Drug Manufacturers - General,https://www.merck.com
-2025-01-08 00:00:00-05:00,214.05,0.81,-3.02,-12.25,3.27,20.35,32.93,TMUS,EQUITY,"T-Mobile US, Inc.",Communication Services,Telecom Services,https://www.t-mobile.com
-2025-01-08 00:00:00-05:00,71.47,-0.16,1.76,-2.97,30.75,19.55,46.97,WFC,EQUITY,Wells Fargo & Company,Financial Services,Banks - Diversified,https://www.wellsfargo.com
-2025-01-08 00:00:00-05:00,59.01,0.13,0.35,-1.02,13.31,27.05,20.63,CSCO,EQUITY,"Cisco Systems, Inc.",Technology,Communication Equipment,https://www.cisco.com
-2025-01-08 00:00:00-05:00,357.64,0.35,1.66,-0.14,-0.59,19.21,6.77,ACN,EQUITY,Accenture plc,Technology,Information Technology Services,https://www.accenture.com
-2025-01-08 00:00:00-05:00,1050.17,-0.38,-0.94,-6.55,17.91,33.11,50.83,NOW,EQUITY,"ServiceNow, Inc.",Technology,Software - Application,https://www.servicenow.com
-2025-01-08 00:00:00-05:00,302.82,0.26,2.27,1.0,13.3,30.54,61.81,AXP,EQUITY,American Express Company,Financial Services,Credit Services,https://www.americanexpress.com
-2025-01-08 00:00:00-05:00,172.89,0.9,0.27,-7.64,14.94,43.0,44.93,BX,EQUITY,Blackstone Inc.,Financial Services,Asset Management,https://www.blackstone.com
-2025-01-08 00:00:00-05:00,545.98,0.06,4.95,4.9,-9.08,0.93,1.12,TMO,EQUITY,Thermo Fisher Scientific Inc.,Healthcare,Diagnostics & Research,https://www.thermofisher.com
-2025-01-08 00:00:00-05:00,66.63,-0.02,1.69,-1.33,-14.5,-13.99,-1.65,AZN,EQUITY,AstraZeneca PLC,Healthcare,Drug Manufacturers - General,https://www.astrazeneca.com
-2025-01-08 00:00:00-05:00,287.56,-0.62,-0.8,-3.98,-4.67,16.39,0.9,MCD,EQUITY,McDonald's Corporation,Consumer Cyclical,Restaurants,https://www.mcdonalds.com
-2025-01-08 00:00:00-05:00,222.67,-0.58,1.29,-5.15,0.77,29.29,43.18,IBM,EQUITY,International Business Machines Corporation,Technology,Information Technology Services,https://www.ibm.com
-2025-01-08 00:00:00-05:00,127.38,0.39,1.32,-2.26,22.78,30.64,41.19,MS,EQUITY,Morgan Stanley,Financial Services,Capital Markets,https://www.morganstanley.com
-2025-01-08 00:00:00-05:00,64.27,-2.52,2.59,-0.12,-5.13,-10.02,3.54,SHEL,EQUITY,Shell plc,Energy,Oil & Gas Integrated,https://www.shell.com
-2025-01-08 00:00:00-05:00,145.87,0.32,-4.07,-8.34,-12.71,-9.0,-10.98,PEP,EQUITY,"PepsiCo, Inc.",Consumer Defensive,Beverages - Non-Alcoholic,https://www.pepsico.com
-2025-01-08 00:00:00-05:00,109.77,-1.45,-1.42,-5.36,17.76,12.98,20.99,DIS,EQUITY,The Walt Disney Company,Communication Services,Entertainment,https://www.thewaltdisneycompany.com
+2025-01-08 00:00:00-05:00,242.7,0.2,-3.08,-0.14,7.66,12.23,31.73,AAPL,EQUITY,Apple Inc.,Technology,Consumer Electronics,https://www.apple.com
+2025-01-08 00:00:00-05:00,140.11,-0.02,4.33,-3.41,14.06,12.74,163.76,NVDA,EQUITY,NVIDIA Corporation,Technology,Semiconductors,https://www.nvidia.com
+2025-01-08 00:00:00-05:00,424.56,0.52,0.73,-4.08,2.13,-6.69,13.82,MSFT,EQUITY,Microsoft Corporation,Technology,Software - Infrastructure,https://www.microsoft.com
+2025-01-08 00:00:00-05:00,193.95,-0.79,2.46,12.47,17.07,6.25,38.1,GOOGL,EQUITY,Alphabet Inc.,Communication Services,Internet Content & Information,https://abc.xyz
+2025-01-08 00:00:00-05:00,222.13,0.01,1.25,0.72,22.08,12.64,46.75,AMZN,EQUITY,"Amazon.com, Inc.",Consumer Cyclical,Internet Retail,https://www.aboutamazon.com
+2025-01-08 00:00:00-05:00,610.72,-1.16,4.31,0.37,4.88,21.22,71.52,META,EQUITY,"Meta Platforms, Inc.",Communication Services,Internet Content & Information,https://investor.fb.com
+2025-01-08 00:00:00-05:00,394.94,0.15,-2.2,6.89,64.11,88.19,68.09,TSLA,EQUITY,"Tesla, Inc.",Consumer Cyclical,Auto Manufacturers,https://www.tesla.com
+2025-01-08 00:00:00-05:00,229.31,0.29,-1.09,34.88,33.76,40.59,114.69,AVGO,EQUITY,Broadcom Inc.,Technology,Semiconductors,https://www.broadcom.com
+2025-01-08 00:00:00-05:00,207.12,-2.03,4.88,1.7,15.77,21.01,106.15,TSM,EQUITY,Taiwan Semiconductor Manufacturing Company Limited,Technology,Semiconductors,https://www.tsmc.com
+2025-01-08 00:00:00-05:00,91.8,1.09,1.6,-3.46,14.39,36.73,74.96,WMT,EQUITY,Walmart Inc.,Consumer Defensive,Discount Stores,https://corporate.walmart.com
+2025-01-08 00:00:00-05:00,787.22,1.8,1.97,-4.65,-10.96,-13.64,26.68,LLY,EQUITY,Eli Lilly and Company,Healthcare,Drug Manufacturers - General,https://www.lilly.com
+2025-01-08 00:00:00-05:00,243.13,-0.02,1.95,-0.45,19.81,20.34,45.72,JPM,EQUITY,JPMorgan Chase & Co.,Financial Services,Banks - Diversified,https://www.jpmorganchase.com
+2025-01-08 00:00:00-05:00,312.6,0.3,-1.09,1.14,13.12,19.22,19.62,V,EQUITY,Visa Inc.,Financial Services,Credit Services,https://www.visa.com
+2025-01-08 00:00:00-05:00,524.52,2.0,3.69,-9.06,-11.17,6.82,-1.05,UNH,EQUITY,UnitedHealth Group Incorporated,Healthcare,Healthcare Plans,https://www.unitedhealthgroup.com
+2025-01-08 00:00:00-05:00,516.4,0.98,-1.93,-1.59,4.47,18.34,,MA,EQUITY,Mastercard Incorporated,Financial Services,Credit Services,https://www.mastercard.com
+2025-01-08 00:00:00-05:00,106.93,-1.67,-0.59,-6.84,-12.05,-5.47,10.95,XOM,EQUITY,Exxon Mobil Corporation,Energy,Oil & Gas Integrated,https://corporate.exxonmobil.com
+2025-01-08 00:00:00-05:00,163.14,0.69,-2.1,-12.4,-2.01,14.59,59.35,ORCL,EQUITY,Oracle Corporation,Technology,Software - Infrastructure,https://www.oracle.com
+2025-01-08 00:00:00-05:00,927.37,0.65,1.21,-5.59,6.04,9.96,39.81,COST,EQUITY,Costco Wholesale Corporation,Consumer Defensive,Discount Stores,https://www.costco.com
+2025-01-08 00:00:00-05:00,387.2,0.77,-0.46,-9.22,-5.43,16.48,14.59,HD,EQUITY,"The Home Depot, Inc.",Consumer Cyclical,Home Improvement Retail,https://www.homedepot.com
+2025-01-08 00:00:00-05:00,162.1,0.5,-3.31,-7.91,-4.15,0.81,11.28,PG,EQUITY,The Procter & Gamble Company,Consumer Defensive,Household & Personal Products,https://www.pginvestor.com
+2025-01-08 00:00:00-05:00,85.64,2.76,-0.44,-21.3,-25.58,-40.89,-19.05,NVO,EQUITY,Novo Nordisk A/S,Healthcare,Drug Manufacturers - General,https://www.novonordisk.com
+2025-01-08 00:00:00-05:00,875.0,-0.48,-1.83,-4.67,23.8,29.9,81.5,NFLX,EQUITY,"Netflix, Inc.",Communication Services,Entertainment,https://www.netflix.com
+2025-01-08 00:00:00-05:00,46.21,0.28,5.14,-1.13,18.39,16.9,40.88,BAC,EQUITY,Bank of America Corporation,Financial Services,Banks - Diversified,https://www.bankofamerica.com
+2025-01-08 00:00:00-05:00,142.27,-2.71,-1.62,-4.85,-10.65,-1.32,-9.19,JNJ,EQUITY,Johnson & Johnson,Healthcare,Drug Manufacturers - General,https://www.jnj.com
+2025-01-08 00:00:00-05:00,178.5,-0.57,0.45,1.32,-7.94,6.58,13.99,ABBV,EQUITY,AbbVie Inc.,Healthcare,Drug Manufacturers - General,https://www.abbvie.com
+2025-01-08 00:00:00-05:00,326.9,0.61,-2.22,-9.44,16.5,28.14,25.78,CRM,EQUITY,"Salesforce, Inc.",Technology,Software - Application,https://www.salesforce.com
+2025-01-08 00:00:00-05:00,253.49,1.6,2.96,-0.8,14.98,27.11,68.7,SAP,EQUITY,SAP SE,Technology,Software - Application,https://www.sap.com
+2025-01-08 00:00:00-05:00,743.98,-1.8,7.34,4.57,-10.41,-27.71,4.75,ASML,EQUITY,ASML Holding N.V.,Technology,Semiconductor Equipment & Materials,https://www.asml.com
+2025-01-08 00:00:00-05:00,150.3,0.47,3.77,-5.67,0.39,-1.91,7.6,CVX,EQUITY,Chevron Corporation,Energy,Oil & Gas Integrated,https://www.chevron.com
+2025-01-08 00:00:00-05:00,61.71,1.43,-0.88,-1.92,-11.83,-1.07,5.99,KO,EQUITY,The Coca-Cola Company,Consumer Defensive,Beverages - Non-Alcoholic,https://www.coca-colacompany.com
+2025-01-08 00:00:00-05:00,192.55,-0.3,-1.06,10.41,9.3,-5.48,3.53,TM,EQUITY,Toyota Motor Corporation,Consumer Cyclical,Auto Manufacturers,https://global.toyota/en
+2025-01-08 00:00:00-05:00,99.85,-1.16,0.37,-2.8,-8.65,-20.78,-13.38,MRK,EQUITY,"Merck & Co., Inc.",Healthcare,Drug Manufacturers - General,https://www.merck.com
+2025-01-08 00:00:00-05:00,215.52,1.5,-2.36,-11.65,3.97,21.18,34.0,TMUS,EQUITY,"T-Mobile US, Inc.",Communication Services,Telecom Services,https://www.t-mobile.com
+2025-01-08 00:00:00-05:00,71.57,-0.03,1.89,-2.84,30.92,19.71,49.04,WFC,EQUITY,Wells Fargo & Company,Financial Services,Banks - Diversified,https://www.wellsfargo.com
+2025-01-08 00:00:00-05:00,59.2,0.46,0.68,-0.69,13.68,27.47,22.36,CSCO,EQUITY,"Cisco Systems, Inc.",Technology,Communication Equipment,https://www.cisco.com
+2025-01-08 00:00:00-05:00,357.73,0.38,1.69,-0.11,-0.57,19.24,6.05,ACN,EQUITY,Accenture plc,Technology,Information Technology Services,https://www.accenture.com
+2025-01-08 00:00:00-05:00,1049.08,-0.48,-1.04,-6.64,17.79,32.97,50.15,NOW,EQUITY,"ServiceNow, Inc.",Technology,Software - Application,https://www.servicenow.com
+2025-01-08 00:00:00-05:00,302.85,0.27,2.28,1.01,13.32,30.56,63.95,AXP,EQUITY,American Express Company,Financial Services,Credit Services,https://www.americanexpress.com
+2025-01-08 00:00:00-05:00,173.97,1.53,0.9,-7.07,15.65,43.9,47.46,BX,EQUITY,Blackstone Inc.,Financial Services,Asset Management,https://www.blackstone.com
+2025-01-08 00:00:00-05:00,544.93,-0.13,4.75,4.7,-9.25,0.73,0.84,TMO,EQUITY,Thermo Fisher Scientific Inc.,Healthcare,Diagnostics & Research,https://www.thermofisher.com
+2025-01-08 00:00:00-05:00,223.18,-0.35,1.52,-4.93,1.0,29.59,44.45,IBM,EQUITY,International Business Machines Corporation,Technology,Information Technology Services,https://www.ibm.com
+2025-01-08 00:00:00-05:00,127.86,0.77,1.7,-1.89,23.24,31.13,43.95,MS,EQUITY,Morgan Stanley,Financial Services,Capital Markets,https://www.morganstanley.com
+2025-01-08 00:00:00-05:00,66.58,-0.09,1.62,-1.41,-14.56,-14.05,-1.29,AZN,EQUITY,AstraZeneca PLC,Healthcare,Drug Manufacturers - General,https://www.astrazeneca.com
+2025-01-08 00:00:00-05:00,286.9,-0.84,-1.03,-4.2,-4.89,16.13,1.02,MCD,EQUITY,McDonald's Corporation,Consumer Cyclical,Restaurants,https://www.mcdonalds.com
+2025-01-08 00:00:00-05:00,146.54,0.78,-3.63,-7.91,-12.31,-8.58,-9.53,PEP,EQUITY,"PepsiCo, Inc.",Consumer Defensive,Beverages - Non-Alcoholic,https://www.pepsico.com
+2025-01-08 00:00:00-05:00,109.76,-1.46,-1.43,-5.37,17.75,12.97,23.52,DIS,EQUITY,The Walt Disney Company,Communication Services,Entertainment,https://www.thewaltdisneycompany.com
+2025-01-08 00:00:00-05:00,64.72,-1.84,3.3,0.57,-4.46,-9.39,5.44,SHEL,EQUITY,Shell plc,Energy,Oil & Gas Integrated,https://www.shell.com
 2025-01-08 00:00:00+01:00,244.7,0.58,3.34,6.3,5.11,11.48,38.88,ADS.DE,EQUITY,adidas AG,Consumer Cyclical,Footwear & Accessories,https://www.adidas-group.com
 2025-01-08 00:00:00+01:00,158.58,0.11,2.46,2.83,25.3,16.74,11.98,AIR.PA,EQUITY,Airbus SE,Industrials,Aerospace & Defense,https://www.airbus.com
 2025-01-08 00:00:00+01:00,301.6,0.43,1.93,1.72,2.76,14.9,29.9,ALV.DE,EQUITY,Allianz SE,Financial Services,Insurance - Diversified,https://www.allianz.com
@@ -86,97 +86,97 @@ Date,Close,1_day_performance,week_performance,month_performance,3month_performan
 2025-01-08 00:00:00+01:00,89.32,-0.51,0.74,10.74,-4.27,-15.78,-15.3,VOW3.DE,EQUITY,Volkswagen AG,Consumer Cyclical,Auto Manufacturers,https://www.volkswagen-group.com
 2025-01-08 00:00:00+01:00,28.09,-1.95,-4.75,-10.77,-16.3,6.2,6.44,VNA.DE,EQUITY,Vonovia SE,Real Estate,Real Estate Services,https://www.vonovia.de
 2025-01-08 00:00:00+01:00,31.03,-2.42,-5.48,3.19,7.0,35.8,60.44,ZAL.DE,EQUITY,Zalando SE,Consumer Cyclical,Internet Retail,https://corporate.zalando.de
-2025-01-08 00:00:00-05:00,420.8,-0.43,-5.37,-21.82,-16.48,-24.86,-27.52,ADBE,EQUITY,Adobe Inc.,Technology,Software - Infrastructure,https://www.adobe.com
-2025-01-08 00:00:00-05:00,121.57,-4.52,0.65,-14.0,-25.35,-22.91,-16.84,AMD,EQUITY,"Advanced Micro Devices, Inc.",Technology,Semiconductors,https://www.amd.com
-2025-01-08 00:00:00-05:00,130.61,-0.52,-0.61,-4.19,4.25,-13.86,-6.76,ABNB,EQUITY,"Airbnb, Inc.",Consumer Cyclical,Travel Services,https://www.airbnb.com
-2025-01-08 00:00:00-05:00,195.79,-0.47,2.81,12.45,17.23,6.39,39.82,GOOG,EQUITY,Alphabet Inc.,Communication Services,Internet Content & Information,https://abc.xyz
-2025-01-08 00:00:00-05:00,91.58,1.23,-0.7,-6.02,-8.78,6.91,12.78,AEP,EQUITY,"American Electric Power Company, Inc.",Utilities,Utilities - Regulated Electric,https://www.aep.com
-2025-01-08 00:00:00-05:00,262.36,0.11,0.66,-4.36,-16.7,-14.38,-13.06,AMGN,EQUITY,Amgen Inc.,Healthcare,Drug Manufacturers - General,https://www.amgen.com
-2025-01-08 00:00:00-05:00,219.13,1.51,3.14,2.57,-2.87,-1.89,17.92,ADI,EQUITY,"Analog Devices, Inc.",Technology,Semiconductors,https://www.analog.com
-2025-01-08 00:00:00-05:00,342.96,2.11,1.67,-0.42,9.54,6.79,-1.63,ANSS,EQUITY,"ANSYS, Inc.",Technology,Software - Application,https://www.ansys.com
-2025-01-08 00:00:00-05:00,176.38,-0.81,8.45,2.53,-11.42,-25.39,17.28,AMAT,EQUITY,"Applied Materials, Inc.",Technology,Semiconductor Equipment & Materials,https://www.appliedmaterials.com
-2025-01-08 00:00:00-05:00,327.71,-0.69,1.2,-13.55,142.3,286.37,734.08,APP,EQUITY,AppLovin Corporation,Technology,Software - Application,https://www.applovin.com
-2025-01-08 00:00:00-05:00,145.77,0.96,18.17,5.67,5.45,-8.22,100.12,ARM,EQUITY,Arm Holdings plc,Technology,Semiconductors,https://www.arm.com
-2025-01-08 00:00:00-05:00,243.26,-1.85,-0.05,-12.09,51.62,36.47,3.26,TEAM,EQUITY,Atlassian Corporation,Technology,Software - Application,https://www.atlassian.com
-2025-01-08 00:00:00-05:00,294.73,1.34,-0.29,-3.42,9.73,19.89,25.18,ADSK,EQUITY,"Autodesk, Inc.",Technology,Software - Application,https://www.autodesk.com
-2025-01-08 00:00:00-05:00,290.83,0.84,-0.65,-3.14,2.71,24.67,25.54,ADP,EQUITY,"Automatic Data Processing, Inc.",Technology,Software - Application,https://www.adp.com
-2025-01-08 00:00:00-05:00,573.4,2.02,-3.52,-16.87,38.15,98.26,127.89,AXON,EQUITY,"Axon Enterprise, Inc.",Industrials,Aerospace & Defense,https://www.axon.com
-2025-01-08 00:00:00-05:00,43.22,-0.41,5.36,1.67,15.74,25.15,36.69,BKR,EQUITY,Baker Hughes Company,Energy,Oil & Gas Equipment & Services,https://www.bakerhughes.com
-2025-01-08 00:00:00-05:00,152.21,-0.61,-0.46,-4.43,-17.63,-34.33,-41.0,BIIB,EQUITY,Biogen Inc.,Healthcare,Drug Manufacturers - General,https://www.biogen.com
-2025-01-08 00:00:00-05:00,4838.46,0.88,-2.62,-8.35,18.09,25.04,40.96,BKNG,EQUITY,Booking Holdings Inc.,Consumer Cyclical,Travel Services,https://www.bookingholdings.com
-2025-01-08 00:00:00-05:00,302.69,0.34,0.74,-0.36,13.88,-2.65,15.57,CDNS,EQUITY,"Cadence Design Systems, Inc.",Technology,Software - Application,https://www.cadence.com
-2025-01-08 00:00:00-05:00,180.32,-0.36,3.61,1.14,-17.09,-17.22,-16.42,CDW,EQUITY,CDW Corporation,Technology,Information Technology Services,https://www.cdw.com
-2025-01-08 00:00:00-05:00,349.33,0.49,1.91,-13.56,8.36,18.01,-7.8,CHTR,EQUITY,"Charter Communications, Inc.",Communication Services,Telecom Services,https://www.corporate.charter.com
-2025-01-08 00:00:00-05:00,191.68,1.57,4.92,-14.13,-6.12,11.58,33.14,CTAS,EQUITY,Cintas Corporation,Industrials,Specialty Business Services,https://www.cintas.com
-2025-01-08 00:00:00-05:00,75.67,-0.22,-1.48,-3.47,0.27,5.41,18.05,CCEP,EQUITY,Coca-Cola Europacific Partners PLC,Consumer Defensive,Beverages - Non-Alcoholic,https://www.cocacolaep.com
-2025-01-08 00:00:00-05:00,75.7,0.11,-1.56,-6.23,-0.7,12.63,4.38,CTSH,EQUITY,Cognizant Technology Solutions Corporation,Technology,Information Technology Services,https://www.cognizant.com
-2025-01-08 00:00:00-05:00,37.13,-0.12,-1.05,-13.22,-9.01,-1.18,-13.13,CMCSA,EQUITY,Comcast Corporation,Communication Services,Telecom Services,https://corporate.comcast.com
-2025-01-08 00:00:00-05:00,242.68,-5.07,8.48,-5.24,-12.37,18.76,108.81,CEG,EQUITY,Constellation Energy Corporation,Utilities,Utilities - Renewable,https://www.constellationenergy.com
-2025-01-08 00:00:00-05:00,56.8,1.0,-1.03,-8.25,8.83,6.47,19.98,CPRT,EQUITY,"Copart, Inc.",Industrials,Specialty Business Services,https://www.copart.com
-2025-01-08 00:00:00-05:00,71.35,1.41,-0.34,-7.37,-3.45,-3.42,-13.93,CSGP,EQUITY,"CoStar Group, Inc.",Real Estate,Real Estate Services,https://www.costargroup.com
-2025-01-08 00:00:00-05:00,358.7,-0.34,4.83,-1.68,26.41,-8.53,37.29,CRWD,EQUITY,"CrowdStrike Holdings, Inc.",Technology,Software - Infrastructure,https://www.crowdstrike.com
-2025-01-08 00:00:00-05:00,32.19,0.0,-0.25,-7.02,-5.35,-3.51,-5.93,CSX,EQUITY,CSX Corporation,Industrials,Railroads,https://www.csx.com
-2025-01-08 00:00:00-05:00,141.54,0.1,-0.94,-13.35,20.43,8.46,18.69,DDOG,EQUITY,"Datadog, Inc.",Technology,Software - Application,https://www.datadoghq.com
-2025-01-08 00:00:00-05:00,80.51,1.46,3.52,2.01,22.58,-28.23,-37.89,DXCM,EQUITY,"DexCom, Inc.",Healthcare,Medical Devices,https://www.dexcom.com
-2025-01-08 00:00:00-05:00,170.35,-1.2,3.98,-1.35,-9.08,-14.95,14.24,FANG,EQUITY,"Diamondback Energy, Inc.",Energy,Oil & Gas E&P,https://www.diamondbackenergy.com
-2025-01-08 00:00:00-05:00,173.15,1.85,3.22,-1.56,21.83,59.57,75.75,DASH,EQUITY,"DoorDash, Inc.",Communication Services,Internet Content & Information,https://www.doordash.com
-2025-01-08 00:00:00-05:00,143.27,-0.97,-2.07,-13.49,1.95,4.59,5.54,EA,EQUITY,Electronic Arts Inc.,Communication Services,Electronic Gaming & Multimedia,https://www.ea.com
-2025-01-08 00:00:00-05:00,37.85,0.84,0.54,-0.36,-6.26,11.77,7.47,EXC,EQUITY,Exelon Corporation,Utilities,Utilities - Regulated Electric,https://www.exeloncorp.com
-2025-01-08 00:00:00-05:00,72.86,0.76,1.32,-10.89,3.57,18.62,19.27,FAST,EQUITY,Fastenal Company,Industrials,Industrial Distribution,https://www.fastenal.com
-2025-01-08 00:00:00-05:00,96.03,0.1,1.64,-2.47,24.75,60.45,56.76,FTNT,EQUITY,"Fortinet, Inc.",Technology,Software - Infrastructure,https://www.fortinet.com
-2025-01-08 00:00:00-05:00,86.75,4.05,10.96,6.36,-3.45,13.84,12.3,GEHC,EQUITY,GE HealthCare Technologies Inc.,Healthcare,Health Information Services,https://www.gehealthcare.com
-2025-01-08 00:00:00-05:00,89.4,-1.36,-3.22,-3.47,7.11,32.57,10.79,GILD,EQUITY,"Gilead Sciences, Inc.",Healthcare,Drug Manufacturers - General,https://www.gilead.com
-2025-01-08 00:00:00-05:00,41.8,-4.0,-2.59,-5.6,7.32,-16.83,-28.18,GFS,EQUITY,GlobalFoundries Inc.,Technology,Semiconductors,https://gf.com
-2025-01-08 00:00:00-05:00,219.95,-0.31,-2.63,-2.8,8.95,5.35,10.85,HON,EQUITY,Honeywell International Inc.,Industrials,Conglomerates,https://www.honeywell.com
-2025-01-08 00:00:00-05:00,433.97,1.57,4.97,1.52,-10.25,-8.91,-20.22,IDXX,EQUITY,"IDEXX Laboratories, Inc.",Healthcare,Diagnostics & Research,https://www.idexx.com
-2025-01-08 00:00:00-05:00,19.82,-0.97,-1.17,-4.74,-10.98,-35.34,-58.54,INTC,EQUITY,Intel Corporation,Technology,Semiconductors,https://www.intel.com
-2025-01-08 00:00:00-05:00,623.06,1.24,-0.87,-3.95,3.36,-3.96,4.75,INTU,EQUITY,Intuit Inc.,Technology,Software - Application,https://www.intuit.com
-2025-01-08 00:00:00-05:00,543.5,2.18,4.13,-0.76,13.32,24.59,65.27,ISRG,EQUITY,"Intuitive Surgical, Inc.",Healthcare,Medical Instruments & Supplies,https://www.intuitive.com
-2025-01-08 00:00:00-05:00,30.9,0.7,-3.11,-5.64,-15.06,-4.65,-0.23,KDP,EQUITY,Keurig Dr Pepper Inc.,Consumer Defensive,Beverages - Non-Alcoholic,https://www.keurigdrpepper.com
-2025-01-08 00:00:00-05:00,684.44,-0.71,8.62,6.51,-11.39,-16.94,22.79,KLAC,EQUITY,KLA Corporation,Technology,Semiconductor Equipment & Materials,https://www.kla.com
-2025-01-08 00:00:00-05:00,29.54,-0.77,-3.81,-4.43,-12.45,-5.03,-19.05,KHC,EQUITY,The Kraft Heinz Company,Consumer Defensive,Packaged Foods,https://www.kraftheinzcompany.com
-2025-01-08 00:00:00-05:00,76.82,-0.9,6.35,2.45,-5.0,-27.13,4.25,LRCX,EQUITY,Lam Research Corporation,Technology,Semiconductor Equipment & Materials,https://www.lamresearch.com
-2025-01-08 00:00:00-05:00,417.96,0.73,-0.17,-6.83,-10.75,-1.98,3.62,LIN,EQUITY,Linde plc,Basic Materials,Specialty Chemicals,https://www.linde.com
-2025-01-08 00:00:00-05:00,390.44,-0.77,2.1,13.23,48.71,29.13,-20.56,LULU,EQUITY,Lululemon Athletica Inc.,Consumer Cyclical,Apparel Retail,https://corporate.lululemon.com
-2025-01-08 00:00:00-05:00,272.86,1.14,-2.18,-6.71,9.62,14.51,20.75,MAR,EQUITY,"Marriott International, Inc.",Consumer Cyclical,Lodging,https://www.marriott.com
-2025-01-08 00:00:00-05:00,117.26,0.89,6.17,3.43,62.45,65.43,83.36,MRVL,EQUITY,"Marvell Technology, Inc.",Technology,Semiconductors,https://www.marvell.com
-2025-01-08 00:00:00-05:00,1739.74,-1.78,2.31,-12.35,-11.2,8.9,10.42,MELI,EQUITY,"MercadoLibre, Inc.",Consumer Cyclical,Internet Retail,https://www.mercadolibre.com
-2025-01-08 00:00:00-05:00,56.05,-2.47,-2.27,-3.78,-27.02,-38.04,-33.07,MCHP,EQUITY,Microchip Technology Incorporated,Technology,Semiconductors,https://www.microchip.com
-2025-01-08 00:00:00-05:00,99.94,-1.93,18.76,-0.79,-1.6,-23.76,18.15,MU,EQUITY,"Micron Technology, Inc.",Technology,Semiconductors,https://www.micron.com
-2025-01-08 00:00:00-05:00,331.73,-2.84,14.54,-14.15,103.01,142.86,454.73,MSTR,EQUITY,MicroStrategy Incorporated,Technology,Software - Application,https://www.microstrategy.com
-2025-01-08 00:00:00-05:00,58.08,-0.36,-2.76,-7.43,-17.73,-9.69,-19.06,MDLZ,EQUITY,"Mondelez International, Inc.",Consumer Defensive,Confectioners,https://www.mondelezinternational.com
-2025-01-08 00:00:00-05:00,248.2,0.91,6.61,-25.76,-1.9,-5.81,-34.42,MDB,EQUITY,"MongoDB, Inc.",Technology,Software - Infrastructure,https://www.mongodb.com
-2025-01-08 00:00:00-05:00,51.54,-0.02,-1.94,-2.94,2.44,3.29,-11.08,MNST,EQUITY,Monster Beverage Corporation,Consumer Defensive,Beverages - Non-Alcoholic,https://www.monsterbevcorp.com
-2025-01-08 00:00:00-05:00,208.85,-1.75,0.48,-3.75,-10.45,-21.04,-0.35,NXPI,EQUITY,NXP Semiconductors N.V.,Technology,Semiconductors,https://www.nxp.com
-2025-01-08 00:00:00-05:00,1204.36,0.39,1.57,-2.47,4.79,18.5,29.79,ORLY,EQUITY,"O'Reilly Automotive, Inc.",Consumer Cyclical,Specialty Retail,https://www.oreillyauto.com
-2025-01-08 00:00:00-05:00,179.77,-0.48,1.91,-11.43,-5.73,0.85,-7.97,ODFL,EQUITY,"Old Dominion Freight Line, Inc.",Industrials,Trucking,https://www.odfl.com
-2025-01-08 00:00:00-05:00,58.24,-7.17,-7.64,-11.42,-17.2,-15.82,-25.28,ON,EQUITY,ON Semiconductor Corporation,Technology,Semiconductors,https://www.onsemi.com
-2025-01-08 00:00:00-05:00,108.68,-0.81,4.48,-4.95,10.7,10.41,18.07,PCAR,EQUITY,PACCAR Inc,Industrials,Farm & Heavy Construction Machinery,https://www.paccar.com
-2025-01-08 00:00:00-05:00,68.08,-2.73,-9.99,-5.28,73.49,163.05,308.4,PLTR,EQUITY,Palantir Technologies Inc.,Technology,Software - Infrastructure,https://www.palantir.com
-2025-01-08 00:00:00-05:00,170.79,-2.69,-6.14,-15.25,1.68,0.2,17.99,PANW,EQUITY,"Palo Alto Networks, Inc.",Technology,Software - Infrastructure,https://www.paloaltonetworks.com
-2025-01-08 00:00:00-05:00,140.15,0.64,-0.05,-1.58,1.23,21.55,20.88,PAYX,EQUITY,"Paychex, Inc.",Technology,Software - Application,https://www.paychex.com
-2025-01-08 00:00:00-05:00,87.85,-0.14,2.93,-1.34,13.63,51.96,42.29,PYPL,EQUITY,"PayPal Holdings, Inc.",Financial Services,Credit Services,https://www.paypal.com
-2025-01-08 00:00:00-05:00,101.17,0.55,4.31,2.19,-33.71,-23.92,-31.43,PDD,EQUITY,PDD Holdings Inc.,Consumer Cyclical,Internet Retail,https://www.pddholdings.com
-2025-01-08 00:00:00-05:00,157.86,-1.66,2.76,-1.58,-6.06,-20.26,15.78,QCOM,EQUITY,QUALCOMM Incorporated,Technology,Semiconductors,https://www.qualcomm.com
-2025-01-08 00:00:00-05:00,739.64,1.28,3.83,-3.68,-27.1,-30.03,-18.08,REGN,EQUITY,"Regeneron Pharmaceuticals, Inc.",Healthcare,Biotechnology,https://www.regeneron.com
-2025-01-08 00:00:00-05:00,509.03,0.38,-1.92,-8.61,-6.99,-9.13,-3.18,ROP,EQUITY,"Roper Technologies, Inc.",Technology,Software - Application,https://www.ropertech.com
-2025-01-08 00:00:00-05:00,153.83,1.5,1.69,-1.54,5.05,6.42,14.39,ROST,EQUITY,"Ross Stores, Inc.",Consumer Cyclical,Apparel Retail,https://www.rossstores.com
-2025-01-08 00:00:00-05:00,92.58,-0.27,1.46,-6.7,-2.51,21.51,0.85,SBUX,EQUITY,Starbucks Corporation,Consumer Cyclical,Restaurants,https://www.starbucks.com
-2025-01-08 00:00:00-05:00,500.39,2.62,3.1,-2.89,1.01,-16.84,0.08,SNPS,EQUITY,"Synopsys, Inc.",Technology,Software - Infrastructure,https://www.synopsys.com
-2025-01-08 00:00:00-05:00,182.81,0.58,-0.69,-3.8,23.8,18.48,15.31,TTWO,EQUITY,"Take-Two Interactive Software, Inc.",Communication Services,Electronic Gaming & Multimedia,https://www.take2games.com
-2025-01-08 00:00:00-05:00,191.17,-0.54,1.95,-0.94,-4.58,-0.47,16.66,TXN,EQUITY,Texas Instruments Incorporated,Technology,Semiconductors,https://www.ti.com
-2025-01-08 00:00:00-05:00,121.81,0.33,3.64,-10.67,9.28,24.33,76.56,TTD,EQUITY,"The Trade Desk, Inc.",Technology,Software - Application,https://www.thetradedesk.com
-2025-01-08 00:00:00-05:00,277.84,1.58,0.87,-3.7,2.79,3.92,20.11,VRSK,EQUITY,"Verisk Analytics, Inc.",Industrials,Consulting Services,https://www.verisk.com
-2025-01-08 00:00:00-05:00,410.83,0.61,2.02,-10.67,-9.42,-12.82,-1.98,VRTX,EQUITY,Vertex Pharmaceuticals Incorporated,Healthcare,Biotechnology,https://www.vrtx.com
-2025-01-08 00:00:00-05:00,10.1,-3.85,-4.4,-5.38,30.56,42.32,-11.4,WBD,EQUITY,"Warner Bros. Discovery, Inc.",Communication Services,Entertainment,https://ir.wbd.com
-2025-01-08 00:00:00-05:00,254.8,2.05,-1.25,-3.01,5.75,13.39,-6.65,WDAY,EQUITY,"Workday, Inc.",Technology,Software - Application,https://www.workday.com
-2025-01-08 00:00:00-05:00,65.85,0.32,-1.67,-6.3,3.1,27.73,7.55,XEL,EQUITY,Xcel Energy Inc.,Utilities,Utilities - Regulated Electric,https://www.xcelenergy.com
-2025-01-08 00:00:00-05:00,188.97,2.76,4.74,-8.09,11.4,-4.86,-13.36,ZS,EQUITY,"Zscaler, Inc.",Technology,Software - Infrastructure,https://www.zscaler.com
-2025-01-08 00:00:00-05:00,133.78,0.76,3.63,0.34,-0.21,34.4,52.07,MMM,EQUITY,3M Company,Industrials,Conglomerates,https://www.3m.com
-2025-01-08 00:00:00-05:00,172.83,0.19,-2.36,10.31,14.82,-7.43,-24.53,BA,EQUITY,The Boeing Company,Industrials,Aerospace & Defense,https://www.boeing.com
-2025-01-08 00:00:00-05:00,360.2,-0.77,-0.7,-8.8,-7.57,10.3,25.23,CAT,EQUITY,Caterpillar Inc.,Industrials,Farm & Heavy Construction Machinery,https://www.caterpillar.com
-2025-01-08 00:00:00-05:00,577.22,-0.5,0.8,-3.28,19.33,25.85,52.04,GS,EQUITY,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets,https://www.goldmansachs.com
-2025-01-08 00:00:00-05:00,71.2,-1.23,-5.91,-9.39,-12.83,-6.44,-30.11,NKE,EQUITY,"NIKE, Inc.",Consumer Cyclical,Footwear & Accessories,https://www.nike.com
-2025-01-08 00:00:00-05:00,335.7,0.39,-1.24,-12.86,-9.86,13.93,13.04,SHW,EQUITY,The Sherwin-Williams Company,Basic Materials,Specialty Chemicals,https://www.sherwin-williams.com
-2025-01-08 00:00:00-05:00,242.29,0.25,0.58,-7.58,4.29,20.4,28.28,TRV,EQUITY,"The Travelers Companies, Inc.",Financial Services,Insurance - Property & Casualty,https://www.travelers.com
-2025-01-08 00:00:00-05:00,38.8,-0.3,-2.97,-8.81,-11.48,-4.04,3.22,VZ,EQUITY,Verizon Communications Inc.,Communication Services,Telecom Services,https://www.verizon.com
+2025-01-08 00:00:00-05:00,419.58,-0.72,-5.64,-22.04,-16.72,-25.08,-28.42,ADBE,EQUITY,Adobe Inc.,Technology,Software - Infrastructure,https://www.adobe.com
+2025-01-08 00:00:00-05:00,121.84,-4.31,0.87,-13.81,-25.18,-22.73,-18.37,AMD,EQUITY,"Advanced Micro Devices, Inc.",Technology,Semiconductors,https://www.amd.com
+2025-01-08 00:00:00-05:00,130.8,-0.37,-0.46,-4.05,4.4,-13.74,-6.26,ABNB,EQUITY,"Airbnb, Inc.",Consumer Cyclical,Travel Services,https://www.airbnb.com
+2025-01-08 00:00:00-05:00,195.39,-0.67,2.6,12.22,16.99,6.17,37.55,GOOG,EQUITY,Alphabet Inc.,Communication Services,Internet Content & Information,https://abc.xyz
+2025-01-08 00:00:00-05:00,92.26,1.98,0.03,-5.33,-8.1,7.7,14.13,AEP,EQUITY,"American Electric Power Company, Inc.",Utilities,Utilities - Regulated Electric,https://www.aep.com
+2025-01-08 00:00:00-05:00,264.21,0.82,1.37,-3.69,-16.11,-13.77,-11.41,AMGN,EQUITY,Amgen Inc.,Healthcare,Drug Manufacturers - General,https://www.amgen.com
+2025-01-08 00:00:00-05:00,220.44,2.12,3.76,3.18,-2.29,-1.3,18.14,ADI,EQUITY,"Analog Devices, Inc.",Technology,Semiconductors,https://www.analog.com
+2025-01-08 00:00:00-05:00,343.47,2.27,1.82,-0.27,9.7,6.95,-2.96,ANSS,EQUITY,"ANSYS, Inc.",Technology,Software - Application,https://www.ansys.com
+2025-01-08 00:00:00-05:00,176.99,-0.47,8.83,2.88,-11.11,-25.13,18.1,AMAT,EQUITY,"Applied Materials, Inc.",Technology,Semiconductor Equipment & Materials,https://www.appliedmaterials.com
+2025-01-08 00:00:00-05:00,329.2,-0.24,1.66,-13.16,143.4,288.12,741.08,APP,EQUITY,AppLovin Corporation,Technology,Software - Application,https://www.applovin.com
+2025-01-08 00:00:00-05:00,145.2,0.57,17.7,5.26,5.03,-8.58,102.0,ARM,EQUITY,Arm Holdings plc,Technology,Semiconductors,https://www.arm.com
+2025-01-08 00:00:00-05:00,244.49,-1.36,0.46,-11.65,52.39,37.16,3.91,TEAM,EQUITY,Atlassian Corporation,Technology,Software - Application,https://www.atlassian.com
+2025-01-08 00:00:00-05:00,296.37,1.91,0.27,-2.88,10.34,20.56,25.6,ADSK,EQUITY,"Autodesk, Inc.",Technology,Software - Application,https://www.autodesk.com
+2025-01-08 00:00:00-05:00,291.89,1.21,-0.29,-2.78,3.09,25.13,26.81,ADP,EQUITY,"Automatic Data Processing, Inc.",Technology,Software - Application,https://www.adp.com
+2025-01-08 00:00:00-05:00,577.34,2.72,-2.86,-16.3,39.1,99.63,131.77,AXON,EQUITY,"Axon Enterprise, Inc.",Industrials,Aerospace & Defense,https://www.axon.com
+2025-01-08 00:00:00-05:00,43.44,0.09,5.9,2.19,16.33,25.79,40.95,BKR,EQUITY,Baker Hughes Company,Energy,Oil & Gas Equipment & Services,https://www.bakerhughes.com
+2025-01-08 00:00:00-05:00,150.75,-1.57,-1.42,-5.34,-18.42,-34.96,-41.08,BIIB,EQUITY,Biogen Inc.,Healthcare,Drug Manufacturers - General,https://www.biogen.com
+2025-01-08 00:00:00-05:00,4872.42,1.59,-1.93,-7.71,18.92,25.92,40.88,BKNG,EQUITY,Booking Holdings Inc.,Consumer Cyclical,Travel Services,https://www.bookingholdings.com
+2025-01-08 00:00:00-05:00,302.73,0.35,0.76,-0.35,13.9,-2.63,15.66,CDNS,EQUITY,"Cadence Design Systems, Inc.",Technology,Software - Application,https://www.cadence.com
+2025-01-08 00:00:00-05:00,181.34,0.2,4.19,1.7,-16.62,-16.75,-15.94,CDW,EQUITY,CDW Corporation,Technology,Information Technology Services,https://www.cdw.com
+2025-01-08 00:00:00-05:00,349.32,0.49,1.91,-13.56,8.35,18.01,-5.23,CHTR,EQUITY,"Charter Communications, Inc.",Communication Services,Telecom Services,https://www.corporate.charter.com
+2025-01-08 00:00:00-05:00,192.65,2.08,5.45,-13.7,-5.65,12.14,35.42,CTAS,EQUITY,Cintas Corporation,Industrials,Specialty Business Services,https://www.cintas.com
+2025-01-08 00:00:00-05:00,75.91,0.09,-1.17,-3.16,0.59,5.74,19.9,CCEP,EQUITY,Coca-Cola Europacific Partners PLC,Consumer Defensive,Beverages - Non-Alcoholic,https://www.cocacolaep.com
+2025-01-08 00:00:00-05:00,76.02,0.53,-1.14,-5.83,-0.28,13.11,5.58,CTSH,EQUITY,Cognizant Technology Solutions Corporation,Technology,Information Technology Services,https://www.cognizant.com
+2025-01-08 00:00:00-05:00,37.17,-0.03,-0.96,-13.13,-8.92,-1.09,-12.13,CMCSA,EQUITY,Comcast Corporation,Communication Services,Telecom Services,https://corporate.comcast.com
+2025-01-08 00:00:00-05:00,243.84,-4.61,9.0,-4.78,-11.95,19.33,110.77,CEG,EQUITY,Constellation Energy Corporation,Utilities,Utilities - Renewable,https://www.constellationenergy.com
+2025-01-08 00:00:00-05:00,56.78,0.96,-1.06,-8.29,8.79,6.43,20.09,CPRT,EQUITY,"Copart, Inc.",Industrials,Specialty Business Services,https://www.copart.com
+2025-01-08 00:00:00-05:00,71.34,1.39,-0.35,-7.39,-3.46,-3.44,-14.79,CSGP,EQUITY,"CoStar Group, Inc.",Real Estate,Real Estate Services,https://www.costargroup.com
+2025-01-08 00:00:00-05:00,358.72,-0.34,4.84,-1.68,26.42,-8.52,31.03,CRWD,EQUITY,"CrowdStrike Holdings, Inc.",Technology,Software - Infrastructure,https://www.crowdstrike.com
+2025-01-08 00:00:00-05:00,32.2,0.03,-0.22,-6.99,-5.32,-3.48,-5.68,CSX,EQUITY,CSX Corporation,Industrials,Railroads,https://www.csx.com
+2025-01-08 00:00:00-05:00,141.88,0.34,-0.71,-13.14,20.72,8.72,17.08,DDOG,EQUITY,"Datadog, Inc.",Technology,Software - Application,https://www.datadoghq.com
+2025-01-08 00:00:00-05:00,80.09,0.93,2.98,1.48,21.94,-28.6,-38.25,DXCM,EQUITY,"DexCom, Inc.",Healthcare,Medical Devices,https://www.dexcom.com
+2025-01-08 00:00:00-05:00,170.99,-0.83,4.37,-0.98,-8.74,-14.63,16.92,FANG,EQUITY,"Diamondback Energy, Inc.",Energy,Oil & Gas E&P,https://www.diamondbackenergy.com
+2025-01-08 00:00:00-05:00,173.72,2.19,3.56,-1.23,22.23,60.1,68.58,DASH,EQUITY,"DoorDash, Inc.",Communication Services,Internet Content & Information,https://www.doordash.com
+2025-01-08 00:00:00-05:00,144.2,-0.32,-1.44,-12.93,2.61,5.27,5.25,EA,EQUITY,Electronic Arts Inc.,Communication Services,Electronic Gaming & Multimedia,https://www.ea.com
+2025-01-08 00:00:00-05:00,38.19,1.76,1.46,0.55,-5.41,12.79,9.18,EXC,EQUITY,Exelon Corporation,Utilities,Utilities - Regulated Electric,https://www.exeloncorp.com
+2025-01-08 00:00:00-05:00,72.94,0.87,1.43,-10.79,3.69,18.75,19.28,FAST,EQUITY,Fastenal Company,Industrials,Industrial Distribution,https://www.fastenal.com
+2025-01-08 00:00:00-05:00,96.04,0.11,1.65,-2.46,24.76,60.47,61.68,FTNT,EQUITY,"Fortinet, Inc.",Technology,Software - Infrastructure,https://www.fortinet.com
+2025-01-08 00:00:00-05:00,86.26,3.47,10.34,5.76,-4.0,13.19,12.68,GEHC,EQUITY,GE HealthCare Technologies Inc.,Healthcare,Health Information Services,https://www.gehealthcare.com
+2025-01-08 00:00:00-05:00,89.14,-1.64,-3.5,-3.75,6.79,32.18,7.81,GILD,EQUITY,"Gilead Sciences, Inc.",Healthcare,Drug Manufacturers - General,https://www.gilead.com
+2025-01-08 00:00:00-05:00,41.62,-4.41,-3.01,-6.01,6.85,-17.19,-28.76,GFS,EQUITY,GlobalFoundries Inc.,Technology,Semiconductors,https://gf.com
+2025-01-08 00:00:00-05:00,220.17,-0.21,-2.53,-2.7,9.06,5.46,11.53,HON,EQUITY,Honeywell International Inc.,Industrials,Conglomerates,https://www.honeywell.com
+2025-01-08 00:00:00-05:00,432.36,1.19,4.58,1.14,-10.58,-9.24,-21.82,IDXX,EQUITY,"IDEXX Laboratories, Inc.",Healthcare,Diagnostics & Research,https://www.idexx.com
+2025-01-08 00:00:00-05:00,19.88,-0.65,-0.85,-4.42,-10.69,-35.13,-58.07,INTC,EQUITY,Intel Corporation,Technology,Semiconductors,https://www.intel.com
+2025-01-08 00:00:00-05:00,626.05,1.73,-0.39,-3.49,3.86,-3.5,3.91,INTU,EQUITY,Intuit Inc.,Technology,Software - Application,https://www.intuit.com
+2025-01-08 00:00:00-05:00,544.02,2.28,4.23,-0.66,13.42,24.71,64.58,ISRG,EQUITY,"Intuitive Surgical, Inc.",Healthcare,Medical Instruments & Supplies,https://www.intuitive.com
+2025-01-08 00:00:00-05:00,31.12,1.43,-2.41,-4.95,-14.45,-3.96,-0.06,KDP,EQUITY,Keurig Dr Pepper Inc.,Consumer Defensive,Beverages - Non-Alcoholic,https://www.keurigdrpepper.com
+2025-01-08 00:00:00-05:00,686.2,-0.45,8.9,6.78,-11.16,-16.72,24.44,KLAC,EQUITY,KLA Corporation,Technology,Semiconductor Equipment & Materials,https://www.kla.com
+2025-01-08 00:00:00-05:00,29.66,-0.37,-3.42,-4.04,-12.1,-4.64,-19.36,KHC,EQUITY,The Kraft Heinz Company,Consumer Defensive,Packaged Foods,https://www.kraftheinzcompany.com
+2025-01-08 00:00:00-05:00,77.04,-0.62,6.66,2.75,-4.73,-26.92,5.26,LRCX,EQUITY,Lam Research Corporation,Technology,Semiconductor Equipment & Materials,https://www.lamresearch.com
+2025-01-08 00:00:00-05:00,420.01,1.22,0.32,-6.37,-10.32,-1.5,4.53,LIN,EQUITY,Linde plc,Basic Materials,Specialty Chemicals,https://www.linde.com
+2025-01-08 00:00:00-05:00,392.92,-0.14,2.75,13.95,49.65,29.95,-19.1,LULU,EQUITY,Lululemon Athletica Inc.,Consumer Cyclical,Apparel Retail,https://corporate.lululemon.com
+2025-01-08 00:00:00-05:00,273.53,1.39,-1.94,-6.48,9.89,14.79,21.98,MAR,EQUITY,"Marriott International, Inc.",Consumer Cyclical,Lodging,https://www.marriott.com
+2025-01-08 00:00:00-05:00,118.23,1.72,7.04,4.29,63.8,66.8,86.75,MRVL,EQUITY,"Marvell Technology, Inc.",Technology,Semiconductors,https://www.marvell.com
+2025-01-08 00:00:00-05:00,1739.0,-1.82,2.27,-12.39,-11.24,8.85,10.53,MELI,EQUITY,"MercadoLibre, Inc.",Consumer Cyclical,Internet Retail,https://www.mercadolibre.com
+2025-01-08 00:00:00-05:00,56.38,-1.9,-1.69,-3.21,-26.59,-37.68,-32.43,MCHP,EQUITY,Microchip Technology Incorporated,Technology,Semiconductors,https://www.microchip.com
+2025-01-08 00:00:00-05:00,99.41,-2.45,18.12,-1.32,-2.13,-24.16,19.8,MU,EQUITY,"Micron Technology, Inc.",Technology,Semiconductors,https://www.micron.com
+2025-01-08 00:00:00-05:00,331.7,-2.85,14.53,-14.16,102.99,142.83,474.57,MSTR,EQUITY,MicroStrategy Incorporated,Technology,Software - Application,https://www.microstrategy.com
+2025-01-08 00:00:00-05:00,58.29,0.0,-2.41,-7.09,-17.43,-9.37,-18.8,MDLZ,EQUITY,"Mondelez International, Inc.",Consumer Defensive,Confectioners,https://www.mondelezinternational.com
+2025-01-08 00:00:00-05:00,248.68,1.11,6.82,-25.61,-1.71,-5.63,-34.34,MDB,EQUITY,"MongoDB, Inc.",Technology,Software - Infrastructure,https://www.mongodb.com
+2025-01-08 00:00:00-05:00,51.6,0.1,-1.83,-2.82,2.56,3.41,-12.16,MNST,EQUITY,Monster Beverage Corporation,Consumer Defensive,Beverages - Non-Alcoholic,https://www.monsterbevcorp.com
+2025-01-08 00:00:00-05:00,209.72,-1.35,0.9,-3.35,-10.08,-20.71,0.29,NXPI,EQUITY,NXP Semiconductors N.V.,Technology,Semiconductors,https://www.nxp.com
+2025-01-08 00:00:00-05:00,1205.74,0.5,1.68,-2.35,4.91,18.64,29.94,ORLY,EQUITY,"O'Reilly Automotive, Inc.",Consumer Cyclical,Specialty Retail,https://www.oreillyauto.com
+2025-01-08 00:00:00-05:00,179.58,-0.59,1.8,-11.52,-5.83,0.75,-7.61,ODFL,EQUITY,"Old Dominion Freight Line, Inc.",Industrials,Trucking,https://www.odfl.com
+2025-01-08 00:00:00-05:00,58.31,-7.05,-7.52,-11.3,-17.09,-15.71,-24.3,ON,EQUITY,ON Semiconductor Corporation,Technology,Semiconductors,https://www.onsemi.com
+2025-01-08 00:00:00-05:00,108.5,-0.97,4.31,-5.11,10.52,10.23,19.03,PCAR,EQUITY,PACCAR Inc,Industrials,Farm & Heavy Construction Machinery,https://www.paccar.com
+2025-01-08 00:00:00-05:00,68.23,-2.51,-9.78,-5.06,73.88,163.64,316.29,PLTR,EQUITY,Palantir Technologies Inc.,Technology,Software - Infrastructure,https://www.palantir.com
+2025-01-08 00:00:00-05:00,172.83,-1.53,-5.02,-14.23,2.89,1.4,15.06,PANW,EQUITY,"Palo Alto Networks, Inc.",Technology,Software - Infrastructure,https://www.paloaltonetworks.com
+2025-01-08 00:00:00-05:00,140.25,0.71,0.02,-1.51,1.31,21.64,21.79,PAYX,EQUITY,"Paychex, Inc.",Technology,Software - Application,https://www.paychex.com
+2025-01-08 00:00:00-05:00,87.94,-0.03,3.03,-1.24,13.75,52.12,44.05,PYPL,EQUITY,"PayPal Holdings, Inc.",Financial Services,Credit Services,https://www.paypal.com
+2025-01-08 00:00:00-05:00,100.32,-0.3,3.43,1.33,-34.27,-24.56,-33.33,PDD,EQUITY,PDD Holdings Inc.,Consumer Cyclical,Internet Retail,https://www.pddholdings.com
+2025-01-08 00:00:00-05:00,159.08,-0.9,3.55,-0.82,-5.33,-19.64,15.96,QCOM,EQUITY,QUALCOMM Incorporated,Technology,Semiconductors,https://www.qualcomm.com
+2025-01-08 00:00:00-05:00,733.59,0.45,2.98,-4.47,-27.7,-30.6,-18.73,REGN,EQUITY,"Regeneron Pharmaceuticals, Inc.",Healthcare,Biotechnology,https://www.regeneron.com
+2025-01-08 00:00:00-05:00,510.3,0.63,-1.68,-8.38,-6.76,-8.91,,ROP,EQUITY,"Roper Technologies, Inc.",Technology,Software - Application,https://www.ropertech.com
+2025-01-08 00:00:00-05:00,154.63,2.03,2.22,-1.03,5.6,6.98,14.91,ROST,EQUITY,"Ross Stores, Inc.",Consumer Cyclical,Apparel Retail,https://www.rossstores.com
+2025-01-08 00:00:00-05:00,92.6,-0.26,1.48,-6.68,-2.5,21.53,2.07,SBUX,EQUITY,Starbucks Corporation,Consumer Cyclical,Restaurants,https://www.starbucks.com
+2025-01-08 00:00:00-05:00,502.0,2.95,3.43,-2.58,1.33,-16.58,0.03,SNPS,EQUITY,"Synopsys, Inc.",Technology,Software - Infrastructure,https://www.synopsys.com
+2025-01-08 00:00:00-05:00,183.74,1.09,-0.18,-3.31,24.43,19.09,15.4,TTWO,EQUITY,"Take-Two Interactive Software, Inc.",Communication Services,Electronic Gaming & Multimedia,https://www.take2games.com
+2025-01-08 00:00:00-05:00,191.66,-0.29,2.21,-0.69,-4.34,-0.22,16.89,TXN,EQUITY,Texas Instruments Incorporated,Technology,Semiconductors,https://www.ti.com
+2025-01-08 00:00:00-05:00,121.52,0.09,3.39,-10.88,9.03,24.04,77.53,TTD,EQUITY,"The Trade Desk, Inc.",Technology,Software - Application,https://www.thetradedesk.com
+2025-01-08 00:00:00-05:00,280.42,2.52,1.81,-2.8,3.74,4.89,20.18,VRSK,EQUITY,"Verisk Analytics, Inc.",Industrials,Consulting Services,https://www.verisk.com
+2025-01-08 00:00:00-05:00,412.11,0.93,2.34,-10.4,-9.14,-12.55,-2.11,VRTX,EQUITY,Vertex Pharmaceuticals Incorporated,Healthcare,Biotechnology,https://www.vrtx.com
+2025-01-08 00:00:00-05:00,10.06,-4.28,-4.82,-5.81,29.97,41.69,-8.79,WBD,EQUITY,"Warner Bros. Discovery, Inc.",Communication Services,Entertainment,https://ir.wbd.com
+2025-01-08 00:00:00-05:00,254.69,2.01,-1.29,-3.05,5.71,13.34,-7.66,WDAY,EQUITY,"Workday, Inc.",Technology,Software - Application,https://www.workday.com
+2025-01-08 00:00:00-05:00,66.39,1.14,-0.86,-5.53,3.94,28.78,8.96,XEL,EQUITY,Xcel Energy Inc.,Utilities,Utilities - Regulated Electric,https://www.xcelenergy.com
+2025-01-08 00:00:00-05:00,187.28,1.84,3.81,-8.91,10.4,-5.71,-17.23,ZS,EQUITY,"Zscaler, Inc.",Technology,Software - Infrastructure,https://www.zscaler.com
+2025-01-08 00:00:00-05:00,134.53,1.33,4.21,0.9,0.35,35.15,52.6,MMM,EQUITY,3M Company,Industrials,Conglomerates,https://www.3m.com
+2025-01-08 00:00:00-05:00,171.76,-0.43,-2.96,9.63,14.11,-8.0,-23.92,BA,EQUITY,The Boeing Company,Industrials,Aerospace & Defense,https://www.boeing.com
+2025-01-08 00:00:00-05:00,361.07,-0.53,-0.47,-8.59,-7.34,10.56,25.51,CAT,EQUITY,Caterpillar Inc.,Industrials,Farm & Heavy Construction Machinery,https://www.caterpillar.com
+2025-01-08 00:00:00-05:00,580.02,-0.02,1.29,-2.81,19.91,26.46,54.81,GS,EQUITY,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets,https://www.goldmansachs.com
+2025-01-08 00:00:00-05:00,71.29,-1.11,-5.79,-9.28,-12.72,-6.32,-29.42,NKE,EQUITY,"NIKE, Inc.",Consumer Cyclical,Footwear & Accessories,https://www.nike.com
+2025-01-08 00:00:00-05:00,337.54,0.94,-0.7,-12.38,-9.36,14.55,14.4,SHW,EQUITY,The Sherwin-Williams Company,Basic Materials,Specialty Chemicals,https://www.sherwin-williams.com
+2025-01-08 00:00:00-05:00,242.77,0.45,0.78,-7.4,4.49,20.63,28.61,TRV,EQUITY,"The Travelers Companies, Inc.",Financial Services,Insurance - Property & Casualty,https://www.travelers.com
+2025-01-08 00:00:00-05:00,38.94,0.05,-2.63,-8.48,-11.17,-3.7,4.62,VZ,EQUITY,Verizon Communications Inc.,Communication Services,Telecom Services,https://www.verizon.com

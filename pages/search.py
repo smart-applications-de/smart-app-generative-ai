@@ -3,34 +3,31 @@ import streamlit as st
 from langchain.agents import AgentType, Tool, initialize_agent
 from langchain_community.utilities import GoogleSerperAPIWrapper
 
-from main import germinApiKey, SerpApiKey
-
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-import os
 import pandas as pd
 
 date = pd.to_datetime('today').date()
 yr = pd.to_datetime('today').year
 
 tab1, tab2,tab3 = st.tabs(["Google Search","News Article", "Google Places"])
-st.warning('Please enter your Google Germin API Key')
 def germinApiKey():
-    st.warning('Please enter your Google Germin API Key')
+    st.warning('Please enter your Google Gemini API Key')
+    "[Get GOOGLE API KEY](https://ai.google.dev/)"
     openai_api_key = st.text_input(
         "GOOGLE API KEY", key="germin_api_key", type="password")
     if  "germin_api_key" not in st.session_state:
-        "[Get GOOGLE API KEY](https://ai.google.dev/)"
+
         st.session_state['germin_api_key'] = openai_api_key
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
     return  st.session_state['germin_api_key']
 def SerpApiKey():
     st.warning('Please enter your Serper API Key')
+    "[Get SERPER API KEY](https://serper.dev/)"
     serper_api_key = st.text_input(
         "SERPER API KEY", key="serp_api_key", type="password")
     if  "serp_api_key" not in st.session_state:
-        "[Get SERPER API KEY](https://serper.dev/)"
         st.session_state['serp_api_key'] = serper_api_key
     return  st.session_state['serp_api_key']
 @st.cache_resource

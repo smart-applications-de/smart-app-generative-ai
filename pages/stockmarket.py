@@ -1,5 +1,5 @@
 
-import streamlit as st
+
 import pandas as pd
 
 import altair as alt
@@ -9,7 +9,7 @@ import streamlit as st
 import os
 
 def germinApiKey():
-    st.warning('Please enter your Google Germin API Key')
+    st.warning('Please enter your Google Gemini API Key')
     "[Get GOOGLE API KEY](https://ai.google.dev/)"
     openai_api_key = st.text_input(
         "GOOGLE API KEY", key="germin_api_key", type="password")
@@ -66,10 +66,7 @@ if germin_key  and serp_key:
             jones_ticker.columns = ['symbol']
 
             df_stock=df_stock._append(jones_ticker,ignore_index=True)
-            #df_s_p500 = pd.read_csv(f'.\history\data\s_p500.csv')
-            #sp500_ticker = df_s_p500 [['Symbol']]
-            #sp500_ticker.columns = ['symbol']
-            #df_stock = df_stock._append(sp500_ticker, ignore_index=True)
+
 
             df_stock = df_stock.drop_duplicates(ignore_index=True)
             df=(AllStocksPerformnace(df_stock)).reset_index(drop=True)
@@ -404,23 +401,25 @@ if germin_key  and serp_key:
             st.write(error2)
 
     with tab3:
-        st.header("Select Indivual Stock Analysis")
-        mega_companies=df3['Symbol'].tolist()
-        symbol = mega_companies.extend(dax_companies)
-        dax_sy=df4[['Ticker-en']]
-        dax_sy.columns=['Symbol']
-        mega_df=df3[['Symbol']]._append(dax_sy)
-        dag_jones=getdagAndjones()
-        dag_jones.columns = ['Symbol']
+        try:
+            st.header("Select Indivual Stock Analysis")
+            mega_companies=df3['Symbol'].tolist()
+            symbol = mega_companies.extend(dax_companies)
+            dax_sy=df4[['Ticker-en']]
+            dax_sy.columns=['Symbol']
+            mega_df=df3[['Symbol']]._append(dax_sy)
+            dag_jones=getdagAndjones()
+            dag_jones.columns = ['Symbol']
 
-        df_symbol =mega_df
-        df_symbol.columns=['Symbol']
-        df_sy = pd.read_csv("./history/data/symbol.txt")
-        df_sy.columns=['Symbol']
-        print(df_sy)
-        df_symbol=(dag_jones._append( df_symbol)).drop_duplicates(ignore_index=True)
-        df_symbol=(df_symbol._append(df_sy)).reset_index(drop=True)
-
+            df_symbol =mega_df
+            df_symbol.columns=['Symbol']
+            df_sy = pd.read_csv("./history/data/symbol.txt")
+            df_sy.columns=['Symbol']
+            print(df_sy)
+            df_symbol=(dag_jones._append( df_symbol)).drop_duplicates(ignore_index=True)
+            df_symbol=(df_symbol._append(df_sy)).reset_index(drop=True)
+        except:
+            pass
 
         if 'option' not in st.session_state:
             option = st.selectbox(

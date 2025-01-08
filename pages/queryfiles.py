@@ -1,31 +1,26 @@
 import streamlit as st
 
-import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 from tools.utils import CrewAiMatcher
 import pandas as  pd
-#CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,ispdf=False):
-from crewai_tools import PDFSearchTool
-from langchain_community.document_loaders import (PyPDFLoader,PDFPlumberLoader,
-                                                  UnstructuredPDFLoader,
-                                                  UnstructuredPowerPointLoader,
-                                                  UnstructuredFileLoader)
+
+from langchain_community.document_loaders import (PyPDFLoader)
 
 
 # Initialize the tool allowing for any PDF content search if the path is provided during execution
 tab1, tab2,tab3 = st.tabs(["Upload local files","Upload Cv", "Match CV to Job"])
 
 def germinApiKey():
-    st.warning('Please enter your Google Germin API Key')
+    st.warning('Please enter your Google Gemini API Key')
     "[Get GOOGLE API KEY](https://ai.google.dev/)"
     openai_api_key = st.text_input(
         "GOOGLE API KEY", key="germin_api_key", type="password")
-    if  "germin_api_key" not in st.session_state:
-        st.session_state['germin_api_key'] = openai_api_key
+    if  "gemini_api_key" not in st.session_state:
+        st.session_state['gemini_api_key'] = openai_api_key
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
-    return  st.session_state['germin_api_key']
+    return  st.session_state['gemini_api_key']
 def SerpApiKey():
     st.warning('Please enter your Serper API Key')
     "[Get SERPER API KEY](https://serper.dev/)"
