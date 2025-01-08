@@ -20,11 +20,7 @@ from crewai_tools import (YoutubeChannelSearchTool,WebsiteSearchTool,YoutubeVide
 
 import os
 from dotenv import  load_dotenv
-load_dotenv()
-os.environ["OPENAI_API_KEY"] = os.environ.get('GOOGLE_API_KEY')
-os.environ["LINKEDIN_COOKIE"]=os.environ.get('LI_AT')
-os.environ["SERPER_API_KEY"]=os.environ.get('SERPER_API_KEY')
-SERPER_API_KEY=os.environ.get('SERPER_API_KEY')
+
 google_tool = SerperDevTool(
     n_results=4,
     api_key=SERPER_API_KEY,
@@ -32,8 +28,6 @@ google_tool = SerperDevTool(
 )
 tools= [google_tool,WebsiteSearchTool(), SeleniumScrapingTool(), ScrapeWebsiteTool(),
         CSVSearchTool(), DirectoryReadTool(), FileReadTool(),YoutubeVideoSearchTool()]
-# os.environ["GOOGLE_API_KEY"] = "https://api.your-provider.com/v1"
-GOOGLE_API_KEY=os.environ.get('GOOGLE_API_KEY')
 llm= LLM(
     model="gemini/gemini-1.5-pro-002",
     temperature=0.3,
