@@ -22,9 +22,6 @@ import os
 from dotenv import  load_dotenv
 
 
-tools= [google_tool,WebsiteSearchTool(), SeleniumScrapingTool(), ScrapeWebsiteTool(),
-        CSVSearchTool(), DirectoryReadTool(), FileReadTool(),YoutubeVideoSearchTool()]
-
 def CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,ispdf=False):
         google_tool = SerperDevTool(
             n_results=4,
