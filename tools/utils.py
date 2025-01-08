@@ -21,19 +21,9 @@ from crewai_tools import (YoutubeChannelSearchTool,WebsiteSearchTool,YoutubeVide
 import os
 from dotenv import  load_dotenv
 
-google_tool = SerperDevTool(
-    n_results=4,
-    api_key=SERPER_API_KEY,
-    verbose=True
-)
+
 tools= [google_tool,WebsiteSearchTool(), SeleniumScrapingTool(), ScrapeWebsiteTool(),
         CSVSearchTool(), DirectoryReadTool(), FileReadTool(),YoutubeVideoSearchTool()]
-llm= LLM(
-    model="gemini/gemini-1.5-pro-002",
-    temperature=0.3,
-    verbose=True,
-    api_key=GOOGLE_API_KEY
-)
 
 def CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,ispdf=False):
         google_tool = SerperDevTool(
