@@ -7,16 +7,7 @@ from textwrap import dedent
 from dotenv import  load_dotenv
 load_dotenv()
 import os
-os.environ["OPENAI_API_KEY"] = os.environ.get('GOOGLE_API_KEY')
-os.environ["LINKEDIN_COOKIE"]=os.environ.get('LI_AT')
-os.environ["SERPER_API_KEY"]=os.environ.get('SERPER_API_KEY')
 
-os.environ["SEC_API_API_KEY"]=os.environ.get('SEC_API_API_KEY')
-os.environ["YOUTUBE_API_KEY"]=os.environ.get('YOUTUBE_API_KEY')
-SEC_API_API_KEY=os.environ.get('SEC_API_API_KEY')
-#YOUTUBE_API_KEY
-SERPER_API_KEY=os.environ.get('SERPER_API_KEY')
-YOUTUBE_API_KEY=os.environ.get('YOUTUBE_API_KEY')
 class StockMarketCrew:
 
     def __init__(self,germin_key,serp_key, company_stock, hist_csv, financial_csv, company_info="company_info.csv"):

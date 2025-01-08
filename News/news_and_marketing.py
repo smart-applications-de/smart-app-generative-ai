@@ -22,11 +22,7 @@ from crewai.project import CrewBase, agent, crew, task
 from pydantic import BaseModel, Field
 from textwrap import dedent
 from dotenv import  load_dotenv
-load_dotenv()
-# os.environ["OPENAI_API_KEY"] = os.environ.get('GOOGLE_API_KEY')
-# os.environ["LINKEDIN_COOKIE"]=os.environ.get('LI_AT')
-# os.environ["SERPER_API_KEY"]=os.environ.get('SERPER_API_KEY')
-# SERPER_API_KEY=os.environ.get('SERPER_API_KEY')
+
 import streamlit_authenticator as stauth
 import streamlit as st
 #from Frontend.app import germinApiKey,SerpApiKey

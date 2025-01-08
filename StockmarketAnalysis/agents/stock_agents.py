@@ -4,13 +4,9 @@ from dotenv import  load_dotenv
 import os
 from StockmarketAnalysis.Tools.ai_tools  import *
 import streamlit as st
-from openai import api_key
 
-load_dotenv()
-GOOGLE_API_KEY=os.environ.get('GOOGLE_API_KEY')
-SERPER_API_KEY=os.environ.get('SERPER_API_KEY')
 from textwrap import dedent
-#from Frontend.app import germinApiKey, SerpApiKey
+
 
 #germinApiKey()
 #SerpApiKey()
@@ -22,43 +18,8 @@ from crewai_tools import (WebsiteSearchTool,
 
                           FileReadTool, PDFSearchTool)
 
-google = SerperDevTool(
-    n_results=5,
-    country='de',
-    locale='de',
-    api_key=SERPER_API_KEY,
-    verbose=True
-)
+
 class StockmarketAgents():
-    import os
-    load_dotenv()
-
-    os.environ["OPENAI_API_KEY"] = os.environ.get('GOOGLE_API_KEY')
-    os.environ["LINKEDIN_COOKIE"] = os.environ.get('LI_AT')
-    os.environ["SERPER_API_KEY"] = os.environ.get('SERPER_API_KEY')
-
-    os.environ["SEC_API_API_KEY"] = os.environ.get('SEC_API_API_KEY')
-    os.environ["YOUTUBE_API_KEY"] = os.environ.get('YOUTUBE_API_KEY')
-    SEC_API_API_KEY = os.environ.get('SEC_API_API_KEY')
-    # YOUTUBE_API_KEY
-    SERPER_API_KEY = os.environ.get('SERPER_API_KEY')
-    YOUTUBE_API_KEY = os.environ.get('YOUTUBE_API_KEY')
-    load_dotenv()
-    GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
-    SERPER_API_KEY = os.environ.get('SERPER_API_KEY')
-
-    llm = LLM(
-    model="gemini/gemini-1.5-flash-8b",
-    temperature=0.5,
-    verbose=True,
-    api_key=GOOGLE_API_KEY)
-    google_search = SerperDevTool(
-        n_results=5,
-        country='de',
-        locale='de',
-        api_key=SERPER_API_KEY,
-        verbose=True
-    )
     webscraper=ScrapeWebsiteTool()
     web_search=WebsiteSearchTool()
     python_coder= CodeInterpreterTool(unsafe=True)
@@ -66,12 +27,8 @@ class StockmarketAgents():
     file_reader=FileReadTool()
     pdf_search=PDFSearchTool()
     csv_file_search=CSVSearchTool()
-
-#StockmarketAnalysis/data/actions.csv
-    #Frontend/Crew_AI/Reports
-
-
     def FileReader(self,germin_key='GOOGLE_API_KEY',serp_key=SERPER_API_KEY) :
+      
         llm = LLM(
             model="gemini/gemini-1.5-pro",
             temperature=0.3,
