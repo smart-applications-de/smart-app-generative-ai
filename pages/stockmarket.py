@@ -402,8 +402,9 @@ if germin_key  and serp_key:
     with tab3:
         try:
             st.header("Select Indivual Stock Analysis")
+            df3 = getMegaCapCompanies()
             mega_companies=df3['Symbol'].tolist()
-            symbol = mega_companies.extend(dax_companies)
+            df4 = getDaXCompanies()
             dax_sy=df4[['Ticker-en']]
             dax_sy.columns=['Symbol']
             mega_df=df3[['Symbol']]._append(dax_sy)
