@@ -6,9 +6,6 @@ import os
 import pandas as pd
 from test_unstructured.staging.test_prodigy import output_csv_file
 
-load_dotenv()
-GOOGLE_API_KEY=os.environ.get('GOOGLE_API_KEY')
-SERPER_API_KEY=os.environ.get('SERPER_API_KEY')
 from textwrap import dedent
 from crewai_tools import (YoutubeChannelSearchTool,WebsiteSearchTool,
                           YoutubeVideoSearchTool,CodeInterpreterTool,
