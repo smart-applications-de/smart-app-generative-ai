@@ -4,8 +4,6 @@ from dotenv import  load_dotenv
 import os
 from StockmarketAnalysis.Tools.ai_tools  import *
 import streamlit as st
-from openai import api_key
-
 
 from textwrap import dedent
 
@@ -30,6 +28,7 @@ class StockmarketAgents():
     pdf_search=PDFSearchTool()
     csv_file_search=CSVSearchTool()
     def FileReader(self,germin_key='GOOGLE_API_KEY',serp_key=SERPER_API_KEY) :
+      
         llm = LLM(
             model="gemini/gemini-1.5-pro",
             temperature=0.3,
