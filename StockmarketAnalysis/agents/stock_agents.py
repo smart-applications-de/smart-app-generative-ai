@@ -6,11 +6,9 @@ from StockmarketAnalysis.Tools.ai_tools  import *
 import streamlit as st
 from openai import api_key
 
-load_dotenv()
-GOOGLE_API_KEY=os.environ.get('GOOGLE_API_KEY')
-SERPER_API_KEY=os.environ.get('SERPER_API_KEY')
+
 from textwrap import dedent
-#from Frontend.app import germinApiKey, SerpApiKey
+
 
 #germinApiKey()
 #SerpApiKey()
