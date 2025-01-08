@@ -23,7 +23,6 @@ from pydantic import BaseModel, Field
 from textwrap import dedent
 from dotenv import  load_dotenv
 
-import streamlit_authenticator as stauth
 import streamlit as st
 #from Frontend.app import germinApiKey,SerpApiKey
 
