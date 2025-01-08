@@ -400,23 +400,25 @@ if germin_key  and serp_key:
             st.write(error2)
 
     with tab3:
-        st.header("Select Indivual Stock Analysis")
-        mega_companies=df3['Symbol'].tolist()
-        symbol = mega_companies.extend(dax_companies)
-        dax_sy=df4[['Ticker-en']]
-        dax_sy.columns=['Symbol']
-        mega_df=df3[['Symbol']]._append(dax_sy)
-        dag_jones=getdagAndjones()
-        dag_jones.columns = ['Symbol']
+        try:
+            st.header("Select Indivual Stock Analysis")
+            mega_companies=df3['Symbol'].tolist()
+            symbol = mega_companies.extend(dax_companies)
+            dax_sy=df4[['Ticker-en']]
+            dax_sy.columns=['Symbol']
+            mega_df=df3[['Symbol']]._append(dax_sy)
+            dag_jones=getdagAndjones()
+            dag_jones.columns = ['Symbol']
 
-        df_symbol =mega_df
-        df_symbol.columns=['Symbol']
-        df_sy = pd.read_csv("./history/data/symbol.txt")
-        df_sy.columns=['Symbol']
-        print(df_sy)
-        df_symbol=(dag_jones._append( df_symbol)).drop_duplicates(ignore_index=True)
-        df_symbol=(df_symbol._append(df_sy)).reset_index(drop=True)
-
+            df_symbol =mega_df
+            df_symbol.columns=['Symbol']
+            df_sy = pd.read_csv("./history/data/symbol.txt")
+            df_sy.columns=['Symbol']
+            print(df_sy)
+            df_symbol=(dag_jones._append( df_symbol)).drop_duplicates(ignore_index=True)
+            df_symbol=(df_symbol._append(df_sy)).reset_index(drop=True)
+        except:
+            pass
 
         if 'option' not in st.session_state:
             option = st.selectbox(
