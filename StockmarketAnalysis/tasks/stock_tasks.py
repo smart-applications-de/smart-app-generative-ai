@@ -14,14 +14,15 @@ from crewai_tools import (YoutubeChannelSearchTool,WebsiteSearchTool,
 
                           FileReadTool, PDFSearchTool)
 class StockmarketTasks():
+    def __init__(self,germin_key,serp_key):
+        self.germin_key=germin_key
+        self.serp_key=serp_key
+        os.environ["GOOGLE_API_KEY"]=self.germin_key
+        os.environ['SERPER_API_KEY']=self.serp_key
     webscraper=ScrapeWebsiteTool()
     web_search=WebsiteSearchTool()
     python_coder= CodeInterpreterTool(unsafe=True)
-    #directory= DirectoryReadTool("./data")
-    #file_reader=FileReadTool()
-    pdf_search=PDFSearchTool()
-    stockagent =   StockmarketAgents()
-   # csv_file_search= CSVSearchTool()
+
     def __tip_section(self):
         return "If you do your BEST WORK, I'll tip you $100!"
 
@@ -51,7 +52,7 @@ class StockmarketTasks():
                                            expected_output=expected_output_FR,
                                            agent=agent,
                                            output_file=output_csv_file)
-    def financial_analyst_task(self,agent,company_stock,historical_data,financial_data,company_info) :
+    def financial_analyst_task(self,agent,company_stock) :
         date=pd.to_datetime('today').date()
         yr = pd.to_datetime('today').year
         description_FA = dedent(f"""

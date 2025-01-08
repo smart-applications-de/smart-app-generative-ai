@@ -20,29 +20,26 @@ from crewai_tools import (WebsiteSearchTool,
 
 
 class StockmarketAgents():
-    webscraper=ScrapeWebsiteTool()
-    web_search=WebsiteSearchTool()
-    python_coder= CodeInterpreterTool(unsafe=True)
-    directory= DirectoryReadTool("./history/data")
-    file_reader=FileReadTool()
-    pdf_search=PDFSearchTool()
-    csv_file_search=CSVSearchTool()
-    def FileReader(self,germin_key='GOOGLE_API_KEY',serp_key=SERPER_API_KEY) :
+    def __init__(self,germin_key,serp_key):
+        self.germin_key=germin_key
+        self.serp_key=serp_key
+        os.environ["GOOGLE_API_KEY"]=self.germin_key
+        os.environ['SERPER_API_KEY']=self.serp_key
+
+    def FileReader(self) :
       
         llm = LLM(
             model="gemini/gemini-1.5-pro",
             temperature=0.3,
             verbose=True,
-            api_key=germin_key)
-        web_search_tool = WebsiteSearchTool()
+            api_key=self.germin_key)
         seper_dev_tool = SerperDevTool(
         n_results=5,
         country='de',
         locale='de',
-        api_key=serp_key,
+        api_key=self.serp_key,
         verbose=True
         )
-        webscraper = ScrapeWebsiteTool()
         return Agent(llm=llm,
                           role=' File Reader Expert',
                           goal='Extract relevant information from a given file with columns like  Close, high,open, volume and low stock prices. Identity any patterns that can influence future stock price. ',
@@ -54,9 +51,7 @@ class StockmarketAgents():
                           tools=[DirectoryReadTool("./history/data"),
                            FileReadTool(),
                             seper_dev_tool,
-                            #CalculatorTool()
-                          # CodeInterpreterTool(unsafe_mode=True),
-                                 FileWriterTool()
+                            FileWriterTool()
                                 ],
                           allow_delegation=False,
                           verbose=True
@@ -64,17 +59,16 @@ class StockmarketAgents():
                           )
 
 
-    def FinancialAnalysist(self,germin_key='GOOGLE_API_KEY',serp_key=SERPER_API_KEY):
+    def FinancialAnalysist(self):
         llm = LLM(
             model="gemini/gemini-1.5-pro",
             temperature=0.3,
             verbose=True,
-            api_key=germin_key)
-        web_search_tool = WebsiteSearchTool()
+            api_key=self.germin_key)
         seper_dev_tool = SerperDevTool(country='de',
-        api_key=serp_key,
+        api_key=self.serp_key,
         verbose=True,
-                                       locale='de')
+        locale='de')
         role_fa = "The Best Financial Analyst"
         goal_fa = "Impress all customers with your financial data and market trends analysis. You are expert in coding with python and expert in solving mathematical operations."
         backstory_fa = """The most seasoned financial analyst with lots of expertise in stock market analysis and investment
@@ -95,15 +89,15 @@ class StockmarketAgents():
             allow_delegation=False,
                 verbose=True)
 
-    def Research_Analyst(self,germin_key='GOOGLE_API_KEY',serp_key=SERPER_API_KEY):
+    def Research_Analyst(self):
         llm = LLM(
             model="gemini/gemini-1.5-pro",
             temperature=0.7,
             verbose=True,
-            api_key=germin_key)
+            api_key=self.germin_key)
         web_search_tool = WebsiteSearchTool()
         seper_dev_tool = SerperDevTool(country='de',
-                                       api_key=serp_key,
+                                       api_key=self.serp_key,
                                        locale='de')
         role_ra = dedent("Staff Research Analyst")
         goal_ra = """Being the best at gathering, interpreting data and amazing
@@ -128,15 +122,15 @@ class StockmarketAgents():
             allow_delegation=True,
                 verbose=True)
 
-    def StockmarketExpert(self,germin_key='GOOGLE_API_KEY',serp_key=SERPER_API_KEY):
+    def StockmarketExpert(self):
         llm = LLM(
             model="gemini/gemini-1.5-pro",
             temperature=0.3,
             verbose=True,
-            api_key=germin_key)
+            api_key=self.germin_key)
         web_search_tool = WebsiteSearchTool()
         seper_dev_tool = SerperDevTool(country='de',
-                                       api_key=serp_key,
+                                       api_key=self.serp_key,
                                        locale='de')
         role_fe = "The BEST and MOST Experience Stockmarket Expert"
         goal_fe= ("Conduct a thorough a examination of a give  company stock."
@@ -158,16 +152,14 @@ class StockmarketAgents():
             allow_delegation=False,
                 verbose=True)
 
-    def PrivateInvestorAdvisor(self,germin_key='GOOGLE_API_KEY',serp_key=SERPER_API_KEY) :
-        web_search_tool = WebsiteSearchTool()#
+    def PrivateInvestorAdvisor(self) :
         llm = LLM(
             model="gemini/gemini-1.5-pro",
             temperature=0.3,
             verbose=True,
-            api_key=germin_key)
-        web_search_tool = WebsiteSearchTool()
+            api_key=self.germin_key)
         seper_dev_tool = SerperDevTool(country='de',
-                                       api_key=serp_key,
+                                       api_key=self.serp_key,
                                        locale='de')
         role_IA = dedent("Private Investment Advisor")
         goal_IA =dedent( """
@@ -179,7 +171,7 @@ class StockmarketAgents():
         return Agent(role=role_IA, goal=goal_IA,
                                    backstory=backstory_IA,
                                    llm=llm,
-                                   tools=[self.google_search,
+                                   tools=[seper_dev_tool,
                                    FileWriterTool()],
                                    allow_delegation=False,
                                    memory=True,
