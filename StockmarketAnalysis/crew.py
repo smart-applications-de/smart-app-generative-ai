@@ -17,6 +17,9 @@ class StockMarketCrew:
         self.hist_csv = hist_csv
         self.financial_csv =financial_csv
         self.company_info = company_info
+        os.environ["GOOGLE_API_KEY"]=self.germin_key
+        os.environ['SERPER_API_KEY']=self.serp_key
+       
     def LoadYahoofinanceData(self):
         ticker = yf.Ticker(self.company_stock)
         # Fetch historical market data
@@ -37,19 +40,19 @@ class StockMarketCrew:
 
 
     def run(self):
-        SK =StockmarketTasks()
-        stockagent=StockmarketAgents()
-        file_reader=stockagent.FileReader(self.germin_key,self.serp_key)
-        stock_f_analysis_agent= stockagent.FinancialAnalysist(self.germin_key,self.serp_key)
-        research_agent=stockagent.Research_Analyst(self.germin_key,self.serp_key)
-        stock_experte_agent= stockagent.StockmarketExpert(self.germin_key,self.serp_key)
-        stock_adivor_agent = stockagent.PrivateInvestorAdvisor(self.germin_key,self.serp_key)
+        SK =StockmarketTasks(self.germin_key,self.serp_key)
+        stockagent=StockmarketAgents(self.germin_key,self.serp_key)
+        file_reader=stockagent.FileReader()
+        stock_f_analysis_agent= stockagent.FinancialAnalysist()
+        research_agent=stockagent.Research_Analyst()
+        stock_experte_agent= stockagent.StockmarketExpert()
+        stock_adivor_agent = stockagent.PrivateInvestorAdvisor()
         try:
             file_reader_tsk=SK.Read_Filetask(file_reader,self.company_stock,self.hist_csv,self.financial_csv,self.company_info)
         except Exception as fileerr:
             print(fileerr)
         try:
-            stock_f_analysis_tsk=  SK.financial_analyst_task(stock_f_analysis_agent,self.company_stock,self.hist_csv,self.financial_csv,self.company_info)
+            stock_f_analysis_tsk=  SK.financial_analyst_task(stock_f_analysis_agent,self.company_stock)
         except Exception as f_anerror:
             print(f_anerror)
         research_tsk=  SK.Research_Analyst_task(research_agent,self.company_stock)

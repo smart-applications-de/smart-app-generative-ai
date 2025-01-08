@@ -3,11 +3,6 @@ import streamlit as st
 import pandas as pd
 
 import altair as alt
-from history.data import DailyQuote,AllStocksPerformnace
-from Forecasts.models import VECM_Forecast_Lower_Upper
-import plotly.express as px
-from StockmarketAnalysis.crew import  StockMarketCrew
-from News.news_and_marketing import CrewStocknews
 
 import streamlit as st
 
@@ -15,25 +10,34 @@ import os
 
 def germinApiKey():
     st.warning('Please enter your Google Germin API Key')
+    "[Get GOOGLE API KEY](https://ai.google.dev/)"
     openai_api_key = st.text_input(
         "GOOGLE API KEY", key="germin_api_key", type="password")
     if  "germin_api_key" not in st.session_state:
-        "[Get GOOGLE API KEY](https://ai.google.dev/)"
         st.session_state['germin_api_key'] = openai_api_key
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
     return  st.session_state['germin_api_key']
 def SerpApiKey():
     st.warning('Please enter your Serper API Key')
+    "[Get SERPER API KEY](https://serper.dev/)"
     serper_api_key = st.text_input(
         "SERPER API KEY", key="serp_api_key", type="password")
     if  "serp_api_key" not in st.session_state:
-        "[Get SERPER API KEY](https://serper.dev/)"
+
         st.session_state['serp_api_key'] = serper_api_key
     return  st.session_state['serp_api_key']
 germin_key =  germinApiKey()
 serp_key = SerpApiKey()
 if germin_key  and serp_key:
+    os.environ["GOOGLE_API_KEY"] = germin_key
+    os.environ['SERPER_API_KEY'] = serp_key
+    os.environ["OPENAI_API_KEY"]=germin_key
+    from history.data import DailyQuote, AllStocksPerformnace
+    from Forecasts.models import VECM_Forecast_Lower_Upper
+    import plotly.express as px
+    from StockmarketAnalysis.crew import StockMarketCrew
+    from News.news_and_marketing import CrewStocknews
     @st.cache_resource
     def get_performance():
         try:
