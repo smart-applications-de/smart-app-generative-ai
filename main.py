@@ -1,13 +1,11 @@
 import streamlit as st
 
 
-from nav import menu
+#from nav import menu
 
 from dotenv import  load_dotenv
 
 from openai import OpenAI
-
-menu()
 
 def germinApiKey():
     st.warning('Please enter your Google Germin API Key')
