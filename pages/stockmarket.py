@@ -42,7 +42,6 @@ if germin_key  and serp_key:
     def get_performance():
         try:
              DailyQuote("AMD")
-             AllStocksPerformnace()
             df_mega = pd.read_csv("./history/data/mega_capCompanies.csv")
             df_stock=pd.DataFrame()
 
