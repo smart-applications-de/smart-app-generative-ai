@@ -8,11 +8,11 @@ from dotenv import  load_dotenv
 from openai import OpenAI
 
 def germinApiKey():
-    st.warning('Please enter your Google Germin API Key')
+    st.warning('Please enter your Google Gemini API Key')
+    "[Get GOOGLE API KEY](https://ai.google.dev/)"
     openai_api_key = st.text_input(
         "GOOGLE API KEY", key="germin_api_key", type="password")
     if  "germin_api_key" not in st.session_state:
-        "[Get GOOGLE API KEY](https://ai.google.dev/)"
         st.session_state['germin_api_key'] = openai_api_key
         st.info("Please add your OpenAI API key to continue.")
         st.stop()

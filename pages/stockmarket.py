@@ -1,5 +1,5 @@
 
-import streamlit as st
+
 import pandas as pd
 
 import altair as alt
@@ -9,7 +9,7 @@ import streamlit as st
 import os
 
 def germinApiKey():
-    st.warning('Please enter your Google Germin API Key')
+    st.warning('Please enter your Google Gemini API Key')
     "[Get GOOGLE API KEY](https://ai.google.dev/)"
     openai_api_key = st.text_input(
         "GOOGLE API KEY", key="germin_api_key", type="password")
@@ -65,10 +65,7 @@ if germin_key  and serp_key:
             jones_ticker.columns = ['symbol']
 
             df_stock=df_stock._append(jones_ticker,ignore_index=True)
-            #df_s_p500 = pd.read_csv(f'.\history\data\s_p500.csv')
-            #sp500_ticker = df_s_p500 [['Symbol']]
-            #sp500_ticker.columns = ['symbol']
-            #df_stock = df_stock._append(sp500_ticker, ignore_index=True)
+
 
             df_stock = df_stock.drop_duplicates(ignore_index=True)
             df=(AllStocksPerformnace(df_stock)).reset_index(drop=True)

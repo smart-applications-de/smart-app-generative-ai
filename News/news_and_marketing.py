@@ -23,25 +23,10 @@ from pydantic import BaseModel, Field
 from textwrap import dedent
 from dotenv import  load_dotenv
 
-import streamlit_authenticator as stauth
-import streamlit as st
-#from Frontend.app import germinApiKey,SerpApiKey
-
-
-# google_tool = SerperDevTool(
-#     n_results=5,
-#     api_key=
-#     SERPER_API_KEY,
-#     verbose=True
-# )
-# tools= [google_tool,WebsiteSearchTool(), SeleniumScrapingTool(), ScrapeWebsiteTool(),
-#         CSVSearchTool(), DirectoryReadTool(), FileReadTool(),YoutubeVideoSearchTool()]
-# # os.environ["GOOGLE_API_KEY"] = "https://api.your-provider.com/v1"
-# #GOOGLE_API_KEY=os.environ.get('GOOGLE_API_KEY')
-
-
 
 def CrewStocknews(germin_api, serp_api, topic, year, date):
+    os.environ["GOOGLE_API_KEY"] = germin_api
+    os.environ['SERPER_API_KEY'] = serp_api
     GOOGLE_API_KEY =germin_api
        # (os.environ.get('GOOGLE_API_KEY'))
     google_tool = SerperDevTool(
