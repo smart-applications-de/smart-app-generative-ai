@@ -15,7 +15,7 @@ def germinApiKey():
     st.warning('Please enter your Google Gemini API Key')
     "[Get GOOGLE API KEY](https://ai.google.dev/)"
     openai_api_key = st.text_input(
-        "GOOGLE API KEY", key="germin_api_key", type="password")
+        "GOOGLE API KEY", key="gemini_api_key", type="password")
     if  "gemini_api_key" not in st.session_state:
         st.session_state['gemini_api_key'] = openai_api_key
         st.info("Please add your OpenAI API key to continue.")
