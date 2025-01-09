@@ -55,7 +55,7 @@ if germin_key  and serp_key:
                 df_stock = (df_stock._append(dax_ticker)).reset_index(drop=True)
             except:
                 df_stock=df_stock
-            df_daq=pd.read_csv(f'.\history\data\/nasdaq_100.csv')
+            df_daq=pd.read_csv(f'.\history\data\nasdaq_100.csv')
             daq_ticker = df_daq[['Symbol']]
             daq_ticker.columns = ['symbol']
             df_stock=(df_stock._append(daq_ticker))
@@ -146,8 +146,8 @@ if germin_key  and serp_key:
         try:
 
             df4 = pd.read_csv("./history/data/mega_capCompanies.csv")
-            df_daq=pd.read_csv(f'.\history\data\/nasdaq_100.csv')
-            df_jone=pd.read_csv(f'.\history\data\dow_jones.csv')
+            df_daq=pd.read_csv(f'./history/data/nasdaq_100.csv')
+            df_jone=pd.read_csv(f'./history/data/dow_jones.csv')
             df_symbol_q= df_daq[['Symbol']]
 
             df_symbol =pd.concat([df_symbol_q, df4[['Symbol']] ],ignore_index=True )
