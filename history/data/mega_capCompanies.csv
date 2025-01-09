@@ -7,32 +7,32 @@ No.,Symbol,Company Name,Market Cap,Stock Price,% Change,Revenue
 6,META,"Meta Platforms, Inc.","1,541.76B",610.72,-1.16%,156.23B
 7,TSLA,"Tesla, Inc.","1,267.78B",394.94,0.15%,97.15B
 8,AVGO,Broadcom Inc.,"1,074.86B",229.31,0.29%,51.57B
-9,BRK.B,Berkshire Hathaway Inc.,976.23B,451.84,-0.24%,369.89B
-10,TSM,Taiwan Semiconductor Manufacturing Company Limited,871.79B,207.12,-2.03%,83.48B
-11,WMT,Walmart Inc.,737.22B,91.77,1.06%,673.82B
-12,LLY,Eli Lilly and Company,708.27B,786.59,1.72%,40.86B
+9,BRK.B,Berkshire Hathaway Inc.,974.44B,451.84,-0.24%,369.89B
+10,TSM,Taiwan Semiconductor Manufacturing Company Limited,867.84B,207.12,-2.03%,83.48B
+11,WMT,Walmart Inc.,737.46B,91.8,1.09%,673.82B
+12,LLY,Eli Lilly and Company,708.84B,787.22,1.80%,40.86B
 13,JPM,JPMorgan Chase & Co.,684.49B,243.13,-0.02%,162.15B
 14,V,Visa Inc.,613.02B,312.6,0.30%,35.93B
-15,UNH,UnitedHealth Group Incorporated,482.43B,524.22,1.94%,393.90B
+15,UNH,UnitedHealth Group Incorporated,482.71B,524.52,2.00%,393.90B
 16,MA,Mastercard Incorporated,473.97B,516.4,0.98%,27.23B
-17,XOM,Exxon Mobil Corporation,469.88B,106.91,-1.69%,343.82B
+17,XOM,Exxon Mobil Corporation,469.97B,106.93,-1.67%,343.82B
 18,ORCL,Oracle Corporation,456.30B,163.14,0.69%,54.93B
 19,COST,Costco Wholesale Corporation,411.66B,927.37,0.65%,258.81B
-20,HD,"The Home Depot, Inc.",384.63B,387.2,0.77%,154.60B
-21,PG,The Procter & Gamble Company,381.75B,162.1,0.50%,83.91B
-22,NVO,Novo Nordisk A/S,379.94B,85.64,2.76%,40.47B
+20,NVO,Novo Nordisk A/S,386.11B,85.64,2.76%,40.47B
+21,HD,"The Home Depot, Inc.",384.63B,387.2,0.77%,154.60B
+22,PG,The Procter & Gamble Company,381.75B,162.1,0.50%,83.91B
 23,NFLX,"Netflix, Inc.",374.03B,875.0,-0.48%,37.59B
 24,BAC,Bank of America Corporation,354.56B,46.21,0.28%,94.63B
 25,JNJ,Johnson & Johnson,342.53B,142.27,-2.71%,87.70B
 26,ABBV,AbbVie Inc.,315.43B,178.5,-0.57%,55.53B
 27,CRM,"Salesforce, Inc.",312.84B,326.9,0.61%,37.19B
-28,SAP,SAP SE,293.45B,253.49,1.60%,37.10B
-29,ASML,ASML Holding N.V.,293.38B,743.98,-1.80%,29.29B
+28,ASML,ASML Holding N.V.,296.94B,743.98,-1.80%,29.29B
+29,SAP,SAP SE,293.60B,253.49,1.60%,37.10B
 30,CVX,Chevron Corporation,270.10B,150.3,0.47%,191.69B
 31,KO,The Coca-Cola Company,265.83B,61.71,1.43%,46.37B
-32,TM,Toyota Motor Corporation,254.38B,192.55,-0.30%,323.85B
-33,MRK,"Merck & Co., Inc.",252.58B,99.85,-1.16%,63.17B
-34,TMUS,"T-Mobile US, Inc.",250.11B,215.52,1.50%,80.01B
+32,MRK,"Merck & Co., Inc.",252.58B,99.85,-1.16%,63.17B
+33,TMUS,"T-Mobile US, Inc.",250.11B,215.52,1.50%,80.01B
+34,TM,Toyota Motor Corporation,249.15B,192.55,-0.30%,323.85B
 35,WFC,Wells Fargo & Company,238.29B,71.57,-0.03%,77.88B
 36,CSCO,"Cisco Systems, Inc.",235.78B,59.2,0.46%,52.98B
 37,ACN,Accenture plc,223.75B,357.73,0.38%,66.36B
@@ -45,5 +45,3 @@ No.,Symbol,Company Name,Market Cap,Stock Price,% Change,Revenue
 44,AZN,AstraZeneca PLC,205.93B,66.58,-0.09%,51.21B
 45,MCD,McDonald's Corporation,205.60B,286.9,-0.84%,25.94B
 46,PEP,"PepsiCo, Inc.",203.39B,146.54,0.78%,91.92B
-47,DIS,The Walt Disney Company,198.73B,109.74,-1.48%,91.36B
-48,SHEL,Shell plc,197.44B,64.72,-1.84%,296.76B

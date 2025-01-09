@@ -27,7 +27,7 @@ def CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,
         os.environ['SERPER_API_KEY'] = serp_api
         os.environ['OPENAI_API_KEY']=germin_api
         GOOGLE_API_KEY =germin_api
-            google_tool = SerperDevTool(
+        google_tool = SerperDevTool(
                 n_results=4,
                 api_key=serp_api,
                 verbose=True

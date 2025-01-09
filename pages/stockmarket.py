@@ -55,7 +55,7 @@ if germin_key  and serp_key:
                 df_stock = (df_stock._append(dax_ticker)).reset_index(drop=True)
             except:
                 df_stock=df_stock
-            df_daq=pd.read_csv(f'.\history\data\nasdaq_100.csv')
+            df_daq=pd.read_csv(f'./history/data/nasdaq_100.csv')
             daq_ticker = df_daq[['Symbol']]
             daq_ticker.columns = ['symbol']
             df_stock=(df_stock._append(daq_ticker))
@@ -189,12 +189,12 @@ if germin_key  and serp_key:
         else:
             df4 = st.session_state['df4']
         return  df4
-    # @st.cache_data
-    # def getStockPerformance():
-    #     if 'df_per' not in st.session_state:
-    #         df_per = get_performance()
-    #         df_per= (df_per.sort_values(by='1yr_performance', ascending=False)).reset_index(drop=True)
-    #         return  df_per
+    @st.cache_data
+    def getStockPerformance():
+        if 'df_per' not in st.session_state:
+            df_per = get_performance()
+            df_per= (df_per.sort_values(by='1yr_performance', ascending=False)).reset_index(drop=True)
+            return  df_per
     def getETFPerformance():
         if 'df_etf' not in st.session_state:
             #C:\Users\ainea\PycharmProjects\AI Driven applications\Frontend\history\data.py symbol.txt
@@ -267,9 +267,14 @@ if germin_key  and serp_key:
             #st.dataframe(df1.style.highlight_max(axis=0),use_container_width=True)
             #st.bar_chart(df1.sort_values(by="Market Cap", ascending=False), x="Industry Name", y="Market Cap",  color=["#FF0000"], horizontal=True)
             st.header("1 Day  Performance based on Industry")
-            ind_event=st.dataframe(df1.style.highlight_max(axis=0),                 hide_index=True,
+            ind_event=st.dataframe(df1,
+                    hide_index=True,
                     on_select="rerun",
-                    selection_mode="multi-row",use_container_width=True)
+                    selection_mode="multi-row",use_container_width=True,
+                                   column_config={
+                                       "1D Change": st.column_config.NumberColumn(),
+                                       "1Y Change": st.column_config.NumberColumn()}
+                                   )
             event_ind = ind_event.selection.rows
             if len(event_ind) < 1 :
                 df1=df1
@@ -294,10 +299,15 @@ if germin_key  and serp_key:
             col4.metric("Max 1D Change", df2['1D Change'].max())
             col5.metric("Max Market Cap in Billions",  df2['Market Cap'].max())
             col6.metric("No. Industry", df2['Sector Name'].count())
-            col7.multiselect('Sector',df2['Sector Name'])
-            sector_event=st.dataframe(df2.style.highlight_max(axis=0),                 hide_index=True,
+            sector_event=st.dataframe(df2,
+                    hide_index=True,
                     on_select="rerun",
-                    selection_mode="multi-row",use_container_width=True)
+                    selection_mode="multi-row",use_container_width=True,
+                      column_config={
+                       "1D Change": st.column_config.NumberColumn(),
+                        "1Y Change": st.column_config.NumberColumn()}
+
+                                      )
             event_sec = sector_event.selection.rows
             if len(event_sec) < 1 :
                 df2=df2
@@ -358,12 +368,18 @@ if germin_key  and serp_key:
 
     with tab2:
         st.header("ETFs, DAX, DOW JONES and Mega CAP Companies Performance ")
-        # try:
-        #     df_per=getStockPerformance()
-        #     st.dataframe(df_per, column_config={
-        #     "website": st.column_config.LinkColumn()})
-        # except Exception as perf:
-        #     st.error(perf)
+        try:
+            df_per=getStockPerformance()
+            st.dataframe(df_per, column_config={
+            "Close": st.column_config.NumberColumn(),
+            "website": st.column_config.LinkColumn(),
+            "Date": st.column_config.DateColumn(),
+            "1day_performance": st.column_config.NumberColumn(),
+            "week_performance": st.column_config.NumberColumn(),
+            "month_performance": st.column_config.NumberColumn(),
+            "1yr_performance": st.column_config.NumberColumn()})
+        except Exception as perf:
+            st.error(perf)
         st.subheader("ETFS Performance")
         try:
             df_etf= getETFPerformance()
@@ -444,7 +460,17 @@ if germin_key  and serp_key:
             df, df_monthly,df_data,df_f=get_historical_data(option )
             st.write("Daily Historical Data")
 
-            event_df =st.dataframe(df.style.highlight_max(axis=0),use_container_width=True)
+            event_df =st.dataframe(df,use_container_width=True,
+                                   hide_index=True,
+
+            column_config = {
+                "close": st.column_config.NumberColumn(),
+                "date": st.column_config.DateColumn(),
+                "daily_trend": st.column_config.NumberColumn(),
+                "weekly_trend": st.column_config.NumberColumn(),
+                "monthly_trend": st.column_config.NumberColumn(),
+                "yearly_trend": st.column_config.NumberColumn()}
+                                   )
 
 
 
@@ -486,7 +512,15 @@ if germin_key  and serp_key:
         st.header("Now Comes Forecasts with VECM Model")
         try:
             pred=get_Forecast_data(df)
-            st.dataframe(pred.style.highlight_max(axis=0),use_container_width=True)
+            st.dataframe(pred,
+            column_config = {
+                "close": st.column_config.NumberColumn(),
+                "prediction_date": st.column_config.DateColumn(),
+                "high": st.column_config.NumberColumn(),
+                "low": st.column_config.NumberColumn(),
+                "open": st.column_config.NumberColumn(),
+                "close_upper": st.column_config.NumberColumn()},
+                         use_container_width=True)
         except Exception  as ForecastError:
             st.write(ForecastError)
         try:
