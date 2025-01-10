@@ -81,7 +81,7 @@ def MegaCapCompanies():
         html = pd.read_html(tb.prettify())
 
         df = html[0]
-        megaCap = f'.\history\data\mega_capCompanies.csv'
+        megaCap = f'./history/data/mega_capCompanies.csv'
         df.to_csv(megaCap,index=False)
         return df
     except Exception as error:
@@ -102,7 +102,7 @@ def IndustryPerformance():
         html_ind = pd.read_html(tb_ind.prettify())
 
         df_ind = html_ind[0]
-        industry = f'.\history\data\industry.csv'
+        industry = f'./history/data/industry.csv'
         df_ind.to_csv(industry,index=False)
         return  df_ind
     except Exception as error:
@@ -121,7 +121,7 @@ def  SectorPerformance():
         html_se = pd.read_html(tb_se.prettify())
 
         df_se = html_se[0]
-        sector = f'.\history\data\sector.csv'
+        sector = f'./history/data/sector.csv'
         df_se.to_csv(sector,index=False)
 
         return df_se
@@ -145,7 +145,7 @@ def QuartelyFinancialAnalysis(symbol):
         html = pd.read_html(tb.prettify())
 
         df = html[0]
-        financial_ratios = f'.\history\data\_{symbol}_qfinancial_ratios.csv'
+        financial_ratios = f'./history/data/_{symbol}_qfinancial_ratios.csv'
         df=df.T
         df.to_csv(financial_ratios,index=False )
         return df
@@ -170,7 +170,7 @@ def AnualAnalysis(symbol):
             html = pd.read_html(tb.prettify())
 
             df = html[0]
-            financial_ratios = f'.\history\data\_{symbol}_yr_financial_ratios.csv'
+            financial_ratios = f'./history/data/_{symbol}_yr_financial_ratios.csv'
             try:
 
                 return df.T
@@ -197,7 +197,7 @@ def ListGermanyStockExchange():
         html = pd.read_html(tb.prettify())
 
         df = html[0]
-        german_stocks = f'.\history\data\german_stocks.csv'
+        german_stocks = f'./history/data/german_stocks.csv'
         df.to_csv(german_stocks, index=False)
         return df
     except Exception as error:
