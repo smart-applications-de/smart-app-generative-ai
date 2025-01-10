@@ -165,7 +165,7 @@ def AllStocksPerformnace(df_stocks):
 
         except:
             pass
-        df.to_csv(f'.\history\data\df_etf.csv', index=False)
+        df.to_csv(f'./history/data/df_etf.csv', index=False)
     except Exception as error:
         print(error)
 
@@ -184,7 +184,7 @@ def AllStocksPerformnace(df_stocks):
                     pass
         except:
             pass
-        df_performance.to_csv(f'.\history\data\df_performance.csv',index=False)
+        df_performance.to_csv(f'./history/data/df_performance.csv',index=False)
         return df_performance
     except Exception as error1:
         print(error1)
@@ -197,7 +197,7 @@ def DailyQuote(symbol):
 
         try:
             try:
-                df_symbol = pd.read_csv(".\history\data\dax_companies.csv")
+                df_symbol = pd.read_csv("./history/data/dax_companies.csv")
                 if symbol in df_symbol['Ticker-en'].values:
                     isdax=True
                 else:
@@ -229,7 +229,7 @@ def DailyQuote(symbol):
                                   'returnOnEquity',
                                   'freeCashflow',  'earningsGrowth', 'revenueGrowth', 'grossMargins', 'ebitdaMargins',
                                    'operatingMargins','trailingPegRatio', 'sector', 'longBusinessSummary','industry','regularMarketOpen']]
-                company_stock_info = f'.\history\data\company_stock_info_{symbol}_data.csv'
+                company_stock_info = f'./history/data/company_stock_info_{symbol}_data.csv'
                 df_data.to_csv(company_stock_info)
             except Exception as error:
                 print(error)
@@ -238,7 +238,7 @@ def DailyQuote(symbol):
 
                 df_f= df_f.reset_index()
                 df_f.columns= ['Date', 'EBITDA', 'Gross Profit', 'Total Revenue','Operating Revenue']
-                monthly_revenue = f'.\history\data\_revenue_{symbol}_data.csv'
+                monthly_revenue = f'./history/data/revenue_{symbol}_data.csv'
 
                 df_f.dropna(inplace=True)
                 df_f.to_csv(monthly_revenue)
@@ -250,8 +250,8 @@ def DailyQuote(symbol):
                     data = data[["Date", "Open", "High", "Low", "Close"]]
                     data['Date'] = pd.to_datetime(data['Date'],format="%Y-%m-%d")
                     t = '2020-11-18'
-                    file_name= f'.\history\data\_{symbol}_data.csv'
-                    monthly_file = f'.\history\data\monthly_{symbol}_data.csv'
+                    file_name= f'./history/data/_{symbol}_data.csv'
+                    monthly_file = f'./history/data/monthly_{symbol}_data.csv'
                     #monthly_revenue = f'.\data\revenue_{symbol}_data.csv'
                     #data = data.query(f"Date < '{today}'").reset_index(drop=True)
 
