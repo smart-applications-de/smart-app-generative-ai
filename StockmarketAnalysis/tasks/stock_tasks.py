@@ -24,7 +24,7 @@ class StockmarketTasks():
     python_coder= CodeInterpreterTool(unsafe=True)
 
     def __tip_section(self):
-        return "If you do your BEST WORK, I'll tip you $100!"
+        return "If you do your BEST WORK, I'll tip you $10000!"
 
     def Read_Filetask(self,agent,company_stock,historical_data,financial_data,company_info) :
         description_FR = dedent(f"""
@@ -36,8 +36,8 @@ class StockmarketTasks():
             You MUST Explain each value and interpret it . Based on the analysis make    recommadation to buy, hold or sell. 
             You MUST ONLY extract from these files: 
             *** Parameters ***: 
-            monthly_{company_stock}_data historical csv file: {historical_data}
-            {company_stock}_qfinancial_ratios.csv csv file: {financial_data}
+            monthly historical csv file: {historical_data}
+            KPI ratios csv file: {financial_data}
             company stock info  csv file: {company_info}
              {self.__tip_section()}
             """)
