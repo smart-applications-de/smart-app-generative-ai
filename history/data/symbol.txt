@@ -39,3 +39,4 @@ FANG
 DVN
 AR
 OVV
+APA
