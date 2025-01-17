@@ -59,7 +59,7 @@ if germin_key  and serp_key:
             daq_ticker = df_daq[['Symbol']]
             daq_ticker.columns = ['symbol']
             df_stock=(df_stock._append(daq_ticker))
-            df_jones = pd.read_csv(f'.\history\data\dow_jones.csv')
+            df_jones = pd.read_csv(f'./history/data/dow_jones.csv')
             #s_p500
 
             jones_ticker = df_jones[['Symbol']]
