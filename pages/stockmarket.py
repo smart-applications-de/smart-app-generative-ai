@@ -66,6 +66,9 @@ if germin_key  and serp_key:
             jones_ticker.columns = ['symbol']
 
             df_stock=df_stock._append(jones_ticker,ignore_index=True)
+            per=pd.read_csv("./history/data/symbol.txt")
+            per.columns=['symbol']
+            df_stock = pd.concat([df_stock, per], ignore_index=True)
 
 
             df_stock = df_stock.drop_duplicates(ignore_index=True)
