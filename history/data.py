@@ -104,7 +104,7 @@ start = time.time()
 def YahooStockPerformance(symbol,ifETF=False):
     try:
         p = yf.Ticker(str(symbol))
-        data = pd.DataFrame(p.history(period='1y').reset_index())
+        data = pd.DataFrame(p.history(period='2y').reset_index())
         data = data[["Date", "Open", "High", "Low", "Close"]]
         data['Date'] = pd.to_datetime(data['Date'], format="%Y-%m-%d")
         data['prevClose'] = data['Close'].shift(1)
@@ -112,12 +112,14 @@ def YahooStockPerformance(symbol,ifETF=False):
         data['month'] = data['Close'].shift(22)
         data['3month'] = data['Close'].shift(66)
         data['6month'] = data['Close'].shift(132)
+        data['1yr'] = data['Close'].shift(252)
 
         data['1_day_performance'] = (data['Close'] - data['prevClose']) * 100 /data['prevClose']
         data['week_performance'] = (data['Close'] - data['week']) * 100 /data['week']
         data['month_performance'] = (data['Close'] - data['month']) * 100 /  data['month']
         data['3month_performance'] = (data['Close'] - data['3month']) * 100 / data['3month']
         data['6month_performance'] = (data['Close'] - data['6month']) * 100 /  data['6month']
+        data['1yr_performance'] = (data['Close'] - data['1yr']) * 100 /  data['1yr']
         min_date = data['Date'].min()
         max_date = data['Date'].max()
 
@@ -127,9 +129,9 @@ def YahooStockPerformance(symbol,ifETF=False):
              '6month_performance']].round(2)
         df_yr_min = data.loc[data['Date'] == f"'{min_date}'"][['Close']].round(2)
 
-        df_yr_max['1yr_performance'] = (
+        df_yr_max['2yr_performance'] = (
                     (df_yr_max['Close'].values - df_yr_min['Close'].values) * 100 / df_yr_min['Close'].values)
-        df_yr_max['1yr_performance'] = df_yr_max['1yr_performance'].round(2)
+        df_yr_max['2yr_performance'] = df_yr_max['2yr_performance'].round(2)
         try:
             df_yr_max['Ticker'] = symbol
             if ifETF:
@@ -153,7 +155,7 @@ def YahooStockPerformance(symbol,ifETF=False):
 
 def AllStocksPerformnace(df_stocks):
     try:
-        ETFs=['^NDX','^GSPC','^DJI','^GDAXI','^FTSE','URTH','SPY','VOO', 'IVV','VTI','IEFA','VUG']
+        ETFs=['^NDX','^GSPC','^DJI','^GDAXI','^FTSE','URTH','SPY','VOO', 'IVV','VTI','IEFA','VUG','^STOXX50E', '^FCHI','^NYA','^N225','^HSI','^OEX','^N100']
         df=pd.DataFrame()
         try:
             for etf in ETFs:
@@ -165,7 +167,7 @@ def AllStocksPerformnace(df_stocks):
 
         except:
             pass
-        df.to_csv(f'.\history\data\df_etf.csv', index=False)
+        df.to_csv(f'./history/data/df_etf.csv', index=False)
     except Exception as error:
         print(error)
 
@@ -184,7 +186,7 @@ def AllStocksPerformnace(df_stocks):
                     pass
         except:
             pass
-        df_performance.to_csv(f'.\history\data\df_performance.csv',index=False)
+        df_performance.to_csv(f'./history/data/df_performance.csv',index=False)
         return df_performance
     except Exception as error1:
         print(error1)
@@ -197,7 +199,7 @@ def DailyQuote(symbol):
 
         try:
             try:
-                df_symbol = pd.read_csv(".\history\data\dax_companies.csv")
+                df_symbol = pd.read_csv("./history/data/dax_companies.csv")
                 if symbol in df_symbol['Ticker-en'].values:
                     isdax=True
                 else:
@@ -229,7 +231,7 @@ def DailyQuote(symbol):
                                   'returnOnEquity',
                                   'freeCashflow',  'earningsGrowth', 'revenueGrowth', 'grossMargins', 'ebitdaMargins',
                                    'operatingMargins','trailingPegRatio', 'sector', 'longBusinessSummary','industry','regularMarketOpen']]
-                company_stock_info = f'.\history\data\company_stock_info_{symbol}_data.csv'
+                company_stock_info = f'./history/data/company_stock_info_{symbol}_data.csv'
                 df_data.to_csv(company_stock_info)
             except Exception as error:
                 print(error)
@@ -238,7 +240,7 @@ def DailyQuote(symbol):
 
                 df_f= df_f.reset_index()
                 df_f.columns= ['Date', 'EBITDA', 'Gross Profit', 'Total Revenue','Operating Revenue']
-                monthly_revenue = f'.\history\data\_revenue_{symbol}_data.csv'
+                monthly_revenue = f'./history/data/revenue_{symbol}_data.csv'
 
                 df_f.dropna(inplace=True)
                 df_f.to_csv(monthly_revenue)
@@ -250,8 +252,8 @@ def DailyQuote(symbol):
                     data = data[["Date", "Open", "High", "Low", "Close"]]
                     data['Date'] = pd.to_datetime(data['Date'],format="%Y-%m-%d")
                     t = '2020-11-18'
-                    file_name= f'.\history\data\_{symbol}_data.csv'
-                    monthly_file = f'.\history\data\monthly_{symbol}_data.csv'
+                    file_name= f'./history/data/_{symbol}_data.csv'
+                    monthly_file = f'./history/data/monthly_{symbol}_data.csv'
                     #monthly_revenue = f'.\data\revenue_{symbol}_data.csv'
                     #data = data.query(f"Date < '{today}'").reset_index(drop=True)
 

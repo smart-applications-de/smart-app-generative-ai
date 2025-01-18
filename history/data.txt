@@ -5,3 +5,10 @@ symbol
 ^DJI
 ^FTSE
 MWS=F
+^STOXX50E
+^FCHI
+^NYA
+^N225
+^HSI
+^OEX
+^N100

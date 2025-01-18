@@ -15,7 +15,7 @@ def DAXMarketCAP():
         html = pd.read_html('https://de.wikipedia.org/wiki/DAX')
         df = html[2]
         df.dropna(inplace=True)
-        dax_marketCap = f'.\history\data\dax_market_Cap.csv'
+        dax_marketCap = f'./history/data/dax_market_Cap.csv'
         df.to_csv(dax_marketCap, index=False)
         return df
     except  Exception as error:
@@ -29,7 +29,7 @@ def DAXCompanies():
         df = html[4]
         df['Ticker-en'] = df['Ticker'].apply(lambda x: x.split('.')[0])
         #df.dropna(inplace=True)
-        dax_companies = f'.\history\data\dax_companies.csv'
+        dax_companies = f'./history/data/dax_companies.csv'
         df = df.drop(columns=['Logo'])
         df.to_csv(dax_companies,index=False)
         return df
@@ -42,7 +42,7 @@ def Top500Companies():
     try:
         html = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
         df = html[0]
-        Top500_companies = f'.\history\data\s_p500.csv'
+        Top500_companies = f'./history/data/s_p500.csv'
         df.to_csv(Top500_companies,index=False)
         return df
     except Exception as error:
@@ -52,7 +52,7 @@ def Nasdaq_100():
     try:
         html = pd.read_html('https://en.wikipedia.org/wiki/Nasdaq-100')
         df = html[4]
-        nasdaq_companies = f'.\history\data\/nasdaq_100.csv'
+        nasdaq_companies = f'./history/data/nasdaq_100.csv'
         df.to_csv(nasdaq_companies,index=False)
         return df
     except Exception as error:
@@ -62,7 +62,7 @@ def DowJones():
     try:
         html = pd.read_html('https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average')
         df = html[2]
-        dow_companies = f'.\history\data\dow_jones.csv'
+        dow_companies = f'./history/data/dow_jones.csv'
         df.to_csv(dow_companies,index=False)
         return df
     except Exception as error:
@@ -81,7 +81,7 @@ def MegaCapCompanies():
         html = pd.read_html(tb.prettify())
 
         df = html[0]
-        megaCap = f'.\history\data\mega_capCompanies.csv'
+        megaCap = f'./history/data/mega_capCompanies.csv'
         df.to_csv(megaCap,index=False)
         return df
     except Exception as error:
@@ -102,7 +102,7 @@ def IndustryPerformance():
         html_ind = pd.read_html(tb_ind.prettify())
 
         df_ind = html_ind[0]
-        industry = f'.\history\data\industry.csv'
+        industry = f'./history/data/industry.csv'
         df_ind.to_csv(industry,index=False)
         return  df_ind
     except Exception as error:
@@ -121,7 +121,7 @@ def  SectorPerformance():
         html_se = pd.read_html(tb_se.prettify())
 
         df_se = html_se[0]
-        sector = f'.\history\data\sector.csv'
+        sector = f'./history/data/sector.csv'
         df_se.to_csv(sector,index=False)
 
         return df_se
@@ -145,7 +145,7 @@ def QuartelyFinancialAnalysis(symbol):
         html = pd.read_html(tb.prettify())
 
         df = html[0]
-        financial_ratios = f'.\history\data\_{symbol}_qfinancial_ratios.csv'
+        financial_ratios = f'./history/data/_{symbol}_qfinancial_ratios.csv'
         df=df.T
         df.to_csv(financial_ratios,index=False )
         return df
@@ -170,7 +170,7 @@ def AnualAnalysis(symbol):
             html = pd.read_html(tb.prettify())
 
             df = html[0]
-            financial_ratios = f'.\history\data\_{symbol}_yr_financial_ratios.csv'
+            financial_ratios = f'./history/data/_{symbol}_yr_financial_ratios.csv'
             try:
 
                 return df.T
@@ -197,7 +197,7 @@ def ListGermanyStockExchange():
         html = pd.read_html(tb.prettify())
 
         df = html[0]
-        german_stocks = f'.\history\data\german_stocks.csv'
+        german_stocks = f'./history/data/german_stocks.csv'
         df.to_csv(german_stocks, index=False)
         return df
     except Exception as error:
@@ -237,7 +237,7 @@ def SummaryLoad():
                 df_symbol = pd.concat([df_symbol, sy], ignore_index=True)
             df_symbol =df_symbol.drop_duplicates(ignore_index=True)
 
-            df_symbol.to_csv(f'.\history\data\Tickers.csv', index=False)
+            df_symbol.to_csv(f'./history/data/Tickers.csv', index=False)
 
 
 
