@@ -104,7 +104,7 @@ start = time.time()
 def YahooStockPerformance(symbol,ifETF=False):
     try:
         p = yf.Ticker(str(symbol))
-        data = pd.DataFrame(p.history(period='1y').reset_index())
+        data = pd.DataFrame(p.history(period='2y').reset_index())
         data = data[["Date", "Open", "High", "Low", "Close"]]
         data['Date'] = pd.to_datetime(data['Date'], format="%Y-%m-%d")
         data['prevClose'] = data['Close'].shift(1)
@@ -112,12 +112,14 @@ def YahooStockPerformance(symbol,ifETF=False):
         data['month'] = data['Close'].shift(22)
         data['3month'] = data['Close'].shift(66)
         data['6month'] = data['Close'].shift(132)
+        data['1yr'] = data['Close'].shift(252)
 
         data['1_day_performance'] = (data['Close'] - data['prevClose']) * 100 /data['prevClose']
         data['week_performance'] = (data['Close'] - data['week']) * 100 /data['week']
         data['month_performance'] = (data['Close'] - data['month']) * 100 /  data['month']
         data['3month_performance'] = (data['Close'] - data['3month']) * 100 / data['3month']
         data['6month_performance'] = (data['Close'] - data['6month']) * 100 /  data['6month']
+        data['1yr_performance'] = (data['Close'] - data['1yr']) * 100 /  data['1yr']
         min_date = data['Date'].min()
         max_date = data['Date'].max()
 
@@ -127,9 +129,9 @@ def YahooStockPerformance(symbol,ifETF=False):
              '6month_performance']].round(2)
         df_yr_min = data.loc[data['Date'] == f"'{min_date}'"][['Close']].round(2)
 
-        df_yr_max['1yr_performance'] = (
+        df_yr_max['2yr_performance'] = (
                     (df_yr_max['Close'].values - df_yr_min['Close'].values) * 100 / df_yr_min['Close'].values)
-        df_yr_max['1yr_performance'] = df_yr_max['1yr_performance'].round(2)
+        df_yr_max['2yr_performance'] = df_yr_max['2yr_performance'].round(2)
         try:
             df_yr_max['Ticker'] = symbol
             if ifETF:
@@ -153,7 +155,7 @@ def YahooStockPerformance(symbol,ifETF=False):
 
 def AllStocksPerformnace(df_stocks):
     try:
-        ETFs=['^NDX','^GSPC','^DJI','^GDAXI','^FTSE','URTH','SPY','VOO', 'IVV','VTI','IEFA','VUG']
+        ETFs=['^NDX','^GSPC','^DJI','^GDAXI','^FTSE','URTH','SPY','VOO', 'IVV','VTI','IEFA','VUG','^STOXX50E', '^FCHI','^NYA','^N225','^HSI','^OEX','^N100']
         df=pd.DataFrame()
         try:
             for etf in ETFs:
