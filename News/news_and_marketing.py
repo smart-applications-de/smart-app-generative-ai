@@ -24,9 +24,12 @@ from textwrap import dedent
 from dotenv import  load_dotenv
 
 
-def CrewStocknews(germin_api, serp_api, topic, year, date):
+def CrewStocknews(germin_api, serp_api, topic, year, date,company, sector, summary):
     os.environ["GOOGLE_API_KEY"] = germin_api
     os.environ['SERPER_API_KEY'] = serp_api
+    company=company
+    sector=sector
+    summary=summary
     GOOGLE_API_KEY =germin_api
        # (os.environ.get('GOOGLE_API_KEY'))
     google_tool = SerperDevTool(
@@ -49,9 +52,9 @@ def CrewStocknews(germin_api, serp_api, topic, year, date):
     verbose = True,
     api_key = GOOGLE_API_KEY
     )
-    role_retiever = dedent("""
+    role_retiever = dedent(f"""
             {topic} AI News Retriever""")
-    goal_retriever = dedent("""
+    goal_retriever = dedent(f"""
             Retrieve the latest news and information related to {topic}
             Uncover cutting-edge developments in {topic}""")
 
@@ -130,8 +133,9 @@ def CrewStocknews(germin_api, serp_api, topic, year, date):
     """Tasks Definition AI news"""
 
     # retrieve_news_task:
-    description_ret = dedent("""
-            Conduct a thorough research about the company stock {topic}
+    description_ret = dedent(f"""
+            Conduct a thorough research about the company stock {topic}, company name: {company}, 
+            sector : {sector} and company description : {summary}
             Make sure you find any interesting and relevant latest information given
             the current year is {year}. Pay special attention to any significant events, market sentiments, and analysts' opinions. 
             You Must include the overall trend bullish or bearish. """)
@@ -151,9 +155,13 @@ def CrewStocknews(germin_api, serp_api, topic, year, date):
     )
 
     # website_scrape_task:
-    description_scraper = dedent("""
-        Get all informations provided  by AI News Retriever for  company stock {topic} and extract ONLY the latest news.
-         Search for more information like trading activies about the compay stock {topic}.
+    description_scraper = dedent(f"""
+        Get all informations provided  by AI News Retriever for  company stock {topic}, 
+        company name: {company}, 
+        sector : {sector} and company description : {summary}
+         
+         and extract ONLY the latest news.
+         Search for more information like trading activies about the compay stock {topic} and company name {company} .
          Don't scrape the website because you don't have access on 
         the website content, You MUST include the summary provided by AI News Retriever. """)
     expected_output_scraper = dedent("""

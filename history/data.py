@@ -126,7 +126,7 @@ def YahooStockPerformance(symbol,ifETF=False):
 
         df_yr_max = data.loc[data['Date'] == f"'{max_date}'"][
             ['Date', 'Close', '1_day_performance', 'week_performance', 'month_performance', '3month_performance',
-             '6month_performance']].round(2)
+             '6month_performance', '1yr_performance']].round(2)
         df_yr_min = data.loc[data['Date'] == f"'{min_date}'"][['Close']].round(2)
 
         df_yr_max['2yr_performance'] = (
