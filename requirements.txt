@@ -209,12 +209,8 @@ pytest==8.3.4
 python-dotenv==1.0.1
 pytube==15.0.0
 pytz==2024.2
-pyvis==0.3.2
-pywin32==308
 PyYAML==6.0.2
 qdrant-client==1.12.1
-RapidFuzz==3.10.1
-referencing==0.35.1
 regex==2024.11.6
 requests==2.32.3
 requests-oauthlib==2.0.0
