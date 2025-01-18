@@ -10,7 +10,7 @@ import os
 
 class StockMarketCrew:
 
-    def __init__(self,germin_key,serp_key, company_stock, hist_csv, financial_csv, company_info="company_info.csv"):
+    def __init__(self,germin_key,serp_key, company_stock, hist_csv, financial_csv,company, sector,summary,industry,website, company_info="company_info.csv"):
         self.germin_key=germin_key
         self.serp_key=serp_key
         self.company_stock =company_stock
@@ -19,6 +19,11 @@ class StockMarketCrew:
         self.company_info = company_info
         os.environ["GOOGLE_API_KEY"]=self.germin_key
         os.environ['SERPER_API_KEY']=self.serp_key
+        self.company=company 
+        self.sector=sector
+        self.summary=summary 
+        self.industry=industry
+        self.website=website 
        
     def LoadYahoofinanceData(self):
         ticker = yf.Ticker(self.company_stock)
@@ -48,17 +53,17 @@ class StockMarketCrew:
         stock_experte_agent= stockagent.StockmarketExpert()
         stock_adivor_agent = stockagent.PrivateInvestorAdvisor()
         try:
-            file_reader_tsk=SK.Read_Filetask(file_reader,self.company_stock,self.hist_csv,self.financial_csv,self.company_info)
+            file_reader_tsk=SK.Read_Filetask(file_reader,self.company_stock,self.hist_csv,self.financial_csv,self.company_info,self.company,self.sector)
         except Exception as fileerr:
             print(fileerr)
         try:
-            stock_f_analysis_tsk=  SK.financial_analyst_task(stock_f_analysis_agent,self.company_stock)
+            stock_f_analysis_tsk=  SK.financial_analyst_task(stock_f_analysis_agent,self.company_stock,self.company,self.sector,self.summary,self.industry,self.website)
         except Exception as f_anerror:
             print(f_anerror)
-        research_tsk=  SK.Research_Analyst_task(research_agent,self.company_stock)
+        research_tsk=  SK.Research_Analyst_task(research_agent,self.company_stock,self.company,self.sector,self.industry,self.summary,self.website)
 
         context_exp=file_reader_tsk
-        stock_experte_tsk = SK.StockmarketExpert_Task(stock_experte_agent, context_exp,self.company_stock)
+        stock_experte_tsk = SK.StockmarketExpert_Task(stock_experte_agent, context_exp,self.company_stock,self.company)
         #context_rec=file_reader_tsk,stock_f_analysis_tsk,research_tsk, stock_experte_tsk
 
         description_recommend = dedent(f"""
