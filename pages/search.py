@@ -33,14 +33,14 @@ def SerpApiKey():
 @st.cache_resource
 def SearchAgent(germin_key,SERPAPI_API_KEY,query):
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0,
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.3,
                                      max_tokens=None,
                                      timeout=None,
-                                     max_retries=2,
+                                     max_retries=3,
                                      )
         search = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
                                           gl="de",
-                                          hl= "de",
+                                        #  hl= "de",
                                           num= 20
                                         )
         tools = [
@@ -75,14 +75,14 @@ def SearchAgent(germin_key,SERPAPI_API_KEY,query):
 @st.cache_resource
 def SearchNews(germin_key, SERPAPI_API_KEY,topic):
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0,
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.3,
                                      max_tokens=None,
                                      timeout=None,
-                                     max_retries=2,
+                                     max_retries=3,
                                      )
         news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
                                           gl= "de",
-                                         hl= "de",
+                                       #  hl= "de",
                                           num= 20,
                                          type="news"
                                         )
@@ -120,14 +120,14 @@ def SearchPlaces(germin_key, SERPAPI_API_KEY,topic):
                                      timeout=None,
                                      max_retries=2,
                                      )
-        news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                        num=4,
+        places = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
+                                        num=10,
                                       type="places"
                                         )
         tools_news = [
             Tool(
                 name="Google Places",
-                func=news.run,
+                func=places.run,
                 description="useful for when you need to  search for  Google Places. ",
             )
         ]
