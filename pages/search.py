@@ -39,7 +39,6 @@ def SearchAgent(germin_key,SERPAPI_API_KEY,query):
                                      max_retries=2,
                                      )
         search = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                          "location"= "Germany",
                                           "gl"="de",
                                           "hl"= "de",
                                           "num"= 20
