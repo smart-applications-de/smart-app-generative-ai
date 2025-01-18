@@ -287,3 +287,4 @@ yarl==1.18.3
 yfinance==0.2.50
 youtube-transcript-api==0.6.3
 zipp==3.21.0
+pysqlite3-binary
