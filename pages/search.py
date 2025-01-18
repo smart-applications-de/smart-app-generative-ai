@@ -39,9 +39,9 @@ def SearchAgent(germin_key,SERPAPI_API_KEY,query):
                                      max_retries=2,
                                      )
         search = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                        #  "gl"="de",
-                                        #  "hl"= "de",
-                                          "num"= 20
+                                          gl="de",
+                                          hl= "de",
+                                          num= 20
                                         )
         tools = [
             Tool(
@@ -81,9 +81,9 @@ def SearchNews(germin_key, SERPAPI_API_KEY,topic):
                                      max_retries=2,
                                      )
         news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                          #"gl"= "de",
-                                         # "hl"= "de",
-                                          "num"= 20,
+                                          gl= "de",
+                                         hl= "de",
+                                          num= 20,
                                          type="news"
                                         )
         tools_news = [
