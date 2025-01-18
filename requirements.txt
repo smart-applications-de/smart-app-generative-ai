@@ -206,12 +206,7 @@ pyright==1.1.390
 pysbd==0.3.4
 PySocks==1.7.1
 pytest==8.3.4
-python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
-python-iso639==2024.10.22
-python-magic==0.4.27
-python-oxmsg==0.0.1
-python-pptx==1.0.2
 pytube==15.0.0
 pytz==2024.2
 pyvis==0.3.2
