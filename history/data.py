@@ -155,7 +155,8 @@ def YahooStockPerformance(symbol,ifETF=False):
 
 def AllStocksPerformnace(df_stocks):
     try:
-        ETFs=['^NDX','^GSPC','^DJI','^GDAXI','^FTSE','URTH','SPY','VOO', 'IVV','VTI','IEFA','VUG','^STOXX50E', '^FCHI','^NYA','^N225','^HSI','^OEX','^N100']
+        ETFs=['^NDX','^GSPC','^DJI','^GDAXI','^FTSE','URTH','SPY','VOO', 'IVV','VTI','IEFA','VUG','^STOXX50E', '^FCHI','^NYA','^N225',
+              '^HSI','^OEX','^N100','GC=F','CL=F','SLVR','^990100-USD-STRD','^BUK100P','SI=F']
         df=pd.DataFrame()
         try:
             for etf in ETFs:
