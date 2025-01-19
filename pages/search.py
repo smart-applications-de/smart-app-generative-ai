@@ -39,7 +39,7 @@ def SearchAgent(germin_key,SERPAPI_API_KEY,query):
                                      max_retries=2,
                                      )
         search = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                        num=4,
+                                        num=10,
                                      #   gl="de"
                                         )
         tools = [
@@ -74,13 +74,13 @@ def SearchAgent(germin_key,SERPAPI_API_KEY,query):
 @st.cache_resource
 def SearchNews(germin_key, SERPAPI_API_KEY,topic):
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0,
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.2,
                                      max_tokens=None,
                                      timeout=None,
                                      max_retries=2,
                                      )
         news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                        num=4,
+                                        num=20,
                                         gl="de",
                                       type="news"
                                         )
@@ -113,13 +113,14 @@ def SearchNews(germin_key, SERPAPI_API_KEY,topic):
 @st.cache_resource
 def SearchPlaces(germin_key, SERPAPI_API_KEY,topic):
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0,
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.2,
                                      max_tokens=None,
                                      timeout=None,
                                      max_retries=2,
                                      )
         news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                        num=4,
+                                        num=10,
+                                       gl="de",
                                       type="places"
                                         )
         tools_news = [
@@ -139,7 +140,7 @@ def SearchPlaces(germin_key, SERPAPI_API_KEY,topic):
                 "system",
                 f"""You are  Expert on searching for Google places and locations. 
                             You takes the user input on a given topic and search for places related to the given topic. 
-                            You MUST Extract the exact places including the adresses.  The current date is:{date} and current year:{yr}.
+                            The current date is:{date} and current year:{yr}.
                             The Output must be Formatted in markdown without ```""",
             ),
             ("human", topic),
