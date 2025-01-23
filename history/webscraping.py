@@ -132,10 +132,15 @@ def  SectorPerformance():
 
 def QuartelyFinancialAnalysis(symbol):
     try:
-        symbol=str(symbol).lower()
+        #symbol=str(symbol).lower()
+        if "." in str(symbol).lower():
+           sym=str(symbol).split(".")[0]
+        else:
+           sym=str(symbol).lower()
+           
         #https://stockanalysis.com/stocks/aapl/financials/ratios/
         #https: // stockanalysis.com / stocks / aapl / financials / ratios /?p = quarterly
-        url = f'https://stockanalysis.com/stocks/{symbol}/financials/ratios/?p=quarterly'
+        url = f'https://stockanalysis.com/stocks/{sym}/financials/ratios/?p=quarterly'
 
         r = rq.get(url, headers=headers)
         soup = bs4.BeautifulSoup(r.content, 'html.parser')
@@ -157,7 +162,12 @@ def QuartelyFinancialAnalysis(symbol):
 
 def AnualAnalysis(symbol):
         try:
-            symbol = str(symbol).lower()
+            #symbol = str(symbol).lower()
+                 
+           if "." in str(symbol).lower():
+                      sym=str(symbol).split(".")[0]
+           else:
+                       sym=str(symbol).lower()
             # https://stockanalysis.com/stocks/aapl/financials/ratios/
             url = f'https://stockanalysis.com/stocks/{symbol}/financials/ratios/'
 
