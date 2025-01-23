@@ -132,7 +132,7 @@ def  SectorPerformance():
 
 def QuartelyFinancialAnalysis(symbol):
     try:
-        #symbol=str(symbol).lower()
+        symbol=str(symbol).lower()
         if "." in str(symbol).lower():
            sym=str(symbol).split(".")[0]
         else:
@@ -162,12 +162,12 @@ def QuartelyFinancialAnalysis(symbol):
 
 def AnualAnalysis(symbol):
         try:
-            #symbol = str(symbol).lower()
+           symbol = str(symbol).lower()
                  
-           if "." in str(symbol).lower():
+           if "." in symbol:
                       sym=str(symbol).split(".")[0]
            else:
-                       sym=str(symbol).lower()
+                      sym=symbol
             # https://stockanalysis.com/stocks/aapl/financials/ratios/
             url = f'https://stockanalysis.com/stocks/{symbol}/financials/ratios/'
 
