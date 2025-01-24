@@ -80,7 +80,7 @@ class StockmarketTasks():
             Conduct a thorough analysis of {company_stock}'s stock financial health and market performance based on internet research. The current year is {yr} and current date: {date}.
              Also, analyze the stock's performance in comparison
             to its industry peers and overall market trends. Make sure to use the latest data and information.  
-            You MUST INCLUDE  a section with Top Three Giants Companies  in this industry {industry} and sector:  {sector}.
+            You MUST INCLUDE  a section with Top 5 Giants Companies  in this industry {industry} and sector:  {sector}.
             *** Parameters ***: 
             company name: {company}
             sector: {sector}
