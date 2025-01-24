@@ -67,6 +67,7 @@ class StockMarketCrew:
         #context_rec=file_reader_tsk,stock_f_analysis_tsk,research_tsk, stock_experte_tsk
 
         description_recommend = dedent(f"""
+                   You are working for the MOST IMPORTANT customer and you have to impress  him with the BEST Results !
                     Review and synthesize the analyses provided by the
                     previous tasks .
                     Combine these insights to form a comprehensive
