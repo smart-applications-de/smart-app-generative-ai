@@ -81,19 +81,20 @@ def CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,
         output_csv_job = f'./Crew_AI/Reports/{profession}_posting.md'
         job_posting_research= Agent(llm=llm,
                                role='Best Job Posting Research',
-                               goal ='Search the best Job postings online',
+                               goal ='Search the best Job postings online that matchs the cv.',
                                memory=True,
                                backstory=( """
                                 A Job posting research expert with decades of experience on searching jobs online platforms like stepstones, indeed, Xing and LinkInd.
                                """),
-                                tools=[google_tool,  FileWriterTool(), ScrapeWebsiteTool(), WebsiteSearchTool()],
+                                tools=[google_tool,  FileWriterTool(), WebsiteSearchTool()],
                                 allow_delegation=False,
                                 verbose=True
 
                                )
         job_posting_task = Task(description=(f"""
-           Conduct a thorough research on online job posting on given {profession} and extract job titles, job skills, education, location,work experience,link to the job and company name.
-           Ensure you provide a list of top 5 job opportunities based on {profession}, nearest location to {location} and the lastest job posting based on current data: {date}
+           Conduct a thorough research on online job posting on given {profession}, and summary from the CV extracted from the previous task.
+           When possible extract job titles, job skills, education, location,work experience,link to the job and company name.
+           Ensure you provide a list of top 5 job opportunities based on {profession} and summary from the prevous task, nearest location to {location} and the lastest job posting based on current data: {date}
            You're given the following parameters:
               profession: {profession}
               current year: {year}
@@ -103,7 +104,7 @@ def CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,
 
                                 expected_output="""
 
-            for each job posting extract A structured  summary  including:
+            for each job posting when possible extract A structured  summary  including:
             -  job title
             - Technical Skills
             - work experience
@@ -116,6 +117,7 @@ def CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,
                   """,
                                 async_execution=False,
                                 agent=job_posting_research,
+                                 context=[read_cv_task],
                                 output_file=output_csv_job
                                 )
 
