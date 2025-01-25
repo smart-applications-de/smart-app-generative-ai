@@ -91,7 +91,7 @@ class StockmarketTasks():
                {self.__tip_section()} """)
         expected_output_FA = dedent("""
             The final report must expand on the summary provided but now
-            including a clear assessment of the stock's financial standing, its strengths and weaknesses,
+            including company overview,  a clear assessment of the stock's financial standing, its strengths and weaknesses,
             and how it fares against its competitors   in the current market scenario.
             Make sure to use the most recent data possible.
         """)
