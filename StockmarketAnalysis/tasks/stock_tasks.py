@@ -34,8 +34,18 @@ class StockmarketTasks():
         quickRatio = p.info['quickRatio']
         currentRatio = p.info['currentRatio']
         trailingPE = p.info['trailingPE']
-        earningsGrowth= p.info['earningsGrowth']
-        revenueGrowth = p.info['revenueGrowth']
+        if  p.info['earningsGrowth']:
+             earningsGrowth=p.info['earningsGrowth']
+        else:
+           earningsGrowth=None
+        if  p.info['revenueGrowth']:
+          revenueGrowth = p.info['revenueGrowth']
+        else:
+           earningsGrowth =None
+          
+          
+        #earningsGrowth= p.info['earningsGrowth']
+        #revenueGrowth = p.info['revenueGrowth']
 
         description_FR = dedent(f""" You are working for the MOST IMPORTANT customer and you have to impress  him with the BEST Results!. 
             Conduct a thorough analysis of {company_stock}'s stock 
