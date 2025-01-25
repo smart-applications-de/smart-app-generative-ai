@@ -235,6 +235,12 @@ def DailyQuote(symbol):
                 company_stock_info = f'./history/data/company_stock_info_{symbol}_data.csv'
                 df_data.to_csv(company_stock_info)
             except Exception as error:
+                df_data= df_data[['website','beta','trailingPE', 'symbol','longName', 'marketCap', 'bookValue',
+                  'priceToBook', 'currentPrice', 'recommendationKey', 'totalCash', 'totalCashPerShare',
+                   'quickRatio', 'currentRatio','totalRevenue','previousClose','debtToEquity', 'revenuePerShare',
+                  'returnOnEquity', 'sector', 'longBusinessSummary','industry','regularMarketOpen']]
+                company_stock_info = f'./history/data/company_stock_info_{symbol}_data.csv'
+                df_data.to_csv(company_stock_info)
                 print(error)
             try:
                 df_f = df_financials[['EBITDA','Gross Profit', 'Total Revenue','Operating Revenue']]
@@ -283,6 +289,12 @@ def DailyQuote(symbol):
                     print(data.head(10))
                     df_monthly = (data.groupby(['year','month'])[['close','open','high','low','daily_trend','monthly_trend',
                                                                   'sma_5_day','sma_20_day','sma_50_day', 'sma_200_day']].mean()).reset_index()
+                    df_monthly_max = (data.groupby(['year','month'])[['close','open','high','low','daily_trend']].max()).reset_index()
+                    df_monthly_max.columns=['year','month','close_max','open_max','high_max','low_max','daily_trend_max']
+                    df_monthly=pd.concat([df_monthly, df_monthly_max],ignore_index=True)
+                    df_monthly_low = (data.groupby(['year','month'])[['close','open','high','low','daily_trend']].min()).reset_index()
+                    df_monthly_low.columns=['year','month','close_min','open_min','high_min','low_min','daily_trend_max']
+                    df_monthly=pd.concat([df_monthly, df_monthly_low],ignore_index=True)
                     df_monthly=df_monthly.round(2)
                     print(df_monthly.head(10))
                     df_monthly.to_csv(monthly_file)
