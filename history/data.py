@@ -226,6 +226,7 @@ def DailyQuote(symbol):
             df_info =pd.DataFrame(p.info)
             df_data=df_info.copy()
             try:
+                
                 df_data= df_data[['website','beta','trailingPE', 'symbol','longName', 'marketCap', 'bookValue',
                                   'priceToBook', 'currentPrice', 'recommendationKey', 'totalCash', 'totalCashPerShare',
                                    'quickRatio', 'currentRatio','totalRevenue','previousClose','debtToEquity', 'revenuePerShare',
@@ -235,7 +236,7 @@ def DailyQuote(symbol):
                 company_stock_info = f'./history/data/company_stock_info_{symbol}_data.csv'
                 df_data.to_csv(company_stock_info)
             except Exception as error:
-                df_data= df_data[['website','beta','trailingPE', 'symbol','longName', 'marketCap', 'bookValue',
+                df_data= df_data[['website','trailingPE', 'symbol','longName', 'marketCap', 'bookValue',
                   'priceToBook', 'currentPrice', 'recommendationKey', 'totalCash', 'totalCashPerShare',
                    'quickRatio', 'currentRatio','totalRevenue','previousClose','debtToEquity', 'revenuePerShare',
                   'returnOnEquity', 'sector', 'longBusinessSummary','industry','regularMarketOpen']]
