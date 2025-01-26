@@ -30,7 +30,12 @@ class StockmarketTasks():
         import yfinance as yf
         p = yf.Ticker(str(company_stock))
         currentPrice = p.info['currentPrice']
-        beta = p.info['beta']
+        if  p.info['beta']:
+          beta = p.info['beta']
+        else:
+          beta =None
+          
+        #beta = p.info['beta']
         quickRatio = p.info['quickRatio']
         currentRatio = p.info['currentRatio']
         trailingPE = p.info['trailingPE']
