@@ -35,8 +35,8 @@ class StockmarketAgents():
             api_key=self.germin_key)
         seper_dev_tool = SerperDevTool(
         n_results=5,
-        country='de',
-        locale='de',
+       # country='de',
+       # locale='de',
         api_key=self.serp_key,
         verbose=True
         )
@@ -65,10 +65,12 @@ class StockmarketAgents():
             temperature=0.3,
             verbose=True,
             api_key=self.germin_key)
-        seper_dev_tool = SerperDevTool(country='de',
+        seper_dev_tool = SerperDevTool(
+          #country='de',
         api_key=self.serp_key,
-        verbose=True,
-        locale='de')
+        verbose=True
+        #locale='de'
+        )
         role_fa = "The Best Financial Analyst"
         goal_fa = "Impress all customers with your financial data and market trends analysis. You are expert in coding with python and expert in solving mathematical operations."
         backstory_fa = """The most seasoned financial analyst with lots of expertise in stock market analysis and investment
@@ -96,9 +98,11 @@ class StockmarketAgents():
             verbose=True,
             api_key=self.germin_key)
         web_search_tool = WebsiteSearchTool()
-        seper_dev_tool = SerperDevTool(country='de',
-                                       api_key=self.serp_key,
-                                       locale='de')
+        seper_dev_tool = SerperDevTool(
+          #country='de',
+                                       api_key=self.serp_key
+                                      # locale='de'
+                                      )
         role_ra = dedent("Staff Research Analyst")
         goal_ra = """Being the best at gathering, interpreting data and amazing
             your customer with it"""
@@ -129,9 +133,11 @@ class StockmarketAgents():
             verbose=True,
             api_key=self.germin_key)
         web_search_tool = WebsiteSearchTool()
-        seper_dev_tool = SerperDevTool(country='de',
-                                       api_key=self.serp_key,
-                                       locale='de')
+        seper_dev_tool = SerperDevTool(
+          #country='de',
+                                       api_key=self.serp_key
+                     #                  locale='de'
+                                      )
         role_fe = "The BEST and MOST Experience Stockmarket Expert"
         goal_fe= ("Conduct a thorough a examination of a give  company stock."
                   "Comparing it to indices like   S&P 500 I, DAX, MSCI world and other ETFS. ")
@@ -158,9 +164,11 @@ class StockmarketAgents():
             temperature=0.3,
             verbose=True,
             api_key=self.germin_key)
-        seper_dev_tool = SerperDevTool(country='de',
-                                       api_key=self.serp_key,
-                                       locale='de')
+        seper_dev_tool = SerperDevTool(
+          #country='de',
+                                       api_key=self.serp_key
+                             #          locale='de'
+        )
         role_IA = dedent("Private Investment Advisor")
         goal_IA =dedent( """
             Impress your customers with full analyses over stocks and summerizing all information provided by other agents""")
