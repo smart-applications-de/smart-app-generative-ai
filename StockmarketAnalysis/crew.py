@@ -10,7 +10,7 @@ import os
 
 class StockMarketCrew:
 
-    def __init__(self,germin_key,serp_key, company_stock, hist_csv, financial_csv,company, sector,summary,industry,website, company_info="company_info.csv"):
+    def __init__(self,germin_key,serp_key, company_stock, hist_csv, financial_csv,company, sector,summary,industry,website, company_info="company_info.csv",model="gemini/gemini-1.5-pro"):
         self.germin_key=germin_key
         self.serp_key=serp_key
         self.company_stock =company_stock
@@ -23,7 +23,8 @@ class StockMarketCrew:
         self.sector=sector
         self.summary=summary 
         self.industry=industry
-        self.website=website 
+        self.website=website
+        self.model=model
        
     def LoadYahoofinanceData(self):
         ticker = yf.Ticker(self.company_stock)
@@ -46,7 +47,7 @@ class StockMarketCrew:
 
     def run(self):
         SK =StockmarketTasks(self.germin_key,self.serp_key)
-        stockagent=StockmarketAgents(self.germin_key,self.serp_key)
+        stockagent=StockmarketAgents(self.germin_key,self.serp_key,self.model)
         file_reader=stockagent.FileReader()
         stock_f_analysis_agent= stockagent.FinancialAnalysist()
         research_agent=stockagent.Research_Analyst()
