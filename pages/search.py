@@ -33,14 +33,17 @@ def SerpApiKey():
 @st.cache_resource
 def SearchAgent(germin_key,SERPAPI_API_KEY,query):
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0,
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.3,
                                      max_tokens=None,
                                      timeout=None,
-                                     max_retries=2,
+                                     max_retries=3,
                                      )
         search = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                        num=10,
-                                     #   gl="de"
+
+                                        # gl="de",
+                                        #  hl= "de",
+                                          num= 10
+
                                         )
         tools = [
             Tool(
@@ -74,15 +77,19 @@ def SearchAgent(germin_key,SERPAPI_API_KEY,query):
 @st.cache_resource
 def SearchNews(germin_key, SERPAPI_API_KEY,topic):
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.2,
+
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.3,
+
                                      max_tokens=None,
                                      timeout=None,
-                                     max_retries=2,
+                                     max_retries=3
                                      )
         news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                        num=20,
-                                        gl="de",
-                                      type="news"
+
+                                      #    gl= "de",
+                                       #  hl= "de",
+                                          num= 20,
+                                         type="news"
                                         )
         tools_news = [
             Tool(
@@ -113,20 +120,22 @@ def SearchNews(germin_key, SERPAPI_API_KEY,topic):
 @st.cache_resource
 def SearchPlaces(germin_key, SERPAPI_API_KEY,topic):
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.2,
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.3,
+
                                      max_tokens=None,
                                      timeout=None,
                                      max_retries=2,
                                      )
-        news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
+
+        places = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
                                         num=10,
-                                       gl="de",
+                
                                       type="places"
                                         )
         tools_news = [
             Tool(
                 name="Google Places",
-                func=news.run,
+                func=places.run,
                 description="useful for when you need to  search for  Google Places. ",
             )
         ]
