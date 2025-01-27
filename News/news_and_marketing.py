@@ -43,9 +43,12 @@ def CrewStocknews(germin_api, serp_api, topic, year, date,company, sector, summa
 
     # retrieve_news:
     web_search_tool = WebsiteSearchTool()
-    seper_dev_tool = SerperDevTool(country='de',
-
-    locale = 'de')
+    seper_dev_tool = SerperDevTool(
+	n_results=10,
+        api_key=serp_api,
+       # SERPER_API_KEY,
+        verbose=True
+    )
     llm = LLM(
     model = "gemini/gemini-1.5-pro",
     temperature = 0.5,
@@ -140,7 +143,7 @@ def CrewStocknews(germin_api, serp_api, topic, year, date,company, sector, summa
             the current year is {year}. Pay special attention to any significant events, market sentiments, and analysts' opinions. 
             You Must include the overall trend bullish or bearish. """)
     expected_output_ret = dedent("""
-            A Summary on research about {topic} and  list of Top 5 websites with the most relevant information about company stock {topic} Formated as markdown. 
+            A Summary on research about {topic} and  list of Top 10 websites with the most relevant information about company stock {topic} Formated as markdown. 
             You MUST Include  source urls.""")
 
     # agent: retrieve_news
