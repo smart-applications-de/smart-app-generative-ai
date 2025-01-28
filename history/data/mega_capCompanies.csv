@@ -1,51 +1,56 @@
 No.,Symbol,Company Name,Market Cap,Stock Price,% Change,Revenue
-1,AAPL,Apple Inc.,"3,458.41B",229.98,0.75%,391.04B
-2,NVDA,NVIDIA Corporation,"3,372.52B",137.71,3.10%,113.27B
-3,MSFT,Microsoft Corporation,"3,189.79B",429.03,1.05%,254.19B
-4,GOOGL,Alphabet Inc.,"2,399.24B",196.0,1.60%,339.86B
-5,AMZN,"Amazon.com, Inc.","2,375.76B",225.94,2.39%,620.13B
-6,META,"Meta Platforms, Inc.","1,546.93B",612.77,0.24%,156.23B
-7,TSLA,"Tesla, Inc.","1,369.09B",426.5,3.06%,97.15B
-8,AVGO,Broadcom Inc.,"1,112.97B",237.44,3.50%,51.57B
-9,BRK.B,Berkshire Hathaway Inc.,"1,009.55B",467.95,1.11%,369.89B
-10,TSM,Taiwan Semiconductor Manufacturing Company Limited,883.73B,211.5,-1.53%,88.29B
-11,WMT,Walmart Inc.,738.59B,91.94,0.70%,673.82B
-12,JPM,JPMorgan Chase & Co.,725.03B,259.16,1.92%,166.88B
-13,LLY,Eli Lilly and Company,653.46B,725.72,-4.21%,40.86B
-14,V,Visa Inc.,626.79B,319.62,0.75%,35.93B
-15,XOM,Exxon Mobil Corporation,493.66B,112.32,0.90%,343.82B
-16,MA,Mastercard Incorporated,481.59B,524.7,0.30%,27.23B
-17,UNH,UnitedHealth Group Incorporated,469.12B,509.76,-0.16%,400.28B
-18,ORCL,Oracle Corporation,450.39B,161.03,0.93%,54.93B
-19,COST,Costco Wholesale Corporation,418.68B,943.19,2.55%,258.81B
-20,HD,"The Home Depot, Inc.",406.66B,409.38,0.01%,154.60B
-21,PG,The Procter & Gamble Company,379.47B,161.13,0.39%,83.91B
-22,NFLX,"Netflix, Inc.",366.80B,858.1,1.87%,37.59B
-23,BAC,Bank of America Corporation,354.13B,46.53,-0.24%,96.07B
-24,JNJ,Johnson & Johnson,353.99B,147.03,-0.50%,87.70B
-25,NVO,Novo Nordisk A/S,352.70B,78.69,-5.27%,40.47B
-26,CRM,"Salesforce, Inc.",310.60B,324.56,1.43%,37.19B
-27,SAP,SAP SE,307.51B,262.83,0.48%,37.10B
-28,ABBV,AbbVie Inc.,303.17B,171.56,-1.23%,55.53B
-29,ASML,ASML Holding N.V.,298.95B,756.33,0.81%,29.29B
-30,CVX,Chevron Corporation,290.18B,161.47,1.31%,191.69B
-31,KO,The Coca-Cola Company,270.14B,62.71,0.74%,46.37B
-32,TMUS,"T-Mobile US, Inc.",254.11B,218.97,1.49%,80.01B
-33,WFC,Wells Fargo & Company,253.51B,77.08,1.49%,77.96B
-34,MRK,"Merck & Co., Inc.",247.70B,97.92,-2.76%,63.17B
-35,CSCO,"Cisco Systems, Inc.",239.88B,60.23,0.69%,52.98B
-36,TM,Toyota Motor Corporation,233.61B,180.78,-0.39%,323.85B
-37,MS,Morgan Stanley,221.56B,137.87,1.52%,61.50B
-38,NOW,"ServiceNow, Inc.",221.06B,1071.48,1.35%,10.46B
-39,ACN,Accenture plc,220.54B,352.59,0.58%,66.36B
-40,AXP,American Express Company,220.18B,312.56,0.35%,59.24B
-41,BX,Blackstone Inc.,219.82B,179.95,1.83%,11.14B
-42,TMO,Thermo Fisher Scientific Inc.,214.07B,559.65,-0.37%,42.37B
-43,GS,"The Goldman Sachs Group, Inc.",211.70B,625.94,2.11%,52.16B
-44,ISRG,"Intuitive Surgical, Inc.",211.09B,592.64,1.47%,7.87B
-45,IBM,International Business Machines Corporation,207.85B,224.79,0.96%,62.58B
-46,LIN,Linde plc,207.60B,436.0,0.81%,33.03B
-47,AZN,AstraZeneca PLC,206.76B,66.6,-0.46%,51.21B
-48,PEP,"PepsiCo, Inc.",205.76B,148.25,1.17%,91.92B
-49,SHEL,Shell plc,205.55B,66.72,0.41%,296.76B
-50,MCD,McDonald's Corporation,201.33B,280.95,0.43%,25.94B
+1,AAPL,Apple Inc.,"3,582.92B",238.26,3.65%,391.04B
+2,MSFT,Microsoft Corporation,"3,323.76B",447.05,2.87%,254.19B
+3,NVDA,NVIDIA Corporation,"3,158.97B",128.99,8.93%,113.27B
+4,AMZN,"Amazon.com, Inc.","2,504.15B",238.15,1.16%,620.13B
+5,GOOGL,Alphabet Inc.,"2,390.67B",195.3,1.82%,339.86B
+6,META,"Meta Platforms, Inc.","1,702.34B",674.33,2.19%,156.23B
+7,TSLA,"Tesla, Inc.","1,277.92B",398.1,0.24%,97.15B
+8,BRK.B,Berkshire Hathaway Inc.,"1,023.62B",470.0,-0.99%,369.89B
+9,AVGO,Broadcom Inc.,971.81B,207.33,2.57%,51.57B
+10,TSM,Taiwan Semiconductor Manufacturing Company Limited,899.12B,201.74,4.90%,88.29B
+11,WMT,Walmart Inc.,781.33B,97.26,-0.14%,673.82B
+12,JPM,JPMorgan Chase & Co.,747.29B,267.12,0.48%,166.88B
+13,LLY,Eli Lilly and Company,724.74B,804.88,-0.41%,40.86B
+14,V,Visa Inc.,656.14B,334.59,0.01%,35.93B
+15,MA,Mastercard Incorporated,502.37B,547.34,-0.05%,27.23B
+16,UNH,UnitedHealth Group Incorporated,499.07B,542.3,-0.22%,400.28B
+17,XOM,Exxon Mobil Corporation,474.80B,108.03,-1.94%,343.82B
+18,ORCL,Oracle Corporation,458.70B,164.0,3.61%,54.93B
+19,COST,Costco Wholesale Corporation,425.55B,958.67,-0.68%,258.81B
+20,HD,"The Home Depot, Inc.",416.06B,418.84,-1.42%,154.60B
+21,NFLX,"Netflix, Inc.",415.71B,971.83,-0.01%,39.00B
+22,PG,The Procter & Gamble Company,389.64B,166.17,-2.06%,84.35B
+23,NVO,Novo Nordisk A/S,378.98B,85.18,-2.66%,40.47B
+24,JNJ,Johnson & Johnson,362.07B,150.39,-1.64%,88.82B
+25,BAC,Bank of America Corporation,356.42B,46.83,-0.55%,96.07B
+26,CRM,"Salesforce, Inc.",344.38B,359.85,3.67%,37.19B
+27,SAP,SAP SE,318.59B,273.75,-0.67%,37.10B
+28,ABBV,AbbVie Inc.,308.88B,174.79,-1.19%,55.53B
+29,CVX,Chevron Corporation,280.76B,156.23,-0.64%,191.69B
+30,KO,The Coca-Cola Company,268.49B,62.33,-2.42%,46.37B
+31,ASML,ASML Holding N.V.,265.57B,683.35,-0.99%,29.29B
+32,TMUS,"T-Mobile US, Inc.",256.53B,221.06,-0.17%,80.01B
+33,WFC,Wells Fargo & Company,256.11B,77.87,-0.09%,77.96B
+34,MRK,"Merck & Co., Inc.",246.46B,97.43,-0.52%,63.17B
+35,TM,Toyota Motor Corporation,245.53B,185.35,-0.62%,323.85B
+36,NOW,"ServiceNow, Inc.",241.38B,1169.93,2.57%,10.46B
+37,CSCO,"Cisco Systems, Inc.",236.70B,59.43,0.59%,52.98B
+38,ACN,Accenture plc,236.65B,378.35,1.39%,66.36B
+39,BX,Blackstone Inc.,226.77B,185.64,1.71%,11.14B
+40,TMO,Thermo Fisher Scientific Inc.,223.48B,584.27,0.11%,42.37B
+41,MS,Morgan Stanley,222.63B,138.54,1.38%,61.50B
+42,AXP,American Express Company,222.51B,316.96,0.17%,60.76B
+43,ABT,Abbott Laboratories,221.15B,127.51,-1.49%,41.95B
+44,BABA,Alibaba Group Holding Limited,217.16B,96.07,6.76%,137.14B
+45,GS,"The Goldman Sachs Group, Inc.",215.70B,637.76,0.71%,52.16B
+46,AZN,AstraZeneca PLC,215.39B,69.59,-0.70%,51.21B
+47,GE,General Electric Company,208.76B,194.43,-0.02%,38.70B
+48,IBM,International Business Machines Corporation,208.68B,225.69,0.70%,62.58B
+49,MCD,McDonald's Corporation,208.67B,291.19,-0.65%,25.94B
+50,PEP,"PepsiCo, Inc.",208.54B,150.25,-2.82%,91.92B
+51,LIN,Linde plc,207.37B,435.51,-0.91%,33.03B
+52,ISRG,"Intuitive Surgical, Inc.",204.50B,574.14,0.12%,8.35B
+53,NVS,Novartis AG,204.26B,101.86,-1.50%,49.94B
+54,DIS,The Walt Disney Company,202.78B,112.13,-1.07%,91.36B
+55,PM,Philip Morris International Inc.,200.53B,128.98,-1.12%,37.22B

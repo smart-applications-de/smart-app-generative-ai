@@ -20,16 +20,18 @@ from crewai_tools import (WebsiteSearchTool,
 
 
 class StockmarketAgents():
-    def __init__(self,germin_key,serp_key):
+    def __init__(self,germin_key,serp_key,model="gemini/gemini-1.5-pro"):
         self.germin_key=germin_key
         self.serp_key=serp_key
+        self.model=model
+      
         os.environ["GOOGLE_API_KEY"]=self.germin_key
         os.environ['SERPER_API_KEY']=self.serp_key
 
     def FileReader(self) :
       
         llm = LLM(
-            model="gemini/gemini-1.5-pro",
+            model=self.model,
             temperature=0.3,
             verbose=True,
             api_key=self.germin_key)
@@ -61,7 +63,7 @@ class StockmarketAgents():
 
     def FinancialAnalysist(self):
         llm = LLM(
-            model="gemini/gemini-1.5-pro",
+            model=self.model,
             temperature=0.3,
             verbose=True,
             api_key=self.germin_key)
@@ -93,7 +95,7 @@ class StockmarketAgents():
 
     def Research_Analyst(self):
         llm = LLM(
-            model="gemini/gemini-1.5-pro",
+            model=self.model,
             temperature=0.7,
             verbose=True,
             api_key=self.germin_key)
@@ -128,7 +130,7 @@ class StockmarketAgents():
 
     def StockmarketExpert(self):
         llm = LLM(
-            model="gemini/gemini-1.5-pro",
+            model=self.model,
             temperature=0.3,
             verbose=True,
             api_key=self.germin_key)
@@ -160,7 +162,7 @@ class StockmarketAgents():
 
     def PrivateInvestorAdvisor(self) :
         llm = LLM(
-            model="gemini/gemini-1.5-pro",
+            model=self.model,
             temperature=0.3,
             verbose=True,
             api_key=self.germin_key)

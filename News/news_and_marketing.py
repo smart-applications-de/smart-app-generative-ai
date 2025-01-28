@@ -24,9 +24,10 @@ from textwrap import dedent
 from dotenv import  load_dotenv
 
 
-def CrewStocknews(germin_api, serp_api, topic, year, date,company, sector, summary):
+def CrewStocknews(germin_api, serp_api, topic, year, date,company, sector, summary,model="gemini/gemini-1.5-pro"):
     os.environ["GOOGLE_API_KEY"] = germin_api
     os.environ['SERPER_API_KEY'] = serp_api
+    os.environ['model'] = model
     company=company
     sector=sector
     summary=summary
@@ -50,7 +51,7 @@ def CrewStocknews(germin_api, serp_api, topic, year, date,company, sector, summa
         verbose=True
     )
     llm = LLM(
-    model = "gemini/gemini-1.5-pro",
+    model =model,
     temperature = 0.5,
     verbose = True,
     api_key = GOOGLE_API_KEY
