@@ -31,9 +31,9 @@ def SerpApiKey():
         st.session_state['serp_api_key'] = serper_api_key
     return  st.session_state['serp_api_key']
 @st.cache_resource
-def SearchAgent(germin_key,SERPAPI_API_KEY,query):
+def SearchAgent(germin_key,SERPAPI_API_KEY,query,model="gemini-1.5-pro"):
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.3,
+        llm = ChatGoogleGenerativeAI(model=model, api_key=germin_key, temperature=0.3,
                                      max_tokens=None,
                                      timeout=None,
                                      max_retries=3,
@@ -75,10 +75,10 @@ def SearchAgent(germin_key,SERPAPI_API_KEY,query):
 #results = search.results("Italian restaurants in Upper East Side")
 
 @st.cache_resource
-def SearchNews(germin_key, SERPAPI_API_KEY,topic):
+def SearchNews(germin_key, SERPAPI_API_KEY,topic,model="gemini-1.5-pro"):
     try:
 
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.3,
+        llm = ChatGoogleGenerativeAI(model=model, api_key=germin_key, temperature=0.3,
 
                                      max_tokens=None,
                                      timeout=None,
@@ -118,13 +118,13 @@ def SearchNews(germin_key, SERPAPI_API_KEY,topic):
     except Exception as error:
         st.error(error)
 @st.cache_resource
-def SearchPlaces(germin_key, SERPAPI_API_KEY,topic):
+def SearchPlaces(germin_key, SERPAPI_API_KEY,topic,model="gemini-1.5-pro"):
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key, temperature=0.3,
+        llm = ChatGoogleGenerativeAI(model=model, api_key=germin_key, temperature=0.3,
 
                                      max_tokens=None,
                                      timeout=None,
-                                     max_retries=2,
+                                     max_retries=3,
                                      )
 
         places = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
@@ -177,19 +177,40 @@ if germin_key:
         #langauge= st.radio(label="select output language",options=['German', 'English', 'French','Spanish', 'Italian'])
        # search_agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True, verbose=True)
         if query :=st.text_input(key='query',placeholder="Who won World cup in 2022 ?",label="Ask Anything"):
-            response=SearchAgent(germin_key,SERPAPI_API_KEY,query)
+            container1 =st.container(border=True)
+            model1= container1.radio(
+                "Choose a Model",
+                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
+                 "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-2.0-flash-thinking-exp-01-21"],
+                key='model1'
+            )
+            response=SearchAgent(germin_key,SERPAPI_API_KEY,query,model1)
             st.markdown(response)
     with tab2:
 
         #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
         if news_topic := st.text_input(key='news_topic', placeholder="Randstad Deutschland?", label="Give a Topic"):
-            response = SearchNews(germin_key,SERPAPI_API_KEY,news_topic)
+            container2 =st.container(border=True)
+            model2= container2.radio(
+                "Choose a Model",
+                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
+                 "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-2.0-flash-thinking-exp-01-21"],
+                key='model2'
+            )
+            response = SearchNews(germin_key,SERPAPI_API_KEY,news_topic,model2)
             st.markdown(response)
     with tab3:
 
         #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
         if place := st.text_input(key='place', placeholder="Italian Restaurant in Darmstadt", label="Give a Place"):
-            response = SearchPlaces(germin_key,SERPAPI_API_KEY,place)
+            container3 = st.container(border=True)
+            model3= container3.radio(
+                "Choose a Model",
+                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
+                 "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-2.0-flash-thinking-exp-01-21"],
+                key='model3'
+            )
+            response = SearchPlaces(germin_key,SERPAPI_API_KEY,place,model3)
             st.markdown(response)
 
 # for msg in st.session_state.searches:

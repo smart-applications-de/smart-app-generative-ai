@@ -162,14 +162,14 @@ def QuartelyFinancialAnalysis(symbol):
 
 def AnualAnalysis(symbol):
         try:
-           symbol = str(symbol).lower()
-                 
-           if "." in symbol:
-                      sym=str(symbol).split(".")[0]
-           else:
-                      sym=symbol
+            symbol = str(symbol).lower()
+
+            if "." in symbol:
+                  sym=str(symbol).split(".")[0]
+            else:
+                sym=symbol
             # https://stockanalysis.com/stocks/aapl/financials/ratios/
-            url = f'https://stockanalysis.com/stocks/{symbol}/financials/ratios/'
+            url = f'https://stockanalysis.com/stocks/{sym}/financials/ratios/'
 
             r = rq.get(url, headers=headers)
             soup = bs4.BeautifulSoup(r.content, 'html.parser')

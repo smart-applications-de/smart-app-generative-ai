@@ -66,7 +66,7 @@ This report provides a comprehensive analysis of Advanced Micro Devices, Inc. (A
 
 Based on recent data, there has been notable insider trading activity at AMD. Here's a summary:
 
-*   **Recent Selling:** Insiders have sold shares worth millions of dollars in the past few months. For example, Lisa T. Su (CEO) had a significant sell transaction in March 2024.
+*   **Recent Selling:** Insiders have sold shares worth millions of dollars in the past few months. For example, Lisa T. Su (CEO) had a significant sell transaction in March 2024. 
 *   **Overall Trend:** There has been more selling than buying activity by insiders in the past year. This could be interpreted as a lack of confidence in the short-term stock performance by insiders, or could be for personal financial reasons. It is important to monitor this activity closely.
 
 **Sources:**

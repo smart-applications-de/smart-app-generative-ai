@@ -1,501 +1,501 @@
 No.,Symbol,Company Name,Market Cap,Stock Price,% Change,Revenue
-1,APC,Apple Inc.,"3,360.54B",224.05,0.36%,350.25B
-2,NVD,NVIDIA Corporation,"3,277.08B",134.1,2.57%,104.66B
-3,MSF,Microsoft Corporation,"3,099.52B",416.65,0.56%,227.91B
-4,ABEA,Alphabet Inc.,"2,339.67B",190.24,0.51%,304.72B
-5,ABEC,Alphabet Inc.,"2,339.67B",191.7,0.56%,304.72B
-6,AMZ,"Amazon.com, Inc.","2,308.53B",218.0,0.48%,556.01B
-7,FB2A,"Meta Platforms, Inc.","1,503.15B",596.5,0.27%,140.07B
-8,TL0,"Tesla, Inc.","1,330.35B",420.6,4.76%,87.10B
-9,1YD,Broadcom Inc.,"1,081.47B",229.35,1.66%,47.54B
-10,BRYN,Berkshire Hathaway Inc.,980.98B,454.7,2.00%,331.65B
-11,WMT,Walmart Inc.,717.69B,89.24,1.17%,620.59B
-12,CMC,JPMorgan Chase & Co.,704.51B,246.55,0.12%,161.19B
-13,LLY,Eli Lilly and Company,634.97B,719.6,-2.76%,36.64B
-14,3V64,Visa Inc.,609.05B,309.85,0.31%,32.21B
-15,XONA,Exxon Mobil Corporation,479.69B,109.22,1.56%,308.27B
-16,M4I,Mastercard Incorporated,467.96B,510.0,0.93%,24.41B
-17,UNH,UnitedHealth Group Incorporated,455.85B,503.9,-0.02%,386.63B
-18,ORC,Oracle Corporation,437.65B,157.14,0.60%,52.07B
-19,CTO,Costco Wholesale Corporation,406.83B,908.9,1.43%,248.97B
-20,HDI,"The Home Depot, Inc.",395.15B,399.45,0.90%,142.85B
-21,PRG,The Procter & Gamble Company,368.73B,156.76,1.11%,75.23B
-22,NFC,"Netflix, Inc.",356.42B,834.7,0.38%,33.70B
-23,MOH,"LVMH Moët Hennessy - Louis Vuitton, Société Européenne",344.87B,690.0,-0.79%,85.59B
-24,NCB,Bank of America Corporation,344.11B,45.39,0.21%,92.79B
-25,JNJ,Johnson & Johnson,343.97B,142.68,-0.01%,78.55B
-26,NOV,Novo Nordisk A/S,342.71B,77.14,-4.84%,36.28B
-27,FOO,"Salesforce, Inc.",301.81B,317.75,0.36%,34.25B
-28,SAP,SAP SE,298.81B,256.85,0.71%,33.27B
-29,4AB,AbbVie Inc.,294.59B,167.98,0.59%,49.79B
-30,ASME,ASML Holding N.V.,290.49B,738.8,-0.69%,26.24B
-31,CHV,Chevron Corporation,281.96B,156.26,1.43%,171.87B
-32,CCC3,The Coca-Cola Company,262.50B,60.76,1.49%,41.53B
-33,HMI,Hermès International Société en commandite par actions,260.78B,2499.0,1.01%,14.23B
-34,TM5,"T-Mobile US, Inc.",246.92B,212.15,1.02%,71.73B
-35,NWT,Wells Fargo & Company,246.34B,73.97,1.08%,75.30B
-36,6MK,"Merck & Co., Inc.",240.69B,96.1,-1.23%,56.64B
-37,CIS,"Cisco Systems, Inc.",233.09B,58.83,0.41%,48.95B
-38,DWD,Morgan Stanley,215.29B,132.32,1.04%,59.40B
-39,AEC1,American Express Company,213.95B,303.5,0.03%,53.11B
-40,TN8,Thermo Fisher Scientific Inc.,208.01B,538.6,1.58%,37.95B
-41,GOS,"The Goldman Sachs Group, Inc.",205.71B,606.1,1.85%,50.39B
-42,IBM,International Business Machines Corporation,201.97B,219.0,2.58%,56.11B
-43,LIN,Linde plc,201.73B,425.4,1.77%,29.61B
-44,ZEG,AstraZeneca PLC,200.91B,129.05,1.90%,45.91B
-45,PEP,"PepsiCo, Inc.",199.94B,143.44,1.63%,82.78B
-46,MDO,McDonald's Corporation,195.64B,273.55,1.00%,23.26B
-47,AMD,"Advanced Micro Devices, Inc.",191.53B,118.2,2.27%,21.76B
-48,ABL,Abbott Laboratories,191.26B,109.38,1.20%,36.96B
-49,WDP,The Walt Disney Company,188.32B,104.36,0.37%,81.83B
-50,AHLA,Alibaba Group Holding Limited,187.02B,82.2,3.14%,122.96B
-51,LOR,L'Oréal S.A.,183.73B,343.45,1.37%,42.73B
-52,4I1,Philip Morris International Inc.,183.70B,117.38,0.79%,33.37B
-53,ADB,Adobe Inc.,181.88B,414.55,0.57%,20.38B
-54,CAT1,Caterpillar Inc.,181.10B,375.5,2.18%,58.87B
-55,QCI,QUALCOMM Incorporated,177.65B,160.44,1.07%,34.90B
-56,HBC1,HSBC Holdings plc,171.56B,9.83,0.56%,51.98B
-57,TII,Texas Instruments Incorporated,170.56B,185.48,0.68%,14.09B
-58,DAP,Danaher Corporation,167.29B,229.05,-2.57%,21.27B
-59,ITU,Intuit Inc.,164.32B,597.6,-0.33%,15.28B
-60,BAC,Verizon Communications Inc.,158.63B,37.2,0.32%,120.36B
-61,PCE1,Booking Holdings Inc.,158.45B,4789.0,1.55%,20.67B
-62,SIE,Siemens Aktiengesellschaft,157.50B,200.85,2.92%,75.93B
-63,5UR,RTX Corporation,156.64B,115.26,-0.19%,70.87B
-64,SOBA,AT&T Inc.,155.41B,21.67,1.64%,109.44B
-65,IXD1,"Industria de Diseño Textil, S.A.",153.81B,49.21,-1.85%,37.76B
-66,AP2,"Applied Materials, Inc.",151.85B,184.44,-0.24%,25.11B
-67,DTE,Deutsche Telekom AG,148.48B,30.31,-,116.87B
-68,TRVC,Citigroup Inc.,145.90B,76.99,1.28%,68.93B
-69,SND,Schneider Electric S.E.,145.30B,259.05,1.79%,36.44B
-70,PFE,Pfizer Inc.,144.82B,25.58,0.29%,53.18B
-71,AMG,Amgen Inc.,142.13B,262.15,0.48%,29.17B
-72,ALD,Honeywell International Inc.,140.64B,215.5,2.16%,33.94B
-73,UNP,Union Pacific Corporation,138.00B,223.4,-0.80%,21.78B
-74,UT8,"Uber Technologies, Inc.",137.79B,66.38,-1.07%,37.62B
-75,CTP2,Comcast Corporation,136.01B,35.42,-0.37%,110.34B
-76,UNVB,Unilever PLC,134.52B,54.36,1.19%,60.29B
-77,YCP,ConocoPhillips,133.05B,102.52,0.04%,51.04B
-78,TOTB,TotalEnergies SE,129.52B,57.51,0.21%,182.24B
-79,AIR,Airbus SE,126.92B,160.8,2.29%,67.40B
-80,BCO,The Boeing Company,124.38B,166.46,1.57%,65.71B
-81,SNW,Sanofi,122.52B,98.17,0.32%,48.45B
-82,DCO,Deere & Company,120.53B,438.15,3.58%,47.62B
-83,ALV,Allianz SE,118.02B,305.8,0.72%,97.41B
-84,MTE,"Micron Technology, Inc.",114.49B,101.62,0.69%,27.58B
-85,LOM,Lockheed Martin Corporation,112.93B,477.0,1.71%,63.86B
-86,GIS,"Gilead Sciences, Inc.",111.22B,89.76,0.04%,25.37B
-87,BRM,Bristol-Myers Squibb Company,110.94B,54.67,0.96%,42.53B
-88,2M6,Medtronic plc,109.75B,82.92,0.51%,30.49B
-89,3CP,Xiaomi Corporation,109.29B,4.4,3.42%,42.20B
-90,VX1,Vertex Pharmaceuticals Incorporated,105.60B,407.7,-0.34%,9.53B
-91,SRB,Starbucks Corporation,104.81B,92.79,2.05%,32.40B
-92,NKE,"NIKE, Inc.",101.82B,69.26,1.11%,46.42B
-93,RIO1,Rio Tinto Group,101.36B,59.2,0.83%,50.56B
-94,LAR0,Lam Research Corporation,100.40B,78.59,-0.54%,13.97B
-95,KLA,KLA Corporation,98.45B,736.4,-1.58%,9.20B
-96,639,Spotify Technology S.A.,95.34B,471.3,-2.28%,15.10B
-97,AIL,L'Air Liquide S.A.,93.04B,161.46,2.01%,27.01B
-98,1NBA,Anheuser-Busch InBev SA/NV,92.03B,46.68,2.82%,53.26B
-99,MLB1,"MercadoLibre, Inc.",90.45B,1788.8,0.81%,16.58B
-100,INL,Intel Corporation,90.06B,20.7,8.34%,48.59B
-101,2PP,"PayPal Holdings, Inc.",89.44B,90.0,2.90%,28.20B
-102,RDEB,RELX PLC,86.77B,44.6,-0.58%,10.97B
-103,PHM7,"Altria Group, Inc.",85.41B,50.23,1.09%,18.26B
-104,1TY,Prosus N.V.,82.61B,35.18,2.34%,5.27B
-105,UWS,"Waste Management, Inc.",82.57B,206.35,1.08%,19.18B
-106,IBE1,"Iberdrola, S.A.",82.17B,13.43,1.28%,45.26B
-107,BPE5,BP p.l.c.,81.14B,5.14,0.98%,173.88B
-108,SYP,"Synopsys, Inc.",79.11B,512.6,1.28%,5.64B
-109,BMT,British American Tobacco p.l.c.,77.27B,35.15,1.38%,30.88B
-110,2FE,Ferrari N.V.,75.81B,424.4,1.00%,6.46B
-111,KTF,"Mondelez International, Inc.",75.18B,56.74,2.79%,32.41B
-112,AXA,AXA SA,75.16B,35.34,0.71%,90.56B
-113,MMM,3M Company,74.63B,136.74,2.01%,29.26B
-114,12DA,Dell Technologies Inc.,74.33B,107.66,0.67%,86.61B
-115,IES,Intesa Sanpaolo S.p.A.,73.69B,4.14,1.10%,24.56B
-116,UB5,U.S. Bancorp,73.31B,47.52,1.59%,24.24B
-117,ZOE,Zoetis Inc.,72.73B,163.94,0.26%,8.21B
-118,ENL,Enel SpA,72.67B,7.16,0.82%,82.33B
-119,BSD2,"Banco Santander, S.A.",72.63B,4.79,0.56%,47.79B
-120,1QZ,"Coinbase Global, Inc.",71.88B,288.25,6.40%,4.48B
-121,GDX,General Dynamics Corporation,71.14B,260.2,0.97%,41.24B
-122,CPA,Colgate-Palmolive Company,70.41B,86.67,1.87%,18.03B
-123,BNP,BNP Paribas SA,70.21B,62.23,0.05%,44.68B
-124,NTH,Northrop Grumman Corporation,68.29B,460.3,0.37%,36.75B
-125,MUV2,Münchener Rückversicherungs-Gesellschaft Aktiengesellschaft in München,66.35B,503.2,1.04%,61.99B
-126,CRIN,UniCredit S.p.A.,65.40B,42.21,0.74%,24.00B
-127,FDX,FedEx Corporation,64.38B,268.15,-0.11%,82.83B
-128,CVS,CVS Health Corporation,64.34B,49.43,-2.25%,329.27B
-129,GUI,Diageo plc,64.09B,28.92,2.32%,18.92B
-130,MRK,Merck KGaA,61.46B,141.35,-1.40%,20.96B
-131,4PN,Carrier Global Corporation,60.73B,68.33,0.21%,22.24B
-132,DYH,Target Corporation,59.49B,127.86,0.74%,99.16B
-133,SHL,Siemens Healthineers AG,58.36B,52.14,2.24%,22.36B
-134,SQU,Vinci SA,58.03B,102.6,2.04%,71.40B
-135,FPMB,Freeport-McMoRan Inc.,56.16B,38.61,1.14%,22.99B
-136,NNGF,National Grid plc,55.82B,11.6,1.75%,23.22B
-137,P911,Dr. Ing. h.c. F. Porsche AG,55.57B,61.0,0.07%,38.96B
-138,BOY,"Banco Bilbao Vizcaya Argentaria, S.A.",55.41B,10.32,-0.82%,29.84B
-139,8GM,General Motors Company,54.46B,50.16,0.56%,163.83B
-140,XGR2,Compass Group PLC,53.78B,32.06,1.30%,37.66B
-141,MBG,Mercedes-Benz Group AG,52.40B,55.09,-0.13%,147.95B
-142,BCY,Barclays PLC,49.31B,3.45,1.77%,28.36B
-143,INN1,ING Groep N.V.,49.08B,15.96,0.75%,17.21B
-144,R66,Phillips 66,48.37B,115.52,-0.59%,132.46B
-145,BMW,Bayerische Motoren Werke Aktiengesellschaft,48.15B,77.1,1.13%,148.93B
-146,BMW3,Bayerische Motoren Werke Aktiengesellschaft,48.15B,72.75,1.11%,148.93B
-147,VOW,Volkswagen AG,47.43B,95.45,0.69%,324.46B
-148,VOW3,Volkswagen AG,47.43B,93.42,0.52%,324.46B
-149,OPC,Occidental Petroleum Corporation,47.39B,50.56,-0.10%,24.33B
-150,1N8,Adyen N.V.,47.06B,1491.4,0.44%,1.81B
-151,NMM,Newmont Corporation,45.63B,40.31,-0.96%,15.23B
-152,AINN,"American International Group, Inc.",45.51B,69.1,0.99%,40.62B
-153,ASG,Assicurazioni Generali S.p.A.,45.16B,29.19,0.62%,59.82B
-154,68V,Baker Hughes Company,44.75B,45.92,2.97%,24.48B
-155,IFX,Infineon Technologies AG,44.18B,34.01,1.72%,14.96B
-156,ENI,Eni S.p.A.,43.40B,14.1,1.10%,92.19B
-157,GOB,Compagnie de Saint-Gobain S.A.,43.21B,85.92,0.54%,46.45B
-158,BSP,BAE Systems plc,43.19B,14.47,0.91%,28.97B
-159,ADS,adidas AG,43.16B,241.7,-0.29%,22.53B
-160,DB1,Deutsche Börse AG,42.24B,230.3,0.52%,6.89B
-161,LLD,Lloyds Banking Group plc,41.98B,0.68,-,22.30B
-162,BSN,Danone S.A.,41.85B,65.06,0.90%,27.21B
-163,GLW,Corning Incorporated,41.47B,47.47,0.31%,11.31B
-164,KMY,Kimberly-Clark Corporation,41.23B,122.16,-0.33%,18.02B
-165,ENR,Siemens Energy AG,41.00B,51.88,3.06%,34.47B
-166,DHL,Deutsche Post AG,40.89B,35.48,1.98%,83.23B
-167,3RB,Reckitt Benckiser Group plc,40.74B,58.32,0.93%,16.90B
-168,BAS,BASF SE,39.66B,44.44,0.68%,65.27B
-169,FMC1,Ford Motor Company,39.31B,9.68,-0.08%,163.85B
-170,GZF,Engie SA,38.57B,15.81,0.51%,73.06B
-171,NGLB,Anglo American plc,36.59B,29.91,2.29%,27.48B
-172,ERT,Electronic Arts Inc.,36.19B,138.46,0.49%,6.64B
-173,DBK,Deutsche Bank Aktiengesellschaft,35.99B,18.52,1.74%,27.63B
-174,8TI,Stellantis N.V.,34.41B,12.58,3.32%,176.19B
-175,KHNZ,The Kraft Heinz Company,34.39B,28.35,1.61%,23.40B
-176,VEE,Veeva Systems Inc.,34.17B,209.1,-0.38%,2.45B
-177,TGR,"Yum! Brands, Inc.",33.98B,123.2,1.40%,6.48B
-178,POH1,Carnival Corporation & plc,32.52B,21.07,-0.43%,23.71B
-179,HEN,Henkel AG & Co. KGaA,32.41B,73.5,1.10%,21.40B
-180,HEN3,Henkel AG & Co. KGaA,32.41B,83.42,1.16%,21.40B
-181,GRM,"General Mills, Inc.",32.00B,56.98,0.23%,19.15B
-182,690D,"Haier Smart Home Co., Ltd.",31.98B,1.8,0.26%,33.97B
-183,6D81,"DuPont de Nemours, Inc.",31.46B,70.39,-1.15%,10.93B
-184,AHOG,Koninklijke Ahold Delhaize N.V.,31.25B,33.95,1.86%,89.05B
-185,EBA,eBay Inc.,30.81B,64.37,2.01%,9.20B
-186,HNR1,Hannover Rück SE,30.68B,254.4,0.36%,27.36B
-187,DTG,Daimler Truck Holding AG,30.36B,38.77,2.00%,54.68B
-188,RHM,Rheinmetall AG,30.15B,694.4,1.22%,8.83B
-189,HSY,The Hershey Company,30.06B,149.44,1.52%,9.83B
-190,PPX,Kering SA,29.75B,242.7,5.06%,18.45B
-191,7HP,HP Inc.,29.62B,31.74,0.36%,49.33B
-192,2HP,Hewlett Packard Enterprise Company,29.58B,22.5,2.74%,27.75B
-193,TCO0,Tesco PLC,28.94B,4.3,0.94%,81.69B
-194,EOAN,E.ON SE,28.94B,11.08,1.56%,82.14B
-195,BEI,Beiersdorf Aktiengesellschaft,28.30B,126.2,1.00%,9.69B
-196,XY6,Xylem Inc.,28.25B,116.8,1.26%,7.55B
-197,2OY,Dow Inc.,28.01B,39.48,0.88%,38.72B
-198,ERCB,Telefonaktiebolaget LM Ericsson (publ),27.65B,8.31,0.78%,21.82B
-199,ERCG,Telefonaktiebolaget LM Ericsson (publ),27.65B,8.13,2.14%,21.82B
-200,KEL,Kellanova,27.39B,79.2,0.33%,11.46B
-201,ABR,Barrick Gold Corporation,27.28B,15.54,0.84%,11.06B
-202,FTE,Orange S.A.,27.17B,10.24,0.94%,44.61B
-203,PER,Pernod Ricard SA,26.99B,107.6,3.26%,11.60B
-204,SII,Wheaton Precious Metals Corp.,25.56B,56.24,-0.95%,1.09B
-205,HAL,Halliburton Company,25.52B,29.28,4.05%,20.69B
-206,ITB,Imperial Brands PLC,25.44B,30.53,-0.72%,22.21B
-207,OEWA,VERBUND AG,25.40B,72.1,1.91%,6.52B
-208,EBO,Erste Group Bank AG,24.89B,60.66,1.07%,10.68B
-209,CBHD,Coloplast A/S,24.39B,106.75,-0.33%,3.62B
-210,AWC,"American Water Works Company, Inc.",23.98B,121.35,1.38%,4.05B
-211,ADM,Archer-Daniels-Midland Company,23.85B,49.85,1.69%,78.01B
-212,NOA3,Nokia Oyj,23.73B,4.4,1.31%,19.77B
-213,E3X1,"Expedia Group, Inc.",23.52B,178.22,1.41%,12.01B
-214,VNA,Vonovia SE,23.49B,28.55,0.74%,6.22B
-215,PHI1,Koninklijke Philips N.V.,23.44B,25.09,0.84%,18.04B
-216,HEI,Heidelberg Materials AG,23.12B,129.55,3.02%,20.79B
-217,HLAG,Hapag-Lloyd Aktiengesellschaft,23.02B,131.0,-2.82%,17.85B
-218,SGE,Société Générale Société anonyme,22.95B,28.71,-0.05%,24.57B
-219,TNE5,"Telefónica, S.A.",22.38B,3.95,-0.48%,40.57B
-220,SGM,STMicroelectronics N.V.,22.14B,24.61,2.10%,12.74B
-221,RWE,RWE Aktiengesellschaft,21.67B,29.35,1.17%,23.60B
-222,DP4A,A.P. Møller - Mærsk A/S,21.51B,1328.0,-3.42%,47.19B
-223,DP4B,A.P. Møller - Mærsk A/S,21.51B,1378.0,-2.79%,47.19B
-224,TLX,Talanx AG,21.23B,82.3,0.06%,48.66B
-225,HMSB,H & M Hennes & Mauritz AB (publ),21.08B,12.61,-,20.70B
-226,ILU,"Illumina, Inc.",21.06B,134.64,2.75%,3.93B
-227,VODI,Vodafone Group Public Limited Company,20.95B,0.82,-0.12%,37.01B
-228,CBK,Commerzbank AG,20.81B,17.57,2.57%,9.85B
-229,BAYN,Bayer Aktiengesellschaft,20.77B,21.15,1.95%,46.74B
-230,FRE,Fresenius SE & Co. KGaA,20.45B,36.3,1.97%,22.81B
-231,F3A,"First Solar, Inc.",20.06B,185.82,-0.79%,3.45B
-232,VVD,Veolia Environnement SA,20.02B,26.85,-0.11%,44.74B
-233,IDP,Biogen Inc.,19.90B,136.3,-0.87%,8.61B
-234,RY4C,Ryanair Holdings plc,19.65B,18.01,0.08%,13.56B
-235,INP,International Paper Company,19.22B,55.04,1.66%,16.71B
-236,UN0,Uniper SE,19.00B,45.62,1.18%,106.44B
-237,INR,International Consolidated Airlines Group S.A.,18.22B,3.74,0.38%,31.28B
-238,MTX,MTU Aero Engines AG,18.03B,335.0,1.92%,7.00B
-239,ARRD,ArcelorMittal S.A.,17.79B,22.68,1.25%,55.84B
-240,1SI,Snap Inc.,17.70B,10.72,-2.85%,4.63B
-241,EBK,EnBW Energie Baden-Württemberg AG,16.90B,60.2,-1.95%,36.91B
-242,SRT,Sartorius Aktiengesellschaft,14.41B,185.2,-1.91%,3.32B
-243,SRT3,Sartorius Aktiengesellschaft,14.41B,232.0,-0.85%,3.32B
-244,8TRA,Traton SE,13.90B,27.8,3.93%,47.95B
-245,SY1,Symrise AG,13.78B,98.56,0.51%,4.88B
-246,CON,Continental Aktiengesellschaft,13.47B,67.34,1.57%,40.07B
-247,REP,"Repsol, S.A.",13.45B,11.59,-0.30%,52.68B
-248,FME,Fresenius Medical Care AG,13.17B,44.9,0.18%,19.24B
-249,RNL,Renault SA,13.09B,48.77,0.85%,52.49B
-250,OMV,OMV Aktiengesellschaft,12.93B,39.4,0.46%,34.75B
-251,VWSB,Vestas Wind Systems A/S,12.91B,12.8,0.27%,15.93B
-252,KIN2,Kinross Gold Corporation,12.36B,10.06,-1.18%,4.35B
-253,A1G,American Airlines Group Inc.,11.68B,17.49,-1.52%,48.07B
-254,NEM,Nemetschek SE,11.35B,98.3,-0.10%,924.25M
-255,KBX,Knorr-Bremse AG,11.34B,70.35,0.86%,8.09B
-256,PAH3,Porsche Automobil Holding SE,11.18B,36.52,0.11%,-
-257,AMC,Albemarle Corporation,11.13B,94.85,3.84%,5.83B
-258,1COV,Covestro AG,10.63B,56.22,-0.21%,14.15B
-259,W8A,"Walgreens Boots Alliance, Inc.",10.51B,12.6,2.16%,142.56B
-260,HOT,HOCHTIEF Aktiengesellschaft,10.16B,135.1,1.27%,30.97B
-261,PES,Pearson plc,10.13B,15.22,-1.33%,4.19B
-262,QIA,Qiagen N.V.,9.93B,44.39,0.49%,1.76B
-263,185,Alcoa Corporation,9.92B,35.11,0.56%,9.87B
-264,HLE,HELLA GmbH & Co. KGaA,9.78B,88.0,2.56%,7.96B
-265,AOMD,Alstom SA,9.47B,20.56,0.29%,17.95B
-266,RAA,RATIONAL Aktiengesellschaft,9.43B,829.5,1.04%,1.17B
-267,DWNI,Deutsche Wohnen SE,9.15B,22.6,-1.53%,1.51B
-268,BIRG,Bank of Ireland Group plc,9.13B,9.11,1.92%,4.22B
-269,2FB,"Fortune Brands Innovations, Inc.",9.00B,70.0,1.45%,4.18B
-270,VFP,V.F. Corporation,8.95B,22.72,-,9.04B
-271,CAR,Carrefour SA,8.85B,14.05,-1.02%,84.62B
-272,EVD,CTS Eventim AG & Co. KGaA,8.65B,90.1,0.61%,2.64B
-273,DHER,Delivery Hero SE,8.52B,29.41,3.67%,10.88B
-274,JDE,JDE Peet's N.V.,8.51B,17.47,0.58%,8.41B
-275,DWS,DWS Group GmbH & Co. KGaA,8.25B,41.26,1.03%,3.96B
-276,ZAL,Zalando SE,8.23B,32.03,1.10%,10.33B
-277,BNR,Brenntag SE,8.12B,56.22,0.29%,16.19B
-278,EVK,Evonik Industries AG,8.08B,17.33,0.55%,15.16B
-279,G1A,GEA Group Aktiengesellschaft,8.06B,48.22,0.75%,5.32B
-280,USX1,United States Steel Corporation,7.89B,35.71,-0.49%,14.59B
-281,RDO,Sirius XM Holdings Inc.,7.34B,4.44,-1.20%,7.89B
-282,LHA,Deutsche Lufthansa AG,6.95B,5.8,1.65%,36.93B
-283,RAW,Raiffeisen Bank International AG,6.84B,21.0,2.64%,8.58B
-284,O5G,CPI Property Group,6.84B,0.8,-1.23%,1.61B
-285,0B2,BAWAG Group AG,6.81B,86.3,-0.35%,1.41B
-286,G24,Scout24 SE,6.53B,89.8,0.34%,573.68M
-287,LU2,Lumentum Holdings Inc.,6.30B,82.5,-2.78%,1.23B
-288,PUM,PUMA SE,5.98B,40.48,-0.32%,8.51B
-289,3E2,"Etsy, Inc.",5.81B,51.03,-0.60%,2.51B
-290,LEG,LEG Immobilien SE,5.79B,78.26,1.56%,1.41B
-291,LY0,"Lyft, Inc.",5.41B,13.2,-0.62%,4.90B
-292,TA1,Telekom Austria AG,5.32B,8.01,1.65%,5.22B
-293,AZ2,Andritz AG,5.21B,52.7,0.86%,8.48B
-294,KFI1,Kingfisher plc,5.19B,2.89,1.40%,15.25B
-295,FRA,Fraport AG,5.10B,55.2,1.28%,4.43B
-296,AHYQ,Amundi Index Solutions - Amundi Msci World III,5.09B,100.56,-0.21%,-
-297,XD4,Strabag SE,5.02B,42.5,2.66%,17.45B
-298,FPE,Fuchs SE,4.65B,30.0,-,3.51B
-299,FPE3,Fuchs SE,4.65B,40.42,1.86%,3.51B
-300,KGX,KION GROUP AG,4.43B,33.82,2.45%,11.52B
-301,RRTL,RTL Group S.A.,4.29B,27.7,-0.18%,6.29B
-302,SHA0,Schaeffler AG,4.25B,4.48,-,16.28B
-303,HAG,Hensoldt AG,4.23B,36.62,0.11%,2.09B
-304,AFX,Carl Zeiss Meditec AG,4.22B,48.24,4.42%,2.07B
-305,RZ8G,SNGN Romgaz SA,4.14B,1.0,-,1.57B
-306,KRN,Krones AG,3.97B,125.8,1.45%,5.16B
-307,BC8,Bechtle AG,3.94B,31.26,1.69%,6.38B
-308,TUI1,TUI AG,3.86B,7.6,1.23%,23.17B
-309,AG1,AUTO1 Group SE,3.74B,17.2,1.84%,5.90B
-310,1SO,Samsonite International S.A.,3.70B,2.62,-0.49%,3.22B
-311,1SXP,SCHOTT Pharma AG & Co. KGaA,3.70B,24.4,3.48%,957.09M
-312,GIL,DMG MORI AKTIENGESELLSCHAFT,3.59B,45.6,0.22%,2.32B
-313,HAR,"Harley-Davidson, Inc.",3.59B,28.96,0.98%,4.98B
-314,SIX2,Sixt SE,3.48B,81.75,2.19%,4.06B
-315,SIX3,Sixt SE,3.48B,58.7,0.51%,4.06B
-316,FNTN,freenet AG,3.44B,28.88,0.84%,2.70B
-317,FIE,Fielmann Group AG,3.38B,40.3,0.62%,2.16B
-318,HCL,Hecla Mining Company,3.28B,5.28,1.70%,754.00M
-319,NDA,Aurubis AG,3.27B,74.9,2.53%,17.18B
-320,WCH,Wacker Chemie AG,3.27B,65.74,3.07%,5.77B
-321,NB2,Northern Data AG,3.14B,49.0,-1.01%,77.53M
-322,IOS,IONOS Group SE,3.12B,22.65,-1.09%,1.51B
-323,VAS,Voestalpine AG,3.11B,17.96,1.87%,16.21B
-324,SAX,Ströer SE & Co. KGaA,3.04B,54.85,0.55%,2.03B
-325,WIB,Wienerberger AG,2.98B,25.66,2.31%,4.33B
-326,AT1,Aroundtown SA,2.97B,2.74,2.05%,1.48B
-327,BOSS,Hugo Boss AG,2.88B,41.74,1.31%,4.23B
-328,NDX1,Nordex SE,2.87B,12.13,0.50%,7.12B
-329,ECV,Encavis AG,2.82B,17.44,-,457.94M
-330,UTDI,United Internet AG,2.66B,15.38,1.18%,6.30B
-331,TKA,thyssenkrupp AG,2.60B,4.18,3.70%,35.04B
-332,VVU,Vivendi SE,2.57B,2.56,-0.54%,14.86B
-333,JUN3,Jungheinrich Aktiengesellschaft,2.52B,24.72,0.98%,5.45B
-334,NVJP,Umicore SA,2.48B,10.28,1.58%,15.72B
-335,UN9,UNIQA Insurance Group AG,2.46B,8.02,1.13%,7.02B
-336,RDC,Redcare Pharmacy NV,2.43B,119.3,-0.42%,2.23B
-337,TEG,TAG Immobilien AG,2.41B,13.72,2.24%,1.38B
-338,CDM1,"Coeur Mining, Inc.",2.40B,6.22,-1.27%,906.15M
-339,GXI,Gerresheimer AG,2.31B,67.0,1.13%,2.01B
-340,R3NK,RENK Group AG,2.27B,22.65,1.91%,1.05B
-341,DMP,Dermapharm Holding SE,2.17B,40.0,-,1.17B
-342,PLUN,Plug Power Inc.,2.16B,2.48,-5.17%,591.31M
-343,DOU,Douglas AG,2.14B,19.82,1.12%,4.45B
-344,LXS,LANXESS Aktiengesellschaft,2.12B,24.53,2.00%,6.32B
-345,SZU,Südzucker AG,2.10B,10.31,1.48%,10.00B
-346,HFG,HelloFresh SE,2.08B,12.96,1.17%,7.71B
-347,SDF,K+S Aktiengesellschaft,2.05B,11.44,0.57%,3.70B
-348,1U1,1&1 AG,2.02B,11.48,-0.35%,4.08B
-349,MVV1,MVV Energie AG,2.02B,30.6,-0.65%,6.37B
-350,O3P,Österreichische Post AG,2.01B,29.7,0.34%,3.02B
-351,KWS,KWS SAAT SE & Co. KGaA,1.94B,58.9,-0.67%,1.72B
-352,RHF,RHI Magnesita N.V.,1.93B,39.5,3.67%,3.57B
-353,GYC,Grand City Properties S.A.,1.87B,10.83,1.31%,598.93M
-354,AOF,ATOSS Software SE,1.77B,109.8,-0.18%,166.83M
-355,FTK,flatexDEGIRO AG,1.76B,16.31,3.46%,443.06M
-356,GBF,Bilfinger SE,1.74B,46.55,1.31%,4.87B
-357,FMV,First Majestic Silver Corp.,1.72B,5.5,-4.51%,470.91M
-358,TMV,TeamViewer SE,1.61B,10.54,-0.61%,657.57M
-359,AIXA,AIXTRON SE,1.59B,14.14,0.75%,620.63M
-360,DUE,Dürr Aktiengesellschaft,1.54B,22.32,2.76%,4.77B
-361,PFV,Pfeiffer Vacuum Technology AG,1.53B,155.0,0.65%,911.28M
-362,MYM,Mayr-Melnhof Karton AG,1.52B,76.2,-0.39%,4.04B
-363,B4B,Metro AG,1.43B,3.95,1.80%,31.03B
-364,B4B3,Metro AG,1.43B,4.9,-0.81%,31.03B
-365,EVT,Evotec SE,1.42B,8.01,3.49%,777.05M
-366,DEQ,Deutsche EuroShop AG,1.39B,18.42,-0.11%,279.09M
-367,BIO,Biotest Aktiengesellschaft,1.37B,41.8,0.48%,707.00M
-368,BIO3,Biotest Aktiengesellschaft,1.37B,27.5,-0.72%,707.00M
-369,HHFA,Hamburger Hafen und Logistik Aktiengesellschaft,1.35B,18.0,-,1.56B
-370,WAF,Siltronic AG,1.34B,44.78,2.71%,1.41B
-371,ELG,Elmos Semiconductor SE,1.31B,76.3,2.55%,591.94M
-372,JEN,Jenoptik AG,1.28B,22.36,2.76%,1.11B
-373,HYQ,Hypoport SE,1.24B,186.1,1.25%,424.71M
-374,CEC,Ceconomy AG,1.22B,2.52,0.56%,22.44B
-375,NXU,Nexus AG,1.18B,68.4,0.15%,265.36M
-376,NCH2,thyssenkrupp nucera AG & Co. KGaA,1.18B,9.3,0.32%,862.00M
-377,HBH,HORNBACH Holding AG & Co. KGaA,1.16B,72.8,0.41%,6.19B
-378,COP,CompuGroup Medical SE & Co. KGaA,1.14B,22.1,0.09%,1.19B
-379,PSM,ProSiebenSat.1 Media SE,1.14B,5.03,1.04%,3.94B
-380,YOU,About You Holding SE,1.12B,6.43,-0.62%,1.96B
-381,WUW,Wüstenrot & Württembergische AG,1.12B,11.92,-1.81%,5.53B
-382,2HQ,"Tilray Brands, Inc.",1.09B,1.17,1.26%,785.93M
-383,C43,Cosmo Pharmaceuticals N.V.,1.09B,68.0,-,185.36M
-384,KSB,KSB SE & Co. KGaA,1.08B,660.0,3.94%,2.91B
-385,KSB3,KSB SE & Co. KGaA,1.08B,592.0,-0.34%,2.91B
-386,NA9,Nagarro SE,1.06B,79.5,1.92%,947.15M
-387,ADV,Adtran Networks SE,1.04B,20.05,-,481.90M
-388,FYB,Formycon AG,1.01B,56.4,-1.57%,60.80M
-389,EUZ,Eckert & Ziegler SE,1.01B,48.14,1.13%,277.72M
-390,WAC,Wacker Neuson SE,1.00B,14.52,-0.96%,2.36B
-391,TIMA,ZEAL Network SE,998.63M,45.4,-0.87%,151.42M
-392,RHK,RHÖN-KLINIKUM Aktiengesellschaft,977.30M,14.6,-2.01%,1.84B
-393,DRW3,Drägerwerk AG & Co. KGaA,958.96M,56.1,5.65%,3.35B
-394,DRW8,Drägerwerk AG & Co. KGaA,958.96M,45.3,6.59%,3.35B
-395,AOX,alstria office REIT-AG,957.09M,5.4,0.75%,240.21M
-396,SMHN,SÜSS MicroTec SE,942.40M,49.3,20.39%,397.18M
-397,ECEA,Societatea Energetica Electrica S.A.,940.41M,12.0,-,2.16B
-398,LEN,Lenzing Aktiengesellschaft,934.56M,24.3,-14.74%,2.61B
-399,PNE3,PNE AG,929.96M,12.14,1.17%,123.43M
-400,OHB,OHB SE,911.66M,48.0,0.63%,1.04B
-401,5CV,CureVac N.V.,893.66M,4.01,-2.63%,65.86M
-402,MUM,Mensch und Maschine Software SE,887.03M,52.5,-0.57%,350.17M
-403,SZG,Salzgitter AG,859.99M,16.02,0.75%,10.11B
-404,BFSA,Befesa S.A.,828.80M,20.72,0.58%,1.19B
-405,VOS,Vossloh AG,816.30M,41.85,-,1.15B
-406,QH9,"ADTRAN Holdings, Inc.",782.06M,9.83,3.13%,811.73M
-407,TNIE,tonies SE,775.32M,6.88,-0.58%,394.60M
-408,COK,Cancom SE,772.13M,24.5,1.49%,1.72B
-409,GLJ,Grenke AG,739.54M,16.74,0.48%,527.47M
-410,YSN,secunet Security Networks Aktiengesellschaft,727.17M,115.0,3.23%,386.46M
-411,STM,Stabilus SE,722.48M,28.8,-2.70%,1.31B
-412,MLP,MLP SE,709.34M,6.49,2.37%,1.04B
-413,CWC,CEWE Stiftung & Co. KGaA,706.49M,101.6,-0.39%,817.37M
-414,PBB,Deutsche Pfandbriefbank AG,705.32M,5.25,0.96%,365.00M
-415,EIN3,Einhell Germany AG,704.30M,167.0,-,1.06B
-416,ABS2,PORR AG,704.28M,18.04,0.33%,6.21B
-417,TGHN,Logwin AG,702.53M,234.0,-0.85%,1.23B
-418,AGB2,AGRANA Beteiligungs-Aktiengesellschaft,690.50M,10.8,0.47%,3.69B
-419,STO3,Sto SE & Co. KGaA,681.16M,106.0,0.19%,1.66B
-420,SFQ,SAF-Holland SE,680.01M,15.12,2.72%,1.97B
-421,CHG,CHAPTERS Group AG,675.91M,29.4,1.38%,87.13M
-422,PAT,PATRIZIA SE,673.45M,7.84,0.51%,271.19M
-423,VH2,Friedrich Vorwerk Group SE,672.00M,33.6,3.70%,438.55M
-424,EKT,Energiekontor AG,660.99M,47.7,-1.95%,254.65M
-425,JST,JOST Werke SE,638.47M,42.85,-1.15%,1.13B
-426,ACT,AlzChem Group AG,635.00M,63.0,-1.87%,563.55M
-427,SLYG,Shelly Group SE,630.07M,34.8,-1.14%,95.71M
-428,DEZ,DEUTZ Aktiengesellschaft,605.56M,4.37,2.10%,1.86B
-429,SIS,First Sensor AG,601.79M,58.8,-0.34%,122.57M
-430,GFT,GFT Technologies SE,589.70M,22.4,-0.67%,862.16M
-431,ADN1,adesso SE,588.91M,92.0,2.45%,1.27B
-432,MUB,Mühlbauer Holding AG,573.35M,40.4,-,462.26M
-433,MBB,MBB SE,570.80M,105.0,2.14%,1.05B
-434,M8G,Verve Group SE,562.31M,2.98,11.82%,416.58M
-435,VBK,Verbio SE,554.36M,8.7,4.19%,1.54B
-436,INH,INDUS Holding AG,541.33M,21.1,1.44%,1.73B
-437,S92,SMA Solar Technology AG,539.59M,15.55,0.32%,1.63B
-438,MUX,Mutares SE & Co. KGaA,535.89M,25.1,-0.79%,5.21B
-439,NBG6,NÜRNBERGER Beteiligungs-AG,534.53M,46.4,-0.85%,4.60B
-440,WSU,WashTec AG,528.60M,39.0,-0.76%,467.05M
-441,SLL,Schoeller-Bleckmann Oilfield Equipment Aktiengesellschaft,527.94M,33.5,2.76%,574.27M
-442,HABA,Hamborner REIT AG,515.72M,6.34,-,105.80M
-443,DHR,"B&G Foods, Inc.",499.23M,6.19,-1.99%,1.75B
-444,PCZ,ProCredit Holding AG,492.39M,8.32,-0.24%,433.86M
-445,NOEJ,NORMA Group SE,484.31M,15.2,0.66%,1.18B
-446,TTK,TAKKT AG,482.76M,7.52,0.53%,1.08B
-447,SGL,SGL Carbon SE,468.30M,3.83,1.86%,1.05B
-448,SHF,SNP Schneider-Neureither & Partner SE,466.12M,63.4,0.63%,236.60M
-449,KCO,Klöckner & Co SE,457.85M,4.49,-0.33%,6.75B
-450,AUS,AT & S Austria Technologie & Systemtechnik Aktiengesellschaft,449.11M,11.25,-1.75%,1.54B
-451,2GB,2G Energy AG,446.71M,24.9,-0.80%,360.90M
-452,DBAN,Deutsche Beteiligungs AG,445.92M,25.1,0.60%,108.68M
-453,ETG,EnviTec Biogas AG,430.65M,29.0,-1.69%,479.22M
-454,AAD,Amadeus FiRe AG,427.51M,78.7,0.13%,448.60M
-455,VIB3,Villeroy & Boch AG,409.79M,15.4,0.65%,1.26B
-456,SYV,3D Systems Corporation,405.89M,3.07,-1.98%,398.04M
-457,BYW,BayWa Aktiengesellschaft,392.96M,22.0,9.45%,21.81B
-458,BYW6,BayWa Aktiengesellschaft,392.96M,10.48,4.18%,21.81B
-459,SBS,Stratec SE,390.21M,32.1,7.00%,250.54M
-460,FQT,Frequentis AG,387.47M,29.2,0.34%,449.92M
-461,AB9,ABO Energy GmbH & Co. KGaA,372.52M,40.4,-,291.52M
-462,INS,Instone Real Estate Group SE,368.68M,8.4,0.36%,454.06M
-463,ZYE1,Addiko Bank AG,366.46M,18.65,-0.27%,280.80M
-464,IXX,init innovation in traffic systems SE,365.42M,36.5,-1.88%,245.89M
-465,D6H,DATAGROUP SE,360.34M,44.8,2.63%,533.81M
-466,BVB,Borussia Dortmund GmbH & Co. Kommanditgesellschaft auf Aktien,346.58M,3.14,4.67%,549.04M
-467,PSAN,PSI Software SE,339.19M,21.8,0.46%,262.86M
-468,JDC,JDC Group AG,313.70M,22.9,1.33%,205.88M
-469,SUR,Surteco Group SE,310.11M,19.7,-1.50%,863.18M
-470,ILM1,Medios AG,309.69M,12.14,-0.33%,1.84B
-471,VIH1,VIB Vermögen AG,309.06M,9.41,-0.63%,97.76M
-472,ST5,STEICO SE,302.79M,21.5,5.65%,366.87M
-473,A1OS,All for One Group SE,302.69M,60.2,0.67%,511.41M
-474,PSG,PharmaSGP Holding SE,299.76M,25.0,-0.79%,114.00M
-475,HDD,Heidelberger Druckmaschinen Aktiengesellschaft,297.03M,0.98,2.41%,2.25B
-476,TPE,PVA TePla AG,294.46M,13.79,-0.43%,270.57M
-477,M12,M1 Kliniken AG,293.17M,15.8,2.27%,333.27M
-478,SEW,Semperit Aktiengesellschaft Holding,289.26M,13.94,4.81%,711.27M
-479,ZIL2,ElringKlinger AG,287.97M,4.55,1.11%,1.79B
-480,F3C,SFC Energy AG,286.50M,16.5,0.98%,135.31M
-481,O4B,OVB Holding AG,282.18M,19.8,-,392.74M
-482,SKB,Koenig & Bauer AG,280.59M,16.88,2.06%,1.26B
-483,BIJ,Bijou Brigitte modische Accessoires Aktiengesellschaft,279.85M,36.35,1.54%,331.32M
-484,1FC,FACC AG,276.11M,6.09,0.16%,864.94M
-485,IVU,IVU Traffic Technologies AG,270.32M,15.7,2.61%,132.79M
-486,ADE,Bitcoin Group SE,269.50M,53.9,1.51%,6.33M
-487,IJ8,ITM Power Plc,266.36M,0.41,-7.34%,19.34M
-488,0Q3,"Beyond Meat, Inc.",258.50M,3.49,-1.86%,289.73M
-489,MXHN,MAX Automation SE,255.71M,6.2,-0.64%,382.10M
-490,BKHT,Brockhaus Technologies AG,249.70M,23.9,0.42%,222.17M
-491,HTG,HomeToGo SE,249.35M,2.11,6.57%,200.22M
-492,UZU,Uzin Utz SE,249.19M,49.0,-,477.85M
-493,ROI,Rosenbauer International AG,234.60M,34.5,-2.27%,1.21B
-494,NVM,Novem Group S.A.,222.90M,5.08,1.20%,567.92M
-495,LPK,LPKF Laser & Electronics SE,222.73M,9.15,0.66%,132.96M
-496,HAW,Hawesko Holding SE,220.99M,25.4,1.60%,642.35M
-497,T9Z,Zumtobel Group AG,217.16M,5.1,0.79%,1.13B
-498,UBK,UmweltBank AG,216.28M,6.06,-0.66%,52.63M
-499,BSL,Basler Aktiengesellschaft,206.29M,6.71,-1.47%,182.31M
-500,VVV3,Ökoworld AG,199.98M,28.7,-0.69%,62.22M
+1,APC,Apple Inc.,"3,291.38B",229.65,5.54%,350.25B
+2,MSF,Microsoft Corporation,"3,076.46B",423.9,4.11%,227.91B
+3,NVD,NVIDIA Corporation,"2,761.48B",116.36,2.86%,104.66B
+4,AMZ,"Amazon.com, Inc.","2,357.12B",229.9,3.96%,556.01B
+5,ABEA,Alphabet Inc.,"2,246.04B",186.22,0.51%,304.72B
+6,ABEC,Alphabet Inc.,"2,246.04B",186.46,-0.41%,304.72B
+7,FB2A,"Meta Platforms, Inc.","1,586.23B",644.2,2.74%,140.07B
+8,TL0,"Tesla, Inc.","1,213.94B",372.6,-1.97%,87.10B
+9,BRYN,Berkshire Hathaway Inc.,974.69B,451.55,0.97%,331.65B
+10,1YD,Broadcom Inc.,902.17B,192.8,-1.32%,47.54B
+11,WMT,Walmart Inc.,745.05B,93.48,2.50%,620.59B
+12,CMC,JPMorgan Chase & Co.,708.19B,254.65,1.43%,161.19B
+13,LLY,Eli Lilly and Company,692.92B,771.4,1.09%,36.64B
+14,3V64,Visa Inc.,624.69B,323.3,2.00%,32.21B
+15,M4I,Mastercard Incorporated,478.61B,514.5,1.06%,24.41B
+16,UNH,UnitedHealth Group Incorporated,476.28B,519.0,0.14%,386.63B
+17,XONA,Exxon Mobil Corporation,461.06B,104.76,0.38%,308.27B
+18,ORC,Oracle Corporation,421.54B,155.7,-0.45%,52.07B
+19,CTO,Costco Wholesale Corporation,407.99B,916.4,1.83%,248.97B
+20,HDI,"The Home Depot, Inc.",401.88B,400.9,0.45%,142.85B
+21,NFC,"Netflix, Inc.",395.86B,925.2,0.18%,37.67B
+22,PRG,The Procter & Gamble Company,378.81B,161.52,1.14%,81.47B
+23,MOH,"LVMH Moët Hennessy - Louis Vuitton, Société Européenne",377.21B,750.8,-0.46%,85.59B
+24,NOV,Novo Nordisk A/S,363.40B,82.26,-2.54%,36.28B
+25,JNJ,Johnson & Johnson,350.51B,145.28,0.87%,85.17B
+26,NCB,Bank of America Corporation,341.26B,45.11,1.66%,92.79B
+27,FOO,"Salesforce, Inc.",316.30B,337.55,3.04%,34.25B
+28,SAP,SAP SE,305.50B,262.6,0.46%,33.27B
+29,4AB,AbbVie Inc.,297.66B,170.88,2.08%,49.79B
+30,HMI,Hermès International Société en commandite par actions,278.79B,2666.0,0.08%,14.23B
+31,CHV,Chevron Corporation,269.05B,149.78,0.52%,171.87B
+32,CCC3,The Coca-Cola Company,261.99B,60.83,0.95%,41.53B
+33,ASME,ASML Holding N.V.,254.65B,646.9,-0.74%,26.24B
+34,TM5,"T-Mobile US, Inc.",244.68B,210.95,2.18%,71.73B
+35,NWT,Wells Fargo & Company,244.09B,74.28,0.75%,75.30B
+36,6MK,"Merck & Co., Inc.",235.91B,93.1,0.76%,56.64B
+37,CIS,"Cisco Systems, Inc.",224.05B,56.82,1.01%,48.95B
+38,ABL,Abbott Laboratories,213.76B,122.74,3.42%,40.52B
+39,TN8,Thermo Fisher Scientific Inc.,212.57B,570.1,3.58%,37.95B
+40,AEC1,American Express Company,211.51B,306.0,1.90%,58.69B
+41,DWD,Morgan Stanley,209.10B,131.78,2.35%,59.40B
+42,ZEG,AstraZeneca PLC,206.54B,134.4,0.86%,45.91B
+43,PEP,"PepsiCo, Inc.",204.33B,146.56,-0.11%,82.78B
+44,GOS,"The Goldman Sachs Group, Inc.",203.94B,599.8,-1.15%,50.39B
+45,MDO,McDonald's Corporation,199.99B,280.15,1.98%,23.26B
+46,LIN,Linde plc,199.26B,421.4,0.86%,29.61B
+47,IBM,International Business Machines Corporation,197.33B,212.1,-1.37%,56.11B
+48,LOR,L'Oréal S.A.,196.65B,367.55,1.23%,42.73B
+49,WDP,The Walt Disney Company,195.17B,107.32,-0.54%,81.83B
+50,AHLA,Alibaba Group Holding Limited,193.69B,86.9,0.70%,122.96B
+51,4I1,Philip Morris International Inc.,193.10B,124.74,1.15%,33.37B
+52,ADB,Adobe Inc.,181.80B,421.5,-0.30%,20.38B
+53,CAT1,Caterpillar Inc.,181.58B,375.5,0.94%,58.87B
+54,QCI,QUALCOMM Incorporated,180.18B,163.82,1.16%,34.90B
+55,AMD,"Advanced Micro Devices, Inc.",177.72B,108.7,-0.91%,21.76B
+56,DAP,Danaher Corporation,172.34B,236.25,0.60%,21.27B
+57,HBC1,HSBC Holdings plc,172.33B,9.85,-0.23%,51.98B
+58,SOBA,AT&T Inc.,164.95B,23.17,0.91%,118.16B
+59,BAC,Verizon Communications Inc.,162.90B,38.07,0.69%,130.19B
+60,TII,Texas Instruments Incorporated,162.24B,173.6,-3.77%,15.11B
+61,ITU,Intuit Inc.,161.69B,584.7,0.93%,15.28B
+62,5UR,RTX Corporation,158.49B,123.06,3.29%,77.98B
+63,SIE,Siemens Aktiengesellschaft,157.91B,200.05,-0.67%,75.93B
+64,IXD1,"Industria de Diseño Textil, S.A.",151.38B,49.33,0.76%,37.76B
+65,PCE1,Booking Holdings Inc.,147.34B,4533.0,-0.04%,20.67B
+66,UNP,Union Pacific Corporation,146.87B,245.0,1.11%,23.42B
+67,DTE,Deutsche Telekom AG,145.99B,30.77,3.22%,116.87B
+68,PFE,Pfizer Inc.,144.94B,25.58,0.43%,53.18B
+69,TRVC,Citigroup Inc.,144.90B,76.53,-0.31%,68.93B
+70,AMG,Amgen Inc.,144.82B,269.6,1.03%,29.17B
+71,UNVB,Unilever PLC,143.57B,55.32,2.48%,60.29B
+72,ALD,Honeywell International Inc.,139.75B,209.65,-2.56%,33.94B
+73,CTP2,Comcast Corporation,139.30B,36.2,-0.10%,110.34B
+74,UT8,"Uber Technologies, Inc.",137.89B,66.23,0.67%,37.62B
+75,SND,Schneider Electric S.E.,137.47B,226.8,-7.49%,36.44B
+76,AP2,"Applied Materials, Inc.",135.09B,164.96,-8.09%,25.11B
+77,AIR,Airbus SE,131.67B,166.76,0.52%,67.40B
+78,YCP,ConocoPhillips,126.49B,97.62,-0.09%,51.04B
+79,SNW,Sanofi,126.45B,102.16,1.03%,48.45B
+80,TOTB,TotalEnergies SE,125.65B,56.15,0.79%,182.24B
+81,DCO,Deere & Company,125.56B,459.7,0.39%,47.62B
+82,BCO,The Boeing Company,124.79B,175.08,5.04%,64.25B
+83,ALV,Allianz SE,121.57B,315.0,0.64%,97.41B
+84,3CP,Xiaomi Corporation,118.08B,4.84,5.69%,42.20B
+85,BRM,Bristol-Myers Squibb Company,117.03B,56.64,1.09%,42.53B
+86,LOM,Lockheed Martin Corporation,113.69B,445.75,-6.11%,68.62B
+87,GIS,"Gilead Sciences, Inc.",113.15B,90.82,2.00%,25.37B
+88,2M6,Medtronic plc,112.89B,86.06,1.10%,30.49B
+89,VX1,Vertex Pharmaceuticals Incorporated,108.85B,420.35,0.38%,9.53B
+90,SRB,Starbucks Corporation,108.18B,95.09,1.62%,32.40B
+91,NKE,"NIKE, Inc.",106.45B,71.95,0.18%,46.42B
+92,RIO1,Rio Tinto Group,99.18B,58.39,-1.70%,50.56B
+93,639,Spotify Technology S.A.,98.90B,503.0,3.57%,15.10B
+94,MTE,"Micron Technology, Inc.",96.66B,84.94,-2.91%,27.58B
+95,AIL,L'Air Liquide S.A.,96.03B,164.94,0.83%,27.01B
+96,1NBA,Anheuser-Busch InBev SA/NV,93.55B,47.7,0.38%,53.26B
+97,LAR0,Lam Research Corporation,92.66B,70.8,-7.15%,13.97B
+98,KLA,KLA Corporation,89.50B,662.9,-0.72%,9.20B
+99,MLB1,"MercadoLibre, Inc.",89.11B,1754.6,-0.19%,16.58B
+100,RDEB,RELX PLC,86.49B,46.7,-1.06%,10.97B
+101,PHM7,"Altria Group, Inc.",86.26B,50.52,2.82%,18.26B
+102,2PP,"PayPal Holdings, Inc.",86.14B,85.48,0.15%,28.20B
+103,1TY,Prosus N.V.,84.24B,35.8,0.82%,5.27B
+104,IBE1,"Iberdrola, S.A.",83.62B,13.4,1.06%,45.26B
+105,INL,Intel Corporation,83.33B,19.07,-2.95%,48.59B
+106,BMT,British American Tobacco p.l.c.,82.44B,37.59,0.51%,30.88B
+107,UWS,"Waste Management, Inc.",81.65B,204.05,1.39%,19.18B
+108,BPE5,BP p.l.c.,78.49B,4.96,-0.34%,173.88B
+109,MMM,3M Company,77.83B,144.4,0.95%,23.74B
+110,AXA,AXA SA,77.27B,36.34,1.11%,90.56B
+111,SYP,"Synopsys, Inc.",75.17B,489.1,-6.19%,5.64B
+112,IES,Intesa Sanpaolo S.p.A.,74.58B,4.17,-0.24%,24.56B
+113,BSD2,"Banco Santander, S.A.",74.37B,4.92,0.31%,47.79B
+114,ZOE,Zoetis Inc.,74.33B,165.0,0.94%,8.21B
+115,KTF,"Mondelez International, Inc.",74.27B,56.03,0.97%,32.41B
+116,2FE,Ferrari N.V.,73.67B,415.1,1.49%,6.46B
+117,UB5,U.S. Bancorp,73.59B,46.64,-0.28%,24.24B
+118,BNP,BNP Paribas SA,72.45B,64.61,0.59%,44.68B
+119,CPA,Colgate-Palmolive Company,70.96B,86.0,2.63%,18.03B
+120,GDX,General Dynamics Corporation,70.54B,254.4,-0.12%,41.24B
+121,MUV2,Münchener Rückversicherungs-Gesellschaft Aktiengesellschaft in München,69.85B,531.0,-,61.99B
+122,NTH,Northrop Grumman Corporation,69.81B,482.5,1.22%,36.75B
+123,12DA,Dell Technologies Inc.,68.99B,98.77,-9.63%,86.61B
+124,ENL,Enel SpA,68.95B,6.77,1.45%,82.33B
+125,CRIN,UniCredit S.p.A.,68.02B,43.89,0.11%,24.00B
+126,CVS,CVS Health Corporation,67.34B,54.59,3.12%,329.27B
+127,1QZ,"Coinbase Global, Inc.",66.27B,267.0,0.75%,4.48B
+128,GUI,Diageo plc,65.87B,29.73,0.05%,18.92B
+129,MRK,Merck KGaA,65.00B,151.95,4.65%,20.96B
+130,FDX,FedEx Corporation,64.57B,263.9,2.43%,82.83B
+131,DYH,Target Corporation,62.17B,136.1,1.98%,99.16B
+132,SHL,Siemens Healthineers AG,60.71B,54.24,0.86%,22.36B
+133,SQU,Vinci SA,59.10B,105.0,1.35%,71.40B
+134,BOY,"Banco Bilbao Vizcaya Argentaria, S.A.",58.65B,10.81,0.75%,29.84B
+135,4PN,Carrier Global Corporation,57.61B,66.72,-0.67%,22.24B
+136,8GM,General Motors Company,57.50B,51.24,-1.48%,181.05B
+137,P911,Dr. Ing. h.c. F. Porsche AG,56.14B,61.72,-1.72%,38.96B
+138,NNGF,National Grid plc,55.90B,11.4,-0.87%,23.22B
+139,MBG,Mercedes-Benz Group AG,54.81B,58.44,1.42%,147.95B
+140,XGR2,Compass Group PLC,54.71B,32.3,-0.22%,37.66B
+141,FPMB,Freeport-McMoRan Inc.,50.17B,34.94,-2.90%,24.59B
+142,VOW,Volkswagen AG,49.86B,100.6,-0.89%,324.46B
+143,INN1,ING Groep N.V.,49.36B,15.99,-0.42%,17.21B
+144,VOW3,Volkswagen AG,49.33B,97.82,-0.16%,324.46B
+145,BCY,Barclays PLC,49.32B,3.47,0.58%,28.36B
+146,BMW3,Bayerische Motoren Werke Aktiengesellschaft,49.20B,73.7,-2.25%,148.93B
+147,BMW,Bayerische Motoren Werke Aktiengesellschaft,49.17B,78.8,-2.76%,148.93B
+148,R66,Phillips 66,48.40B,119.46,2.16%,132.46B
+149,1N8,Adyen N.V.,47.34B,1509.0,-0.54%,1.81B
+150,ASG,Assicurazioni Generali S.p.A.,46.26B,30.22,1.82%,59.82B
+151,ADS,adidas AG,45.28B,253.6,-0.59%,22.53B
+152,AINN,"American International Group, Inc.",45.21B,69.56,-3.39%,40.62B
+153,GOB,Compagnie de Saint-Gobain S.A.,44.69B,88.8,-1.33%,46.45B
+154,NMM,Newmont Corporation,44.61B,39.4,0.66%,15.23B
+155,BSP,BAE Systems plc,44.48B,14.97,1.18%,28.97B
+156,LLD,Lloyds Banking Group plc,44.45B,0.73,-1.36%,22.30B
+157,OPC,Occidental Petroleum Corporation,44.28B,46.99,-0.33%,24.33B
+158,DB1,Deutsche Börse AG,43.62B,239.1,0.55%,6.89B
+159,BSN,Danone S.A.,43.41B,67.42,1.48%,27.21B
+160,IFX,Infineon Technologies AG,43.37B,33.06,-0.97%,14.96B
+161,3RB,Reckitt Benckiser Group plc,42.69B,62.28,1.57%,16.90B
+162,BAS,BASF SE,41.86B,47.22,0.67%,65.27B
+163,KMY,Kimberly-Clark Corporation,41.73B,123.98,-0.47%,19.37B
+164,DHL,Deutsche Post AG,41.63B,36.13,0.81%,83.23B
+165,ENI,Eni S.p.A.,41.37B,13.42,0.04%,92.19B
+166,ENR,Siemens Energy AG,41.06B,51.96,7.53%,34.47B
+167,68V,Baker Hughes Company,41.03B,43.4,-0.41%,24.48B
+168,GLW,Corning Incorporated,40.38B,50.25,-2.31%,11.31B
+169,FMC1,Ford Motor Company,39.28B,9.6,-2.23%,163.85B
+170,DBK,Deutsche Bank Aktiengesellschaft,37.42B,19.31,1.89%,27.63B
+171,GZF,Engie SA,37.18B,15.61,1.23%,73.06B
+172,8TI,Stellantis N.V.,35.18B,13.16,1.29%,176.19B
+173,VEE,Veeva Systems Inc.,34.90B,208.9,-1.88%,2.45B
+174,TGR,"Yum! Brands, Inc.",34.78B,124.65,2.26%,6.48B
+175,KHNZ,The Kraft Heinz Company,34.77B,29.0,0.71%,23.40B
+176,NGLB,Anglo American plc,34.07B,28.05,-7.12%,27.48B
+177,HEN3,Henkel AG & Co. KGaA,32.66B,83.76,-0.02%,21.40B
+178,HEN,Henkel AG & Co. KGaA,32.58B,74.1,0.14%,21.40B
+179,GRM,"General Mills, Inc.",32.41B,57.8,1.17%,19.15B
+180,PPX,Kering SA,32.19B,262.3,-0.27%,18.45B
+181,690D,"Haier Smart Home Co., Ltd.",31.89B,1.83,0.54%,33.97B
+182,RHM,Rheinmetall AG,31.79B,732.2,1.24%,8.83B
+183,POH1,Carnival Corporation & plc,31.64B,21.56,-2.49%,23.71B
+184,HNR1,Hannover Rück SE,31.55B,261.1,1.28%,27.36B
+185,AHOG,Koninklijke Ahold Delhaize N.V.,31.15B,33.9,1.50%,89.05B
+186,DTG,Daimler Truck Holding AG,30.83B,39.39,-1.67%,54.68B
+187,6D81,"DuPont de Nemours, Inc.",30.51B,72.04,-2.71%,10.93B
+188,EBA,eBay Inc.,30.49B,63.91,1.32%,9.20B
+189,7HP,HP Inc.,29.76B,31.22,-0.26%,49.33B
+190,HSY,The Hershey Company,29.62B,145.86,-1.63%,9.83B
+191,ERT,Electronic Arts Inc.,29.45B,112.16,1.95%,6.64B
+192,EOAN,E.ON SE,29.07B,11.13,1.78%,82.14B
+193,TCO0,Tesco PLC,28.96B,4.4,2.33%,81.69B
+194,BEI,Beiersdorf Aktiengesellschaft,28.90B,128.7,-0.16%,9.69B
+195,2HP,Hewlett Packard Enterprise Company,28.74B,22.14,1.91%,27.75B
+196,XY6,Xylem Inc.,28.26B,113.8,-1.51%,7.55B
+197,PER,Pernod Ricard SA,28.07B,112.2,1.08%,11.60B
+198,2OY,Dow Inc.,28.04B,39.7,0.28%,38.72B
+199,FTE,Orange S.A.,27.71B,10.18,-0.29%,44.61B
+200,KEL,Kellanova,26.90B,78.64,0.90%,11.46B
+201,ABR,Barrick Gold Corporation,26.72B,15.0,-2.36%,11.06B
+202,ITB,Imperial Brands PLC,26.12B,31.88,0.69%,22.21B
+203,EBO,Erste Group Bank AG,25.58B,62.04,-0.42%,10.68B
+204,SII,Wheaton Precious Metals Corp.,25.56B,56.6,-0.39%,1.09B
+205,CBHD,Coloplast A/S,24.89B,110.3,-0.05%,3.62B
+206,ERCB,Telefonaktiebolaget LM Ericsson (publ),24.71B,7.3,-1.03%,21.63B
+207,ERCG,Telefonaktiebolaget LM Ericsson (publ),24.71B,8.37,0.84%,21.63B
+208,OEWA,VERBUND AG,24.61B,71.55,0.99%,6.52B
+209,SGE,Société Générale Société anonyme,24.48B,30.57,0.92%,24.57B
+210,PHI1,Koninklijke Philips N.V.,24.18B,26.16,1.08%,18.04B
+211,AWC,"American Water Works Company, Inc.",24.12B,120.85,4.14%,4.05B
+212,HEI,Heidelberg Materials AG,23.93B,134.1,-0.59%,20.79B
+213,ADM,Archer-Daniels-Midland Company,23.77B,49.21,0.13%,78.01B
+214,HLAG,Hapag-Lloyd Aktiengesellschaft,23.46B,133.7,0.15%,17.85B
+215,VNA,Vonovia SE,23.34B,28.64,0.95%,6.22B
+216,NOA3,Nokia Oyj,23.33B,4.29,-0.77%,19.77B
+217,HAL,Halliburton Company,22.79B,26.28,0.57%,22.16B
+218,RY4C,Ryanair Holdings plc,21.99B,20.37,0.64%,13.82B
+219,SGM,STMicroelectronics N.V.,21.88B,23.5,-3.35%,12.74B
+220,DP4A,A.P. Møller - Mærsk A/S,21.80B,1363.0,2.40%,47.19B
+221,DP4B,A.P. Møller - Mærsk A/S,21.80B,1348.0,-2.71%,47.19B
+222,TNE5,"Telefónica, S.A.",21.68B,3.9,1.38%,40.57B
+223,CBK,Commerzbank AG,21.44B,18.15,0.28%,9.85B
+224,RWE,RWE Aktiengesellschaft,21.41B,29.01,1.72%,23.60B
+225,TLX,Talanx AG,21.15B,81.8,-0.24%,48.66B
+226,BAYN,Bayer Aktiengesellschaft,21.07B,21.5,0.23%,46.74B
+227,FRE,Fresenius SE & Co. KGaA,20.91B,37.21,0.79%,22.81B
+228,HMSB,H & M Hennes & Mauritz AB (publ),20.88B,13.42,3.15%,20.70B
+229,ILU,"Illumina, Inc.",20.85B,130.46,-3.56%,3.93B
+230,E3X1,"Expedia Group, Inc.",20.67B,160.16,-2.56%,12.01B
+231,IDP,Biogen Inc.,20.64B,137.25,0.73%,8.61B
+232,VODI,Vodafone Group Public Limited Company,20.51B,0.82,1.04%,37.01B
+233,VVD,Veolia Environnement SA,20.06B,27.58,1.62%,44.74B
+234,INP,International Paper Company,19.61B,56.26,-1.23%,16.71B
+235,ARRD,ArcelorMittal S.A.,18.64B,22.67,0.89%,55.84B
+236,INR,International Consolidated Airlines Group S.A.,18.55B,3.89,-0.69%,31.28B
+237,UN0,Uniper SE,18.54B,44.4,-0.25%,106.44B
+238,MTX,MTU Aero Engines AG,17.50B,332.1,2.12%,7.00B
+239,EBK,EnBW Energie Baden-Württemberg AG,17.39B,63.6,-0.63%,36.91B
+240,1SI,Snap Inc.,17.33B,10.46,0.63%,4.63B
+241,SRT,Sartorius Aktiengesellschaft,17.33B,222.5,12.03%,3.32B
+242,SRT3,Sartorius Aktiengesellschaft,17.33B,279.0,11.47%,3.32B
+243,F3A,"First Solar, Inc.",16.75B,153.88,-0.77%,3.45B
+244,SY1,Symrise AG,14.30B,102.5,0.49%,4.88B
+245,8TRA,Traton SE,13.98B,27.95,-0.53%,47.95B
+246,CON,Continental Aktiengesellschaft,13.92B,69.98,0.57%,40.07B
+247,FME,Fresenius Medical Care AG,13.73B,47.05,0.56%,19.24B
+248,RNL,Renault SA,13.25B,49.25,0.26%,52.49B
+249,NEM,Nemetschek SE,13.13B,115.4,1.50%,924.25M
+250,REP,"Repsol, S.A.",13.00B,11.15,0.27%,52.68B
+251,VWSB,Vestas Wind Systems A/S,12.70B,12.87,0.51%,15.93B
+252,OMV,OMV Aktiengesellschaft,12.70B,39.34,1.13%,34.75B
+253,KIN2,Kinross Gold Corporation,12.44B,10.13,-0.34%,4.35B
+254,KBX,Knorr-Bremse AG,11.49B,70.4,-1.54%,8.09B
+255,PAH3,Porsche Automobil Holding SE,11.43B,37.62,0.83%,-
+256,A1G,American Airlines Group Inc.,10.77B,16.33,-1.01%,52.36B
+257,1CO,Covestro AG,10.63B,59.4,-,14.15B
+258,1COV,Covestro AG,10.63B,56.3,0.21%,14.15B
+259,PES,Pearson plc,10.29B,15.51,1.21%,4.19B
+260,HOT,HOCHTIEF Aktiengesellschaft,10.03B,134.3,-0.96%,30.97B
+261,AMC,Albemarle Corporation,9.94B,85.39,2.23%,5.83B
+262,HLE,HELLA GmbH & Co. KGaA,9.91B,89.2,0.34%,7.96B
+263,BIRG,Bank of Ireland Group plc,9.86B,9.76,-0.97%,4.22B
+264,RAA,RATIONAL Aktiengesellschaft,9.69B,849.0,-0.59%,1.17B
+265,VFP,V.F. Corporation,9.63B,25.38,3.74%,9.04B
+266,QIA,Qiagen N.V.,9.63B,43.6,-0.34%,1.76B
+267,W8A,"Walgreens Boots Alliance, Inc.",9.33B,10.46,-1.43%,142.56B
+268,DWNI,Deutsche Wohnen SE,9.15B,23.15,0.43%,1.51B
+269,CAR,Carrefour SA,9.07B,13.68,1.11%,84.62B
+270,ZAL,Zalando SE,8.97B,34.75,0.06%,10.33B
+271,2FB,"Fortune Brands Innovations, Inc.",8.86B,70.0,1.45%,4.18B
+272,AOMD,Alstom SA,8.82B,19.08,-1.29%,17.95B
+273,EVD,CTS Eventim AG & Co. KGaA,8.74B,91.75,0.05%,2.64B
+274,BNR,Brenntag SE,8.67B,60.04,0.17%,16.19B
+275,185,Alcoa Corporation,8.60B,34.96,-1.20%,11.49B
+276,DWS,DWS Group GmbH & Co. KGaA,8.44B,42.64,0.99%,3.96B
+277,EVK,Evonik Industries AG,8.41B,18.17,0.64%,15.16B
+278,G1A,GEA Group Aktiengesellschaft,8.16B,50.15,1.11%,5.32B
+279,JDE,JDE Peet's N.V.,8.08B,16.77,1.70%,8.41B
+280,USX1,United States Steel Corporation,7.89B,34.99,-0.19%,14.59B
+281,LHA,Deutsche Lufthansa AG,7.52B,6.38,1.69%,36.93B
+282,DHER,Delivery Hero SE,7.43B,25.65,0.08%,10.88B
+283,RAW,Raiffeisen Bank International AG,7.08B,21.46,0.75%,8.58B
+284,RDO,Sirius XM Holdings Inc.,7.07B,4.44,-1.20%,7.89B
+285,O5G,CPI Property Group,7.01B,0.82,-,1.61B
+286,G24,Scout24 SE,6.68B,92.6,0.49%,573.68M
+287,0B2,BAWAG Group AG,6.63B,86.15,-2.27%,1.41B
+288,3E2,"Etsy, Inc.",5.73B,51.04,-0.51%,2.51B
+289,LEG,LEG Immobilien SE,5.66B,75.2,2.12%,1.41B
+290,LY0,"Lyft, Inc.",5.47B,13.34,2.55%,4.90B
+291,XD4,Strabag SE,5.46B,46.4,4.39%,17.45B
+292,AZ2,Andritz AG,5.37B,54.3,-0.73%,8.48B
+293,TA1,Telekom Austria AG,5.31B,8.05,0.75%,5.22B
+294,FRA,Fraport AG,5.21B,56.55,0.35%,4.43B
+295,AHYQ,Amundi Index Solutions - Amundi Msci World III,5.09B,102.9,1.09%,-
+296,KFI1,Kingfisher plc,5.07B,2.85,-1.52%,15.25B
+297,AFX,Carl Zeiss Meditec AG,4.99B,57.05,0.09%,2.07B
+298,LU2,Lumentum Holdings Inc.,4.85B,70.86,-0.31%,1.23B
+299,FPE,Fuchs SE,4.84B,31.6,0.32%,3.51B
+300,FPE3,Fuchs SE,4.76B,41.86,0.96%,3.51B
+301,PUM,PUMA SE,4.70B,31.83,0.25%,8.51B
+302,KGX,KION GROUP AG,4.54B,34.66,-0.45%,11.52B
+303,RRTL,RTL Group S.A.,4.47B,29.05,0.52%,6.29B
+304,HAG,Hensoldt AG,4.32B,37.3,-0.32%,2.09B
+305,RZ8G,SNGN Romgaz SA,4.11B,1.0,-,1.57B
+306,KRN,Krones AG,4.11B,130.0,-0.31%,5.16B
+307,TUI1,TUI AG,4.09B,8.07,2.67%,23.17B
+308,AG1,AUTO1 Group SE,4.07B,18.7,2.75%,5.90B
+309,1SO,Samsonite International S.A.,3.88B,2.74,3.44%,3.22B
+310,BC8,Bechtle AG,3.87B,30.9,0.65%,6.38B
+311,SHA0,Schaeffler AG,3.78B,4.0,-2.11%,16.28B
+312,GIL,DMG MORI AKTIENGESELLSCHAFT,3.59B,45.8,-0.43%,2.32B
+313,FIE,Fielmann Group AG,3.57B,42.5,0.83%,2.16B
+314,1SXP,SCHOTT Pharma AG & Co. KGaA,3.53B,23.46,1.56%,957.09M
+315,SIX3,Sixt SE,3.53B,60.7,-,4.06B
+316,SIX2,Sixt SE,3.51B,83.15,-,4.06B
+317,FNTN,freenet AG,3.45B,29.34,1.03%,2.70B
+318,HAR,"Harley-Davidson, Inc.",3.45B,26.24,-2.38%,4.98B
+319,IOS,IONOS Group SE,3.36B,24.35,1.88%,1.51B
+320,VAS,Voestalpine AG,3.24B,18.87,0.21%,16.21B
+321,SAX,Ströer SE & Co. KGaA,3.22B,57.75,1.32%,2.03B
+322,WCH,Wacker Chemie AG,3.21B,64.56,-0.86%,5.77B
+323,HCL,Hecla Mining Company,3.19B,5.0,-1.15%,754.00M
+324,NDA,Aurubis AG,3.17B,72.65,-0.21%,17.18B
+325,WIB,Wienerberger AG,3.07B,27.58,0.51%,4.33B
+326,BOSS,Hugo Boss AG,3.04B,44.56,-0.16%,4.23B
+327,AT1,Aroundtown SA,2.99B,2.73,-0.07%,1.48B
+328,TKA,thyssenkrupp AG,2.93B,4.7,0.86%,35.04B
+329,NB2,Northern Data AG,2.89B,45.0,-2.17%,77.53M
+330,ECV,Encavis AG,2.82B,17.45,-,457.94M
+331,UTDI,United Internet AG,2.71B,15.22,0.46%,6.30B
+332,VVU,Vivendi SE,2.62B,2.59,5.97%,14.86B
+333,NDX1,Nordex SE,2.56B,10.81,-5.67%,7.12B
+334,RDC,Redcare Pharmacy NV,2.53B,121.6,-3.49%,2.23B
+335,JUN3,Jungheinrich Aktiengesellschaft,2.51B,24.68,-,5.45B
+336,UN9,UNIQA Insurance Group AG,2.47B,8.13,-,7.02B
+337,NVJP,Umicore SA,2.41B,10.14,1.00%,15.72B
+338,TEG,TAG Immobilien AG,2.35B,13.4,1.36%,1.38B
+339,GXI,Gerresheimer AG,2.34B,67.8,1.73%,2.01B
+340,SDF,K+S Aktiengesellschaft,2.33B,13.01,3.46%,3.70B
+341,CDM1,"Coeur Mining, Inc.",2.29B,6.05,1.58%,906.15M
+342,R3NK,RENK Group AG,2.29B,23.64,3.48%,1.05B
+343,DOU,Douglas AG,2.22B,20.62,0.59%,4.45B
+344,LXS,LANXESS Aktiengesellschaft,2.19B,25.41,0.47%,6.32B
+345,SZU,Südzucker AG,2.19B,10.77,0.47%,10.00B
+346,DMP,Dermapharm Holding SE,2.16B,39.55,-0.75%,1.17B
+347,1U1,1&1 AG,2.02B,11.62,1.57%,4.08B
+348,O3P,Österreichische Post AG,1.99B,29.6,-0.84%,3.02B
+349,MVV1,MVV Energie AG,1.99B,29.6,-1.99%,6.37B
+350,RHF,RHI Magnesita N.V.,1.96B,40.1,0.25%,3.57B
+351,KWS,KWS SAAT SE & Co. KGaA,1.96B,58.5,-1.35%,1.72B
+352,GYC,Grand City Properties S.A.,1.84B,10.72,-0.74%,598.93M
+353,HFG,HelloFresh SE,1.83B,11.58,1.27%,7.71B
+354,AOF,ATOSS Software SE,1.83B,114.8,1.95%,166.83M
+355,GBF,Bilfinger SE,1.82B,48.45,-0.41%,4.87B
+356,TMV,TeamViewer SE,1.74B,11.39,2.34%,657.57M
+357,FTK,flatexDEGIRO AG,1.71B,16.06,-1.32%,443.06M
+358,PLUN,Plug Power Inc.,1.69B,1.84,-1.12%,591.31M
+359,DUE,Dürr Aktiengesellschaft,1.63B,23.58,0.08%,4.77B
+360,PFV,Pfeiffer Vacuum Technology AG,1.54B,156.0,-,911.28M
+361,MYM,Mayr-Melnhof Karton AG,1.52B,76.5,2.27%,4.04B
+362,FMV,First Majestic Silver Corp.,1.52B,5.05,-6.37%,470.91M
+363,AIXA,AIXTRON SE,1.47B,13.07,-0.53%,620.63M
+364,B4B,Metro AG,1.47B,3.97,1.79%,31.03B
+365,B4B3,Metro AG,1.47B,4.84,-0.41%,31.03B
+366,CEC,Ceconomy AG,1.43B,2.94,7.00%,22.44B
+367,EVT,Evotec SE,1.43B,8.24,0.37%,777.05M
+368,HHFA,Hamburger Hafen und Logistik Aktiengesellschaft,1.41B,19.2,2.78%,1.56B
+369,DEQ,Deutsche EuroShop AG,1.39B,18.42,0.33%,279.09M
+370,HYQ,Hypoport SE,1.38B,206.2,-2.92%,424.71M
+371,BIO3,Biotest Aktiengesellschaft,1.36B,27.3,0.37%,707.00M
+372,BIO,Biotest Aktiengesellschaft,1.36B,41.4,-,707.00M
+373,WAF,Siltronic AG,1.30B,44.1,1.89%,1.41B
+374,ELG,Elmos Semiconductor SE,1.28B,74.2,-2.24%,591.94M
+375,COP,CompuGroup Medical SE & Co. KGaA,1.26B,23.46,0.43%,1.19B
+376,PSM,ProSiebenSat.1 Media SE,1.26B,5.65,2.36%,3.94B
+377,JEN,Jenoptik AG,1.23B,21.2,-4.50%,1.11B
+378,NXU,Nexus AG,1.19B,69.0,-0.29%,265.36M
+379,HBH,HORNBACH Holding AG & Co. KGaA,1.18B,73.6,1.38%,6.19B
+380,NCH2,thyssenkrupp nucera AG & Co. KGaA,1.14B,9.05,-3.47%,862.00M
+381,WUW,Wüstenrot & Württembergische AG,1.14B,12.16,-0.16%,5.53B
+382,YOU,About You Holding SE,1.14B,6.54,-,1.96B
+383,C43,Cosmo Pharmaceuticals N.V.,1.12B,67.5,-1.46%,185.36M
+384,KSB,KSB SE & Co. KGaA,1.11B,650.0,-,2.91B
+385,NA9,Nagarro SE,1.11B,83.4,0.91%,947.15M
+386,KSB3,KSB SE & Co. KGaA,1.10B,614.0,0.33%,2.91B
+387,WAC,Wacker Neuson SE,1.09B,16.06,-0.86%,2.36B
+388,EUZ,Eckert & Ziegler SE,1.08B,51.6,-3.19%,277.72M
+389,ADV,Adtran Networks SE,1.04B,20.05,-,481.90M
+390,TIMA,ZEAL Network SE,998.63M,46.1,-2.54%,151.42M
+391,LEN,Lenzing Aktiengesellschaft,990.56M,25.0,-,2.61B
+392,AOX,alstria office REIT-AG,989.23M,5.54,0.36%,240.21M
+393,2HQ,"Tilray Brands, Inc.",982.12M,1.03,-2.18%,785.93M
+394,OHB,OHB SE,972.94M,53.2,4.72%,1.04B
+395,ECEA,Societatea Energetica Electrica S.A.,970.99M,11.2,-,2.16B
+396,FYB,Formycon AG,967.60M,54.0,2.27%,60.80M
+397,RHK,RHÖN-KLINIKUM Aktiengesellschaft,963.91M,14.6,0.69%,1.84B
+398,DRW3,Drägerwerk AG & Co. KGaA,957.09M,55.4,-1.07%,3.35B
+399,DRW8,Drägerwerk AG & Co. KGaA,938.72M,45.5,-2.78%,3.35B
+400,SZG,Salzgitter AG,923.27M,17.52,2.64%,10.11B
+401,PNE3,PNE AG,916.18M,12.08,0.83%,123.43M
+402,VOS,Vossloh AG,887.78M,45.5,-1.94%,1.15B
+403,MUM,Mensch und Maschine Software SE,878.53M,51.8,0.19%,350.17M
+404,SMHN,SÜSS MicroTec SE,864.98M,43.05,-4.86%,397.18M
+405,BFSA,Befesa S.A.,844.80M,21.56,0.75%,1.19B
+406,5CV,CureVac N.V.,807.38M,3.77,0.27%,65.86M
+407,STM,Stabilus SE,802.75M,32.15,-1.08%,1.33B
+408,COK,Cancom SE,785.36M,24.52,2.42%,1.72B
+409,TNIE,tonies SE,761.68M,6.78,-0.59%,394.60M
+410,GLJ,Grenke AG,752.79M,16.7,0.48%,527.47M
+411,YSN,secunet Security Networks Aktiengesellschaft,751.76M,116.2,0.87%,386.46M
+412,MLP,MLP SE,743.56M,6.85,2.85%,1.04B
+413,ABS2,PORR AG,741.03M,18.74,-3.20%,6.21B
+414,PBB,Deutsche Pfandbriefbank AG,732.89M,5.32,0.28%,365.00M
+415,EIN3,Einhell Germany AG,723.55M,62.7,-1.88%,1.06B
+416,SFQ,SAF-Holland SE,715.41M,15.6,-0.13%,1.97B
+417,QH9,"ADTRAN Holdings, Inc.",713.72M,9.98,-,811.73M
+418,CHG,CHAPTERS Group AG,712.69M,30.4,-1.30%,87.13M
+419,VH2,Friedrich Vorwerk Group SE,709.00M,36.35,2.54%,438.55M
+420,CWC,CEWE Stiftung & Co. KGaA,695.33M,100.6,-0.98%,817.37M
+421,TGHN,Logwin AG,691.01M,242.0,0.83%,1.23B
+422,AGB2,AGRANA Beteiligungs-Aktiengesellschaft,690.50M,11.0,0.46%,3.69B
+423,STO3,Sto SE & Co. KGaA,690.15M,108.2,0.74%,1.66B
+424,PAT,PATRIZIA SE,680.35M,7.95,0.76%,271.19M
+425,JST,JOST Werke SE,680.19M,45.0,-0.66%,1.13B
+426,ACT,AlzChem Group AG,647.21M,63.6,-0.93%,563.55M
+427,DEZ,DEUTZ Aktiengesellschaft,637.75M,4.6,0.39%,1.86B
+428,SLYG,Shelly Group SE,635.51M,34.6,-,95.71M
+429,VBK,Verbio SE,610.12M,9.33,-2.56%,1.54B
+430,SIS,First Sensor AG,610.06M,58.8,0.68%,122.57M
+431,EKT,Energiekontor AG,607.55M,43.8,1.15%,254.65M
+432,MUB,Mühlbauer Holding AG,596.06M,41.6,-0.48%,462.26M
+433,ADN1,adesso SE,590.19M,93.9,1.84%,1.27B
+434,GFT,GFT Technologies SE,572.59M,21.75,0.93%,862.16M
+435,M8G,Verve Group SE,568.05M,3.04,-2.41%,416.58M
+436,NBG6,NÜRNBERGER Beteiligungs-AG,552.96M,47.8,1.27%,4.60B
+437,MUX,Mutares SE & Co. KGaA,550.83M,25.8,1.18%,5.21B
+438,MBB,MBB SE,546.88M,100.0,-2.53%,1.05B
+439,SLL,Schoeller-Bleckmann Oilfield Equipment Aktiengesellschaft,536.61M,34.3,-1.72%,574.27M
+440,WSU,WashTec AG,531.28M,39.7,-,467.05M
+441,INH,INDUS Holding AG,530.25M,20.55,-,1.73B
+442,TTK,TAKKT AG,528.34M,8.23,2.49%,1.08B
+443,HABA,Hamborner REIT AG,524.66M,6.32,-0.47%,105.80M
+444,NOEJ,NORMA Group SE,521.91M,16.4,0.12%,1.18B
+445,SYV,3D Systems Corporation,516.55M,3.8,4.71%,398.04M
+446,DHR,"B&G Foods, Inc.",509.57M,6.21,-0.06%,1.75B
+447,PCZ,ProCredit Holding AG,506.53M,8.2,-1.20%,433.86M
+448,AUS,AT & S Austria Technologie & Systemtechnik Aktiengesellschaft,490.68M,12.66,3.52%,1.54B
+449,SHF,SNP Schneider-Neureither & Partner SE,486.51M,67.4,-,236.60M
+450,S92,SMA Solar Technology AG,475.04M,13.8,0.80%,1.63B
+451,KCO,Klöckner & Co SE,463.84M,4.65,0.76%,6.75B
+452,SGL,SGL Carbon SE,455.46M,3.73,-,1.05B
+453,2GB,2G Energy AG,442.22M,24.65,-3.52%,360.90M
+454,AAD,Amadeus FiRe AG,434.57M,80.0,1.14%,448.60M
+455,ETG,EnviTec Biogas AG,432.14M,29.1,1.04%,479.22M
+456,DBAN,Deutsche Beteiligungs AG,430.48M,23.85,-0.63%,108.68M
+457,VIB3,Villeroy & Boch AG,403.16M,15.3,0.99%,1.26B
+458,SBS,Stratec SE,390.21M,34.6,7.79%,250.54M
+459,FQT,Frequentis AG,375.52M,27.9,-1.41%,449.92M
+460,BYW,BayWa Aktiengesellschaft,374.45M,23.3,0.87%,21.81B
+461,BYW6,BayWa Aktiengesellschaft,374.45M,9.79,0.20%,21.81B
+462,IXX,init innovation in traffic systems SE,371.34M,37.2,-1.06%,245.89M
+463,HDD,Heidelberger Druckmaschinen Aktiengesellschaft,371.29M,1.19,-2.46%,2.25B
+464,ZYE1,Addiko Bank AG,362.60M,18.5,-1.33%,280.80M
+465,INS,Instone Real Estate Group SE,359.58M,8.3,-1.07%,454.06M
+466,D6H,DATAGROUP SE,356.17M,43.2,-,533.81M
+467,BVB,Borussia Dortmund GmbH & Co. Kommanditgesellschaft auf Aktien,355.41M,3.24,0.62%,549.04M
+468,AB9,ABO Energy GmbH & Co. KGaA,355.00M,40.7,-0.97%,291.52M
+469,PSAN,PSI Software SE,339.19M,21.9,-,262.86M
+470,SUR,Surteco Group SE,338.02M,20.8,-,863.18M
+471,ILM1,Medios AG,312.75M,12.36,0.82%,1.84B
+472,PSG,PharmaSGP Holding SE,311.75M,26.0,-,114.00M
+473,A1OS,All for One Group SE,304.21M,62.4,-,511.41M
+474,JDC,JDC Group AG,302.88M,22.5,-1.75%,205.88M
+475,ZIL2,ElringKlinger AG,301.91M,4.69,-1.78%,1.79B
+476,F3C,SFC Energy AG,301.43M,17.54,4.90%,135.31M
+477,1FC,FACC AG,299.92M,6.32,-2.17%,864.94M
+478,BIJ,Bijou Brigitte modische Accessoires Aktiengesellschaft,291.78M,36.5,-3.69%,331.32M
+479,VIH1,VIB Vermögen AG,286.25M,8.56,-1.27%,97.76M
+480,SEW,Semperit Aktiengesellschaft Holding,283.91M,13.7,-3.11%,711.27M
+481,ST5,STEICO SE,283.78M,20.15,1.77%,366.87M
+482,O4B,OVB Holding AG,282.18M,19.8,-,392.74M
+483,M12,M1 Kliniken AG,278.33M,15.15,1.00%,333.27M
+484,TPE,PVA TePla AG,272.70M,12.9,0.47%,270.57M
+485,SKB,Koenig & Bauer AG,268.36M,15.74,-3.08%,1.26B
+486,IVU,IVU Traffic Technologies AG,266.81M,15.6,0.97%,132.79M
+487,ADE,Bitcoin Group SE,258.50M,51.5,0.19%,6.33M
+488,0Q3,"Beyond Meat, Inc.",256.42M,4.19,11.55%,289.73M
+489,UZU,Uzin Utz SE,254.74M,50.0,-0.99%,477.85M
+490,BKHT,Brockhaus Technologies AG,253.88M,24.3,-,222.17M
+491,IJ8,ITM Power Plc,252.90M,0.42,-2.74%,19.34M
+492,MXHN,MAX Automation SE,248.28M,5.92,-3.90%,382.10M
+493,HTG,HomeToGo SE,243.33M,2.02,-1.46%,200.22M
+494,ROI,Rosenbauer International AG,234.60M,34.5,0.29%,1.21B
+495,UBK,UmweltBank AG,222.05M,6.16,0.65%,52.63M
+496,LPK,LPKF Laser & Electronics SE,221.02M,8.93,-1.11%,132.96M
+497,HAW,Hawesko Holding SE,216.50M,24.3,-,642.35M
+498,NVM,Novem Group S.A.,216.01M,4.92,-0.40%,567.92M
+499,T9Z,Zumtobel Group AG,207.36M,5.06,-,1.13B
+500,BSL,Basler Aktiengesellschaft,203.21M,6.86,3.78%,182.31M
