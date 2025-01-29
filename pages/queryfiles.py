@@ -51,11 +51,11 @@ serp_api= SerpApiKey()
 if germin_key:
     llm = ChatGoogleGenerativeAI(model="gemini-pro", api_key=germin_key)
     @st.cache_resource
-    def getCrewAIMatcher(profession, location,file,ispdf):
+    def getCrewAIMatcher(profession, location,file,ispdf,model="gemini/gemini-1.5-pro"):
         try:
             date=pd.to_datetime('today').date()
             yr = pd.to_datetime('today').year
-            results=CrewAiMatcher(germin_key, serp_api, profession, yr, date,file,location,ispdf)
+            results=CrewAiMatcher(germin_key, serp_api, profession, yr, date,file,location,ispdf,model)
             return results
         except Exception as error:
             return  error
@@ -123,18 +123,23 @@ if germin_key:
             st.markdown(CVSummary(answer))
     with tab3:
             if uploaded_cv:
-                profession = st.text_input(
+                container = st.container(border=True)
+                model1= container.radio(
+                        "Choose a Model",
+                        ["gemini/gemini-1.5-pro", "gemini/gemini-1.5-flash-8b", "gemini/gemini-1.5-flash",  "gemini/gemini-2.0-flash-exp","gemini/gemini-exp-1206","gemini/gemini-2.0-flash-thinking-exp-01-21"],
+                       key='model1')
+                profession = container.text_input(
                     "### Give your Profession",
                     placeholder="Give your Profession e.g Java developer",
                     disabled=not uploaded_cv)
-                location = st.text_input(
+                location = container.text_input(
                     "### Give your Preferred Job Location",
                     placeholder="Give your Job Location eg. Frankfurt",
                     disabled=not uploaded_cv)
                 file = f'temp_dir/{uploaded_cv.name}'
                 try:
                     if profession and location:
-                        st.markdown(getCrewAIMatcher(profession, location,answer, ispdf))
+                        st.markdown(getCrewAIMatcher(profession, location,answer, ispdf,model1))
                         try:
                             st.subheader("Top 5 Job Postings")
                             file_adv = f'./Crew_AI/Reports/{profession}_posting.md'

@@ -22,7 +22,7 @@ import os
 from dotenv import  load_dotenv
 
 
-def CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,ispdf=False):
+def CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,ispdf=False,model="gemini-1.5-pro"):
         os.environ["GOOGLE_API_KEY"] = germin_api
         os.environ['SERPER_API_KEY'] = serp_api
         os.environ['OPENAI_API_KEY']=germin_api
@@ -32,9 +32,9 @@ def CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,
                 api_key=serp_api,
                 verbose=True
             )
-        
+        #"gemini/gemini-1.5-pro-002"
         llm = LLM(
-            model="gemini/gemini-1.5-pro-002",
+            model=model,
             temperature=0.3,
             verbose=True,
             api_key=germin_api,
