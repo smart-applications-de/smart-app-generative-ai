@@ -59,13 +59,15 @@ def CrewStocknews(germin_api, serp_api, topic, year, date,company, sector, summa
     role_retiever = dedent(f"""
             {topic} AI News Retriever""")
     goal_retriever = dedent(f"""
-            Retrieve the latest news and information related to {topic}
-            Uncover cutting-edge developments in {topic}""")
+            Retrieve the latest news and information related to {topic} and the company {company}.
+            Uncover cutting-edge and comprehensive developments  about the topic  {topic} and the company {company}. 
+""")
 
-    backstory_retriever = dedent("""
+    backstory_retriever = dedent(f"""
             You're a seasoned researcher with a knack for uncovering the latest
             developments in {topic}. Known for your ability to find the most relevant
-            information and present it in a clear and concise manner.""")
+            information and present it in a clear and concise manner.  You're also  known for gathering the best sources and understanding the key elements of any topic. 
+            You aim to collect all relevant information about stockmarket so that the  news article can be accurate and informative.""")
 
     retrieve_news = Agent(
     llm = llm,

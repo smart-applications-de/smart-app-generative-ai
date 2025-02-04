@@ -1,56 +1,58 @@
 No.,Symbol,Company Name,Market Cap,Stock Price,% Change,Revenue
-1,AAPL,Apple Inc.,"3,582.92B",238.26,3.65%,391.04B
-2,MSFT,Microsoft Corporation,"3,323.76B",447.05,2.87%,254.19B
-3,NVDA,NVIDIA Corporation,"3,158.97B",128.99,8.93%,113.27B
-4,AMZN,"Amazon.com, Inc.","2,504.15B",238.15,1.16%,620.13B
-5,GOOGL,Alphabet Inc.,"2,390.67B",195.3,1.82%,339.86B
-6,META,"Meta Platforms, Inc.","1,702.34B",674.33,2.19%,156.23B
-7,TSLA,"Tesla, Inc.","1,277.92B",398.1,0.24%,97.15B
-8,BRK.B,Berkshire Hathaway Inc.,"1,023.62B",470.0,-0.99%,369.89B
-9,AVGO,Broadcom Inc.,971.81B,207.33,2.57%,51.57B
-10,TSM,Taiwan Semiconductor Manufacturing Company Limited,899.12B,201.74,4.90%,88.29B
-11,WMT,Walmart Inc.,781.33B,97.26,-0.14%,673.82B
-12,JPM,JPMorgan Chase & Co.,747.29B,267.12,0.48%,166.88B
-13,LLY,Eli Lilly and Company,724.74B,804.88,-0.41%,40.86B
-14,V,Visa Inc.,656.14B,334.59,0.01%,35.93B
-15,MA,Mastercard Incorporated,502.37B,547.34,-0.05%,27.23B
-16,UNH,UnitedHealth Group Incorporated,499.07B,542.3,-0.22%,400.28B
-17,XOM,Exxon Mobil Corporation,474.80B,108.03,-1.94%,343.82B
-18,ORCL,Oracle Corporation,458.70B,164.0,3.61%,54.93B
-19,COST,Costco Wholesale Corporation,425.55B,958.67,-0.68%,258.81B
-20,HD,"The Home Depot, Inc.",416.06B,418.84,-1.42%,154.60B
-21,NFLX,"Netflix, Inc.",415.71B,971.83,-0.01%,39.00B
-22,PG,The Procter & Gamble Company,389.64B,166.17,-2.06%,84.35B
-23,NVO,Novo Nordisk A/S,378.98B,85.18,-2.66%,40.47B
-24,JNJ,Johnson & Johnson,362.07B,150.39,-1.64%,88.82B
-25,BAC,Bank of America Corporation,356.42B,46.83,-0.55%,96.07B
-26,CRM,"Salesforce, Inc.",344.38B,359.85,3.67%,37.19B
-27,SAP,SAP SE,318.59B,273.75,-0.67%,37.10B
-28,ABBV,AbbVie Inc.,308.88B,174.79,-1.19%,55.53B
-29,CVX,Chevron Corporation,280.76B,156.23,-0.64%,191.69B
-30,KO,The Coca-Cola Company,268.49B,62.33,-2.42%,46.37B
-31,ASML,ASML Holding N.V.,265.57B,683.35,-0.99%,29.29B
-32,TMUS,"T-Mobile US, Inc.",256.53B,221.06,-0.17%,80.01B
-33,WFC,Wells Fargo & Company,256.11B,77.87,-0.09%,77.96B
-34,MRK,"Merck & Co., Inc.",246.46B,97.43,-0.52%,63.17B
-35,TM,Toyota Motor Corporation,245.53B,185.35,-0.62%,323.85B
-36,NOW,"ServiceNow, Inc.",241.38B,1169.93,2.57%,10.46B
-37,CSCO,"Cisco Systems, Inc.",236.70B,59.43,0.59%,52.98B
-38,ACN,Accenture plc,236.65B,378.35,1.39%,66.36B
-39,BX,Blackstone Inc.,226.77B,185.64,1.71%,11.14B
-40,TMO,Thermo Fisher Scientific Inc.,223.48B,584.27,0.11%,42.37B
-41,MS,Morgan Stanley,222.63B,138.54,1.38%,61.50B
-42,AXP,American Express Company,222.51B,316.96,0.17%,60.76B
-43,ABT,Abbott Laboratories,221.15B,127.51,-1.49%,41.95B
-44,BABA,Alibaba Group Holding Limited,217.16B,96.07,6.76%,137.14B
-45,GS,"The Goldman Sachs Group, Inc.",215.70B,637.76,0.71%,52.16B
-46,AZN,AstraZeneca PLC,215.39B,69.59,-0.70%,51.21B
-47,GE,General Electric Company,208.76B,194.43,-0.02%,38.70B
-48,IBM,International Business Machines Corporation,208.68B,225.69,0.70%,62.58B
-49,MCD,McDonald's Corporation,208.67B,291.19,-0.65%,25.94B
-50,PEP,"PepsiCo, Inc.",208.54B,150.25,-2.82%,91.92B
-51,LIN,Linde plc,207.37B,435.51,-0.91%,33.03B
-52,ISRG,"Intuitive Surgical, Inc.",204.50B,574.14,0.12%,8.35B
-53,NVS,Novartis AG,204.26B,101.86,-1.50%,49.94B
-54,DIS,The Walt Disney Company,202.78B,112.13,-1.07%,91.36B
-55,PM,Philip Morris International Inc.,200.53B,128.98,-1.12%,37.22B
+1,AAPL,Apple Inc.,"3,497.14B",232.8,2.10%,395.76B
+2,MSFT,Microsoft Corporation,"3,065.55B",412.37,0.35%,261.80B
+3,NVDA,NVIDIA Corporation,"2,905.74B",118.65,1.71%,113.27B
+4,AMZN,"Amazon.com, Inc.","2,545.26B",242.06,1.95%,620.13B
+5,GOOGL,Alphabet Inc.,"2,526.30B",206.38,2.56%,339.86B
+6,META,"Meta Platforms, Inc.","1,784.18B",704.19,0.96%,164.50B
+7,TSLA,"Tesla, Inc.","1,261.55B",392.21,2.22%,97.69B
+8,AVGO,Broadcom Inc.,"1,042.61B",222.43,2.16%,51.57B
+9,BRK.B,Berkshire Hathaway Inc.,"1,001.69B",467.49,0.62%,369.89B
+10,TSM,Taiwan Semiconductor Manufacturing Company Limited,863.92B,204.05,2.13%,88.29B
+11,WMT,Walmart Inc.,809.52B,100.77,1.24%,673.82B
+12,JPM,JPMorgan Chase & Co.,749.59B,267.94,0.42%,166.88B
+13,LLY,Eli Lilly and Company,743.82B,826.07,1.93%,40.86B
+14,V,Visa Inc.,674.28B,345.15,-0.19%,36.80B
+15,MA,Mastercard Incorporated,511.03B,559.11,-0.86%,28.17B
+16,UNH,UnitedHealth Group Incorporated,501.97B,545.45,-0.50%,400.28B
+17,XOM,Exxon Mobil Corporation,478.66B,109.96,2.68%,343.39B
+18,ORCL,Oracle Corporation,469.58B,167.89,-0.42%,54.93B
+19,COST,Costco Wholesale Corporation,453.60B,1021.86,1.59%,258.81B
+20,NFLX,"Netflix, Inc.",425.56B,994.87,1.63%,39.00B
+21,HD,"The Home Depot, Inc.",408.76B,411.49,0.67%,154.60B
+22,PG,The Procter & Gamble Company,394.24B,168.13,-0.37%,84.35B
+23,JNJ,Johnson & Johnson,369.55B,153.49,1.07%,88.82B
+24,NVO,Novo Nordisk A/S,366.04B,82.62,-0.04%,40.47B
+25,BAC,Bank of America Corporation,355.50B,46.71,1.08%,96.07B
+26,ABBV,AbbVie Inc.,335.67B,189.95,-0.10%,56.33B
+27,CRM,"Salesforce, Inc.",329.34B,344.14,1.44%,37.19B
+28,SAP,SAP SE,322.65B,278.11,2.04%,35.38B
+29,ASML,ASML Holding N.V.,291.10B,731.41,0.05%,29.26B
+30,CVX,Chevron Corporation,275.35B,153.22,2.60%,198.20B
+31,TMUS,"T-Mobile US, Inc.",270.88B,237.25,-0.36%,81.40B
+32,KO,The Coca-Cola Company,269.97B,62.67,-1.07%,46.37B
+33,WFC,Wells Fargo & Company,261.37B,79.47,1.70%,77.96B
+34,ACN,Accenture plc,244.95B,391.62,1.66%,66.36B
+35,IBM,International Business Machines Corporation,244.53B,264.46,1.43%,62.75B
+36,CSCO,"Cisco Systems, Inc.",244.30B,61.34,0.49%,52.98B
+37,TM,Toyota Motor Corporation,243.43B,187.56,2.13%,323.85B
+38,BABA,Alibaba Group Holding Limited,231.34B,102.35,3.79%,137.14B
+39,MRK,"Merck & Co., Inc.",229.54B,90.74,-9.07%,64.17B
+40,ABT,Abbott Laboratories,223.92B,129.1,0.51%,41.95B
+41,TMO,Thermo Fisher Scientific Inc.,222.07B,580.57,-2.22%,42.88B
+42,AXP,American Express Company,221.71B,315.83,-0.22%,60.76B
+43,MS,Morgan Stanley,219.79B,136.77,-0.28%,61.50B
+44,GE,General Electric Company,217.00B,202.18,-0.95%,38.70B
+45,LIN,Linde plc,216.56B,454.8,0.13%,33.03B
+46,GS,"The Goldman Sachs Group, Inc.",214.48B,634.18,0.29%,52.16B
+47,AZN,AstraZeneca PLC,213.51B,68.96,-1.29%,51.21B
+48,BX,Blackstone Inc.,208.61B,170.83,-1.56%,12.66B
+49,NVS,Novartis AG,208.52B,105.47,-0.01%,51.72B
+50,NOW,"ServiceNow, Inc.",208.09B,1010.13,-1.06%,10.98B
+51,MCD,McDonald's Corporation,207.65B,289.77,-0.10%,25.94B
+52,ISRG,"Intuitive Surgical, Inc.",206.74B,579.65,0.19%,8.35B
+53,DIS,The Walt Disney Company,204.90B,113.3,-0.61%,91.36B
+54,PM,Philip Morris International Inc.,202.73B,130.39,-,37.22B
+55,PEP,"PepsiCo, Inc.",199.15B,143.49,-4.51%,91.85B
+56,ASX,"ASE Technology Holding Co., Ltd.",20.81B,9.88,0.30%,18.69B
+57,PKX,POSCO Holdings Inc.,12.27B,41.74,0.48%,49.20B
