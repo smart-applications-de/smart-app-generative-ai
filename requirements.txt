@@ -291,3 +291,4 @@ pysqlite3-binary
 python-docx
 python-pptx
  Markdown
+markdown2
