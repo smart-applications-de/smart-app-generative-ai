@@ -290,3 +290,4 @@ zipp==3.21.0
 pysqlite3-binary
 python-docx
 python-pptx
+ Markdown
