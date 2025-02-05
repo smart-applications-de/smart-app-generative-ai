@@ -4,6 +4,7 @@ from dotenv import  load_dotenv
 from instructor import llm_validator
 import os
 import pandas as pd
+import streamlit as st
 from test_unstructured.staging.test_prodigy import output_csv_file
 
 from textwrap import dedent
@@ -30,7 +31,7 @@ class StockmarketTasks():
         import yfinance as yf
         p = yf.Ticker(str(company_stock))
         currentPrice = p.info['currentPrice']
-        if  p.info['beta']:
+        if  p.info['beta'] is not None:
           beta = p.info['beta']
         else:
           beta =None
@@ -39,16 +40,22 @@ class StockmarketTasks():
         quickRatio = p.info['quickRatio']
         currentRatio = p.info['currentRatio']
         trailingPE = p.info['trailingPE']
-        if  p.info['earningsGrowth']:
-             earningsGrowth=p.info['earningsGrowth']
-        else:
-           earningsGrowth=None
-        if  p.info['revenueGrowth']:
-          revenueGrowth = p.info['revenueGrowth']
-        else:
-           earningsGrowth =None
-          
-          
+        try:
+            if  p.info['earningsGrowth'] is not None:
+                 earningsGrowth=p.info['earningsGrowth']
+            else:
+               earningsGrowth=None
+            if  p.info['revenueGrowth'] is not None:
+              revenueGrowth = p.info['revenueGrowth']
+            else:
+               earningsGrowth =None
+        except Exception as e:
+            st.error(e)
+            earningsGrowth = None
+            revenueGrowth = None
+            print(e)
+
+
         #earningsGrowth= p.info['earningsGrowth']
         #revenueGrowth = p.info['revenueGrowth']
 

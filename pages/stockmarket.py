@@ -5,9 +5,12 @@ import pandas as pd
 import altair as alt
 
 import streamlit as st
-
+import datetime
 import os
-
+import markdown2
+from docx import Document
+import io
+from bs4 import BeautifulSoup
 def germinApiKey():
     st.warning('Please enter your Google Gemini API Key')
     "[Get GOOGLE API KEY](https://ai.google.dev/)"
@@ -249,6 +252,65 @@ if germin_key  and serp_key:
         else:
             df_dag_jones =st.session_state['df_dag_jones']
         return  df_dag_jones
+
+   # @st.cache_resource
+    def convert_markdown_to_html(markdown_text):
+        """Converts Markdown to HTML."""
+        return markdown2.markdown(markdown_text)
+
+
+    def clean_html(html_content):
+        """Removes HTML tags from the given HTML content using BeautifulSoup."""
+        soup = BeautifulSoup(html_content, "html.parser")
+        text = soup.get_text(" ", strip=True)  # strip=True removes extra whitespace.
+        return text
+
+   # @st.cache_resource
+    def convert_html_to_docx(html_content):
+        """Converts HTML to DOCX (simplified, may not handle all HTML perfectly)."""
+        doc = Document()
+        #  A very basic approach -  for more robust conversion, explore dedicated HTML to DOCX libraries.
+        doc.add_paragraph(clean_html(html_content))
+        return doc
+
+
+    def convert_markdown_to_pptx(markdown_text):
+        from pptx import Presentation
+        from pptx.util import Inches
+        import io
+        html = markdown2.markdown(markdown_text)  # Convert to HTML first (easier to handle)
+
+        prs = Presentation()
+        title_slide_layout = prs.slide_layouts[0]
+        slide = prs.slides.add_slide(title_slide_layout)
+        title = slide.shapes.title
+        subtitle = slide.placeholders[1]
+
+        # Extract Title and Subtitle from HTML (assuming they're in h1 and h2 tags)
+        try:
+            soup = BeautifulSoup(html, "html.parser")
+            title_text = soup.h1.text if soup.h1 else "Untitled Presentation"
+            subtitle_text = soup.h2.text if soup.h2 else ""
+            title.text = title_text
+            subtitle.text = subtitle_text
+        except AttributeError:
+            title.text = "Untitled Presentation"
+            subtitle.text = ""
+
+        # Add content slides (basic paragraphs)
+        bullet_slide_layout = prs.slide_layouts[1]
+        for paragraph in BeautifulSoup(html, 'html.parser').find_all('p'):
+            slide = prs.slides.add_slide(bullet_slide_layout)
+            shapes = slide.shapes
+            title_shape = shapes.title
+            body_shape = shapes.placeholders[1]
+            title_shape.text = paragraph.find('strong').text if paragraph.find('strong') else 'Paragraph'
+            tf = body_shape.text_frame
+            tf.text = paragraph.text
+
+        with io.BytesIO() as buffer:
+            prs.save(buffer)
+            return buffer.getvalue()
 
 
 
@@ -577,7 +639,7 @@ if germin_key  and serp_key:
         except Exception as error:
             st.error(error)
         file_name = f'{option1}_retrieve_news_task.md'
-        st.subheader(f"News Retriever for the given stock{option1}")
+        st.subheader(f"News Retriever for the given stock  {option1}")
         try:
             with open(file_name, 'r') as f:
                 research = (f.read())
@@ -587,13 +649,77 @@ if germin_key  and serp_key:
             with open(file_news, 'r') as f:
                 news_expert = (f.read())
                 f.close()
-
             file_path = f"{option1}_ai_article.md"  # Replace with your markdown file path
+            st.subheader("Download the News article")
 
-            st.subheader("Download the news article")
-            download_markdown_file(file_path,  news_expert)
-        except:
-            pass
+            if  news_expert is not None:
+               # st.subheader("Download the news article")
+                html_output = convert_markdown_to_html(news_expert)
+                download_format = st.radio("Download as:", ("TXT","HTML", "MD", "DOCX"))
+                #st.button(" Download")
+
+                if download_format:
+                    try:
+                        now = datetime.datetime.now()
+                        if download_format == "TXT":
+                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                            st.download_button(
+                                label="Download TXT",
+                                data=news_expert.encode("utf-8"),  # Encode to bytes for download
+                                file_name=f"{option1}_{formatted_time}_ai_article.txt",
+                                mime="text/plain",
+                            )
+                        elif download_format == "MD":
+                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                            st.download_button(
+                                label="Download Markdown",
+                                data=news_expert.encode("utf-8"),  # Encode to bytes for download
+                                file_name=f"{option1}_{formatted_time}_ai_article.md",
+                                mime="text/plain",
+                            )
+                            #convert_markdown_to_pptx
+                        # Customize format as needed.
+                        elif download_format == "HTML":
+                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                            st.download_button(
+                                label="Download HTML",
+                                data=html_output.encode("utf-8"),  # Encode to bytes for download
+                                file_name=f"{option1}_{formatted_time}_ai_article.html",
+                                mime="text/html",
+                            )
+                        elif download_format == "DOCX":
+                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                            docx_output = convert_html_to_docx(html_output)
+                            # Save to in-memory buffer for download
+                            with io.BytesIO() as buffer:
+                                docx_output.save(buffer)
+                                st.download_button(
+                                    label="Download DOCX",
+                                    data=buffer.getvalue(),
+                                    file_name=f"{option1}_{formatted_time}_ai_article.docx",
+                                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                )
+                        elif download_format == "PPTX":
+                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                            pptx_bytes = convert_markdown_to_pptx(research)
+                            st.download_button(
+                                label="Download PPTX",
+                                data=pptx_bytes,
+                                file_name=f"{option1}_{formatted_time}_ai_article.pptx",
+                                mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
+                    except Exception as e:
+                        st.error(e)
+
+
+            else:
+                st.info("No ai article was created.")
+
+
+
+            #download_markdown_file(file_path,  news_expert)
+        except Exception as e:
+            st.error(f"Error during conversion: {e}")
+
     with (tab5):
         st.header("Stock Recommandation with Crew AI Stockmarket Expert Agents")
        # st.header("Stock News Artikel generated by AI  Expert Agents")
@@ -656,7 +782,7 @@ if germin_key  and serp_key:
                     f.close()
                 st.markdown(research_expert)
 
-                st.subheader("Download the Stock Recommendation")
+                #st.subheader("Download the Stock Recommendation")
                 file_adv = f'./Crew_AI/Reports/{option2}_recommend.md'
                 with open(file_adv, 'r') as f:
                     advisor_expert=(f.read())
@@ -666,7 +792,64 @@ if germin_key  and serp_key:
 
                 # Create a dummy markdown file if it doesn't exist (for testing):
 
-                download_markdown_file(file_path, advisor_expert )
+                #download_markdown_file(file_path, advisor_expert )
+                st.subheader("Download Investiment Report")
+                download_format1 = st.radio("Download as:", ("TXT", "HTML", "MD", "DOCX"),key='download1')
+
+                if  download_format1:
+                    # st.subheader("Download the news article")
+                    html_output = convert_markdown_to_html(advisor_expert)
+                    #download_format1 = st.radio("Download as:", ("TXT", "HTML", "MD", "DOCX"))
+                    # st.button(" Download
+
+                    if advisor_expert:
+                            now = datetime.datetime.now()
+                            if download_format1 == "TXT":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                st.download_button(
+                                    label="Download TXT",
+                                    data=advisor_expert.encode("utf-8"),  # Encode to bytes for download
+                                    file_name=f"{option2}_{formatted_time}_ai_report.txt",
+                                    mime="text/plain",
+                                )
+                            elif download_format1 == "MD":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                st.download_button(
+                                    label="Download Markdown",
+                                    data=advisor_expert.encode("utf-8"),  # Encode to bytes for download
+                                    file_name=f"{option2}_{formatted_time}_report.md",
+                                    mime="text/plain",
+                                )
+                                # convert_markdown_to_pptx
+                            # Customize format as needed.
+                            elif download_format1 == "HTML":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                st.download_button(
+                                    label="Download HTML",
+                                    data=html_output.encode("utf-8"),  # Encode to bytes for ownload
+                                    file_name=f"{option2}_{formatted_time}_ai_report.html",
+                                    mime="text/html",
+                                )
+                            elif download_format1 == "DOCX":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                docx_output = convert_html_to_docx(html_output)
+                                # Save to in-memory buffer for download
+                                with io.BytesIO() as buffer:
+                                    docx_output.save(buffer)
+                                    st.download_button(
+                                        label="Download DOCX",
+                                        data=buffer.getvalue(),
+                                        file_name=f"{option2}_{formatted_time}_ai_report.docx",
+                                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                    )
+                            elif download_format1 == "PPTX":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                pptx_bytes = convert_markdown_to_pptx(research)
+                                st.download_button(
+                                    label="Download PPTX",
+                                    data=pptx_bytes,
+                                    file_name=f"{option2}_{formatted_time}_report.pptx",
+                                    mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
             except:
                 pass
             #AAPL_research_task.md
