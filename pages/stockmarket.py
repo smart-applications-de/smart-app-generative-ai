@@ -9,8 +9,10 @@ import datetime
 import os
 import markdown2
 from docx import Document
+from fpdf import FPDF
 import io
 from bs4 import BeautifulSoup
+import re
 def germinApiKey():
     st.warning('Please enter your Google Gemini API Key')
     "[Get GOOGLE API KEY](https://ai.google.dev/)"
@@ -253,10 +255,100 @@ if germin_key  and serp_key:
             df_dag_jones =st.session_state['df_dag_jones']
         return  df_dag_jones
 
+
+    def extract_link_and_text(html_tag):
+        """Extracts link and text from a simple <a> tag.  NOT ROBUST!"""
+        match = re.search(r'<a href="(.*?)">(.*?)</a>', html_tag)
+        if match:
+            link = match.group(1)
+            text = match.group(2)
+            return link, text
+        else:
+            return None, None
+
    # @st.cache_resource
     def convert_markdown_to_html(markdown_text):
         """Converts Markdown to HTML."""
         return markdown2.markdown(markdown_text)
+
+
+    def convert_markdown_to_pdf(markdown_text):
+        """Converts Markdown text to a PDF using FPDF."""
+
+        html = markdown2.markdown(markdown_text)  # Convert markdown to HTML for better rendering
+
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Arial", size=12)  # Choose a font
+
+        lines = html.splitlines()
+        for line in lines:
+            if line.strip().startswith("<h1>"):
+                title = line.strip()[4:-5]  # Extract title from <h1> tags
+                pdf.set_font("Arial", style="B", size=18)  # Bold title
+                pdf.cell(0, 10, txt=title, ln=1, align="C")  # Centered title
+                pdf.set_font("Arial", size=12)  # Reset font
+            elif line.strip().startswith("<h2>"):
+                subtitle = line.strip()[4:-5]  # Extract title from <h1> tags
+                pdf.set_font("Arial", style="B", size=16)  # Bold title
+                pdf.cell(0, 10, txt=subtitle, ln=1, align="C")  # Centered title
+                pdf.set_font("Arial", size=12)  # Reset font
+            elif line.strip().startswith("<h3>"):
+                subtitle = line.strip()[4:-5]  # Extract title from <h1> tags
+                pdf.set_font("Arial", style="B", size=14)  # Bold title
+                pdf.cell(0, 10, txt=subtitle, ln=1, align="C")  # Centered title
+                pdf.set_font("Arial", size=12)
+            elif line.strip().startswith("<p>"):
+                paragraph = ((line.strip()[3:-4]).replace("<strong>", "")).replace("</strong>", "")
+                paragraph = (paragraph.replace("<a href=", "")).replace('"', '')
+                paragraph = paragraph.replace("</a>", "")
+
+                # link, link_text = extract_link_and_text(paragraph)
+                # if link :
+                #     pdf.set_link(link)  # Set the link destination
+                #     pdf.write(5, link_text)
+                # else:
+                pdf.multi_cell(0, 10, txt=paragraph)
+
+
+                    # if paragraph.strip().startswith("<strong>"):
+                #     text = line.strip()[8:-9]
+                #     pdf.set_font("Arial", style="B", size=12)
+                #     pdf.cell(0, 10, txt=text)
+                #     pdf.set_font("Arial", size=12)
+                #
+                # else:
+                #pdf.multi_cell(0, 10, txt=paragraph)  # handle multiple lines in paragraph
+            # elif line.strip().startswith("<ul>"):
+            #
+            #     for item in line.strip()[4:-5].split("<li>"):
+            #         if item.strip():
+            #             pdf.cell(10, 10, txt=". " + item.strip().replace("</li>", ""), ln=1)
+            elif line.strip().startswith("<li><strong>"):
+
+                for item in line.strip()[4:-5].split("<li><strong>"):
+                    item = item.replace("</strong>", "")
+                    item = item.replace("<strong>", "")
+                    item = item.replace("</ul>", "")
+                    if item.strip():
+                        #pdf.set_font("Arial", style="B", size=12)
+                        item_cell = (item.strip().replace("</li>", "")).replace("</ul>", "")
+                        item_cell = (item_cell.replace("<a href=", "")).replace('"', '')
+                        item_cell = item_cell.replace("</a>", "")
+                        pdf.set_font("Arial", style="B", size=10)
+                        pdf.cell(10, 10, txt=". " + item_cell.split(">")[0], ln=1)
+                        pdf.set_font("Arial", size=12)
+
+            else:
+                text =(line.strip()).replace("</ul>","")
+                text = (text.replace("<ul>", "")).replace("<ol>", "")
+                text = (text.replace("</ol>", "")).replace("</p>", "")
+
+                pdf.multi_cell(0, 10, txt=text)
+
+        # You can add more PDF content here if needed
+
+        return pdf.output(dest="S").encode("latin-1")  # Return PDF as bytes
 
 
     def clean_html(html_content):
@@ -270,7 +362,77 @@ if germin_key  and serp_key:
         """Converts HTML to DOCX (simplified, may not handle all HTML perfectly)."""
         doc = Document()
         #  A very basic approach -  for more robust conversion, explore dedicated HTML to DOCX libraries.
-        doc.add_paragraph(clean_html(html_content))
+        #doc.add_paragraph(clean_html(html_content))
+
+        lines = html_content.splitlines()
+        for line in lines:
+
+            if line.strip().startswith("<h1>"):
+                title = line.strip()[4:-5]  # Extract title from <h1> tags
+                doc.add_heading(title)
+
+            elif line.strip().startswith("<h2>"):
+                subtitle = line.strip()[4:-5]  # Extract title from <h1> tags
+                doc.add_heading(subtitle)
+            elif line.strip().startswith("<h3>"):
+                subtitle = line.strip()[4:-5]  # Extract title from <h1> tags
+                doc.add_section(subtitle)
+
+            elif line.strip().startswith("<p>"):
+                paragraph = ((line.strip()[3:-4]).replace("<strong>", "")).replace("</strong>", "")
+                paragraph = (paragraph.replace("<a href=", "")).replace('"', '')
+                paragraph = paragraph.replace("</a>", "")
+
+                # link, link_text = extract_link_and_text(paragraph)
+                # if link :
+                #     pdf.set_link(link)  # Set the link destination
+                #     pdf.write(5, link_text)
+                # else:
+                doc.add_paragraph(paragraph)
+
+
+                    # if paragraph.strip().startswith("<strong>"):
+                #     text = line.strip()[8:-9]
+                #     pdf.set_font("Arial", style="B", size=12)
+                #     pdf.cell(0, 10, txt=text)
+                #     pdf.set_font("Arial", size=12)
+                #
+                # else:
+                #pdf.multi_cell(0, 10, txt=paragraph)  # handle multiple lines in paragraph
+            elif line.strip().startswith("<ul>"):
+                main_list = doc.add_paragraph()
+                main_list.style = doc.styles['List Paragraph']
+                for item in line.strip()[4:-5].split("<li>"):
+                    if item.strip():
+                        main_list.add_run(f". {item}\n")
+            #             pdf.cell(10, 10, txt=". " + item.strip().replace("</li>", ""), ln=1)
+            elif line.strip().startswith("<li><strong>"):
+
+                for item in line.strip()[4:-5].split("<li><strong>"):
+                    item = item.replace("</strong>", "")
+                    item = item.replace("<strong>", "")
+                    item = item.replace("</ul>", "")
+                    main_list = doc.add_paragraph()
+                    main_list.style = doc.styles['List Paragraph']
+                    if item.strip():
+                        #pdf.set_font("Arial", style="B", size=12)
+                        item_cell = (item.strip().replace("</li>", "")).replace("</ul>", "")
+                        item_cell = (item_cell.replace("<a href=", "")).replace('"', '')
+                        item_cell = item_cell.replace("</a>", "")
+                        main_list.add_run(f". { item_cell}\n")
+
+
+            else:
+                text =(line.strip()).replace("</ul>","")
+                text = (text.replace("<ul>", "")).replace("<ol>", "")
+                text = (text.replace("</ol>", "")).replace("</p>", "")
+                doc.add_paragraph(text)
+
+
+
+
+        # You can add more PDF content here if needed
+
         return doc
 
 
@@ -651,11 +813,24 @@ if germin_key  and serp_key:
                 f.close()
             file_path = f"{option1}_ai_article.md"  # Replace with your markdown file path
             st.subheader("Download the News article")
+            if research is not None and news_expert is not None:
 
-            if  news_expert is not None:
+                final_file = news_expert
+                ## News Researcher 
+                #{research}
+                #""")
+            elif news_expert  is not None:
+                final_file=news_expert
+            else:
+                final_file = research
+
+
+
+
+            if   research  is not None:
                # st.subheader("Download the news article")
-                html_output = convert_markdown_to_html(news_expert)
-                download_format = st.radio("Download as:", ("TXT","HTML", "MD", "DOCX"))
+                html_output = convert_markdown_to_html(final_file )
+                download_format = st.radio("Download as:", ("TXT","PDF","HTML", "MD", "DOCX"))
                 #st.button(" Download")
 
                 if download_format:
@@ -665,15 +840,23 @@ if germin_key  and serp_key:
                             formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
                             st.download_button(
                                 label="Download TXT",
-                                data=news_expert.encode("utf-8"),  # Encode to bytes for download
+                                data= final_file.encode("utf-8"),  # Encode to bytes for download
                                 file_name=f"{option1}_{formatted_time}_ai_article.txt",
                                 mime="text/plain",
+                            )
+                        elif download_format == "PDF":
+                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                            st.download_button(
+                                label="Download PDF",
+                                data= convert_markdown_to_pdf( final_file),  # Encode to bytes for download
+                                file_name=f"{option1}_{formatted_time}_ai_article.pdf",
+                                mime="application/pdf",
                             )
                         elif download_format == "MD":
                             formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
                             st.download_button(
                                 label="Download Markdown",
-                                data=news_expert.encode("utf-8"),  # Encode to bytes for download
+                                data= final_file.encode("utf-8"),  # Encode to bytes for download
                                 file_name=f"{option1}_{formatted_time}_ai_article.md",
                                 mime="text/plain",
                             )
@@ -701,7 +884,7 @@ if germin_key  and serp_key:
                                 )
                         elif download_format == "PPTX":
                             formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                            pptx_bytes = convert_markdown_to_pptx(research)
+                            pptx_bytes = convert_markdown_to_pptx(final_file)
                             st.download_button(
                                 label="Download PPTX",
                                 data=pptx_bytes,
@@ -794,12 +977,17 @@ if germin_key  and serp_key:
 
                 #download_markdown_file(file_path, advisor_expert )
                 st.subheader("Download Investiment Report")
-                download_format1 = st.radio("Download as:", ("TXT", "HTML", "MD", "DOCX"),key='download1')
+                download_format1 = st.radio("Download as:", ("TXT", "PDF","HTML", "MD", "DOCX"),key='download1')
 
                 if  download_format1:
                     # st.subheader("Download the news article")
                     html_output = convert_markdown_to_html(advisor_expert)
                     #download_format1 = st.radio("Download as:", ("TXT", "HTML", "MD", "DOCX"))
+                    if advisor_expert is not None:
+                        advisor_expert=advisor_expert
+                    else:
+                        advisor_expert=fil_reader
+
                     # st.button(" Download
 
                     if advisor_expert:
@@ -811,6 +999,14 @@ if germin_key  and serp_key:
                                     data=advisor_expert.encode("utf-8"),  # Encode to bytes for download
                                     file_name=f"{option2}_{formatted_time}_ai_report.txt",
                                     mime="text/plain",
+                                )
+                            elif download_format1 == "PDF":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                st.download_button(
+                                    label="Download PDF",
+                                    data=convert_markdown_to_pdf(advisor_expert.encode("utf-8")),  # Encode to bytes for download
+                                    file_name=f"{option2}_{formatted_time}_ai_report.pdf",
+                                    mime="application/pdf",
                                 )
                             elif download_format1 == "MD":
                                 formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
