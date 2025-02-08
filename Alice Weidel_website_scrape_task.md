@@ -1,0 +1,3 @@
+## Latest News on Alice Weidel (February 8, 2025)
+
+Alice Weidel, co-leader of the far-right Alternative for Germany (AfD) party, was invited by Hungarian Prime Minister Viktor Orbán to visit Hungary. This meeting, reported by Reuters on February 3, 2025, signifies a potential warming of relations between the AfD and Orbán's government, and it is interpreted as an erosion of the German far-right party's isolation within Europe. A podcast from The Guardian, also from February 3, 2025, charts Weidel's rise within the party. There's also mention about an endorsement from Elon Musk and 5 million euros in financial donations.
