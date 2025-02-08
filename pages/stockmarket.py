@@ -830,7 +830,7 @@ if germin_key  and serp_key:
             if   research  is not None:
                # st.subheader("Download the news article")
                 html_output = convert_markdown_to_html(final_file )
-                download_format = st.radio("Download as:", ("TXT","PDF","HTML", "MD", "DOCX"))
+                download_format = st.radio("Download as:", ("TXT","PDF","HTML", "MD", "DOCX","PPTX"))
                 #st.button(" Download")
 
                 if download_format:
@@ -977,7 +977,7 @@ if germin_key  and serp_key:
 
                 #download_markdown_file(file_path, advisor_expert )
                 st.subheader("Download Investiment Report")
-                download_format1 = st.radio("Download as:", ("TXT", "PDF","HTML", "MD", "DOCX"),key='download1')
+                download_format1 = st.radio("Download as:", ("TXT", "PDF","HTML", "MD", "DOCX","PPTX"),key='download1')
 
                 if  download_format1:
                     # st.subheader("Download the news article")

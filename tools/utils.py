@@ -11,17 +11,200 @@ Original file is located at
 
 # %pip install -q google-colab-selenium --quiet
 #/content/cv.md
-
+from textwrap import dedent
 from crewai import Agent, Task, Crew, Process
 from crewai import LLM
 from pydantic import BaseModel, ValidationError
 from crewai_tools import (YoutubeChannelSearchTool,WebsiteSearchTool,YoutubeVideoSearchTool,CodeInterpreterTool,FileWriterTool,
      ScrapeWebsiteTool,SeleniumScrapingTool,SerperDevTool, CSVSearchTool, DirectoryReadTool, FileReadTool, PDFSearchTool)
-
+import streamlit as st
 import os
 from dotenv import  load_dotenv
 
+@st.cache_resource
+def CrewStocknews(germin_api, serp_api, topic, year, date,model="gemini/gemini-1.5-pro"):
+    os.environ["GOOGLE_API_KEY"] = germin_api
+    os.environ['SERPER_API_KEY'] = serp_api
+    os.environ['OPENAI_API_KEY'] = germin_api
+    GOOGLE_API_KEY =germin_api
+    google_tool = SerperDevTool(
+        n_results=10,
+        api_key=serp_api,
+       # SERPER_API_KEY,
+        verbose=True
+    )
 
+    """# Agents"""
+
+    # retrieve_news:
+    web_search_tool = WebsiteSearchTool()
+    llm = LLM(
+    model = model,
+    temperature = 0.3,
+    verbose = True,
+    api_key = GOOGLE_API_KEY
+    )
+    try:
+        role_retiever = dedent(f"""
+                {topic} News Retriever""")
+        goal_retriever = dedent(f"""  Gather comprehensive information and 
+                 the latest news about {topic}.
+                Uncover cutting-edge developments in {topic}""")
+
+        backstory_retriever = dedent(f"""
+                You're a seasoned researcher with a knack for uncovering the latest
+                developments in {topic}. You're known for gathering the best sources and understanding the key elements of any topic.
+                 You aim to collect all relevant information so the news article  can be accurate and informative.""")
+
+        retrieve_news = Agent(
+        llm = llm,
+        role = role_retiever,
+        goal = goal_retriever,
+        backstory = backstory_retriever,
+        tools = [google_tool],
+        allow_delegation = False,
+        memory = True,
+        verbose = True)
+    except Exception as e:
+        st.error(e)
+
+    # website_scraper:
+    try:
+        role_scraper = dedent("""
+                Website  Scraper""")
+        goal_scraper = dedent("""
+                Search   and provide a summary  on  the latest news and  information.""")
+        backstory_scraper = dedent("""
+                You're a skilled Researcher and decades of experience  with a knack for extracting valuable information
+                from websites. Known for your attention to detail and ability to navigate through information sources.""")
+
+        website_scraper = Agent(
+        llm = llm,
+        role = role_scraper,
+        goal = goal_scraper,
+        backstory = backstory_scraper,
+        tools = [google_tool, ScrapeWebsiteTool()],
+        allow_delegation = False,
+        memory = True,
+        verbose = True)
+    except Exception as e:
+        st.error(e)
+    try:
+        role_writer = dedent("""
+                News Editor """)
+        goal_writer = dedent("""
+                Write a concise and informative news article based on the provided information. You MUST include the information sources as url for further reading.""")
+        backstory_writer = dedent(f"""
+                You're a skilled writer with a knack for crafting engaging and informative
+                news articles. Known for your ability to distill complex information into
+                clear and concise prose. You are also a meticulous editor with a passion for delivering content that are accurate. 
+                Your expertise lies in refining articles  to be skimmable, 
+    engaging, and impactful while ensuring alignment with the  creator's input and 
+    the audience's needs about the topic {topic} .""")
+        ai_news_writer = Agent(
+        llm = llm,
+        role = role_writer,
+        goal = goal_writer,
+        backstory = backstory_writer,
+        tools=[google_tool, web_search_tool],
+
+        allow_delegation = False,
+        memory = True,
+        verbose = True
+        )
+    except Exception as e:
+        st.error(e)
+
+    # file_writer:
+    try:
+        role_fwriter = dedent("""
+                AI News File Writer""")
+        goal_fwriter = dedent("""
+                Write the news article to a file. Make Sure you include all the information sources including urls.""")
+        backstory_fwriter = dedent("""
+                You're a skilled file writer with a knack for writing news articles to a file.""")
+        file_writer = Agent(
+        llm = llm,
+        role = role_fwriter,
+        goal = goal_fwriter,
+        backstory = backstory_fwriter,
+        tools = [FileWriterTool()],
+        allow_delegation = False,
+        memory = True,
+        verbose = True
+        )
+    except Exception as e:
+        st.error(e)
+
+    """Tasks Definition AI news"""
+
+    # retrieve_news_task:
+    description_ret = dedent(f"""
+            Conduct a thorough research about the latest news on the  {topic}
+            Make sure you find any interesting and relevant latest information given
+            the current year is {year} and today date is {date}. Pay special attention to any  recent significant events and developments .
+        """)
+    expected_output_ret = dedent(f"""
+            A comprehensive  Summary on research about  the latest news on {topic} and  list of Top 5 websites with the most latest information about the {topic} Formated as markdown. 
+            You MUST Include  source urls.""")
+
+    # agent: retrieve_news
+
+    retrieve_news_task = Task(
+    description = description_ret,
+    expected_output = expected_output_ret,
+    agent = retrieve_news,
+    async_execution = False,
+    output_file = f'{topic}_retrieve_news_task.md',
+
+    )
+
+    # website_scrape_task:
+    description_scraper = dedent(f"""
+        Get all informations provided  by News Retriever for  the {topic}, current year {year} and current date {date} 
+        and extract ONLY the latest news.
+         Don't scrape the website because you don't have access on 
+        the website content, You MUST include the summary provided by  News Retriever. """)
+    expected_output_scraper = dedent("""
+        A Summary of the latest news from  formated as markdown.""")
+    website_scrape_task = Task(description=description_scraper,
+    expected_output = expected_output_scraper,
+    agent = website_scraper,
+    context = [retrieve_news_task],
+    output_file = f'{topic}_website_scrape_task.md')
+    # agent: website_scraper
+
+    # ai_news_write_task:
+    description_writer = dedent("""
+        Review and   synthesize results from the previous tasks  to form a comprehensive news article.  Ensure to create  a fully fledge news article in markdown format without '```'.""")
+    expected_output_writer = dedent("""
+        A fully fledge news article with the main topics, each with a full section of information.
+        Formatted as markdown. You MUST INCLUDE a section with information sources  for further reading and to validate the accurancy of the information """)
+    ai_news_write_task = Task(description=description_writer,
+    expected_output = expected_output_writer,
+    agent = ai_news_writer,
+    context = [retrieve_news_task, website_scrape_task],
+    output_file = f'{model}_{topic}_editor_task.md')
+    # agent: ai_news_writer Formatted as markdown without '```'"""
+
+
+    input={
+            'topic':topic,
+            'year':year,
+            'date':date
+        }
+
+    crew = Crew(
+        agents=[retrieve_news,ai_news_writer],
+        tasks=[retrieve_news_task,ai_news_write_task],
+        process=Process.sequential,
+        memory=True,
+        cache=True,
+        verbose=True,
+        max_rpm=50 ,
+        share_crew=True)
+    result = crew.kickoff(inputs=input)
+    return result
 def CrewAiMatcher(germin_api, serp_api, profession, year, date,cv_path,location,ispdf=False,model="gemini-1.5-pro"):
         os.environ["GOOGLE_API_KEY"] = germin_api
         os.environ['SERPER_API_KEY'] = serp_api
