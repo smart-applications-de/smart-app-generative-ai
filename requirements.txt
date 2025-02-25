@@ -296,4 +296,5 @@ fpdf
 pydub
 moviepy
 pytubefix
+retry
 
