@@ -274,6 +274,7 @@ try:
                 st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
 
             download_text =[]
+
             for msg in st.session_state.messages:
                 st.chat_message(msg["role"]).write(msg["content"])
                 download_text.append(msg["content"])

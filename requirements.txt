@@ -284,7 +284,7 @@ wrapt==1.17.0
 wsproto==1.2.0
 XlsxWriter==3.2.0
 yarl==1.18.3
-yfinance==0.2.50
+yfinance>0.2.50
 youtube-transcript-api==0.6.3
 zipp==3.21.0
 pysqlite3-binary
@@ -293,4 +293,6 @@ python-pptx
 Markdown
 markdown2
 fpdf
+pydub
+moviepy
 
