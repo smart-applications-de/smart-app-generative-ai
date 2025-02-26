@@ -99,7 +99,7 @@ if video_url:
 
 
         try:
-            transcript = YouTubeTranscriptApi.get_transcript(yt.video_id, languages=[lang],)
+            transcript = YouTubeTranscriptApi.get_transcript(yt.video_id)
             long_text=''
             for text in transcript:
                 print(text['text'])
