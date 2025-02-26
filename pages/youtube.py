@@ -92,7 +92,7 @@ if video_url:
         # Extract transcript
         container4.subheader("YouTube Transcript")
         lang = container4.selectbox(
-            "Choose a Model",
+            "Choose language",
             ["en","de","fr","eo","zh-Hans","el","iw","hi","ru","sw"],
             key='language'
         )
@@ -104,7 +104,8 @@ if video_url:
             for text in transcript:
                 print(text['text'])
                 long_text += text['text'] + ' '
-            #container4.write(long_text)
+            container4.subheader("Entire Transcript")
+            container4.write(long_text)
             api_key = germinApiKey()
             if api_key:
                 geneai.configure(api_key=api_key)
@@ -121,7 +122,7 @@ if video_url:
             question = container4.text_input(
                 "### Ask something about Transcript:",
                 placeholder="Can you give me a short summary in German?",
-                disabled=not  api_key,
+                disabled=not api_key,
             )
             model1 = container4.radio(
                 "Choose a Model",
