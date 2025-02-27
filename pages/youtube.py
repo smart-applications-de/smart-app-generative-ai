@@ -91,15 +91,8 @@ if video_url:
 
         # Extract transcript
         container4.subheader("YouTube Transcript")
-        lang = container4.selectbox(
-            "Choose language",
-            ["en","de","fr","eo","zh-Hans","el","iw","hi","ru","sw"],
-            key='language'
-        )
-
-
         try:
-            transcript = YouTubeTranscriptApi.get_transcript(yt.video_id)
+            transcript = YouTubeTranscriptApi.get_transcript(yt.video_id,languages=["en","de","fr","eo","sw","ru","hi","el","zh-Hans"])
             long_text=''
             for text in transcript:
                 print(text['text'])
@@ -110,25 +103,28 @@ if video_url:
             if api_key:
                 geneai.configure(api_key=api_key)
                 os.environ['GOOGLE_API_KEY'] = api_key
-            choice = []
-            flash_vision = []
-            for m in geneai.list_models():
-                if 'generateContent' in m.supported_generation_methods:
-                    st.write(m.name)
-                    model_name = m.name.split("/")[1]
-                    choice.append(model_name)
-                    if "2.0" in str(model_name).lower() or "-exp" in model_name:
-                        flash_vision.append(model_name)
-            question = container4.text_input(
-                "### Ask something about Transcript:",
-                placeholder="Can you give me a short summary in German?",
-                disabled=not api_key,
-            )
-            model1 = container4.radio(
-                "Choose a Model",
-                flash_vision,
-                key='model1')
-            container4.markdown(askQuery(Ask=question, transcript= long_text, model=model1, germin_key= api_key))
+                choice = []
+                flash_vision = []
+                for m in geneai.list_models():
+                    if 'generateContent' in m.supported_generation_methods:
+                        #st.write(m.name)
+                        model_name = m.name.split("/")[1]
+                        choice.append(model_name)
+                        if "2.0" in str(model_name).lower() or "-exp" in model_name:
+                            flash_vision.append(model_name)
+                question = container4.text_input(
+                    "### Ask something about Transcript:",
+                    placeholder="Can you give me a short summary in German?",
+                    disabled=not  api_key,
+                )
+                transcript_list = YouTubeTranscriptApi.list_transcripts(yt.video_id)
+
+                model1 = container4.radio(
+                    "Choose a Model",
+                    flash_vision,
+                    key='model1')
+                container5 = st.container(border=True)
+                container4.markdown(askQuery(Ask=question, transcript= long_text, model=model1, germin_key= api_key))
 
 
 
