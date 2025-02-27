@@ -6,8 +6,9 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 import time
+import streamlit as st
 from .webscraping import SummaryLoad, QuartelyFinancialAnalysis, AnualAnalysis
-
+import json
 
 def Seasonality_yearly(yearly_seaonality, target_field_name, yearly_seaonalitypercent, df):
     y = round(365.25 * 5 / 7)
@@ -219,30 +220,39 @@ def DailyQuote(symbol):
                 print(Err)
                 print("DAX in DE Symbol Stock was not successful")
                 symbol_yahoo = symbol
-            p = yf.Ticker(str(symbol_yahoo))
-            data = pd.DataFrame(p.history(period='5y').reset_index())
-            df_financials =(p.financials).T
-            #print(p.info)
-            df_info =pd.DataFrame(p.info)
-            df_data=df_info.copy()
             try:
-                
-                df_data= df_data[['website','beta','trailingPE', 'symbol','longName', 'marketCap', 'bookValue',
-                                  'priceToBook', 'currentPrice', 'recommendationKey', 'totalCash', 'totalCashPerShare',
-                                   'quickRatio', 'currentRatio','totalRevenue','previousClose','debtToEquity', 'revenuePerShare',
-                                  'returnOnEquity',
-                                  'freeCashflow',  'earningsGrowth', 'revenueGrowth', 'grossMargins', 'ebitdaMargins',
-                                   'operatingMargins','trailingPegRatio', 'sector', 'longBusinessSummary','industry','regularMarketOpen']]
+                p = yf.Ticker(str(symbol_yahoo))
+                data = pd.DataFrame(p.history(period='5y').reset_index())
+                #st.dataframe(data.tail(10))
+                df_financials =(p.financials).T
+                #st.write(p.info)
+                df_info = pd.json_normalize(p.info)
+                df_data=df_info.copy()
                 company_stock_info = f'./history/data/company_stock_info_{symbol}_data.csv'
-                df_data.to_csv(company_stock_info)
-            except Exception as error:
-                df_data= df_data[['website','trailingPE', 'symbol','longName', 'marketCap', 'bookValue',
-                  'priceToBook', 'currentPrice', 'recommendationKey', 'totalCash', 'totalCashPerShare',
-                   'quickRatio', 'currentRatio','totalRevenue','previousClose','debtToEquity', 'revenuePerShare',
-                  'returnOnEquity', 'sector', 'longBusinessSummary','industry','regularMarketOpen']]
-                company_stock_info = f'./history/data/company_stock_info_{symbol}_data.csv'
-                df_data.to_csv(company_stock_info)
-                print(error)
+                df_data.to_csv(company_stock_info,index=False)
+
+            except Exception as e:
+                st.error(e)
+                df_data =None
+            # try:
+            #     if df_data:
+            #
+            #         df_data= df_data[['website','beta','trailingPE', 'symbol','longName', 'marketCap', 'bookValue',
+            #                           'priceToBook', 'currentPrice', 'recommendationKey', 'totalCash', 'totalCashPerShare',
+            #                            'quickRatio', 'currentRatio','totalRevenue','previousClose','debtToEquity', 'revenuePerShare',
+            #                           'returnOnEquity',
+            #                           'freeCashflow',  'earningsGrowth', 'revenueGrowth', 'grossMargins', 'ebitdaMargins',
+            #                            'operatingMargins','trailingPegRatio', 'sector', 'longBusinessSummary','industry','regularMarketOpen']]
+            #         company_stock_info = f'./history/data/company_stock_info_{symbol}_data.csv'
+            #         df_data.to_csv(company_stock_info)
+            # except Exception as error:
+            #     df_data= df_data[['website','trailingPE', 'symbol','longName', 'marketCap', 'bookValue',
+            #       'priceToBook', 'currentPrice', 'recommendationKey', 'totalCash', 'totalCashPerShare',
+            #        'quickRatio', 'currentRatio','totalRevenue','previousClose','debtToEquity', 'revenuePerShare',
+            #       'returnOnEquity', 'sector', 'longBusinessSummary','industry','regularMarketOpen']]
+            #     company_stock_info = f'./history/data/company_stock_info_{symbol}_data.csv'
+            #     df_data.to_csv(company_stock_info)
+            #     print(error)
             try:
                 df_f = df_financials[['EBITDA','Gross Profit', 'Total Revenue','Operating Revenue']]
 
