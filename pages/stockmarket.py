@@ -13,6 +13,7 @@ from fpdf import FPDF
 import io
 from bs4 import BeautifulSoup
 import re
+import google.generativeai as geneai
 def germinApiKey():
     st.warning('Please enter your Google Gemini API Key')
     "[Get GOOGLE API KEY](https://ai.google.dev/)"
@@ -34,6 +35,7 @@ def SerpApiKey():
     return  st.session_state['serp_api_key']
 germin_key =  germinApiKey()
 serp_key = SerpApiKey()
+
 if germin_key  and serp_key:
     os.environ["GOOGLE_API_KEY"] = germin_key
     os.environ['SERPER_API_KEY'] = serp_key
@@ -44,6 +46,18 @@ if germin_key  and serp_key:
     import plotly.express as px
     from StockmarketAnalysis.crew import StockMarketCrew
     from News.news_and_marketing import CrewStocknews
+    geneai.configure(api_key= germin_key)
+    os.environ['GOOGLE_API_KEY'] = germin_key
+    choice = []
+    flash_vision = []
+    #"gemini/gemini-1.5-pro"
+    for m in geneai.list_models():
+        if 'generateContent' in m.supported_generation_methods:
+            # st.write(m.name)
+            model_name = m.name.split("/")[1]
+            choice.append(model_name)
+            if "2.0" in str(model_name).lower() or "-exp" in model_name or "1.5-pro" in  model_name:
+                flash_vision.append(f'gemini/{model_name}')
     @st.cache_resource
     def get_performance():
         try:
@@ -782,9 +796,10 @@ if germin_key  and serp_key:
         df_symbol=getTickers()
         container = st.container(border=True)
         #gemini/gemini-1.5-pro
+        finished=False
         model1= container.radio(
                 "Choose a Model",
-                ["gemini/gemini-1.5-pro", "gemini/gemini-1.5-flash-8b", "gemini/gemini-1.5-flash",  "gemini/gemini-2.0-flash-exp","gemini/gemini-exp-1206","gemini/gemini-2.0-flash-thinking-exp-01-21"],
+            flash_vision,
                key='model1'
         )
         option1 = container.selectbox(
@@ -795,122 +810,126 @@ if germin_key  and serp_key:
 
 
         try:
+            if st.button("Get News Article", key='article'):
+                st.markdown(getCrewAINews(option1,model1))
+                finished=True
 
-            st.markdown(getCrewAINews(option1,model1))
 
         except Exception as error:
             st.error(error)
         file_name = f'{option1}_retrieve_news_task.md'
         st.subheader(f"News Retriever for the given stock  {option1}")
-        try:
-            with open(file_name, 'r') as f:
-                research = (f.read())
-                f.close()
-            st.markdown(research)
-            file_news = f'{option1}_ai_news_write_task.md'
-            with open(file_news, 'r') as f:
-                news_expert = (f.read())
-                f.close()
-            file_path = f"{option1}_ai_article.md"  # Replace with your markdown file path
-            st.subheader("Download the News article")
-            if research is not None and news_expert is not None:
+        if  finished:
+            try:
+                with open(file_name, 'r') as f:
+                    research = (f.read())
+                    f.close()
+                st.markdown(research)
+                file_news = f'{option1}_ai_news_write_task.md'
+                with open(file_news, 'r') as f:
+                    news_expert = (f.read())
+                    f.close()
+                file_path = f"{option1}_ai_article.md"  # Replace with your markdown file path
+                st.subheader("Download the News article")
+                if research is not None and news_expert is not None:
 
-                final_file = news_expert
-                ## News Researcher 
-                #{research}
-                #""")
-            elif news_expert  is not None:
-                final_file=news_expert
-            else:
-                final_file = research
+                    final_file = news_expert
+                    ## News Researcher
+                    #{research}
+                    #""")
+                elif news_expert  is not None:
+                    final_file=news_expert
+                else:
+                    final_file = research
 
 
 
 
-            if   research  is not None:
-               # st.subheader("Download the news article")
-                html_output = convert_markdown_to_html(final_file )
-                download_format = st.radio("Download as:", ("TXT","PDF","HTML", "MD", "DOCX","PPTX"))
-                #st.button(" Download")
+                if   research  is not None:
+                   # st.subheader("Download the news article")
+                    html_output = convert_markdown_to_html(final_file )
+                    download_format = st.radio("Download as:", ("TXT","PDF","HTML", "MD", "DOCX","PPTX"))
+                    #st.button(" Download")
 
-                if download_format:
-                    try:
-                        now = datetime.datetime.now()
-                        if download_format == "TXT":
-                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                            st.download_button(
-                                label="Download TXT",
-                                data= final_file.encode("utf-8"),  # Encode to bytes for download
-                                file_name=f"{option1}_{formatted_time}_ai_article.txt",
-                                mime="text/plain",
-                            )
-                        elif download_format == "PDF":
-                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                            st.download_button(
-                                label="Download PDF",
-                                data= convert_markdown_to_pdf( final_file),  # Encode to bytes for download
-                                file_name=f"{option1}_{formatted_time}_ai_article.pdf",
-                                mime="application/pdf",
-                            )
-                        elif download_format == "MD":
-                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                            st.download_button(
-                                label="Download Markdown",
-                                data= final_file.encode("utf-8"),  # Encode to bytes for download
-                                file_name=f"{option1}_{formatted_time}_ai_article.md",
-                                mime="text/plain",
-                            )
-                            #convert_markdown_to_pptx
-                        # Customize format as needed.
-                        elif download_format == "HTML":
-                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                            st.download_button(
-                                label="Download HTML",
-                                data=html_output.encode("utf-8"),  # Encode to bytes for download
-                                file_name=f"{option1}_{formatted_time}_ai_article.html",
-                                mime="text/html",
-                            )
-                        elif download_format == "DOCX":
-                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                            docx_output = convert_html_to_docx(html_output)
-                            # Save to in-memory buffer for download
-                            with io.BytesIO() as buffer:
-                                docx_output.save(buffer)
+                    if download_format:
+                        try:
+                            now = datetime.datetime.now()
+                            if download_format == "TXT":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
                                 st.download_button(
-                                    label="Download DOCX",
-                                    data=buffer.getvalue(),
-                                    file_name=f"{option1}_{formatted_time}_ai_article.docx",
-                                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                    label="Download TXT",
+                                    data= final_file.encode("utf-8"),  # Encode to bytes for download
+                                    file_name=f"{option1}_{formatted_time}_ai_article.txt",
+                                    mime="text/plain",
                                 )
-                        elif download_format == "PPTX":
-                            formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                            pptx_bytes = convert_markdown_to_pptx(final_file)
-                            st.download_button(
-                                label="Download PPTX",
-                                data=pptx_bytes,
-                                file_name=f"{option1}_{formatted_time}_ai_article.pptx",
-                                mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
-                    except Exception as e:
-                        st.error(e)
+                            elif download_format == "PDF":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                st.download_button(
+                                    label="Download PDF",
+                                    data= convert_markdown_to_pdf( final_file),  # Encode to bytes for download
+                                    file_name=f"{option1}_{formatted_time}_ai_article.pdf",
+                                    mime="application/pdf",
+                                )
+                            elif download_format == "MD":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                st.download_button(
+                                    label="Download Markdown",
+                                    data= final_file.encode("utf-8"),  # Encode to bytes for download
+                                    file_name=f"{option1}_{formatted_time}_ai_article.md",
+                                    mime="text/plain",
+                                )
+                                #convert_markdown_to_pptx
+                            # Customize format as needed.
+                            elif download_format == "HTML":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                st.download_button(
+                                    label="Download HTML",
+                                    data=html_output.encode("utf-8"),  # Encode to bytes for download
+                                    file_name=f"{option1}_{formatted_time}_ai_article.html",
+                                    mime="text/html",
+                                )
+                            elif download_format == "DOCX":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                docx_output = convert_html_to_docx(html_output)
+                                # Save to in-memory buffer for download
+                                with io.BytesIO() as buffer:
+                                    docx_output.save(buffer)
+                                    st.download_button(
+                                        label="Download DOCX",
+                                        data=buffer.getvalue(),
+                                        file_name=f"{option1}_{formatted_time}_ai_article.docx",
+                                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                    )
+                            elif download_format == "PPTX":
+                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                pptx_bytes = convert_markdown_to_pptx(final_file)
+                                st.download_button(
+                                    label="Download PPTX",
+                                    data=pptx_bytes,
+                                    file_name=f"{option1}_{formatted_time}_ai_article.pptx",
+                                    mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
+                        except Exception as e:
+                            st.error(e)
 
 
-            else:
-                st.info("No ai article was created.")
+                else:
+                    st.info("No ai article was created.")
 
 
 
-            #download_markdown_file(file_path,  news_expert)
-        except Exception as e:
-            st.error(f"Error during conversion: {e}")
+                #download_markdown_file(file_path,  news_expert)
+            except Exception as e:
+                st.error(f"Error during conversion: {e}")
 
     with (tab5):
         st.header("Stock Recommandation with Crew AI Stockmarket Expert Agents")
        # st.header("Stock News Artikel generated by AI  Expert Agents")
         df_symbol = getTickers()
         container1 = st.container(border=True)
+        #   ["gemini/gemini-1.5-pro", "gemini/gemini-1.5-flash-8b", "gemini/gemini-1.5-flash",  "gemini/gemini-2.0-flash-exp","gemini/gemini-exp-1206","gemini/gemini-2.0-flash-thinking-exp-01-21"],
         model2= container1.radio(
                 "Choose a Model",
-                ["gemini/gemini-1.5-pro", "gemini/gemini-1.5-flash-8b", "gemini/gemini-1.5-flash",  "gemini/gemini-2.0-flash-exp","gemini/gemini-exp-1206","gemini/gemini-2.0-flash-thinking-exp-01-21"],
+             flash_vision,
             key='model2'
         )
         option2 =  container1.selectbox(
@@ -923,134 +942,138 @@ if germin_key  and serp_key:
 
         try:
             st.subheader("Summary  and Recommendations")
-            results_news=getCrewAIAgentRecommendation(option2,model2)
-            st.markdown(results_news)
+            process=False
+            if st.button("Submit",key="rec"):
+                results_news=getCrewAIAgentRecommendation(option2,model2)
+                st.markdown(results_news)
+                process=True
 
 
         except Exception as error:
             st.error(error)
         st.subheader("Reader and Fundamental Analyst")
-        file_st = f'./Crew_AI/Reports/{option2}_filereader_task.md'
-        try:
-            with open(file_st, 'r') as f:
-                fil_reader = (f.read())
-                f.close()
-            st.markdown(fil_reader)
-
-        except:
-            pass
-
-        try:
-
-            st.subheader("Finance  Analyst")
-            file_f=f'./Crew_AI/Reports/{option2}_financial_analysis_task.md'
+        if process:
+            file_st = f'./Crew_AI/Reports/{option2}_filereader_task.md'
             try:
-                with open( file_f, 'r') as f:
-                    finance_expert=(f.read())
+                with open(file_st, 'r') as f:
+                    fil_reader = (f.read())
                     f.close()
-                st.markdown(finance_expert)
+                st.markdown(fil_reader)
 
             except:
                 pass
-            #AAPL_research_task.md
-        except Exception as error:
-            st.error(error)
-        try:
 
-            st.subheader("News  and Market Sentiment Analyst")
-            file_r=f'./Crew_AI/Reports/{option2}_research_task.md'
             try:
-                with open( file_r, 'r') as f:
-                    research_expert=(f.read())
-                    f.close()
-                st.markdown(research_expert)
 
-                #st.subheader("Download the Stock Recommendation")
-                file_adv = f'./Crew_AI/Reports/{option2}_recommend.md'
-                with open(file_adv, 'r') as f:
-                    advisor_expert=(f.read())
-                    f.close()
+                st.subheader("Finance  Analyst")
+                file_f=f'./Crew_AI/Reports/{option2}_financial_analysis_task.md'
+                try:
+                    with open( file_f, 'r') as f:
+                        finance_expert=(f.read())
+                        f.close()
+                    st.markdown(finance_expert)
 
-                file_path = f"{option2}_ai_advisor.md"  # Replace with your markdown file path
+                except:
+                    pass
+            #AAPL_research_task.md
+            except Exception as error:
+                st.error(error)
+            try:
 
-                # Create a dummy markdown file if it doesn't exist (for testing):
+                st.subheader("News  and Market Sentiment Analyst")
+                file_r=f'./Crew_AI/Reports/{option2}_research_task.md'
+                try:
+                    with open( file_r, 'r') as f:
+                        research_expert=(f.read())
+                        f.close()
+                    st.markdown(research_expert)
 
-                #download_markdown_file(file_path, advisor_expert )
-                st.subheader("Download Investiment Report")
-                download_format1 = st.radio("Download as:", ("TXT", "PDF","HTML", "MD", "DOCX","PPTX"),key='download1')
+                    #st.subheader("Download the Stock Recommendation")
+                    file_adv = f'./Crew_AI/Reports/{option2}_recommend.md'
+                    with open(file_adv, 'r') as f:
+                        advisor_expert=(f.read())
+                        f.close()
 
-                if  download_format1:
-                    # st.subheader("Download the news article")
-                    html_output = convert_markdown_to_html(advisor_expert)
-                    #download_format1 = st.radio("Download as:", ("TXT", "HTML", "MD", "DOCX"))
-                    if advisor_expert is not None:
-                        advisor_expert=advisor_expert
-                    else:
-                        advisor_expert=fil_reader
+                    file_path = f"{option2}_ai_advisor.md"  # Replace with your markdown file path
 
-                    # st.button(" Download
+                    # Create a dummy markdown file if it doesn't exist (for testing):
 
-                    if advisor_expert:
-                            now = datetime.datetime.now()
-                            if download_format1 == "TXT":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                st.download_button(
-                                    label="Download TXT",
-                                    data=advisor_expert.encode("utf-8"),  # Encode to bytes for download
-                                    file_name=f"{option2}_{formatted_time}_ai_report.txt",
-                                    mime="text/plain",
-                                )
-                            elif download_format1 == "PDF":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                st.download_button(
-                                    label="Download PDF",
-                                    data=convert_markdown_to_pdf(advisor_expert.encode("utf-8")),  # Encode to bytes for download
-                                    file_name=f"{option2}_{formatted_time}_ai_report.pdf",
-                                    mime="application/pdf",
-                                )
-                            elif download_format1 == "MD":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                st.download_button(
-                                    label="Download Markdown",
-                                    data=advisor_expert.encode("utf-8"),  # Encode to bytes for download
-                                    file_name=f"{option2}_{formatted_time}_report.md",
-                                    mime="text/plain",
-                                )
-                                # convert_markdown_to_pptx
-                            # Customize format as needed.
-                            elif download_format1 == "HTML":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                st.download_button(
-                                    label="Download HTML",
-                                    data=html_output.encode("utf-8"),  # Encode to bytes for ownload
-                                    file_name=f"{option2}_{formatted_time}_ai_report.html",
-                                    mime="text/html",
-                                )
-                            elif download_format1 == "DOCX":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                docx_output = convert_html_to_docx(html_output)
-                                # Save to in-memory buffer for download
-                                with io.BytesIO() as buffer:
-                                    docx_output.save(buffer)
+                    #download_markdown_file(file_path, advisor_expert )
+                    st.subheader("Download Investiment Report")
+                    download_format1 = st.radio("Download as:", ("TXT", "PDF","HTML", "MD", "DOCX","PPTX"),key='download1')
+
+                    if  download_format1:
+                        # st.subheader("Download the news article")
+                        html_output = convert_markdown_to_html(advisor_expert)
+                        #download_format1 = st.radio("Download as:", ("TXT", "HTML", "MD", "DOCX"))
+                        if advisor_expert is not None:
+                            advisor_expert=advisor_expert
+                        else:
+                            advisor_expert=fil_reader
+
+                        # st.button(" Download
+
+                        if advisor_expert:
+                                now = datetime.datetime.now()
+                                if download_format1 == "TXT":
+                                    formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
                                     st.download_button(
-                                        label="Download DOCX",
-                                        data=buffer.getvalue(),
-                                        file_name=f"{option2}_{formatted_time}_ai_report.docx",
-                                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                        label="Download TXT",
+                                        data=advisor_expert.encode("utf-8"),  # Encode to bytes for download
+                                        file_name=f"{option2}_{formatted_time}_ai_report.txt",
+                                        mime="text/plain",
                                     )
-                            elif download_format1 == "PPTX":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                pptx_bytes = convert_markdown_to_pptx(research)
-                                st.download_button(
-                                    label="Download PPTX",
-                                    data=pptx_bytes,
-                                    file_name=f"{option2}_{formatted_time}_report.pptx",
-                                    mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
-            except:
-                pass
-            #AAPL_research_task.md
-        except Exception as error:
-            st.error(error)
+                                elif download_format1 == "PDF":
+                                    formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                    st.download_button(
+                                        label="Download PDF",
+                                        data=convert_markdown_to_pdf(advisor_expert.encode("utf-8")),  # Encode to bytes for download
+                                        file_name=f"{option2}_{formatted_time}_ai_report.pdf",
+                                        mime="application/pdf",
+                                    )
+                                elif download_format1 == "MD":
+                                    formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                    st.download_button(
+                                        label="Download Markdown",
+                                        data=advisor_expert.encode("utf-8"),  # Encode to bytes for download
+                                        file_name=f"{option2}_{formatted_time}_report.md",
+                                        mime="text/plain",
+                                    )
+                                    # convert_markdown_to_pptx
+                                # Customize format as needed.
+                                elif download_format1 == "HTML":
+                                    formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                    st.download_button(
+                                        label="Download HTML",
+                                        data=html_output.encode("utf-8"),  # Encode to bytes for ownload
+                                        file_name=f"{option2}_{formatted_time}_ai_report.html",
+                                        mime="text/html",
+                                    )
+                                elif download_format1 == "DOCX":
+                                    formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                    docx_output = convert_html_to_docx(html_output)
+                                    # Save to in-memory buffer for download
+                                    with io.BytesIO() as buffer:
+                                        docx_output.save(buffer)
+                                        st.download_button(
+                                            label="Download DOCX",
+                                            data=buffer.getvalue(),
+                                            file_name=f"{option2}_{formatted_time}_ai_report.docx",
+                                            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                        )
+                                elif download_format1 == "PPTX":
+                                    formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                    pptx_bytes = convert_markdown_to_pptx(research)
+                                    st.download_button(
+                                        label="Download PPTX",
+                                        data=pptx_bytes,
+                                        file_name=f"{option2}_{formatted_time}_report.pptx",
+                                        mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
+                except:
+                    pass
+                #AAPL_research_task.md
+            except Exception as error:
+                st.error(error)
 
 
 

@@ -4,7 +4,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 from tools.utils import CrewAiMatcher
 import pandas as  pd
-
+import google.generativeai as geneai
+import os
 from langchain_community.document_loaders import (PyPDFLoader)
 
 
@@ -30,16 +31,17 @@ def SerpApiKey():
         st.session_state['serp_api_key'] = serper_api_key
     return  st.session_state['serp_api_key']
 @st.cache_resource
-def RAGQuery(prompt,germin_key):
+def RAGQuery(prompt,germin_key,model):
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-pro", api_key=germin_key)
+        llm = ChatGoogleGenerativeAI(model=model, api_key=germin_key)
         answer = llm.invoke(prompt)
         return answer.content
     except Exception as error:
         st.error(error)
 @st.cache_resource
-def CVSummary(messages):
+def CVSummary(messages,model,germin_key):
     try:
+        llm = ChatGoogleGenerativeAI(model=model, api_key=germin_key)
         answer = llm.invoke(messages)
         return answer.content
     except Exception as error:
@@ -49,6 +51,18 @@ def CVSummary(messages):
 germin_key=germinApiKey()
 serp_api= SerpApiKey()
 if germin_key:
+    geneai.configure(api_key= germin_key)
+    os.environ['GOOGLE_API_KEY'] = germin_key
+    choice = []
+    flash_vision = []
+    #"gemini/gemini-1.5-pro"
+    for m in geneai.list_models():
+        if 'generateContent' in m.supported_generation_methods:
+            # st.write(m.name)
+            model_name = m.name.split("/")[1]
+            if "2.0" in str(model_name).lower() or "-exp" in model_name or "1.5-pro" in  model_name:
+                flash_vision.append(f'gemini/{model_name}')
+                choice.append(model_name)
     llm = ChatGoogleGenerativeAI(model="gemini-pro", api_key=germin_key)
     @st.cache_resource
     def getCrewAIMatcher(profession, location,file,ispdf,model="gemini/gemini-1.5-pro"):
@@ -69,6 +83,10 @@ if germin_key:
                 placeholder="Can you give me a short summary in German?",
                 disabled=not uploaded_file,
             )
+            modelfile = st.radio(
+                "Choose a Model",
+                choice,
+                key='modelfile')
         from io import StringIO
         if uploaded_file and question and germin_key:
             if uploaded_file.type == 'application/pdf':
@@ -88,7 +106,9 @@ if germin_key:
             #llm = ChatGoogleGenerativeAI(model="gemini-pro", api_key=germin_key)
             #answer=llm.invoke(prompt)
             st.write("### Answer")
-            st.markdown(RAGQuery( prompt,germin_key))
+            if  question:
+                st.write("### Answer")
+                st.markdown(RAGQuery( prompt,germin_key,modelfile))
     with tab2:
         st.write("### Upload your cv as pdf or md")
         uploaded_cv = st.file_uploader("Upload a cv", type=("txt", "md", "pdf"))
@@ -118,15 +138,22 @@ if germin_key:
                 You are a helpful assistant that with decades of Experience in Extracting  Job Skills,profession, language, education, key achievements and years of experience . 
                 Here is the cv {cv}.{question1}
                 The output MUST Be Formatted in markdown without ```"""
-            st.write("### Answer")
-            answer =CVSummary(messages)
-            st.markdown(CVSummary(answer))
+
+            modelfile1 = st.radio(
+                "Choose a Model",
+                choice,
+                key='modelfile1')
+            if st.button("Process CV",key='cv_key'):
+                st.write("### Answer")
+                answer =CVSummary(messages,modelfile1,germin_key)
+                st.markdown(answer)
+                os.remove(f'temp_dir/{uploaded_cv.name}')
     with tab3:
             if uploaded_cv:
                 container = st.container(border=True)
                 model1= container.radio(
                         "Choose a Model",
-                        ["gemini/gemini-1.5-pro", "gemini/gemini-1.5-flash-8b", "gemini/gemini-1.5-flash",  "gemini/gemini-2.0-flash-exp","gemini/gemini-exp-1206","gemini/gemini-2.0-flash-thinking-exp-01-21"],
+                            flash_vision,
                        key='model1')
                 profession = container.text_input(
                     "### Give your Profession",
@@ -138,7 +165,7 @@ if germin_key:
                     disabled=not uploaded_cv)
                 file = f'temp_dir/{uploaded_cv.name}'
                 try:
-                    if profession and location:
+                    if st.button("Submit",key="match"):
                         st.markdown(getCrewAIMatcher(profession, location,answer, ispdf,model1))
                         try:
                             st.subheader("Top 5 Job Postings")
