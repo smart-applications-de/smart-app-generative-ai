@@ -295,4 +295,6 @@ markdown2
 fpdf
 pydub
 moviepy
+pytubefix
+retry
 

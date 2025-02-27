@@ -12,11 +12,11 @@ import google.generativeai as geneai
 from qdrant_client.http import model
 from retry import retry
 from pytubefix.cli import on_progress
-from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
+
 from pydub import AudioSegment
-import tempfile
+
 from langchain_google_genai import ChatGoogleGenerativeAI
-from moviepy import VideoFileClip, TextClip, CompositeVideoClip
+
 from youtube_transcript_api import YouTubeTranscriptApi
 import pandas as pd
 def germinApiKey():
@@ -91,14 +91,14 @@ if video_url:
 
         # Extract transcript
         container4.subheader("YouTube Transcript")
-
         try:
-            transcript = YouTubeTranscriptApi.get_transcript(yt.video_id, languages=["en","de","fr","eo","sw"])
+            transcript = YouTubeTranscriptApi.get_transcript(yt.video_id,languages=["en","de","fr","eo","sw","ru","hi","el","zh-Hans"])
             long_text=''
             for text in transcript:
                 print(text['text'])
                 long_text += text['text'] + ' '
-            #container4.write(long_text)
+            container4.subheader("Entire Transcript")
+            container4.write(long_text)
             api_key = germinApiKey()
             if api_key:
                 geneai.configure(api_key=api_key)
