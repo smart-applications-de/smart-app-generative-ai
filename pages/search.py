@@ -15,6 +15,8 @@ from tools.utils import   CrewStocknews
 date = pd.to_datetime('today').date()
 yr = pd.to_datetime('today').year
 import datetime
+import google.generativeai as geneai
+import os
 # CrewStocknews(germin_api, serp_api, topic, year, date,model="gemini/gemini-1.5-pro")
 tab1, tab2,tab3 = st.tabs(["Agent Google Search"," Agent News Article", "Crew AI News Article"])
 def germinApiKey():
@@ -385,7 +387,20 @@ def convert_markdown_to_pptx(markdown_text):
 germin_key =  germinApiKey()
 SERPAPI_API_KEY = SerpApiKey()
 
-if germin_key:
+if germin_key and SERPAPI_API_KEY :
+    geneai.configure(api_key= germin_key)
+    os.environ['GOOGLE_API_KEY'] = germin_key
+    os.environ['SERPER_API_KEY'] = SERPAPI_API_KEY
+    choice = []
+    flash_vision = []
+    #"gemini/gemini-1.5-pro"
+    for m in geneai.list_models():
+        if 'generateContent' in m.supported_generation_methods:
+            # st.write(m.name)
+            model_name = m.name.split("/")[1]
+            choice.append(model_name)
+            if "2.0" in str(model_name).lower() or "-exp" in model_name or "1.5-pro" in  model_name:
+                flash_vision.append(f'{model_name}')
     llm= ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key,temperature=0,
                             max_tokens=None,
                             timeout=None,
@@ -405,8 +420,7 @@ if germin_key:
             container1 =st.container(border=True)
             model1= container1.radio(
                 "Choose a Model",
-                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
-                 "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-2.0-flash-thinking-exp-01-21"],
+                flash_vision,
                 key='model1'
             )
             response=SearchAgent(germin_key,SERPAPI_API_KEY,query,model1)
@@ -418,8 +432,8 @@ if germin_key:
             container2 =st.container(border=True)
             model2= container2.radio(
                 "Choose a Model",
-                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
-                 "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-2.0-flash-thinking-exp-01-21"],
+                flash_vision,
+
                 key='model2'
             )
             response = SearchNews(germin_key,SERPAPI_API_KEY,news_topic,model2)
@@ -431,8 +445,7 @@ if germin_key:
             container3 = st.container(border=True)
             model3= container3.radio(
                 "Choose a Model",
-                ["gemini/gemini-1.5-pro", "gemini/gemini-1.5-flash-8b", "gemini/gemini-1.5-flash",
-                 "gemini/gemini-2.0-flash-exp", "gemini/gemini-exp-1206", "gemini/gemini-2.0-flash-thinking-exp-01-21"],
+                flash_vision,
                 key='model3'
 
             )
