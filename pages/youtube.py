@@ -30,6 +30,18 @@ def germinApiKey():
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
     return  st.session_state['germin_api_key']
+@st.cache_resource
+def YouTubeTranscript(video_id,lang):
+    try:
+        transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=[lang])
+        long_text=''
+        for text in transcript:
+            print(text['text'])
+            long_text += text['text'] + ' '
+        return long_text
+    except Exception as error:
+        st.error(error)
+
 
 @st.cache_resource
 def askQuery(Ask,transcript, model,germin_key):
@@ -47,10 +59,13 @@ def askQuery(Ask,transcript, model,germin_key):
                 #os.remove(audio_path)
 #main()
 video_url = st.text_input("Enter YouTube Video URL:")
+if video_url  not in st.session_state:
+    st.session_state['video_url']=video_url
 
-if video_url:
+
+if  st.session_state['video_url']:
     try:
-        yt = YouTube(video_url)
+        yt = YouTube(st.session_state['video_url'])
         container = st.container(border=True)
         # Display video information
         container.subheader("Video Information")
@@ -58,6 +73,9 @@ if video_url:
         container.write(f"Author: {yt.author}")
         container.write(f"Views: {yt.views}")
         container.write(f"Length: {round(yt.length/60,2)} minutes")
+        if yt not in st.session_state:
+            st.session_state['video_id']=yt.video_id
+
 
         container1 = st.container(border=True)
         container1.subheader("Display YouTube Video")
@@ -115,28 +133,53 @@ if video_url:
                         choice.append(model_name)
                         if "2.0" in str(model_name).lower() or "-exp" in model_name:
                             flash_vision.append(model_name)
-                lang = container5.radio(
+                lang = container4.radio(
                     "Choose a language",
                     ["en", "de", "fr", "eo", "sw", "ru", "hi", "el", "zh-Hans"],
-
                     key='lang')
+
+                if "lang" not in st.session_state:
+                    st.session_state['lang']=lang
+                if st.session_state['lang'] and st.session_state['video_id'] :
+                    text =YouTubeTranscript(st.session_state['video_id'],st.session_state['lang'])
+                    container4.subheader("Entire Transcript")
+                    container4.write(text)
+                    if text not in st.session_state:
+                        st.session_state['text']=text
+
                 question = container5.text_input(
                     "### Ask something about Transcript:",
-                    placeholder="Can you give me a short summary in German?"
+                    placeholder="Can you give me a short summary in German?",
+                    key='question'
                 )
                 model1 = container5.radio(
                     "Choose a Model",
                     flash_vision,
                     key='model1')
-                if container5.button(label='Get Transcript', key='Yt'):
-                    transcript = YouTubeTranscriptApi.get_transcript(yt.video_id, languages=[lang])
-                    for text in transcript:
-                        print(text['text'])
-                        long_text += text['text'] + ' '
-                    container4.subheader("Entire Transcript")
-                    container4.write(long_text)
+                if "model1" not in st.session_state:
+                    st.session_state['model1'] = model1
+                if "question" not in st.session_state:
+                    st.session_state['question'] = question
+                if st.session_state['question'] and  st.session_state['model1'] and st.session_state['text']:
                     container5.subheader("Summary created by  AI")
-                    container5.markdown(askQuery(Ask=question, transcript= long_text, model=model1, germin_key=openai_api_key))
+                    container5.markdown(askQuery(Ask=question, transcript= st.session_state['text'], model=model1, germin_key=openai_api_key))
+
+
+
+
+
+
+                # if container5.button(label='Get Transcript and AI Summary', key='Yt'):
+                #     transcript = YouTubeTranscriptApi.get_transcript(yt.video_id, languages=[lang])
+                #     for text in transcript:
+                #         print(text['text'])
+                #         long_text += text['text'] + ' '
+                #     container4.subheader("Entire Transcript")
+                #     text =YouTubeTranscript(st.session_state['video_id'],st.session_state['lang'])
+                #     container4.write(text)
+                #
+                #     container5.subheader("Summary created by  AI")
+                #     container5.markdown(askQuery(Ask=question, transcript= text, model=model1, germin_key=openai_api_key))
 
 
 
