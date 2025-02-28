@@ -138,7 +138,7 @@ if  st.session_state['video_url']:
                     ["en", "de", "fr", "eo", "sw", "ru", "hi", "el", "zh-Hans"],
                     key='lang')
 
-                if "lang" not in st.session_state:
+                if lang  not in st.session_state:
                     st.session_state['lang']=lang
                 if st.session_state['lang'] and st.session_state['video_id'] :
                     text =YouTubeTranscript(st.session_state['video_id'],st.session_state['lang'])
