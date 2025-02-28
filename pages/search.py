@@ -398,9 +398,9 @@ if germin_key and SERPAPI_API_KEY :
         if 'generateContent' in m.supported_generation_methods:
             # st.write(m.name)
             model_name = m.name.split("/")[1]
-            choice.append(model_name)
             if "2.0" in str(model_name).lower() or "-exp" in model_name or "1.5-pro" in  model_name:
                 flash_vision.append(f'{model_name}')
+                choice.append(f'gemini/{model_name}')
     llm= ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key,temperature=0,
                             max_tokens=None,
                             timeout=None,
@@ -445,7 +445,7 @@ if germin_key and SERPAPI_API_KEY :
             container3 = st.container(border=True)
             model3= container3.radio(
                 "Choose a Model",
-                flash_vision,
+                choice,
                 key='model3'
 
             )
