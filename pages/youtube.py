@@ -324,6 +324,8 @@ if  st.session_state['video_url']:
                         if "2.0" in str(model_name).lower() or "-exp" in model_name:
                             flash_vision.append(model_name)
                 if st.session_state['video_id'] :
+                    df= pd.read_csv(f'./history/data/language.csv')
+                    st.write(df)
                     text, language =YouTubeTranscript(st.session_state['video_id'])
                     if text:
                         container4.subheader("Entire Transcript")
