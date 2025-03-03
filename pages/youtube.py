@@ -39,8 +39,8 @@ def germinApiKey():
 def YouTubeTranscript(video_id):
         try:
             transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-            df= pd.read_csv(f'./history/data/language.csv')
-            language_codes =df['code'].tolist()
+            #df= pd.read_csv(f'./history/data/language.csv')
+            #language_codes =df['code'].tolist()
 
 
 
