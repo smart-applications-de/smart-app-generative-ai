@@ -278,24 +278,29 @@ if  st.session_state['video_url']:
         # Download video
         container2 = st.container(border=True)
         container2.subheader("You can the Download Video")
-        video_stream = yt.streams.get_highest_resolution()  # Get highest resolution by default
-        buffer = io.BytesIO()
-        video_stream.stream_to_buffer(buffer)
-        buffer.seek(0)
+        try:
+            video_stream = yt.streams.get_highest_resolution()  # Get highest resolution by default
+            buffer = io.BytesIO()
+            video_stream.stream_to_buffer(buffer)
+            buffer.seek(0)
 
-        container2.download_button("Download Video", data=buffer.read(), file_name=f"{yt.title}.mp4", mime="video/mp4")
-
+            container2.download_button("Download Video", data=buffer.read(), file_name=f"{yt.title}.mp4", mime="video/mp4")
+        except Exception as videoError:
+            st.error(videoError)
 
 
         # Extract MP3 audio
-        container3 = st.container(border=True)
-        container3.subheader("Download Audio (MP3)")
-        buffer1 = io.BytesIO()
-        audio_stream = yt.streams.filter(only_audio=True).first()
-        audio_stream.stream_to_buffer(buffer1)
-        buffer1.seek(0)
-        container3.download_button("Download Audio", data=buffer1.read(), file_name=f"{yt.title}.mp3", mime="audio/mpeg")
-        container4 = st.container(border=True)
+        try:
+            container3 = st.container(border=True)
+            container3.subheader("Download Audio (MP3)")
+            buffer1 = io.BytesIO()
+            audio_stream = yt.streams.filter(only_audio=True).first()
+            audio_stream.stream_to_buffer(buffer1)
+            buffer1.seek(0)
+            container3.download_button("Download Audio", data=buffer1.read(), file_name=f"{yt.title}.mp3", mime="audio/mpeg")
+            container4 = st.container(border=True)
+        except Exception as audioError:
+            st.error(audioError)
 
         # Extract transcript
         container4.subheader("YouTube Transcript")
