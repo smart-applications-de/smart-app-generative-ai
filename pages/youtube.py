@@ -325,7 +325,7 @@ if  st.session_state['video_url']:
                             flash_vision.append(model_name)
                 if st.session_state['video_id'] :
                     df= pd.read_csv(f'./history/data/language.csv')
-                    st.write(df)
+                    st.write(df['code'].tolist())
                     text, language =YouTubeTranscript(st.session_state['video_id'])
                     if text:
                         container4.subheader("Entire Transcript")
