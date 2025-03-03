@@ -37,10 +37,13 @@ def germinApiKey():
     return  st.session_state['germin_api_key']
 @st.cache_resource
 def YouTubeTranscript(video_id):
+    
         try:
+            st.write(video_id)
             transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-            #df= pd.read_csv(f'./history/data/language.csv')
-            #language_codes =df['code'].tolist()
+            df= pd.read_csv(f'./history/data/language.csv')
+            language_codes =df['code'].tolist()
+            st.write(language_codes)
 
 
 
@@ -58,6 +61,16 @@ def YouTubeTranscript(video_id):
                     transcript = transcript_list.find_manually_created_transcript( ['en', 'de', 'fr', 'es', 'sw','ru'])
                     language_code = transcript.language_code
                 except Exception as e:
+                    try:
+                        fetched_transcript=YouTubeTranscriptApi.get_transcripts(video_ids=[video_id], languages=language_codes)
+                        formatter = TextFormatter()
+                        formatted_transcript = formatter.format_transcript(fetched_transcript)
+                        return formatted_transcript, None
+                        
+                        
+                    except Exception as error: 
+                        st.error(error)
+                        return None, None
                     st.error(e)
                     return None, None  # No suitable transcript available
 
