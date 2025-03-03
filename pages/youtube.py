@@ -55,7 +55,7 @@ def YouTubeTranscript(video_id):
                 language_code = transcript.language_code
             except:  # Fallback if no generated transcript is found in the supported languages
                 try:
-                    transcript = transcript_list.find_manually_created_transcript( language_codes)
+                    transcript = transcript_list.find_manually_created_transcript( ['en', 'de', 'fr', 'es', 'sw','ru'])
                     language_code = transcript.language_code
                 except Exception as e:
                     st.error(e)
