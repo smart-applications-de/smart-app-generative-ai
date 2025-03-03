@@ -408,8 +408,6 @@ if  st.session_state['video_url']:
                                     st.error(error)
 
 
-
-
         except Exception as e:
             st.error(f"Error getting transcript: {e}")  # Handle potential transcript errors
 
