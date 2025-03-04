@@ -39,11 +39,10 @@ def germinApiKey():
 def YouTubeTranscript(video_id):
     
         try:
-            st.write(video_id)
+           
             transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
             df= pd.read_csv(f'./history/data/language.csv')
             language_codes =df['code'].tolist()
-            st.write(language_codes)
 
 
 
@@ -56,22 +55,18 @@ def YouTubeTranscript(video_id):
 
 
                 language_code = transcript.language_code
-            except:  # Fallback if no generated transcript is found in the supported languages
+            except Exception as lang:
+                # Fallback if no generated transcript is found in the supported languages
+                st.info("language issue")
+                st.error(lang)
                 try:
                     transcript = transcript_list.find_manually_created_transcript( ['en', 'de', 'fr', 'es', 'sw','ru'])
                     language_code = transcript.language_code
                 except Exception as e:
-                    try:
-                        fetched_transcript=YouTubeTranscriptApi.get_transcripts(video_ids=[video_id], languages=language_codes)
-                        formatter = TextFormatter()
-                        formatted_transcript = formatter.format_transcript(fetched_transcript)
-                        return formatted_transcript, None
-                        
-                        
-                    except Exception as error: 
-                        st.error(error)
-                        return None, None
                     st.error(e)
+
+
+
                     return None, None  # No suitable transcript available
 
             fetched_transcript = transcript.fetch()
@@ -342,9 +337,9 @@ if  st.session_state['video_url']:
                         if "2.0" in str(model_name).lower() or "-exp" in model_name:
                             flash_vision.append(model_name)
                 if st.session_state['video_id'] :
-                    df= pd.read_csv(f'./history/data/language.csv')
-                    st.write(df['code'].tolist())
-                    text, language =YouTubeTranscript(st.session_state['video_id'])
+                    #df= pd.read_csv(f'./history/data/language.csv')
+                    #st.write(df['code'].tolist())
+                    text, language =YouTubeTranscript(yt.video_id)
                     if text:
                         container4.subheader("Entire Transcript")
                         container4.subheader("Detected language code: "+ language)
