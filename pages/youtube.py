@@ -288,11 +288,12 @@ if  st.session_state['video_url']:
         container2.subheader("You can the Download Video")
         try:
             video_stream = yt.streams.get_highest_resolution()  # Get highest resolution by default
-            buffer = io.BytesIO()
-            video_stream.stream_to_buffer(buffer)
-            buffer.seek(0)
-
-            container2.download_button("Download Video", data=buffer.read(), file_name=f"{yt.title}.mp4", mime="video/mp4")
+            if  video_stream:
+                buffer = io.BytesIO()
+                video_stream.stream_to_buffer(buffer)
+                buffer.seek(0)
+    
+                container2.download_button("Download Video", data=buffer.read(), file_name=f"{yt.title}.mp4", mime="video/mp4")
         except Exception as videoError:
             st.error(videoError)
 
@@ -303,16 +304,16 @@ if  st.session_state['video_url']:
             container3.subheader("Download Audio (MP3)")
             buffer1 = io.BytesIO()
             audio_stream = yt.streams.filter(only_audio=True).first()
-            audio_stream.stream_to_buffer(buffer1)
-            buffer1.seek(0)
-            container3.download_button("Download Audio", data=buffer1.read(), file_name=f"{yt.title}.mp3", mime="audio/mpeg")
-            container4 = st.container(border=True)
+            if audio_stream:
+                    audio_stream.stream_to_buffer(buffer1)
+                    buffer1.seek(0)
+                    container3.download_button("Download Audio", data=buffer1.read(), file_name=f"{yt.title}.mp3", mime="audio/mpeg")
         except Exception as audioError:
             st.error(audioError)
 
         # Extract transcript
+        container4 = st.container(border=True)
         container4.subheader("YouTube Transcript")
-        long_text = ''
         try:
 
             container5 = st.container(border=True)
@@ -339,7 +340,7 @@ if  st.session_state['video_url']:
                 if st.session_state['video_id'] :
                     #df= pd.read_csv(f'./history/data/language.csv')
                     #st.write(df['code'].tolist())
-                    text, language =YouTubeTranscript(yt.video_id)
+                    text, language =YouTubeTranscript(st.session_state['video_id'])
                     if text:
                         container4.subheader("Entire Transcript")
                         container4.subheader("Detected language code: "+ language)
