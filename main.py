@@ -1,11 +1,7 @@
+import os
+
 import streamlit as st
 
-
-#from nav import menu
-
-from dotenv import  load_dotenv
-
-from openai import OpenAI
 import markdown2
 from docx import Document
 from fpdf import FPDF
@@ -13,6 +9,12 @@ import io
 from bs4 import BeautifulSoup
 import re
 import datetime
+import google.generativeai as geneai
+from google.genai import types
+#import google.genai as gen
+from langchain_community.document_loaders import (PyPDFLoader)
+from pytubefix import YouTube
+
 def germinApiKey():
     st.warning('Please enter your Google Gemini API Key')
     "[Get GOOGLE API KEY](https://ai.google.dev/)"
@@ -252,80 +254,330 @@ def convert_markdown_to_pptx(markdown_text):
             prs.save(buffer)
             return buffer.getvalue()
 
+def TakePhoto():
+    try:
+        kamera = st.camera_input("Take Photo")
+        if kamera:
+            st.success("Ask Anything about this  Picture and get help from AI")
+            #st.image(kamera)
+            file_type = kamera.type
+            return kamera,  file_type
+    except Exception as camerainput:
+        st.error(camerainput)
+
 
 germinApiKey()
 try:
         if st.session_state['germin_api_key']:
             st.title("💬 Chatbot With   Google-Gemini")
             container1 =st.container(border=True)
-            model1= container1.radio(
-                "Choose a Model",
-                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
-                 "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-2.0-flash-thinking-exp-01-21"],
-                key='model1'
-            )
-            client = OpenAI(
-                api_key=st.session_state['germin_api_key'],
-                #st.session_state['germin_api_key'],
-                base_url="https://generativelanguage.googleapis.com/v1beta/openai/")
+            choice = []
+            flash_vision = []
+            os.environ['api_key']=st.session_state['germin_api_key']
+            geneai.configure(api_key=st.session_state['germin_api_key'])
+            from google import genai
 
-
+            client = genai.Client(api_key=os.environ['api_key'])
             if "messages" not in st.session_state:
-                st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+                st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?","user":''}]
 
-            download_text =[]
+            download_text = set()
 
             for msg in st.session_state.messages:
-                st.chat_message(msg["role"]).write(msg["content"])
-                download_text.append(msg["content"])
+                # st.chat_message(msg["role"]).write(msg["content"])
+                if "How can I help you?" not in msg["content"]:
+                    download_text.add(msg["content"])
+            st.info("You can upload your Images,pdfs, videos files for AI analysis or just asking Anything ")
+            opt = st.radio(label="Choose Image or Video  source", options=[None, "camera","youtube"])
+            if opt  and opt=="camera":
+                photo, photo_file=TakePhoto()
+                if photo:
+                   pic_text = st.text_input("Ask anything about the picture",placeholder="Describe this picture")
+                   if pic_text:
+                       for m in geneai.list_models():
+                           if 'generateContent' in m.supported_generation_methods:
+                               # st.write(m.name)
+                               model_name = m.name.split("/")[1]
+
+                               if "2.0" in str(model_name).lower() and "flash" in str(model_name).lower():
+                                   flash_vision.append(model_name)
+                                   choice.append(model_name)
+                       #                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
+                       #   "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-2.0-flash-thinking-exp-01-21"],
+                       model1 = container1.radio(
+                           "Choose a Model",
+                           choice,
+                           key='model1'
+                       )
+                       response = client.models.generate_content(
+                           model=model1,
+                           contents=[pic_text,types.Part.from_bytes(data=photo.getvalue(),mime_type=photo_file)])
+
+                       if response:
+                           # st.markdown(response.text)
+                           msg = response.text
+                           st.session_state.messages.append({"role": "assistant", "content": msg, "user": pic_text})
+                           st.chat_message("assistant").write(msg)
+                           download_text.add(pic_text)
+                           download_text.add(msg)
+            elif opt=="youtube":
+                video_url = st.text_input("Enter YouTube Video URL:")
+                if  video_url:
+                    if video_url not in st.session_state:
+                        st.session_state['video_url'] = video_url
+
+                    if st.session_state['video_url']:
+                        try:
+                            yt = YouTube(st.session_state['video_url'])
+                            container = st.container(border=True)
+                            # Display video information
+                            container.subheader("Video Information")
+                            container.write(f"Title: {yt.title}")
+                            container.write(f"Author: {yt.author}")
+                            container.write(f"Views: {yt.views}")
+                            container.write(f"Length: {round(yt.length / 60, 2)} minutes")
+                            if yt not in st.session_state:
+                                st.session_state['video_id'] = yt.video_id
+
+                            container1 = st.container(border=True)
+                            container1.subheader("Display YouTube Video")
+
+                            # Display video
+                            container1.video(video_url)
+
+                            # Download video
+                            container2 = st.container(border=True)
+                            container2.subheader("You can the Download  Audio")
+                            try:
+                                audio_stream = yt.streams.filter(only_audio=True).first()  # Get highest resolution by default
+                                if audio_stream:
+                                    buffer = io.BytesIO()
+                                    audio_stream.stream_to_buffer(buffer)
+                                    buffer.seek(0)
+                                    for m in geneai.list_models():
+                                        if 'generateContent' in m.supported_generation_methods:
+                                            # st.write(m.name)
+                                            model_name = m.name.split("/")[1]
+
+                                            if "2.0" in str(model_name).lower() and "flash" in str(model_name).lower():
+                                                flash_vision.append(model_name)
+                                                choice.append(model_name)
+                                    #                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
+                                    #   "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-2.0-flash-thinking-exp-01-21"],
+                                    pic_text = st.text_input("Ask anything about the YouTube Video",
+                                                             placeholder="Give a summary in German")
+                                    if pic_text:
+                                        model1 = container1.radio(
+                                            "Choose a Model",
+                                            choice,
+                                            key='model1'
+                                        )
+                                        try:
+                                            response = client.models.generate_content(
+                                                model=model1,
+                                                contents=[pic_text,
+                                                          types.Part.from_bytes(data=buffer.read(), mime_type="audio/mpeg")])
+
+                                            if response:
+                                                # st.markdown(response.text)
+                                                msg = response.text
+                                                st.session_state.messages.append(
+                                                    {"role": "assistant", "content": msg, "user": pic_text})
+                                                st.chat_message("assistant").write(msg)
+                                                download_text.add(pic_text)
+                                                download_text.add(msg)
+                                        except Exception as modelerror:
+                                            st.error(modelerror)
+
+                                    container2.download_button("Audio", data=buffer.read(),
+                                                               file_name=f"{yt.title}.mp3", mime="audio/mpeg")
+                            except Exception as videoError:
+                                st.error("YouTube Error:", videoError)
+                        except Exception as youtubeeror:
+                            st.error(youtubeeror)
+
+            else:
+
+                if prompt := st.chat_input(placeholder="Enter your Prompt or upload a file  and ask questions", key=None, max_chars=1000, accept_file=True):
+                    if not st.session_state['germin_api_key']:
+                        st.info("Please add your Germin  API key to continue.")
+
+                        st.stop()
 
 
 
+                    with st.chat_message("user"):
+                            st.markdown(prompt.text)
+                    if prompt.text and not   prompt["files"] :
+                        for m in geneai.list_models():
+                            if 'generateContent' in m.supported_generation_methods:
+                                # st.write(m.name)
+                                model_name = m.name.split("/")[1]
+
+                                if "2.0" in str(model_name).lower() or "-exp" in model_name or "1.5-pro" in str(
+                                        model_name).lower():
+                                    flash_vision.append(model_name)
+                                    choice.append(model_name)
+                        #                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
+                        #   "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-2.0-flash-thinking-exp-01-21"],
+                        model1 = container1.radio(
+                            "Choose a Model",
+                            choice,
+                            key='model1'
+                        )
+
+                        response = client.models.generate_content(
+                            model=model1,
+                            contents=[prompt.text])
+
+                        if response:
+                            #st.markdown(response.text)
+                            msg = response.text
+                            st.session_state.messages.append({"role": "assistant", "content": msg,"user":prompt.text})
+                            st.chat_message("assistant").write(msg)
+                            download_text.add(prompt.text)
+                            download_text.add(msg)
 
 
-            if prompt := st.chat_input():
-                if not st.session_state['germin_api_key']:
-                    st.info("Please add your Germin  API key to continue.")
-                    st.stop()
+                    elif   prompt.text and   prompt["files"]:
+                        file_type=prompt["files"][0].type
+                        file_name=prompt["files"][0].name
+                        for m in geneai.list_models():
+                            if 'generateContent' in m.supported_generation_methods:
+                                # st.write(m.name)
+                                model_name = m.name.split("/")[1]
 
-                st.session_state.messages.append({"role": "user", "content": prompt})
-                #st.chat_message("user").write(prompt)
-                #response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
-                # msg = response.choices[0].message.content
-                # st.session_state.messages.append({"role": "assistant", "content": msg})
-                # st.chat_message("assistant").write(msg)
+                                if "2.0" in str(model_name).lower() and  "flash" in str(model_name).lower() :
+                                    flash_vision.append(model_name)
+                                    choice.append(model_name)
+                        #                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
+                        #   "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-2.0-flash-thinking-exp-01-21"],
+                        model1 = container1.radio(
+                            "Choose a Model",
+                            choice,
+                            key='model1'
+                        )
 
 
 
-                # Display user message in chat message container
-                with st.chat_message("user"):
-                        st.markdown(prompt)
-                with st.chat_message("assistant"):
-                 response = client.chat.completions.create(
-                    model=model1,
-                    #"gemini-1.5-flash",
-                    n=1,
-                    messages=st.session_state.messages
-                    # [{"role": "system", "content": "You are a helpful assistant."},
-                    #     { "role": "user",
-                    #     "content": prompt }],
-                   # stream=True
+                        if "audio" in  file_type:
+                            try:
+                                audio_data=prompt["files"][0]
+                                st.audio(audio_data)
+                                #  types.Part.from_bytes(data=audio_data.read(),mime_type=file_type)]
+                                response = client.models.generate_content(
+                                    model=model1,
+                                    contents=[prompt.text,  types.Part.from_bytes(data=audio_data.getvalue(),mime_type=file_type)])
+                                if response:
+                                    if response:
+                                        # st.markdown(response.text)
+                                        msg = response.text
+                                        st.session_state.messages.append({"role": "assistant", "content": msg,"user":prompt.text})
+                                        st.chat_message("assistant").write(msg)
+                                        download_text.add(prompt.text)
+                                        download_text.add(msg)
+                            except Exception as audio:
+                                st.error("Error Processing Audio: ", audio)
 
-                )
-                msg = response.choices[0].message.content
-                st.session_state.messages.append({"role": "assistant", "content": msg})
-                st.chat_message("assistant").write(msg)
+                        elif "video" in file_type:
+                            try:
+                                video = prompt["files"][0]
+                                st.video(video)
+                                response = client.models.generate_content(
+                                    model=model1,
+                                    contents=[prompt.text,  types.Part.from_bytes(data=video.getvalue(),mime_type=file_type)])
+
+                                if response:
+                                    # st.markdown(response.text)
+                                    msg = response.text
+                                    st.session_state.messages.append({"role": "assistant", "content": msg,"user":prompt.text})
+                                    st.chat_message("assistant").write(msg)
+                                    download_text.add(prompt.text)
+                                    download_text.add(msg)
+                            except Exception as video:
+                                st.error("Error Processing Video: ",video)
+
+                        elif "image" in file_type:
+                            try:
+                                image = prompt["files"][0]
+                                st.image(image)
+                                response = client.models.generate_content(
+                                    model=model1,
+                                    contents=[prompt.text,  types.Part.from_bytes(data=image.getvalue(),mime_type=file_type)])
+                                if response:
+                                    # st.markdown(response.text)
+                                    msg = response.text
+                                    st.session_state.messages.append({"role": "assistant", "content": msg,"user":prompt.text})
+                                    st.chat_message("assistant").write(msg)
+                                    download_text.add(prompt.text)
+                                    download_text.add(msg)
+                            except Exception as image:
+                                st.error("Error Processing Image: ", image)
+
+                        elif "pdf" in file_type:
+                                try:
+                                    uploaded_file=prompt["files"][0]
+                                    if not os.path.isdir("temp_dir"):
+                                        os.mkdir("temp_dir")
+                                    path = os.path.join("temp_dir", uploaded_file.name)
+                                    with open(path, "wb") as f:
+                                        f.write(uploaded_file.getvalue())
+                                    loader = PyPDFLoader(f'temp_dir/{uploaded_file.name}')
+                                    pages = loader.load_and_split()
+                                    article = " ".join([doc.page_content for doc in pages])
+                                    response = client.models.generate_content(
+                                    model=model1,
+                                    contents=[prompt.text, article ])
+                                    os.remove(path)
+                                    if response:
+                                        # st.markdown(response.text)
+                                        msg = response.text
+                                        st.session_state.messages.append({"role": "assistant", "content": msg,"user":prompt.text})
+                                        st.chat_message("assistant").write(msg)
+                                        download_text.add(prompt.text)
+                                        download_text.add(msg)
+                                except Exception as pdf:
+                                    st.error( "Error processing pdf:",pdf)
+
+                        else:
+                            try:
+                                uploaded_file = prompt["files"][0]
+
+                                from langchain_google_genai import ChatGoogleGenerativeAI
+
+                                article = uploaded_file.read().decode()
+                                qst = f""" Here's an article:\n\n
+                                           {article}\n\n\n\n{prompt.text}"""
+
+                                llm = ChatGoogleGenerativeAI(model=model1, api_key=st.session_state['germin_api_key'])
+                                response = llm.invoke(qst)
+                                if  response:
+                                    msg = response.text
+                                    st.session_state.messages.append({"role": "assistant", "content": msg, "user":prompt.text})
+                                    st.chat_message("assistant").write(msg)
+                                    download_text.add(prompt.text)
+                                    download_text.add(msg)
+                            except Exception  as error1:
+                                st.error(error1)
+                    else:
+                        st.error("No files  was found")
+                else:
+                    st.chat_message("assistant").write("How Can I help You ?")
+
             if len(download_text) > 0:
-                text= " ".join([w for w in download_text])
-                st.subheader("Download Chat History")
-                html_output = convert_markdown_to_html(text)
-                download_format1 = st.radio("Download as:", ("TXT", "PDF", "HTML", "MD", "DOCX","PPTX"), key='download1')
+                    text = " ".join([w for w in download_text])
+                    st.subheader("Download Chat History")
+                    html_output = convert_markdown_to_html(text)
+                    download_format1 = st.radio("Download as:", ("TXT", "PDF", "HTML", "MD", "DOCX", "PPTX"),
+                                                key='download1')
 
-                if download_format1:
+                    if download_format1:
 
                         now = datetime.datetime.now()
                         if download_format1 == "TXT":
                             formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                            st.warning("This history will be downloaded")
+                            st.markdown(text)
                             st.download_button(
                                 label="Download TXT",
                                 data=text.encode("utf-8"),  # Encode to bytes for download
@@ -334,6 +586,8 @@ try:
                             )
                         elif download_format1 == "PDF":
                             formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                            st.warning("This history will be downloaded")
+                            st.markdown(text)
                             st.download_button(
                                 label="Download PDF",
                                 data=convert_markdown_to_pdf(text.encode("utf-8")),
@@ -342,7 +596,9 @@ try:
                                 mime="application/pdf",
                             )
                         elif download_format1 == "MD":
+                            st.warning("This history will be downloaded")
                             formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                            st.markdown(text)
                             st.download_button(
                                 label="Download Markdown",
                                 data=text.encode("utf-8"),  # Encode to bytes for download
@@ -352,6 +608,8 @@ try:
                             # convert_markdown_to_pptx
                         # Customize format as needed.
                         elif download_format1 == "HTML":
+                            st.warning("This history will be downloaded")
+                            st.markdown(text)
                             formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
                             st.download_button(
                                 label="Download HTML",
@@ -360,6 +618,8 @@ try:
                                 mime="text/html",
                             )
                         elif download_format1 == "DOCX":
+                            st.warning("This history will be downloaded")
+                            st.markdown(text)
                             formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
                             docx_output = convert_html_to_docx(html_output)
                             # Save to in-memory buffer for download
@@ -372,6 +632,8 @@ try:
                                     mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                                 )
                         elif download_format1 == "PPTX":
+                            st.warning("This history will be downloaded")
+                            st.markdown(text)
                             formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
                             pptx_bytes = convert_markdown_to_pptx(html_output)
                             st.download_button(
@@ -379,11 +641,13 @@ try:
                                 data=pptx_bytes,
                                 file_name=f"{formatted_time}_gemini_chatbot.pptx",
                                 mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
+            if st.button("Clear"):
+                            download_text.clear()
+                            text=""
 
 
-        # for chunk in response:
-            #     #print(chunk.choices[0].delta)
-            #
-            #     st.markdown((chunk.choices[0].delta.content))
+
+
+
 except Exception as error:
    print(error)

@@ -9,7 +9,7 @@ pages = {
         st.Page("./main.py", title="Gemini  Chatbot"),
         st.Page("./pages/queryfiles.py", title="Upload Files"),
         st.Page("./pages/search.py", title="AI  search"),
-        st.Page("./pages/youtube.py", title="YouTube Video Analysis"),
+       # st.Page("./pages/youtube.py", title="YouTube Video Analysis"),
     ],
     "Stockmarket": [
         st.Page("./pages/stockmarket.py", title="Stockmarket Analysis"),
