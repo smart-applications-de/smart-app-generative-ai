@@ -272,7 +272,7 @@ def getAudioStreamTodownload(video_url):
         audio_stream = yt.streams.filter(only_audio=True).first()
         return audio_stream
     except Exception as audio:
-        st.error("Error getting audio ",audio)
+        st.error(audio)
 @st.cache_resource
 def geminiGetInformationFromPhoto(model,input,data,photo_file):
     try:
@@ -461,7 +461,7 @@ try:
                                         col4.download_button("Download Audio", data= buffer2.read(),
                                                                file_name=f"audio_{formatted_time }.mp3", mime="audio/mpeg")
                             except Exception as videoError:
-                                st.error("YouTube Error:", videoError)
+                                st.error( videoError)
                         except Exception as youtubeeror:
                             st.error(youtubeeror)
 
