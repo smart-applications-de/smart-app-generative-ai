@@ -283,7 +283,7 @@ def geminiGetInformationFromPhoto(model,input,data,photo_file):
         return response
     except Exception as model:
         st.error(model)
-@st.cache_resource
+#@st.cache_resource
 def geminiGetTextFromYouTubeVideo(model,input,data):
     try:
         response = client.models.generate_content(
@@ -403,11 +403,12 @@ try:
 
 
                             try:
-                                audio_str =  yt.streams.filter(only_audio=True).first()
+                                audio_stream =  yt.streams.filter(only_audio=True).first()
+                                st.success("Done")
                 
-                                if audio_str:
+                                if audio_stream:
                                     buffer = io.BytesIO()
-                                    audio_str.stream_to_buffer(buffer)
+                                    audio_stream.stream_to_buffer(buffer)
                                     buffer.seek(0)
 
                                     pic_text = col3.text_input("Ask anything about the YouTube Video",
