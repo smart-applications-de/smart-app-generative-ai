@@ -404,11 +404,13 @@ try:
 
                             try:
                                 audio_stream =  yt.streams.filter(only_audio=True).first()
-                                st.success("Done")
+                                
                 
                                 if audio_stream:
                                     buffer = io.BytesIO()
+                                    st.success("Done")
                                     audio_stream.stream_to_buffer(buffer)
+                                    st.error("Done")
                                     buffer.seek(0)
 
                                     pic_text = col3.text_input("Ask anything about the YouTube Video",
