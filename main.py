@@ -14,8 +14,8 @@ import google.generativeai as geneai
 from google.genai import types
 #import google.genai as gen
 from langchain_community.document_loaders import (PyPDFLoader)
-from pytube import YouTube
 
+from pytubefix import YouTube
 def germinApiKey():
     st.warning('Please enter your Google Gemini API Key')
     "[Get GOOGLE API KEY](https://ai.google.dev/)"
