@@ -407,7 +407,7 @@ try:
                 
                                 if audio_str:
                                     buffer = io.BytesIO()
-                                    audio_stream.stream_to_buffer(buffer)
+                                    audio_str.stream_to_buffer(buffer)
                                     buffer.seek(0)
 
                                     pic_text = col3.text_input("Ask anything about the YouTube Video",
