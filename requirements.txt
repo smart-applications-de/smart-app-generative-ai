@@ -293,6 +293,6 @@ markdown2
 fpdf
 pydub
 moviepy
-pytubefix
+pytubefix==8.12.1
 retry
 
