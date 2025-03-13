@@ -266,7 +266,6 @@ def TakePhoto():
     except Exception as camerainput:
         st.error(camerainput)
 
-@st.cache_resource
 def getAudioStreamTodownload(video_url):
     try:
         yt = YouTube(video_url)
@@ -294,7 +293,6 @@ def geminiGetTextFromYouTubeVideo(model,input,data):
         return response
     except Exception as model:
         st.error(model)
-@st.cache_resource
 def getVideoStreamTodownload(video_url):
     try:
         yt = YouTube(video_url)
@@ -405,8 +403,8 @@ try:
 
 
                             try:
-                                audio_stream = yt.streams.filter(only_audio=True).first()
-                                #getAudioStreamTodownload( st.session_state['video_url']) # Get highest resolution by default
+                                audio_stream =  yt.streams.filter(only_audio=True).first()
+                
                                 if audio_stream:
                                     buffer = io.BytesIO()
                                     audio_stream.stream_to_buffer(buffer)
