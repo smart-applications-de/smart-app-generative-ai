@@ -403,9 +403,9 @@ try:
 
 
                             try:
-                                audio_stream =  yt.streams.filter(only_audio=True).first()
+                                audio_str =  yt.streams.filter(only_audio=True).first()
                 
-                                if audio_stream:
+                                if audio_str:
                                     buffer = io.BytesIO()
                                     audio_stream.stream_to_buffer(buffer)
                                     buffer.seek(0)
