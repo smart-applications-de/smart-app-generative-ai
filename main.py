@@ -405,7 +405,8 @@ try:
 
 
                             try:
-                                audio_stream =getAudioStreamTodownload( st.session_state['video_url']) # Get highest resolution by default
+                                audio_stream = yt.streams.filter(only_audio=True).first()
+                                #getAudioStreamTodownload( st.session_state['video_url']) # Get highest resolution by default
                                 if audio_stream:
                                     buffer = io.BytesIO()
                                     audio_stream.stream_to_buffer(buffer)
@@ -440,7 +441,8 @@ try:
                                                 now = datetime.datetime.now()
                                                 try:
                                                     formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                                    video_stream = getVideoStreamTodownload(st.session_state['video_url'])
+                                                    video_stream =  yt.streams.get_highest_resolution()
+                                                    #getVideoStreamTodownload(st.session_state['video_url'])
                                                     if video_stream:
                                                         buffer3 = io.BytesIO()
                                                         video_stream.stream_to_buffer(buffer3)
