@@ -3,6 +3,7 @@ import os
 import streamlit as st
 
 import markdown2
+from chromadb.utils.fastapi import fastapi_json_response
 from docx import Document
 from fpdf import FPDF
 import io
@@ -265,6 +266,42 @@ def TakePhoto():
     except Exception as camerainput:
         st.error(camerainput)
 
+@st.cache_resource
+def getAudioStreamTodownload(video_url):
+    try:
+        yt = YouTube(video_url)
+        audio_stream = yt.streams.filter(only_audio=True).first()
+        return audio_stream
+    except Exception as audio:
+        st.error("Error getting audio ",audio)
+@st.cache_resource
+def geminiGetInformationFromPhoto(model,input,data,photo_file):
+    try:
+        response = client.models.generate_content(
+            model=model,
+            contents=[input,
+                      types.Part.from_bytes(data=data.getvalue(), mime_type=photo_file)])
+        return response
+    except Exception as model:
+        st.error(model)
+@st.cache_resource
+def geminiGetTextFromYouTubeVideo(model,input,data):
+    try:
+        response = client.models.generate_content(
+            model=model,
+            contents=[input,
+                      types.Part.from_bytes(data=data.read(), mime_type="audio/mpeg")])
+        return response
+    except Exception as model:
+        st.error(model)
+@st.cache_resource
+def getVideoStreamTodownload(video_url):
+    try:
+        yt = YouTube(video_url)
+        video_stream =  yt.streams.get_highest_resolution()
+        return video_stream
+    except Exception as vid:
+        st.error(vid)
 
 germinApiKey()
 try:
@@ -310,9 +347,9 @@ try:
                            choice,
                            key='model1'
                        )
-                       response = client.models.generate_content(
-                           model=model1,
-                           contents=[pic_text,types.Part.from_bytes(data=photo.getvalue(),mime_type=photo_file)])
+                       response=geminiGetInformationFromPhoto(model=model1,input=pic_text,data=photo,photo_file=photo_file)
+
+
 
                        if response:
                            # st.markdown(response.text)
@@ -368,7 +405,7 @@ try:
 
 
                             try:
-                                audio_stream = yt.streams.filter(only_audio=True).first()  # Get highest resolution by default
+                                audio_stream =getAudioStreamTodownload( st.session_state['video_url']) # Get highest resolution by default
                                 if audio_stream:
                                     buffer = io.BytesIO()
                                     audio_stream.stream_to_buffer(buffer)
@@ -379,14 +416,14 @@ try:
 
                                     if pic_text and model1:
                                         try:
-                                            response = client.models.generate_content(
-                                                model=model1,
-                                                contents=[pic_text,
-                                                          types.Part.from_bytes(data=buffer.read(), mime_type="audio/mpeg")])
+                                            response=geminiGetTextFromYouTubeVideo(model=model1, input=pic_text, data=buffer)
+
+
                                             buffer1 = io.BytesIO()
                                             audio_stream.stream_to_buffer(buffer1)
                                             buffer1.seek(0)
                                             col4.audio(buffer1.read(), format='audio/mpeg')
+                                            visible="hidden"
 
                                             if response:
                                                 # st.markdown(response.text)
@@ -396,6 +433,23 @@ try:
                                                 container2.chat_message("assistant").write(msg)
                                                 download_text.add(pic_text)
                                                 download_text.add(msg)
+                                                visible="visible"
+                                                container2.warning("Checkout Download Video  if yu want to download the YouTube video")
+                                            dv=container2.checkbox(label="Download Video",disabled=not response, label_visibility=visible)
+                                            if dv:
+                                                now = datetime.datetime.now()
+                                                try:
+                                                    formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+                                                    video_stream = getVideoStreamTodownload(st.session_state['video_url'])
+                                                    if video_stream:
+                                                        buffer3 = io.BytesIO()
+                                                        video_stream.stream_to_buffer(buffer3)
+                                                        buffer3.seek(0)
+
+                                                        container2.download_button("Download Video", data=buffer3.read(),
+                                                                                   file_name=f"video_{formatted_time}.mp4", mime="video/mp4")
+                                                except Exception  as vid:
+                                                    st.error(vid)
                                         except Exception as modelerror:
                                             st.error(modelerror)
                                         now = datetime.datetime.now()
