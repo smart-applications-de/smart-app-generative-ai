@@ -14,8 +14,8 @@ import google.generativeai as geneai
 from google.genai import types
 #import google.genai as gen
 from langchain_community.document_loaders import (PyPDFLoader)
-from pytubefix import YouTube
 
+from pytubefix import YouTube
 def germinApiKey():
     st.warning('Please enter your Google Gemini API Key')
     "[Get GOOGLE API KEY](https://ai.google.dev/)"
@@ -266,7 +266,6 @@ def TakePhoto():
     except Exception as camerainput:
         st.error(camerainput)
 
-@st.cache_resource
 def getAudioStreamTodownload(video_url):
     try:
         yt = YouTube(video_url)
@@ -294,7 +293,6 @@ def geminiGetTextFromYouTubeVideo(model,input,data):
         return response
     except Exception as model:
         st.error(model)
-@st.cache_resource
 def getVideoStreamTodownload(video_url):
     try:
         yt = YouTube(video_url)
@@ -405,7 +403,8 @@ try:
 
 
                             try:
-                                audio_stream =getAudioStreamTodownload( st.session_state['video_url']) # Get highest resolution by default
+                                audio_stream =  yt.streams.filter(only_audio=True).first()
+                
                                 if audio_stream:
                                     buffer = io.BytesIO()
                                     audio_stream.stream_to_buffer(buffer)
@@ -440,7 +439,8 @@ try:
                                                 now = datetime.datetime.now()
                                                 try:
                                                     formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                                    video_stream = getVideoStreamTodownload(st.session_state['video_url'])
+                                                    video_stream =  yt.streams.get_highest_resolution()
+                                                    #getVideoStreamTodownload(st.session_state['video_url'])
                                                     if video_stream:
                                                         buffer3 = io.BytesIO()
                                                         video_stream.stream_to_buffer(buffer3)
