@@ -273,7 +273,7 @@ def getAudioStreamTodownload(video):
         return audio_stream
     except Exception as audio:
         st.error(audio)
-#@st.cache_resource
+@st.cache_resource
 def geminiGetInformationFromPhoto(model,input,data,photo_file):
     try:
         response = client.models.generate_content(
@@ -408,9 +408,9 @@ try:
                 
                                 if audio_stream:
                                     buffer = io.BytesIO()
-                                    st.success("Done")
+                                   
                                     audio_stream.stream_to_buffer(buffer)
-                                    st.error("Done")
+                                 
                                     buffer.seek(0)
 
                                     pic_text = col3.text_input("Ask anything about the YouTube Video",
