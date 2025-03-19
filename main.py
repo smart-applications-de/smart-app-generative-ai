@@ -486,7 +486,7 @@ try:
                 )
                 container3 = st.container()
 
-                if prompt := container3.chat_input(placeholder="Enter your Prompt or upload a file  and ask questions", key=None, max_chars=1000, accept_file=True):
+                if prompt := container3.chat_input(placeholder="Enter your Prompt or upload a file  and ask questions", key=None, max_chars=3000, accept_file=True):
                     if not st.session_state['germin_api_key']:
                         container3.info("Please add your Germin  API key to continue.")
 
