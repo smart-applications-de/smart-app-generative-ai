@@ -474,7 +474,7 @@ try:
                         # st.write(m.name)
                         model_name = m.name.split("/")[1]
 
-                        if "2.0" in str(model_name).lower() or "-exp" in model_name or "2.5-pro" in str(
+                        if "2.0" in str(model_name).lower() or "-exp" in model_name or "2.5" in str(
                                 model_name).lower():
                             flash_vision.append(model_name)
                             choice.append(model_name)
