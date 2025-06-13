@@ -335,7 +335,7 @@ try:
                                # st.write(m.name)
                                model_name = m.name.split("/")[1]
 
-                               if "2.0" in str(model_name).lower() and "flash" in str(model_name).lower():
+                               if "2" in str(model_name).lower() and "flash" in str(model_name).lower():
                                    flash_vision.append(model_name)
                                    choice.append(model_name)
                        #                ["gemini-1.5-pro", "gemini-1.5-flash-8b", "gemini-1.5-flash",
@@ -474,7 +474,7 @@ try:
                         # st.write(m.name)
                         model_name = m.name.split("/")[1]
 
-                        if "2.0" in str(model_name).lower() or "-exp" in model_name or "1.5-pro" in str(
+                        if "2.0" in str(model_name).lower() or "-exp" in model_name or "2.5-pro" in str(
                                 model_name).lower():
                             flash_vision.append(model_name)
                             choice.append(model_name)
