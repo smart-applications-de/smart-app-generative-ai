@@ -60,7 +60,7 @@ if germin_key:
         if 'generateContent' in m.supported_generation_methods:
             # st.write(m.name)
             model_name = m.name.split("/")[1]
-            if "2.0" in str(model_name).lower() or "-exp" in model_name or "1.5-pro" in  model_name:
+            if "2.0" in str(model_name).lower() or "-exp" in model_name or "2.5" in  str(model_name).lower():
                 flash_vision.append(f'gemini/{model_name}')
                 choice.append(model_name)
     llm = ChatGoogleGenerativeAI(model="gemini-pro", api_key=germin_key)
