@@ -56,7 +56,7 @@ if germin_key  and serp_key:
             # st.write(m.name)
             model_name = m.name.split("/")[1]
             choice.append(model_name)
-            if "2.0" in str(model_name).lower() or "-exp" in model_name or "1.5-pro" in  model_name:
+            if "2.0" in str(model_name).lower() or "-exp" in model_name or "2.5" in  model_name:
                 flash_vision.append(f'gemini/{model_name}')
     @st.cache_resource
     def get_performance():
