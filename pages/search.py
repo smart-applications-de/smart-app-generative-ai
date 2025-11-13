@@ -1,123 +1,329 @@
+# This pysqlite3 workaround is necessary for ChromaDB on Streamlit Sharing
+
 import streamlit as st
-
-from langchain.agents import AgentType, Tool, initialize_agent
-from langchain_community.utilities import GoogleSerperAPIWrapper
-
-from langchain_google_genai import ChatGoogleGenerativeAI
+import pandas as pd
+import altair as alt
+import datetime
+import os
+import io
+import re
 import markdown2
 from docx import Document
 from fpdf import FPDF
-import io
 from bs4 import BeautifulSoup
-import re
-import pandas as pd
-from tools.utils import   CrewStocknews
+import yfinance as yf
+import plotly.express as px
+import google.generativeai as gen
+from google import genai
+from langchain.agents import AgentType, Tool, initialize_agent
+from langchain_community.utilities import GoogleSerperAPIWrapper
+from langchain_google_genai import ChatGoogleGenerativeAI
+from tools.utils import CrewStocknews
+
+# --- Global Date/Year ---
 date = pd.to_datetime('today').date()
 yr = pd.to_datetime('today').year
-import datetime
-import google.generativeai as geneai
-import os
-# CrewStocknews(germin_api, serp_api, topic, year, date,model="gemini/gemini-1.5-pro")
-tab1, tab2,tab3 = st.tabs(["Agent Google Search"," Agent News Article", "Crew AI News Article"])
-def germinApiKey():
-    st.warning('Please enter your Google Gemini API Key')
-    "[Get GOOGLE API KEY](https://ai.google.dev/)"
-    openai_api_key = st.text_input(
-        "GOOGLE API KEY", key="germin_api_key", type="password")
-    if  "germin_api_key" not in st.session_state:
 
-        st.session_state['germin_api_key'] = openai_api_key
-        st.info("Please add your OpenAI API key to continue.")
-        st.stop()
-    return  st.session_state['germin_api_key']
-def SerpApiKey():
-    st.warning('Please enter your Serper API Key')
-    "[Get SERPER API KEY](https://serper.dev/)"
-    serper_api_key = st.text_input(
-        "SERPER API KEY", key="serp_api_key", type="password")
-    if  "serp_api_key" not in st.session_state:
-        st.session_state['serp_api_key'] = serper_api_key
-    return  st.session_state['serp_api_key']
-@st.cache_resource
-def SearchAgent(germin_key,SERPAPI_API_KEY,query,model="gemini-1.5-pro"):
+
+# --- 1. Utility & File Conversion Functions ---
+
+def convert_markdown_to_html(markdown_text):
+    """Converts Markdown to HTML."""
+    return markdown2.markdown(markdown_text, extras=["tables", "fenced-code-blocks", "strike"])
+
+
+def convert_md_to_pdf(markdown_text):
+    """Converts Markdown text to a PDF using FPDF, parsing the HTML structure."""
     try:
-        llm = ChatGoogleGenerativeAI(model=model, api_key=germin_key, temperature=0.3,
-                                     max_tokens=None,
-                                     timeout=None,
-                                     max_retries=3,
-                                     )
-        search = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
+        html = convert_markdown_to_html(markdown_text)
+        soup = BeautifulSoup(html, "html.parser")
 
-                                        # gl="de",
-                                        #  hl= "de",
-                                          num= 10
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Arial", size=12)
 
-                                        )
+        for tag in soup.find_all(True):
+            if tag.name == "h1":
+                pdf.set_font("Arial", style="B", size=24)
+                pdf.multi_cell(0, 10, txt=tag.get_text(), align="C")
+                pdf.ln(5)
+            elif tag.name == "h2":
+                pdf.set_font("Arial", style="B", size=18)
+                pdf.multi_cell(0, 10, txt=tag.get_text())
+                pdf.ln(3)
+            elif tag.name == "h3":
+                pdf.set_font("Arial", style="B", size=14)
+                pdf.multi_cell(0, 10, txt=tag.get_text())
+                pdf.ln(2)
+            elif tag.name == "p":
+                pdf.set_font("Arial", size=12)
+                pdf.multi_cell(0, 10, txt=tag.get_text())
+                pdf.ln(2)
+            elif tag.name == "strong":
+                pdf.set_font("Arial", style="B", size=12)
+                pdf.multi_cell(0, 10, txt=tag.get_text())
+                pdf.set_font("Arial", size=12)
+                pdf.ln(2)
+            elif tag.name in ["ul", "ol"]:
+                pdf.ln(2)
+                for li in tag.find_all("li"):
+                    pdf.set_font("Arial", size=12)
+                    pdf.multi_cell(0, 10, txt=f"  •  {li.get_text()}")
+                pdf.ln(2)
+            elif tag.name == "hr":
+                pdf.line(pdf.get_x(), pdf.get_y(), pdf.get_x() + 190, pdf.get_y())
+                pdf.ln(5)
+
+        return pdf.output(dest="S").encode("latin-1")
+    except Exception as e:
+        st.error(f"Error converting to PDF: {e}")
+        return None
+
+
+def convert_md_to_docx(markdown_text):
+    """Converts Markdown text to a DOCX using python-docx, parsing HTML."""
+    try:
+        html = convert_markdown_to_html(markdown_text)
+        soup = BeautifulSoup(html, "html.parser")
+        doc = Document()
+
+        for tag in soup.find_all(True):
+            if tag.name == "h1":
+                doc.add_heading(tag.get_text(), level=1)
+            elif tag.name == "h2":
+                doc.add_heading(tag.get_text(), level=2)
+            elif tag.name == "h3":
+                doc.add_heading(tag.get_text(), level=3)
+            elif tag.name == "p":
+                doc.add_paragraph(tag.get_text())
+            elif tag.name in ["ul", "ol"]:
+                for li in tag.find_all("li"):
+                    doc.add_paragraph(li.get_text(), style='List Bullet')
+            elif tag.name == "hr":
+                doc.add_paragraph("---")
+
+        with io.BytesIO() as buffer:
+            doc.save(buffer)
+            return buffer.getvalue()
+    except Exception as e:
+        st.error(f"Error converting to DOCX: {e}")
+        return None
+
+
+def convert_md_to_pptx(markdown_text):
+    """Converts Markdown to a basic PPTX."""
+    try:
+        from pptx import Presentation
+        from pptx.util import Inches
+
+        html = convert_markdown_to_html(markdown_text)
+        soup = BeautifulSoup(html, "html.parser")
+
+        prs = Presentation()
+        title_slide_layout = prs.slide_layouts[0]
+        slide = prs.slides.add_slide(title_slide_layout)
+        title = slide.shapes.title
+        subtitle = slide.placeholders.get(1)
+
+        title_text = soup.h1.text if soup.h1 else "AI Generated Report"
+        title.text = title_text
+        if subtitle and soup.h2:
+            subtitle.text = soup.h2.text
+
+        bullet_slide_layout = prs.slide_layouts[1]
+        body_shape = None
+
+        for tag in soup.find_all(['h3', 'p', 'ul', 'ol']):
+            if tag.name == 'h3':
+                slide = prs.slides.add_slide(bullet_slide_layout)
+                title_shape = slide.shapes.title
+                body_shape = slide.placeholders[1]
+                title_shape.text = tag.get_text()
+            elif tag.name == 'p' and body_shape:
+                p = body_shape.text_frame.add_paragraph()
+                p.text = tag.get_text()
+            elif tag.name in ['ul', 'ol'] and body_shape:
+                for li in tag.find_all('li'):
+                    p = body_shape.text_frame.add_paragraph()
+                    p.text = li.get_text()
+                    p.level = 1
+
+        with io.BytesIO() as buffer:
+            prs.save(buffer)
+            return buffer.getvalue()
+    except Exception as e:
+        st.error(f"Error converting to PPTX: {e}")
+        return None
+
+
+def render_download_options(container, markdown_content, base_file_name, key_suffix):
+    """Renders download buttons for various formats in a specified container."""
+    if not markdown_content:
+        container.warning("No content available to download.")
+        return
+
+    try:
+        html_output = convert_markdown_to_html(markdown_content)
+    except Exception as e:
+        container.error(f"Error generating HTML for download: {e}")
+        return
+
+    download_format = container.radio(
+        "Download as:",
+        ("TXT", "PDF", "HTML", "MD", "DOCX", "PPTX"),
+        key=f'download_{key_suffix}'
+    )
+
+    now = datetime.datetime.now()
+    formatted_time = now.strftime("%Y-%m-%d_%H%M")
+    file_name = f"{base_file_name}_{formatted_time}"
+
+    try:
+        if download_format == "TXT":
+            container.download_button(
+                label="Download TXT",
+                data=markdown_content.encode("utf-8"),
+                file_name=f"{file_name}.txt",
+                mime="text/plain",
+            )
+        elif download_format == "MD":
+            container.download_button(
+                label="Download Markdown",
+                data=markdown_content.encode("utf-8"),
+                file_name=f"{file_name}.md",
+                mime="text/markdown",
+            )
+        elif download_format == "HTML":
+            container.download_button(
+                label="Download HTML",
+                data=html_output.encode("utf-8"),
+                file_name=f"{file_name}.html",
+                mime="text/html",
+            )
+        elif download_format == "PDF":
+            pdf_bytes = convert_md_to_pdf(markdown_content)
+            if pdf_bytes:
+                container.download_button(
+                    label="Download PDF",
+                    data=pdf_bytes,
+                    file_name=f"{file_name}.pdf",
+                    mime="application/pdf",
+                )
+        elif download_format == "DOCX":
+            docx_bytes = convert_md_to_docx(markdown_text)
+            if docx_bytes:
+                container.download_button(
+                    label="Download DOCX",
+                    data=docx_bytes,
+                    file_name=f"{file_name}.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                )
+        elif download_format == "PPTX":
+            pptx_bytes = convert_md_to_pptx(markdown_content)
+            if pptx_bytes:
+                container.download_button(
+                    label="Download PPTX",
+                    data=pptx_bytes,
+                    file_name=f"{file_name}.pptx",
+                    mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                )
+    except Exception as e:
+        container.error(f"Error preparing download: {e}")
+
+
+# --- 2. AI & Model Functions ---
+
+@st.cache_data
+def list_gemini_models():
+    """Lists available Gemini models."""
+    try:
+
+        client = genai.Client(api_key=st.session_state['google_api_key'])
+        gen.configure(api_key=st.session_state.germin_api_key)
+        models = [
+            m.name.split("/")[-1]
+            for m in gen.list_models()
+            if 'generateContent' in m.supported_generation_methods
+        ]
+        # Get all "pro" and "flash" models, etc.
+        relevant_models = [m for m in models if "flash" in m or "pro" in m or "exp" in m or "2.5" in m]
+        short_names = sorted(list(set(relevant_models)), reverse=True)
+        full_paths = [f"gemini/{m}" for m in short_names]
+
+        return short_names, full_paths
+    except Exception as e:
+        st.error(f"Error listing models: {e}")
+        return [], []
+
+
+@st.cache_resource
+def SearchAgent(germin_key, SERPAPI_API_KEY, query, model="gemini-1.5-pro"):
+    """Runs a general web search agent."""
+    try:
+        llm = ChatGoogleGenerativeAI(model=model, api_key=germin_key, temperature=0.3)
+        search = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY, num=10)
         tools = [
             Tool(
                 name="Search",
                 func=search.run,
-                description="useful for when you need to ask with search. ",
+                description="useful for when you need to ask with search.",
             )
         ]
 
-        search_agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-                                        handle_parsing_errors=True, verbose=True)
+        search_agent = initialize_agent(
+            tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+            handle_parsing_errors=True, verbose=True
+        )
+
         messages = [
             (
                 "system",
                 f"""You are a helpful assistant that with decades of experience on Google Search. 
-                 You takes the user query and search on internet and returns the top results.
-                 You MUST  Also Include  source-information links for further reading.
-                 Formatted in markdown without . The Current year is {yr} and current date is {date} ```""",
+                You take the user query and search on internet and returns the top results.
+                You MUST Also Include source-information links for further reading.
+                Formatted in markdown. The Current year is {yr} and current date is {date}.""",
             ),
             ("human", query),
         ]
+
         response = search_agent.run(messages)
 
+        # Save to history
         st.session_state.searches.append({"role": "user", "content": query})
-        return  response
+        st.session_state.searches.append({"role": "assistant", "content": response})
+        return response
     except Exception as error:
         st.error(error)
-#search = GoogleSerperAPIWrapper(type="places")
-#results = search.results("Italian restaurants in Upper East Side")
+        return f"An error occurred: {error}"
+
 
 @st.cache_resource
-def SearchNews(germin_key, SERPAPI_API_KEY,topic,model="gemini-1.5-pro"):
+def SearchNews(germin_key, SERPAPI_API_KEY, topic, model="gemini-1.5-pro"):
+    """Runs a news-focused web search agent."""
     try:
-
-        llm = ChatGoogleGenerativeAI(model=model, api_key=germin_key, temperature=0.3,
-
-                                     max_tokens=None,
-                                     timeout=None,
-                                     max_retries=3
-                                     )
-        news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-
-                                      #    gl= "de",
-                                       #  hl= "de",
-                                          num= 20,
-                                         type="news"
-                                        )
+        llm = ChatGoogleGenerativeAI(model=model, api_key=germin_key, temperature=0.3)
+        news = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY, num=20, type="news")
         tools_news = [
             Tool(
                 name="news",
                 func=news.run,
-                description="useful for when you need to  search for latest news. ",
+                description="useful for when you need to search for latest news.",
             )
         ]
 
-        #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
-        news_agent = initialize_agent(tools_news, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True,
-                                        verbose=True)
+        news_agent = initialize_agent(
+            tools_news, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+            handle_parsing_errors=True, verbose=True
+        )
 
         messages_news = [
             (
                 "system",
                 f"""You are a news Report Expert and you have decades of experience. 
-                            You takes the user input on a given topic and search on internet for the latest news. 
-                            You MUST write an article with the most important  and latest news.  The current date is:{date} and current year:{yr} .You MUST  Also Include  source urls for further reading.
-                            Formatted in markdown without ```""",
+                You take the user input on a given topic and search on internet for the latest news. 
+                You MUST write an article with the most important and latest news. The current date is:{date} and current year:{yr}.
+                You MUST Also Include source urls for further reading.
+                Formatted in markdown.""",
             ),
             ("human", topic),
         ]
@@ -125,416 +331,148 @@ def SearchNews(germin_key, SERPAPI_API_KEY,topic,model="gemini-1.5-pro"):
         return response
     except Exception as error:
         st.error(error)
-@st.cache_resource
-def SearchPlaces(germin_key, SERPAPI_API_KEY,topic,model="gemini-1.5-pro"):
-    try:
-        llm = ChatGoogleGenerativeAI(model=model, api_key=germin_key, temperature=0.3,
-
-                                     max_tokens=None,
-                                     timeout=None,
-                                     max_retries=3,
-                                     )
-
-        places = GoogleSerperAPIWrapper(api_key=SERPAPI_API_KEY,
-                                        num=10,
-                
-                                      type="places"
-                                        )
-        tools_news = [
-            Tool(
-                name="Google Places",
-                func=places.run,
-                description="useful for when you need to  search for  Google Places. ",
-            )
-        ]
-
-        #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
-        news_agent = initialize_agent(tools_news, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True,
-                                        verbose=True)
-
-        messages_news = [
-            (
-                "system",
-                f"""You are  Expert on searching for Google places and locations. 
-                            You takes the user input on a given topic and search for places related to the given topic. 
-                            The current date is:{date} and current year:{yr}.
-                            The Output must be Formatted in markdown without ```""",
-            ),
-            ("human", topic),
-        ]
-        response = news_agent.run(messages_news)
-        return response
-    except Exception as error:
-        st.error(error)
-
-    def extract_link_and_text(html_tag):
-        """Extracts link and text from a simple <a> tag.  NOT ROBUST!"""
-        match = re.search(r'<a href="(.*?)">(.*?)</a>', html_tag)
-        if match:
-            link = match.group(1)
-            text = match.group(2)
-            return link, text
-        else:
-            return None, None
+        return f"An error occurred: {error}"
 
 
-# @st.cache_resource
+# --- 3. Main Application ---
 
-def convert_markdown_to_html(markdown_text):
-    """Converts Markdown to HTML."""
-    return markdown2.markdown(markdown_text)
+# Check for API keys from session state (set in nav.py)
+if 'google_api_key' not in st.session_state or not st.session_state['google_api_key']:
+    st.error("🚫 Google Gemini API Key not found. Please set it in the main app.")
+    st.stop()
+if 'serper_api_key' not in st.session_state or not st.session_state['serper_api_key']:
+    st.error("🚫 Serper API Key not found. Please set it in the main app.")
+    st.stop()
 
+# Configure API keys
+GEMINI_API_KEY = st.session_state['google_api_key']
+SERPER_API_KEY = st.session_state['serper_api_key']
+os.environ['GOOGLE_API_KEY'] = GEMINI_API_KEY
+os.environ['SERPER_API_KEY'] = SERPER_API_KEY
+gen.configure(api_key=GEMINI_API_KEY)
 
-def convert_markdown_to_pdf(markdown_text):
-    """Converts Markdown text to a PDF using FPDF."""
+# Get models
+model_names, gemini_model_paths = list_gemini_models()
+if not model_names:
+    st.error("Could not fetch Gemini models. Check your API key.")
+    st.stop()
 
-    html = markdown2.markdown(markdown_text)  # Convert markdown to HTML for better rendering
+# Initialize session state for chat history
+if "searches" not in st.session_state:
+    st.session_state["searches"] = [
+        {"role": "assistant", "content": "Hi, I'm a chatbot who can search the web. How can I help you?"}
+    ]
 
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)  # Choose a font
+# --- UI Tabs ---
+tab1, tab2, tab3 = st.tabs(["Agent Google Search", "Agent News Article", "Crew AI Stock News"])
 
-    lines = html.splitlines()
-    for line in lines:
-        if line.strip().startswith("<h1>"):
-            title = line.strip()[4:-5]  # Extract title from <h1> tags
-            pdf.set_font("Arial", style="B", size=18)  # Bold title
-            pdf.cell(0, 10, txt=title, ln=1, align="C")  # Centered title
-            pdf.set_font("Arial", size=12)  # Reset font
-        elif line.strip().startswith("<h2>"):
-            subtitle = line.strip()[4:-5]  # Extract title from <h1> tags
-            pdf.set_font("Arial", style="B", size=16)  # Bold title
-            pdf.cell(0, 10, txt=subtitle, ln=1, align="C")  # Centered title
-            pdf.set_font("Arial", size=12)  # Reset font
-        elif line.strip().startswith("<h3>"):
-            subtitle = line.strip()[4:-5]  # Extract title from <h1> tags
-            pdf.set_font("Arial", style="B", size=14)  # Bold title
-            pdf.cell(0, 10, txt=subtitle, ln=1, align="C")  # Centered title
-            pdf.set_font("Arial", size=12)
-        elif line.strip().startswith("<p>"):
-            paragraph = ((line.strip()[3:-4]).replace("<strong>", "")).replace("</strong>", "")
-            paragraph = (paragraph.replace("<a href=", "")).replace('"', '')
-            paragraph = paragraph.replace("</a>", "")
+with tab1:
+    st.header("Agent-Powered Google Search")
 
-            # link, link_text = extract_link_and_text(paragraph)
-            # if link :
-            #     pdf.set_link(link)  # Set the link destination
-            #     pdf.write(5, link_text)
-            # else:
-            pdf.multi_cell(0, 10, txt=paragraph)
+    # Text input at the top
+    query = st.text_input(
+        "Ask Anything",
+        key='query',
+        placeholder="Who won the last F1 race?"
+    )
 
-            # if paragraph.strip().startswith("<strong>"):
-            #     text = line.strip()[8:-9]
-            #     pdf.set_font("Arial", style="B", size=12)
-            #     pdf.cell(0, 10, txt=text)
-            #     pdf.set_font("Arial", size=12)
-            #
-            # else:
-            # pdf.multi_cell(0, 10, txt=paragraph)  # handle multiple lines in paragraph
-        # elif line.strip().startswith("<ul>"):
-        #
-        #     for item in line.strip()[4:-5].split("<li>"):
-        #         if item.strip():
-        #             pdf.cell(10, 10, txt=". " + item.strip().replace("</li>", ""), ln=1)
-        elif line.strip().startswith("<li><strong>"):
+    model1 = st.radio(
+        "Choose a Model",
+        model_names,  # Use short names for this agent
+        key='model1',
+        horizontal=True
+    )
 
-            for item in line.strip()[4:-5].split("<li><strong>"):
-                item = item.replace("</strong>", "")
-                item = item.replace("<strong>", "")
-                item = item.replace("</ul>", "")
-                if item.strip():
-                    # pdf.set_font("Arial", style="B", size=12)
-                    item_cell = (item.strip().replace("</li>", "")).replace("</ul>", "")
-                    item_cell = (item_cell.replace("<a href=", "")).replace('"', '')
-                    item_cell = item_cell.replace("</a>", "")
-                    pdf.set_font("Arial", style="B", size=10)
-                    pdf.cell(10, 10, txt=". " + item_cell.split(">")[0], ln=1)
-                    pdf.set_font("Arial", size=12)
+    if query:
+        with st.spinner("Searching the web..."):
+            response = SearchAgent(GEMINI_API_KEY, SERPER_API_KEY, query, model1)
+            # The response is now automatically added to session state by the function
 
-        else:
-            text = (line.strip()).replace("</ul>", "")
-            text = (text.replace("<ul>", "")).replace("<ol>", "")
-            text = (text.replace("</ol>", "")).replace("</p>", "")
+    st.write("---")
+    st.subheader("Search History")
+    # Display the full search history
+    for msg in st.session_state.searches:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
 
-            pdf.multi_cell(0, 10, txt=text)
+with tab2:
+    st.header("Agent-Powered News Search")
 
-    # You can add more PDF content here if needed
+    news_topic = st.text_input(
+        "Give a Topic",
+        key='news_topic',
+        placeholder="Latest AI advancements"
+    )
 
-    return pdf.output(dest="S").encode("latin-1")  # Return PDF as bytes
+    model2 = st.radio(
+        "Choose a Model",
+        model_names,  # Use short names for this agent
+        key='model2',
+        horizontal=True
+    )
 
-
-def clean_html(html_content):
-    """Removes HTML tags from the given HTML content using BeautifulSoup."""
-    soup = BeautifulSoup(html_content, "html.parser")
-    text = soup.get_text(" ", strip=True)  # strip=True removes extra whitespace.
-    return text
-
-
-# @st.cache_resource
-def convert_html_to_docx(html_content):
-    """Converts HTML to DOCX (simplified, may not handle all HTML perfectly)."""
-    doc = Document()
-    #  A very basic approach -  for more robust conversion, explore dedicated HTML to DOCX libraries.
-    # doc.add_paragraph(clean_html(html_content))
-
-    lines = html_content.splitlines()
-    for line in lines:
-
-        if line.strip().startswith("<h1>"):
-            title = line.strip()[4:-5]  # Extract title from <h1> tags
-            doc.add_heading(title)
-
-        elif line.strip().startswith("<h2>"):
-            subtitle = line.strip()[4:-5]  # Extract title from <h1> tags
-            doc.add_heading(subtitle)
-        elif line.strip().startswith("<h3>"):
-            subtitle = line.strip()[4:-5]  # Extract title from <h1> tags
-            doc.add_section(subtitle)
-
-        elif line.strip().startswith("<p>"):
-            paragraph = ((line.strip()[3:-4]).replace("<strong>", "")).replace("</strong>", "")
-            paragraph = (paragraph.replace("<a href=", "")).replace('"', '')
-            paragraph = paragraph.replace("</a>", "")
-
-            # link, link_text = extract_link_and_text(paragraph)
-            # if link :
-            #     pdf.set_link(link)  # Set the link destination
-            #     pdf.write(5, link_text)
-            # else:
-            doc.add_paragraph(paragraph)
-
-            # if paragraph.strip().startswith("<strong>"):
-            #     text = line.strip()[8:-9]
-            #     pdf.set_font("Arial", style="B", size=12)
-            #     pdf.cell(0, 10, txt=text)
-            #     pdf.set_font("Arial", size=12)
-            #
-            # else:
-            # pdf.multi_cell(0, 10, txt=paragraph)  # handle multiple lines in paragraph
-        elif line.strip().startswith("<ul>"):
-            main_list = doc.add_paragraph()
-            main_list.style = doc.styles['List Paragraph']
-            for item in line.strip()[4:-5].split("<li>"):
-                if item.strip():
-                    main_list.add_run(f". {item}\n")
-        #             pdf.cell(10, 10, txt=". " + item.strip().replace("</li>", ""), ln=1)
-        elif line.strip().startswith("<li><strong>"):
-
-            for item in line.strip()[4:-5].split("<li><strong>"):
-                item = item.replace("</strong>", "")
-                item = item.replace("<strong>", "")
-                item = item.replace("</ul>", "")
-                main_list = doc.add_paragraph()
-                main_list.style = doc.styles['List Paragraph']
-                if item.strip():
-                    # pdf.set_font("Arial", style="B", size=12)
-                    item_cell = (item.strip().replace("</li>", "")).replace("</ul>", "")
-                    item_cell = (item_cell.replace("<a href=", "")).replace('"', '')
-                    item_cell = item_cell.replace("</a>", "")
-                    main_list.add_run(f". {item_cell}\n")
-
-
-        else:
-            text = (line.strip()).replace("</ul>", "")
-            text = (text.replace("<ul>", "")).replace("<ol>", "")
-            text = (text.replace("</ol>", "")).replace("</p>", "")
-            doc.add_paragraph(text)
-
-    # You can add more PDF content here if needed
-
-    return doc
-
-
-def convert_markdown_to_pptx(markdown_text):
-    from pptx import Presentation
-    from pptx.util import Inches
-    import io
-    html = markdown2.markdown(markdown_text)  # Convert to HTML first (easier to handle)
-
-    prs = Presentation()
-    title_slide_layout = prs.slide_layouts[0]
-    slide = prs.slides.add_slide(title_slide_layout)
-    title = slide.shapes.title
-    subtitle = slide.placeholders[1]
-
-    # Extract Title and Subtitle from HTML (assuming they're in h1 and h2 tags)
-    try:
-        soup = BeautifulSoup(html, "html.parser")
-        title_text = soup.h1.text if soup.h1 else "Untitled Presentation"
-        subtitle_text = soup.h2.text if soup.h2 else ""
-        title.text = title_text
-        subtitle.text = subtitle_text
-    except AttributeError:
-        title.text = "Untitled Presentation"
-        subtitle.text = ""
-
-    # Add content slides (basic paragraphs)
-    bullet_slide_layout = prs.slide_layouts[1]
-    for paragraph in BeautifulSoup(html, 'html.parser').find_all('p'):
-        slide = prs.slides.add_slide(bullet_slide_layout)
-        shapes = slide.shapes
-        title_shape = shapes.title
-        body_shape = shapes.placeholders[1]
-        title_shape.text = paragraph.find('strong').text if paragraph.find('strong') else 'Paragraph'
-        tf = body_shape.text_frame
-        tf.text = paragraph.text
-
-    with io.BytesIO() as buffer:
-        prs.save(buffer)
-        return buffer.getvalue()
-
-
-germin_key =  germinApiKey()
-SERPAPI_API_KEY = SerpApiKey()
-
-if germin_key and SERPAPI_API_KEY :
-    geneai.configure(api_key= germin_key)
-    os.environ['GOOGLE_API_KEY'] = germin_key
-    os.environ['SERPER_API_KEY'] = SERPAPI_API_KEY
-    choice = []
-    flash_vision = []
-    #"gemini/gemini-1.5-pro"
-    for m in geneai.list_models():
-        if 'generateContent' in m.supported_generation_methods:
-            # st.write(m.name)
-            model_name = m.name.split("/")[1]
-            if "2.0" in str(model_name).lower() or "-exp" in model_name or "1.5-pro" in  model_name:
-                flash_vision.append(f'{model_name}')
-                choice.append(f'gemini/{model_name}')
-    llm= ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=germin_key,temperature=0,
-                            max_tokens=None,
-                            timeout=None,
-                            max_retries=2,
-                            )
-#                            streaming=True
-   #                         )
-    if "searches" not in st.session_state:
-        st.session_state["searches"] = [
-            {"role": "assistant", "content": "Hi, I'm a chatbot who can search the web. How can I help you?"}
-        ]
-    with tab1:
-
-        #langauge= st.radio(label="select output language",options=['German', 'English', 'French','Spanish', 'Italian'])
-       # search_agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True, verbose=True)
-        if query :=st.text_input(key='query',placeholder="Who won World cup in 2022 ?",label="Ask Anything"):
-            container1 =st.container(border=True)
-            model1= container1.radio(
-                "Choose a Model",
-                flash_vision,
-                key='model1'
-            )
-            response=SearchAgent(germin_key,SERPAPI_API_KEY,query,model1)
+    if news_topic:
+        with st.spinner(f"Searching for news on '{news_topic}'..."):
+            response = SearchNews(GEMINI_API_KEY, SERPER_API_KEY, news_topic, model2)
             st.markdown(response)
-    with tab2:
 
-        #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
-        if news_topic := st.text_input(key='news_topic', placeholder="Randstad Deutschland?", label="Give a Topic"):
-            container2 =st.container(border=True)
-            model2= container2.radio(
-                "Choose a Model",
-                flash_vision,
+with tab3:
+    st.header("Crew AI Stock News Article")
+    st.info("This agent will perform a deep dive to write a full article on a specific stock.")
 
-                key='model2'
-            )
-            response = SearchNews(germin_key,SERPAPI_API_KEY,news_topic,model2)
-            st.markdown(response)
-    with tab3:
+    container3 = st.container(border=True)
 
-        #langauge_news = st.radio(label="select output language", options=['German', 'English', 'French', 'Spanish', 'Italian'], key='l_news')
-        if topic := st.text_input(key='topic', placeholder="Germany Elections", label="News topic"):
-            container3 = st.container(border=True)
-            model3= container3.radio(
-                "Choose a Model",
-                choice,
-                key='model3'
+    topic = container3.text_input(
+        "News topic (Stock Ticker)",
+        key='topic',
+        placeholder="e.g., NVDA or AAPL"
+    )
 
-            )
-            date=pd.to_datetime('today').date()
-            yr = pd.to_datetime('today').year
-            try:
-                results = CrewStocknews(germin_api=germin_key, serp_api=SERPAPI_API_KEY, topic=topic, year=yr, date=date, model=model3)
-                #response = SearchPlaces(germin_key,SERPAPI_API_KEY,place,model3)
-                st.markdown(results)
-                file_name=f'{model3}_{topic}_editor_task.md'
-                with open(file_name, 'r') as f:
-                    news_article = (f.read())
-                    f.close()
-            except Exception as e:
-                st.error(e)
-            try:
-                if news_article:
-                        text = news_article
-                        st.subheader("Download the News article")
-                        html_output = convert_markdown_to_html(text)
-                        download_format1 = st.radio("Download as:", ("TXT", "PDF", "HTML", "MD", "DOCX", "PPTX"),
-                                                    key='download1')
+    model3 = container3.radio(
+        "Choose a Model",
+        gemini_model_paths,  # Crew AI needs the full path
+        key='model3'
+    )
 
-                        if download_format1:
+    if container3.button("Generate Stock News Article"):
+        if topic and model3:
+            news_article = None
+            with st.spinner(f"AI Crew is writing an article on '{topic}'... This may take several minutes."):
+                try:
+                    # Note: CrewStocknews is assumed to not take company, sector, summary
+                    results = CrewStocknews(
+                        germin_api=GEMINI_API_KEY,
+                        serp_api=SERPER_API_KEY,
+                        topic=topic,
+                        year=yr,
+                        date=date,
+                        model=model3
+                    )
+                    st.markdown(results)
 
-                            now = datetime.datetime.now()
-                            if download_format1 == "TXT":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                st.download_button(
-                                    label="Download TXT",
-                                    data=text.encode("utf-8"),  # Encode to bytes for download
-                                    file_name=f"{formatted_time}_article.txt",
-                                    mime="text/plain",
-                                )
-                            elif download_format1 == "PDF":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                st.download_button(
-                                    label="Download PDF",
-                                    data=convert_markdown_to_pdf(text.encode("utf-8")),
-                                    # Encode to bytes for download
-                                    file_name=f"{formatted_time}_article.pdf",
-                                    mime="application/pdf",
-                                )
-                            elif download_format1 == "MD":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                st.download_button(
-                                    label="Download Markdown",
-                                    data=text.encode("utf-8"),  # Encode to bytes for download
-                                    file_name=f"{formatted_time}_article.md",
-                                    mime="text/plain",
-                                )
-                                # convert_markdown_to_pptx
-                            # Customize format as needed.
-                            #html_output = convert_markdown_to_html(text)
-                            elif download_format1 == "HTML":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                st.download_button(
-                                    label="Download HTML",
-                                    data=html_output.encode("utf-8"),  # Encode to bytes for ownload
-                                    file_name=f"{formatted_time}_article.html",
-                                    mime="text/html",
-                                )
-                            elif download_format1 == "DOCX":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                docx_output = convert_html_to_docx(html_output)
-                                # Save to in-memory buffer for download
-                                with io.BytesIO() as buffer:
-                                    docx_output.save(buffer)
-                                    st.download_button(
-                                        label="Download DOCX",
-                                        data=buffer.getvalue(),
-                                        file_name=f"{formatted_time}_article.docx",
-                                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                                    )
-                            elif download_format1 == "PPTX":
-                                formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-                                pptx_bytes = convert_markdown_to_pptx(html_output)
-                                st.download_button(
-                                    label="Download PPTX",
-                                    data=pptx_bytes,
-                                    file_name=f"{formatted_time}_article.pptx",
-                                    mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
-            except Exception as e:
-                st.error(e)
+                    # Try to read the generated file
+                    file_name = f'{topic}_editor_task.md'  # Assuming this is the output file
+                    if os.path.exists(file_name):
+                        with open(file_name, 'r', encoding='utf-8') as f:
+                            news_article = f.read()
+                        st.session_state.last_crew_article = news_article
+                        st.session_state.last_crew_topic = topic
+                    else:
+                        st.warning(f"Crew finished, but output file '{file_name}' not found. Showing main output only.")
+                        st.session_state.last_crew_article = results  # Fallback
+                        st.session_state.last_crew_topic = topic
 
-# for msg in st.session_state.searches:
-#     st.chat_message(msg["role"]).write(msg["content"])
+                except Exception as e:
+                    st.error(f"An error occurred with the AI Crew: {e}")
+        else:
+            container3.warning("Please provide a stock ticker and select a model.")
 
-
-
-
-
+    # Download section - shows if an article is in session state
+    if "last_crew_article" in st.session_state:
+        st.subheader(f"Download Article for {st.session_state.last_crew_topic}")
+        render_download_options(
+            st,
+            st.session_state.last_crew_article,
+            f"{st.session_state.last_crew_topic}_ai_news_article",
+            "crew_news_download"
+        )
